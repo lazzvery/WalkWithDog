@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../../COMMON/Header/css/header.css" />
+    <link rel="stylesheet" href="../../../../../COMMON/Footer/css/footer.css" />
+    <link rel="stylesheet" href="../../../../../COMMON/Common/common.css" />
+    <link rel="stylesheet" href="../../commonCss/common.css">
+    <link rel="stylesheet" href="./css/list.css">
+    <script defer src="./javaScript/list.js"></script>
+    <script defer src="../../../../../javascript/index.js"></script>
+
+    <title>list</title>
+</head>
+
+<body>
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+    <header id="headerTop">
+        <div class="categoryContainer">
+            <div class="subContainer">
+                <div class="headerLogo">
+                    <a href="#" class="hamburgerBtn"></a>
+                    <a href="../../../../../index.html">
+                        Home
+                    </a>
+                </div>
+                <!--subContainer-->
+                <ul class="category list1">
+                    <div class="subList">
+                        <li class="subTitle"><strong>SHOP</strong></li>
+
+                        <div class="categoryHover">
+                            <ul>
+                                <li>
+                                    <a href="../../../../../ProductList/productList_New.html">new</a>
+                                </li>
+                                <li><a href="#">living</a></li>
+                                <li><a href="#">working</a></li>
+                                <li><a href="#">food</a></li>
+                                <li><a href="#">for cat</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+
+                <ul class="category list2">
+                    <div class="subList">
+                        <li class="subTitle"><strong>BEST</strong></li>
+                        <div class="categoryHover"></div>
+                    </div>
+                </ul>
+
+                <ul class="category list3">
+                    <div class="subList">
+                        <li class="subTitle"><strong>EVENT</strong></li>
+
+                        <div class="categoryHover">
+                            <ul>
+                                <li><a href="#">event</a></li>
+                                <li><a href="#">magazine</a></li>
+                                <li><a href="#">curation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+
+                <ul class="category list4">
+                    <div class="subList">
+                        <li class="subTitle"><strong>COMMUNITY</strong></li>
+
+                        <div class="categoryHover">
+                            <ul>
+                                <li><a href="../../../../Community/community_notice.html">notice</a></li>
+                                <li><a href="../../../../Community/communtiy_faq.html">faq</a></li>
+                                <li><a href="../../../../Community/community_Q&A.html">q&a</a></li>
+                                <li><a href="../../../../Community/community_review.html">review</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </ul>
+
+                <ul class="category list5">
+                    <li class="searchBtn">
+                        <a href="#" class="searchBtn_a">검색</a>
+                    </li>
+                    <li class="cartBtn">
+                        <a href="../../../../Product/product_shopping_cart.html" class="cartBtn_a">카트</a>
+                    </li>
+
+                    <li><a href="../../../login/login.html">Login</a></li>
+                    <li><a href="../../../join/join.html">Join</a></li>
+                    <li><a href="../../../myPage/home/home.html">My Page</a></li>
+                </ul>
+            </div>
+            <!--subContainer-->
+        </div>
+        <!--categoryContainer-->
+        <div class="searchBarWrap hidden_">
+            <form class="mainSearch">
+                <!-- <h1>What are you looking for?</h1> -->
+                <input type="text" id="keyword" placeholder="상품명 검색" />
+                <input type="submit" value="Search" />
+                <a href="#" class="searchCloseBtn searchClose" alt="검색창닫기"></a>
+            </form>
+        </div>
+    </header>
+
+
+    <div class="myPageContainer">
+        <div class="pageTopContainer">
+            <div class="pageTitle">
+                <h2>MY PAGE</h2>
+            </div>
+            <ul class="pageNav">
+                <li><a href="../../home/home.html">홈</a></li>
+                <li><a href="../../order/order.html">주문내역</a></li>
+                <li><a href="../../coupon/coupon.html">쿠폰</a></li>
+                <li><a href="../../mileage/mileage.html">적립금</a></li>
+                <li><a href="../../modify/modify.html">회원정보</a></li>
+            </ul>
+        </div>
+
+        <div class="myPageAddressContainer">
+            <h2>배송 주소록 관리</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td class="inputBox">
+                            <div class="checkBoxAll checkBox">
+                                <input type="checkbox" name="checkBoxAll" id="checkBoxAll" />
+                                <label for="checkBoxAll" id="checkBoxAll"></label>
+                            </div>
+                        </td>
+                        <td>배송지명</td>
+                        <td>수령인</td>
+                        <td>휴대전화</td>
+                        <td>주소</td>
+                        <td>수정</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="inputBox">
+                            <div class="checkBox">
+                                <input type="checkbox" name="checkbox" id="checkbox" />
+                                <label for="checkbox" id="checkbox"></label>
+                            </div>
+                        </td>
+                        <td>그린</td>
+                        <td>아카데미</td>
+                        <td>010-1234-1234</td>
+                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
+                        <td><a href="../register/register.html">수정</a></td>
+                    </tr>
+
+                    <tr>
+                        <td class="inputBox">
+                            <div class="checkBox">
+                                <input type="checkbox" name="checkbox" id="checkbox2" />
+                                <label for="checkbox2" id="checkbox"></label>
+                            </div>
+                        </td>
+                        <td>그린</td>
+                        <td>아카데미</td>
+                        <td>010-1234-1234</td>
+                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
+                        <td><a href="../register/register.html">수정</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="noAddress">
+                <p>
+                    등록된 주소가 없어요..
+                </p>
+            </div>
+
+            <div class="choiceButton">
+                <button>선택 주소록 삭제</button>
+                <a href="../register/register.html">배송지 추가</a>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+<div class="footerTop">
+    <a href="#"> 이용약관 </a>
+    |
+    <a href="#"> 개인정보처리방침 </a>
+    |
+    <a href="#"> 이용안내 </a>
+</div>
+<!--------------------- <footer> 시작 --------------------->
+<footer>
+    <pre>
+
+
+    Service Center : 031-712-7447
+    
+    Business Hours : 평일 9:30 ~ 18:10 (점심시간 13:20 ~ 14:20) │ 토·일·공휴일 휴무
+    
+    Bank : 그린은행 100-220818-230317 │ 주식회사 PSY_C
+    
+    E-Mail : PSY_C@google.com
+    
+    Representative : 정선주, 최병현, 김민성, 유미현
+    
+    Address : 경기도 성남시 분당구 돌마로 46 (광천빌딩 5층)
+    
+    사업자 등록번호 안내 : [111-11-1111] | 통신판매업 신고 2019-서울강남-11111
+    
+    
+    </pre>
+    <p>Copyright © PSYC. All rights reserved.</p>
+</footer>
+<!--------------------- <footer> 끝 --------------------->
+
+</html>

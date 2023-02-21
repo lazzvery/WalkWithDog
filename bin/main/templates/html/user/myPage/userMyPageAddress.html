@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../../COMMON/Common/common.css" />
+    <link rel="stylesheet" href="../../commonCss/common.css">
+    <link rel="stylesheet" href="./css/paymentAddress.css">
+    <script defer src="./javaScript/list.js"></script>
+    <script defer src="../../../../../javascript/index.js"></script>
+
+    <title>paymentAddress</title>
+</head>
+
+<body>
+
+    <div class="myPageContainer">
+
+        <div class="myPageAddressContainer">
+            <h2>배송 주소록 관리</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td class="inputBox">
+                            선택
+                        </td>
+                        <!-- <td>수령인</td> -->
+                        <td>주소</td>
+                        <td>수정</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="inputBox">
+                            <div class="checkBox">
+                                <input type="radio" name="radio" id="checkbox" />
+                                <label for="checkbox" id="checkbox"></label>
+                            </div>
+                        </td>
+                        <!-- <td>아카데미</td> -->
+                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
+                        <td>
+                            <a href="../register/register.html">
+                                <img src="../../../../../image/addressUpdate.png" alt="update">
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="inputBox">
+                            <div class="checkBox">
+                                <input type="radio" name="radio" id="checkbox2" />
+                                <label for="checkbox2" id="checkbox"></label>
+                            </div>
+                        </td>
+                        <!-- <td>아카데미</td> -->
+                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
+                        <td>
+                            <a href="../register/register.html">
+                                <img src="../../../../../image/addressUpdate.png" alt="update">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="noAddress">
+                <p>
+                    등록된 주소가 없어요..
+                </p>
+            </div>
+
+            <div class="choiceButton">
+                <button>배송지 선택</button>
+                <a href="../register/register.html">배송지 추가</a>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+
+</html>
