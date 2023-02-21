@@ -28,7 +28,7 @@ body {
 }
 
 .c_community_head {
-  color: #477A7B;
+  color: #BAAAD7;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -58,7 +58,7 @@ body {
 
 .c_page_catagory li a {
   font-size: initial;
-  color: #477A7B;
+  color: #BAAAD7;
   text-decoration: none;
   text-align: center;
   width: 100px;
@@ -68,12 +68,12 @@ body {
 }
 
 .c_page_catagory li .notice {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
 .c_page_catagory li a:hover {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
@@ -88,17 +88,17 @@ body {
   font-size: 30px;
   font-weight: 800;
   text-align: center;
-  color: #477A7B;
+  color: #BAAAD7;
 }
 
 .c_date_created {
   font-size: initial;
   width: 55%;
   text-align: center;
-  color: #477A7B;
+  color: #BAAAD7;
   padding-bottom: 40px;
   margin: 30px auto;
-  border-bottom: 1px solid #477A7B;
+  border-bottom: 1px solid #BAAAD7;
 }
 
 .c_detail {

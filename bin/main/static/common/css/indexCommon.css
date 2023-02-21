@@ -16,13 +16,13 @@ body {
     text-align: center;
     height: 3.5em;
     line-height: 3.5em;
-    color: rgb(83, 121, 122);
+    color: #BAAAD7;
     font-size: 1rem;
     white-space: noWrap;
 }
 
 .footerTop a {
-    color: rgb(83, 121, 122);
+    color: #BAAAD7;
     text-decoration: none;
     font-weight: bold;
     margin: 3em;

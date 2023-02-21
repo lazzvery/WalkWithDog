@@ -38,7 +38,7 @@ a {
 
 .myPageHomeTop .myPageHomeTopBtn a {
     font-size: 12px;
-    color: #477A7B;
+    color: #BAAAD7;
     text-decoration: underline;
     margin-right: 15px;
     margin-top: 20px;
@@ -54,7 +54,7 @@ a {
 
 .myPageHomeTop .myPageHomeTopInfo li.infoText {
     font-size: 25px;
-    color: #477A7B;
+    color: #BAAAD7;
 }
 
 .myPageHomeTop .myPageHomeTopInfo li.infoText span {
@@ -68,7 +68,7 @@ a {
 }
 
 .myPageHomeTop .myPageHomeTopInfo li a {
-    color: #477A7B;
+    color: #BAAAD7;
     text-decoration: underline;
     font-size: 12px;
 }
@@ -92,7 +92,7 @@ a {
 }
 
 .myPageHomeBottom div h3 {
-    color: #477A7B;
+    color: #BAAAD7;
     font-size: 15px;
 }
 
@@ -178,9 +178,9 @@ a {
     text-align: center;
     width: 60px;
     line-height: 60px;
-    background-color: #dfe9e8;
+    background-color: rgba(186,170,216,0.2);
     font-size: 25px;
-    color: #477A7B;
+    color: #BAAAD7;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -212,13 +212,13 @@ a {
 }
 
 .myPageHomeBottom .rightTop p span {
-    color: #477A7B;
+    color: #BAAAD7;
     font-weight: bold;
 }
 
 .myPageHomeBottom .rightTop p strong {
     font-size: 25px;
-    color: #477A7B;
+    color: #BAAAD7;
 }
 
 
@@ -252,7 +252,7 @@ a {
 .myPageHomeBottom .leftBottom .orderList li strong {
     font-size: 30px;
     font-weight: normal;
-    color: #477A7B;
+    color: #BAAAD7;
 }
 
 

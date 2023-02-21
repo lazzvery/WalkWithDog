@@ -86,8 +86,8 @@ input[type=number] {
 .checkBox input[type="radio"]:checked+label:before {
     width: 18px;
     height: 18px;
-    background: #477A7B;
-    border-color: #477A7B;
+    background: #BAAAD7;
+    border-color: #BAAAD7;
 }
 
 .checkBox input[type="radio"]:checked+label:after {
@@ -159,7 +159,7 @@ input[type=number] {
 .agree .checkBox input[type="checkbox"]:checked+label:before {
     width: 18px;
     height: 18px;
-    background: #477A7B;
+    background: #BAAAD7;
     border: 0;
 }
 
@@ -193,7 +193,7 @@ input[type=number] {
 /* 상단 타이틀  */
 .title {
     text-align: center;
-    color: #477A7B;
+    color: #BAAAD7;
     margin-bottom: 50px;
     text-transform: uppercase;
 }
@@ -233,7 +233,7 @@ input[type=number] {
     padding-left: 10px;
     outline: 0;
     font-size: 13px;
-    color: #477A7B;
+    color: #BAAAD7;
     box-sizing: border-box;
 }
 
@@ -272,7 +272,7 @@ input[type=number] {
 .joinForm .ulContainer li.authMember button {
     width: 245px;
     border: 0;
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     color: #fff;
     border-radius: 5px;
     line-height: 35px;
@@ -395,7 +395,7 @@ input[type=number] {
 
 .joinForm .agree .checkBox li button {
     border: 0;
-    color: #477A7B;
+    color: #BAAAD7;
     background-color: transparent;
     text-decoration: underline;
 }
@@ -410,7 +410,7 @@ input[type=number] {
     width: 100%;
     padding: 16px 0;
     color: white;
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     border: 0;
     border-radius: 5px;
     margin-top: 50px;

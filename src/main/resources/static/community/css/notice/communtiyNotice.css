@@ -44,7 +44,7 @@ aside {
 .c_community_head {
   font-weight: bolder;
   font-size: 2rem;
-  color: #477A7B;
+  color: #BAAAD7;
 }
 
 .c_community_contents {
@@ -72,7 +72,7 @@ aside {
 
 .c_page_catagory li a {
   font-size: initial;
-  color: #477A7B;
+  color: #BAAAD7;
   text-decoration: none;
   text-align: center;
   width: 100px;
@@ -82,12 +82,12 @@ aside {
 }
 
 .c_page_catagory li .c_notice {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
 .c_page_catagory li a:hover {
-  background-color: #477A7B;
+  background-color: #8E83A9;
   color: white;
 }
 
@@ -132,7 +132,7 @@ main .c_board_table td a {
 }
 
 main .c_board_table p {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
   width: 50px;
   height: 25px;

@@ -23,7 +23,7 @@ body {
 }
 
 .c_community_head {
-  color: #477A7B;
+  color: #BAAAD7;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -53,7 +53,7 @@ body {
 
 .c_page_catagory li a {
   font-size: initial;
-  color: #477A7B;
+  color: #BAAAD7;
   text-decoration: none;
   text-align: center;
   width: 100px;
@@ -63,12 +63,12 @@ body {
 }
 
 .c_page_catagory li .review {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
 .c_page_catagory li a:hover {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
@@ -194,7 +194,7 @@ body {
   top: 0;
   right: 0;
   border-radius: 50%;
-  color: #477A7B;
+  color: #BAAAD7;
   text-align: center;
   font-size: 1rem;
   transition: all 1s;
@@ -204,7 +204,7 @@ body {
 .c_search_bar:valid {
   width: 400px;
   cursor: pointer;
-  border: 3px solid #477A7B;
+  border: 3px solid #BAAAD7;
 }
 
 .c_search_bar:hover .input_search,
@@ -214,7 +214,7 @@ body {
 
 .c_search_bar:hover .c_search,
 .c_search_bar:valid .c_search {
-  background: #477A7B;
+  background: #BAAAD7;
   color: white;
 }
 

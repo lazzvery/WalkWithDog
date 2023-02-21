@@ -26,7 +26,7 @@ a {
 
 
 .myPageModifyContainer>h2 {
-    color: #477A7B;
+    color: #BAAAD7;
     font-size: 30px;
     margin: 40px 0;
     text-align: center;
@@ -91,14 +91,15 @@ input[type=number] {
     width: 18px;
     height: 18px;
     text-align: center;
-    background: #dfe9e8;
+    background: #BAAAD7;
+opacity: 0.4;
     border-radius: 100%;
     box-shadow: none;
 }
 
 .checkBox input[type="radio"]:checked+label:before {
     background: #fff;
-    border-color: #477A7B;
+    border-color: #BAAAD7;
 }
 
 .checkBox input[type="radio"]:checked+label:after {
@@ -108,7 +109,7 @@ input[type=number] {
     bottom: -4px;
     width: 18px;
     height: 18px;
-    background: #477A7B;
+    background: #BAAAD7;
     border-radius: 100%;
     box-shadow: none;
 }
@@ -173,9 +174,9 @@ input[type=number] {
     padding-left: 10px;
     outline: 0;
     border: 0;
-    background-color: #dfe9e8;
+    background-color: rgba(186,170,216,0.2);
     box-sizing: border-box;
-    color: #477A7B;
+    color: #BAAAD7;
     outline: 0;
 }
 
@@ -206,7 +207,7 @@ input[type=number] {
 }
 
 .modifyForm .ulContainer li.authMember span {
-    color: #477A7B;
+    color: #BAAAD7;
     font-size: 12px;
     letter-spacing: -1px;
 }
@@ -218,7 +219,7 @@ input[type=number] {
 .modifyForm .ulContainer li.authMember button {
     width: 100%;
     border: 0;
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     color: #fff;
     line-height: 35px;
     margin: 10px 0;
@@ -335,8 +336,8 @@ input[type=number] {
     padding-left: 10px;
     margin-top: 10px;
     box-sizing: border-box;
-    color: #477A7B;
-    background-color: #dfe9e8;
+    color: #BAAAD7;
+    background-color: rgba(186,170,216,0.2);
     display: none;
     outline: 0;
 }
@@ -363,7 +364,7 @@ input[type=number] {
 }
 
 .modifyForm .modifySubmit button:first-child {
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     border: 0;
     margin-top: 50px;
     color: white;
@@ -371,6 +372,6 @@ input[type=number] {
 
 .modifyForm .modifySubmit button:last-child {
     background-color: #fff;
-    color: #477A7B;
-    border: 1px solid #477A7B;
+    color: #BAAAD7;
+    border: 1px solid #BAAAD7;
 }

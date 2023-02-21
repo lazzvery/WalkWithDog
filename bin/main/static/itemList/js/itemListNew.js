@@ -12,7 +12,7 @@ for (let i = 0; i < active.length; i++) {
         e.target.style.backgroundColor = "rgb(71, 122, 123)";
         e.target.style.color = "#ffffff";
         tmp.style.backgroundColor = "#f3f3f3";
-        tmp.style.color = "#477a7b";
+        tmp.style.color = "#BAAAD7;";
 
         tmp = e.target;
     });

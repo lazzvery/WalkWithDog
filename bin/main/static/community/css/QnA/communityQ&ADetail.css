@@ -24,7 +24,7 @@ body {
 }
 
 .c_community_head {
-  color: #477A7B;
+  color: #BAAAD7;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -55,7 +55,7 @@ body {
 
 .c_page_catagory li a {
   font-size: initial;
-  color: #477A7B;
+  color: #BAAAD7;
   text-decoration: none;
   text-align: center;
   width: 100px;
@@ -65,7 +65,7 @@ body {
 }
 
 .c_page_catagory li a:hover {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
@@ -84,7 +84,7 @@ form {
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  color: #477A7B;
+  color: #BAAAD7;
 }
 
 .c_content {
@@ -102,7 +102,7 @@ form {
   outline: none;
   border: none;
   padding: 6px;
-  background-color: #dfe9e8;
+  background-color: rgba(186,170,216,0.2);
 }
 
 .c_button {
@@ -126,13 +126,13 @@ form {
   border-radius: 10px;
   text-decoration: none;
   padding: 7px;
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
 .c_button .list {
   background-color: white;
-  color: #477A7B;
+  color: #BAAAD7;
 }
 
 .c_button .c_confirm {
@@ -142,8 +142,8 @@ form {
   cursor: pointer;
   padding: 7px;
   border-radius: 10px;
-  border: 1px solid #477A7B;
-  background-color: #477A7B;
+  border: 1px solid #BAAAD7;
+  background-color: #BAAAD7;
   color: white;
 }
 

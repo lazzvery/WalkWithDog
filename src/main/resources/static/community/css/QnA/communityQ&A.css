@@ -24,7 +24,7 @@ body {
 }
 
 .c_community_head {
-  color: #477A7B;
+  color: #BAAAD7;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -53,13 +53,13 @@ body {
 }
 
 .c_page_catagory li .c_Q_A {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
 }
 
 .c_page_catagory li a {
   font-size: initial;
-  color: #477A7B;
+  color: #BAAAD7;
   text-decoration: none;
   text-align: center;
   width: 100px;
@@ -69,7 +69,7 @@ body {
 }
 
 .c_page_catagory li a:hover {
-  background-color: #477A7B;
+  background-color: #8E83A9;
   color: white;
 }
 
@@ -118,7 +118,7 @@ main .c_board_table td a {
 }
 
 main .c_board_table p {
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   color: white;
   width: 50px;
   height: 25px;
@@ -139,7 +139,7 @@ main .c_board_table p {
   text-decoration: none;
   color: white;
   padding: 10px;
-  background-color: #477A7B;
+  background-color: #BAAAD7;
   border-radius: 10px;
   font-weight: bold;
 }

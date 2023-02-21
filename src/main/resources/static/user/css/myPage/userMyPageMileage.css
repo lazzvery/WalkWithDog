@@ -9,7 +9,7 @@ ul,li{
 
 a{
     text-decoration: none;
-    color:#477A7B;;
+    color:#BAAAD7;;
 }
 
 
@@ -25,7 +25,7 @@ a{
 
 
 .myPageMileageContainer > h2{
-    color:#477A7B;
+    color:#BAAAD7;
     font-size:30px;
     margin:40px 0;
 }
@@ -41,11 +41,11 @@ a{
     letter-spacing: -0.5px;
 }
 .myPageMileageContainer .menu a:hover{
-    border-bottom:1px solid #477A7B;
+    border-bottom:1px solid #BAAAD7;
 }
 .myPageMileageContainer .menu a:first-child{
     margin-right:10px;
-    border-bottom:1px solid #477A7B;
+    border-bottom:1px solid #BAAAD7;
 }
 
 
@@ -70,7 +70,7 @@ a{
     gap:10px;
 }
 .myPageMileageContainer .mileageList li span{
-    color:#477A7B;
+    color:#BAAAD7;
     font-weight: bold;
 }
 
@@ -80,7 +80,7 @@ a{
 .myPageMileageContainer table{
     width:100%;
     text-align: left;
-    color:#477A7B;
+    color:#BAAAD7;
     border-collapse: collapse;
 }
 

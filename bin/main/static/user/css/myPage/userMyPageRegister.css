@@ -26,7 +26,7 @@ a {
 
 
 .myPageRegisterContainer>h2 {
-    color: #477A7B;
+    color: #BAAAD7;
     font-size: 30px;
     margin: 40px 0;
     text-align: center;
@@ -90,7 +90,8 @@ input[type=number] {
     width: 18px;
     height: 18px;
     text-align: center;
-    background: #dfe9e8;
+    background: #BAAAD7;
+opacity: 0.4;
     color: #d8d8d8;
     border-radius: 2px;
     box-shadow: none;
@@ -99,7 +100,7 @@ input[type=number] {
 .checkBox input[type="checkbox"]:checked+label:before {
     width: 18px;
     height: 18px;
-    background: #477A7B;
+    background: #BAAAD7;
     border: 0;
 }
 
@@ -170,9 +171,9 @@ input[type=number] {
     padding-left: 10px;
     outline: 0;
     border: 0;
-    background-color: #dfe9e8;
+    background-color: rgba(186,170,216,0.2);
     box-sizing: border-box;
-    color: #477A7B;
+    color: #BAAAD7;
 }
 
 .registerForm .ulContainer li input::placeholder {
@@ -226,13 +227,13 @@ input[type=number] {
 }
 
 .registerForm .registerSubmit button {
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     border: 0;
     color: white;
 }
 
 .registerForm .registerSubmit a {
     background-color: #fff;
-    color: #477A7B;
-    border: 1px solid #477A7B;
+    color: #BAAAD7;
+    border: 1px solid #BAAAD7;
 }

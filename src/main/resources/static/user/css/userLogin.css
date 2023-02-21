@@ -32,7 +32,7 @@ a {
 /* 상단 타이틀  */
 .title {
     text-align: center;
-    color: #477A7B;
+    color: #BAAAD7;
     margin-bottom: 50px;
 }
 
@@ -66,7 +66,7 @@ a {
     padding-left: 10px;
     outline: 0;
     font-size: 13px;
-    color: #477A7B;
+    color: #BAAAD7;
 }
 
 .loginForm .loginContainer li label {
@@ -78,7 +78,7 @@ a {
     width: 100%;
     padding: 16px 0;
     color: white;
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     border: 0;
     border-radius: 5px;
 }

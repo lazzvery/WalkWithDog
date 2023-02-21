@@ -185,7 +185,7 @@ main input {
 }
 
 .shop_deliinfoBox .shop_deliTitle span {
-    color: #477a7b;
+    color: #BAAAD7;
     margin-bottom: 15px;
     margin-left: 10px;
     cursor: pointer;
@@ -268,8 +268,8 @@ main input {
 }
 
 .order_select .bordButton {
-    background-color: #477a7b;
-    border: 1px solid #477a7b;
+    background-color: #BAAAD7;
+    border: 1px solid #BAAAD7;
     color: white;
 }
 
@@ -358,7 +358,7 @@ main input {
 }
 
 .shop_ordercoupon .order_point strong {
-    color: #477a7b;
+    color: #BAAAD7;
     margin-left: 3px;
 }
 
@@ -416,14 +416,14 @@ main input {
 
 .shop_orderpay .order_totalpay strong {
     font-size: 1.8em;
-    color: #477a7b;
+    color: #BAAAD7;
 }
 
 /* 적립금 고지 */
 .shop_orderpay .order_colorbox {
     width: 30px;
     border-radius: 5px;
-    background-color: #477a7b;
+    background-color: #BAAAD7;
     text-align: center;
     color: white;
 }
@@ -480,7 +480,7 @@ main input {
     width: 250px;
     color: white;
     border-radius: 3px;
-    background-color: #477a7b;
+    background-color: #BAAAD7;
     font-size: 1.0em;
     border: 0;
     font-weight: bold;
@@ -536,7 +536,7 @@ main input {
 .checkBox input[type="checkbox"]:checked+label:before {
     width: 18px;
     height: 18px;
-    background: #477A7B;
+    background: #BAAAD7;
     border: 0;
 }
 
@@ -644,8 +644,8 @@ main input {
 .checkBox2 input[type="radio"]:checked+label:before {
     width: 18px;
     height: 18px;
-    background: #477A7B;
-    border-color: #477A7B;
+    background: #BAAAD7;
+    border-color: #BAAAD7;
 }
 
 .checkBox2 input[type="radio"]:checked+label:after {

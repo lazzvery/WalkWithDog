@@ -46,7 +46,7 @@
 }
 
 li strong {
-  color: rgb(83, 121, 122);
+  color: #BAAAD7;
   cursor: pointer;
   font-size: 1.3rem;
 }
@@ -99,7 +99,7 @@ li strong {
 
 /* 큰 카테고리 a 태그 */
 .subContainer a {
-  color: rgb(83, 121, 122);
+  color: #BAAAD7;
   /* font-size: 1rem; */
 }
 
@@ -253,7 +253,7 @@ header:hover .fullDown {
 }
 
 .list5 a {
-  color: #53797a;
+  color: #BAAAD7;
   /* font-size: 1.4rem; */
 }
 
@@ -299,10 +299,10 @@ header:hover .fullDown {
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 1px solid #477a7b;
+  border-bottom: 1px solid #BAAAD7;
   background-color: transparent;
   outline: none;
-  color: #477a7b;
+  color: #BAAAD7;
 }
 
 .mainSearch input[type="submit"] {
@@ -324,7 +324,7 @@ header:hover .fullDown {
 }
 
 .mainSearch input[type="text"]::placeholder {
-  color: rgb(83, 121, 122);
+  color: #BAAAD7;
   opacity: 0.9;
 }
 

@@ -158,12 +158,12 @@ main .shop_likeboxnone {
 }
 
 .likepayBtnw {
-    color: #477a7b
+    color: #BAAAD7;
 }
 
 .likepayBtnb,
 .likepayBtnw {
-    border: 1px solid #477a7b;
+    border: 1px solid #BAAAD7;
     cursor: pointer;
     font-size: .8em;
     margin-right: 10px;
@@ -172,7 +172,7 @@ main .shop_likeboxnone {
 }
 
 .likepayBtnb {
-    background-color: #477a7b;
+    background-color: #BAAAD7;
     color: #fff
 }
 
@@ -227,7 +227,7 @@ main .shop_likeboxnone {
 }
 
 .checkBox input[type=checkbox]:checked+label:before {
-    background: #477a7b;
+    background: #BAAAD7;
     border: 0;
     height: 18px;
     width: 18px

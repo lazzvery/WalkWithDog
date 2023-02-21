@@ -10,7 +10,7 @@ li {
 
 a {
     text-decoration: none;
-    color: #477A7B;
+    color: #BAAAD7;
     ;
 }
 
@@ -27,7 +27,7 @@ a {
 
 
 .myPageOrderContainer>h2 {
-    color: #477A7B;
+    color: #BAAAD7;
     font-size: 30px;
     margin: 40px 0;
 }
@@ -45,12 +45,12 @@ a {
 }
 
 .myPageOrderContainer .menu a:hover {
-    border-bottom: 1px solid #477A7B;
+    border-bottom: 1px solid #BAAAD7;
 }
 
 .myPageOrderContainer .menu a:first-child {
     margin-right: 10px;
-    border-bottom: 1px solid #477A7B;
+    border-bottom: 1px solid #BAAAD7;
 }
 
 
@@ -70,12 +70,13 @@ a {
 
 .myPageOrderContainer .orderHistoryForm ul li select,
 .myPageOrderContainer .orderHistoryForm ul li input[type="date"] {
-    background-color: #dfe9e8;
-    color: #477A7B;
+    background-color: rgba(186,170,216,0.2);
+    color: #BAAAD7;
     border: 0;
     min-width: 180px;
     height: 40px;
     padding-left: 10px;
+    outline: 0;
 }
 
 .myPageOrderContainer .orderHistoryForm ul li input[type="date"] {
@@ -97,7 +98,7 @@ a {
 
 .myPageOrderContainer .orderHistoryForm ul li button {
     min-width: auto;
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     color: #fff;
     border: 0;
     height: 40px;
@@ -129,7 +130,7 @@ a {
 .myPageOrderContainer table {
     width: 100%;
     text-align: left;
-    color: #477A7B;
+    color: #BAAAD7;
     border-collapse: collapse;
 }
 

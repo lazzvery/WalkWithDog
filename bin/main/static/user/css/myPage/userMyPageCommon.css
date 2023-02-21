@@ -4,7 +4,7 @@
 }
 
 .pageTopContainer .pageTitle h2 {
-    color: #477A7B;
+    color: #BAAAD7;
     font-size: 30px;
     margin-bottom: 40px;
 }
@@ -21,17 +21,17 @@
     background-color: #f3f3f3;
     padding: 5px 15px;
     border-radius: 25px;
-    color: #477A7B;
+    color: #BAAAD7;
 }
 
 
 .pageTopContainer .pageNav li a[href="#"] {
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     color: #fff;
 }
 
 .pageTopContainer .pageNav li a:hover {
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     color: #fff;
 }
 

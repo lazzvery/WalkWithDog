@@ -63,14 +63,15 @@ a {
     width: 14px;
     height: 14px;
     text-align: center;
-    background: #dfe9e8;
+    background: #BAAAD7;
+opacity: 0.4;
     border-radius: 100%;
     box-shadow: none;
 }
 
 .checkBox input[type="radio"]:checked+label:before {
     background: #fff;
-    border-color: #477A7B;
+    border-color: #BAAAD7;
 }
 
 .checkBox input[type="radio"]:checked+label:after {
@@ -80,7 +81,7 @@ a {
     bottom: -3px;
     width: 14px;
     height: 14px;
-    background: #477A7B;
+    background: #BAAAD7;
     border-radius: 100%;
     box-shadow: none;
 }
@@ -103,7 +104,7 @@ a {
 /* 상단 타이틀  */
 .title {
     text-align: center;
-    color: #477A7B;
+    color: #BAAAD7;
     text-transform: uppercase;
 }
 
@@ -133,18 +134,18 @@ a {
     height: 30px;
     line-height: 30px;
     font-size: 13px;
-    color: #477A7B;
+    color: #BAAAD7;
     border-bottom: 1px solid transparent;
     padding: 0 5px;
     margin: 0 5px;
 }
 
 .pageSelect a.selected {
-    border-bottom: 1px solid #477A7B;
+    border-bottom: 1px solid #BAAAD7;
 }
 
 .pageSelect a:hover {
-    border-bottom: 1px solid #477A7B;
+    border-bottom: 1px solid #BAAAD7;
     transition: all 1s;
 }
 
@@ -174,9 +175,9 @@ a {
     padding-left: 10px;
     outline: 0;
     border: 0;
-    background-color: #dfe9e8;
+    background-color: rgba(186,170,216,0.2);
     box-sizing: border-box;
-    color: #477A7B;
+    color: #BAAAD7;
 }
 
 .findIdForm .findIdContainer li label {
@@ -241,7 +242,7 @@ input[type=number] {
     line-height: 40px;
     border: 0;
     color: white;
-    background-color: #477A7B;
+    background-color: #BAAAD7;
     letter-spacing: -1px;
     font-size: 13px;
 }

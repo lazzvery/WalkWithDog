@@ -4,7 +4,7 @@
   scroll-behavior: smooth;
   box-sizing: border-box;
   list-style-type: none;
-  /* color: rgb(83, 121, 122); */
+  /* color: #BAAAD7; */
   text-decoration: none;
   /* font-family: "Nanum Gothic", sans-serif; */
   font-family: "IBMPlexSansKR-Regular";
@@ -59,7 +59,7 @@ body {
 }
 
 .mainContainer .button svg {
-  fill: rgb(83, 121, 122);
+  fill: #8E83A9;
 }
 
 .mainContainer .prevBtn {
@@ -128,11 +128,11 @@ body {
   grid-row: 3 / 3;
   font-weight: bold;
   font-size: 2rem;
-  color: rgb(83, 121, 122);
+  color: #BAAAD7;
 }
 
 .productContainer .productMent h1 span {
-  color: #cad300;
+  color: #8E83A9;
 }
 
 .productContainer .prdMore {
