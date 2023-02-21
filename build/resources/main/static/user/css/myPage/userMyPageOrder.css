@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #477A7B;
+    ;
+}
+
+
+
+.myPageOrderContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+    border: 1px solid #dfe9e8;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.myPageOrderContainer>h2 {
+    color: #477A7B;
+    font-size: 30px;
+    margin: 40px 0;
+}
+
+
+.myPageOrderContainer .menu {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageOrderContainer .menu a {
+    display: inline-block;
+    padding: 10px 8px;
+    letter-spacing: -0.5px;
+}
+
+.myPageOrderContainer .menu a:hover {
+    border-bottom: 1px solid #477A7B;
+}
+
+.myPageOrderContainer .menu a:first-child {
+    margin-right: 10px;
+    border-bottom: 1px solid #477A7B;
+}
+
+
+
+
+.myPageOrderContainer .orderHistoryForm {
+    padding: 20px;
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageOrderContainer .orderHistoryForm ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.myPageOrderContainer .orderHistoryForm ul li select,
+.myPageOrderContainer .orderHistoryForm ul li input[type="date"] {
+    background-color: #dfe9e8;
+    color: #477A7B;
+    border: 0;
+    min-width: 180px;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.myPageOrderContainer .orderHistoryForm ul li input[type="date"] {
+    min-width: auto;
+}
+
+.myPageOrderContainer .orderHistoryForm ul li .period {
+    display: flex;
+    gap: 10px;
+}
+
+.myPageOrderContainer .orderHistoryForm ul li .period a {
+    text-decoration: underline;
+}
+
+.myPageOrderContainer .orderHistoryForm ul li .period a:hover {
+    text-decoration: none;
+}
+
+.myPageOrderContainer .orderHistoryForm ul li button {
+    min-width: auto;
+    background-color: #477A7B;
+    color: #fff;
+    border: 0;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    font-size: 17px;
+}
+
+
+
+
+
+.myPageOrderContainer .tip {
+    text-align: left;
+    padding: 15px 0 35px 0;
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageOrderContainer .tip li {
+    list-style: inside;
+    font-size: 10px;
+    color: #939393;
+    margin-bottom: 5px;
+}
+
+
+
+
+.myPageOrderContainer table {
+    width: 100%;
+    text-align: left;
+    color: #477A7B;
+    border-collapse: collapse;
+}
+
+.myPageOrderContainer table thead tr {
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageOrderContainer table thead td {
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+
+.myPageOrderContainer .pageNation {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.myPageOrderContainer .pageNation ul {
+    margin: 0 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.noOrder {
+    line-height: 150px;
+}

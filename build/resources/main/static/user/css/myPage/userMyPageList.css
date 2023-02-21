@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #477A7B;
+    ;
+}
+
+
+
+
+
+
+/* 체크박스 버튼 커스텀 */
+.checkBox {
+    position: relative;
+    display: block;
+}
+
+.checkBox li {
+    display: flex;
+    margin-top: 15px;
+}
+
+.checkBox input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox input[type="checkbox"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkBox input[type="checkbox"]+label:before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    bottom: -5px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    background: #dfe9e8;
+    color: #d8d8d8;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+.checkBox input[type="checkbox"]:checked+label:before {
+    width: 18px;
+    height: 18px;
+    background: #477A7B;
+    border: 0;
+}
+
+.checkBox input[type="checkbox"]:checked+label:after {
+    content: '✔';
+    position: absolute;
+    font-size: 12px;
+    left: 12px;
+    bottom: 1px;
+    width: 10px;
+    height: 10px;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+/* ----------------------------------------------- */
+
+
+
+.myPageAddressContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+    border: 1px solid #dfe9e8;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.myPageAddressContainer>h2 {
+    color: #477A7B;
+    font-size: 30px;
+    margin: 40px 0;
+}
+
+
+
+
+
+
+
+
+.myPageAddressContainer table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.myPageAddressContainer table thead tr {
+    border-bottom: 1px solid #dfe9e8;
+    border-top: 1px solid #dfe9e8;
+}
+
+.myPageAddressContainer table thead td {
+    padding: 20px 0px;
+    font-size: 14px;
+    color: #477A7B;
+}
+
+.myPageAddressContainer table tbody tr {
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageAddressContainer table tbody td {
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+.myPageAddressContainer table tbody td:nth-child(n+2):nth-child(-n+4) {
+    padding: 20px 20px;
+    white-space: nowrap;
+}
+
+.myPageAddressContainer table tbody td:last-child {
+    white-space: nowrap;
+}
+
+
+
+
+.choiceButton {
+    margin: 50px auto;
+    width: 500px;
+}
+
+.choiceButton>* {
+    display: block;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+}
+
+.choiceButton button {
+    border: 1px solid #477A7B;
+    color: #477A7B;
+    background-color: #fff;
+}
+
+.choiceButton a {
+    color: #fff;
+    background-color: #477A7B;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.noAddress {
+    line-height: 150px;
+}

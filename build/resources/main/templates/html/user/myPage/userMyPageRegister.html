@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../../COMMON/Common/common.css" />
+    <link rel="stylesheet" href="../../commonCss/common.css">
+    <link rel="stylesheet" href="./css/register.css">
+    <script defer src="../../../../../javascript/index.js"></script>
+
+    <title>register</title>
+</head>
+
+<body>
+
+    <div class="myPageContainer">
+
+        <div class="myPageRegisterContainer">
+            <h2>배송 주소록 관리</h2>
+
+            <form action="../list/list.html" class="registerForm">
+                <fieldset>
+                    <ul class="ulContainer registerContainer">
+                        <li class="id">
+                            <label>배송지명 *</label>
+                            <input type="text" name="id">
+                        </li>
+                        <li class="name">
+                            <label>이름 *</label>
+                            <input type="text" name="name">
+                        </li>
+                        <li class="address">
+                            주소창 추후에 추가예정
+                        </li>
+                        <li class="phone">
+                            <label>휴대전화 *</label>
+                            <div class="phoneBox cover">
+                                <input type="number" name="phone1">
+                                <span>-</span>
+                                <input type="number" name="phone2">
+                                <span>-</span>
+                                <input type="number" name="phone3">
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="checkBox">
+                        <input type="checkbox" name="agreeAll" id="agreeAll" />
+                        <label for="agreeAll" id="agreeAll"></label>
+                        <label for="agreeAll" style="font-size:13px">기본 배송지로 저장</label>
+                    </div>
+
+
+                    <div class="registerSubmit">
+                        <a href="../list/list.html">취소</a>
+                        <button>등록</button>
+                    </div>
+                </fieldset>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

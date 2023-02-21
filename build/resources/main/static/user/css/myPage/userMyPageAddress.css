@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #477A7B;
+    ;
+}
+
+
+
+
+
+
+/* 라디오 버튼 커스텀 */
+.checkBox {
+    position: relative;
+    padding-right: 20px;
+}
+
+.checkBox label {
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.checkBox input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox input[type="radio"]+label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkBox input[type="radio"]+label:before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    background: #dfe9e8;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.checkBox input[type="radio"]:checked+label:before {
+    background: #fff;
+    border-color: #477A7B;
+}
+
+.checkBox input[type="radio"]:checked+label:after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #477A7B;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+/* ----------------------------------------------- */
+
+
+
+.myPageAddressContainer {
+    transform: translateY(20%);
+    width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+    border: 1px solid #dfe9e8;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+.myPageAddressContainer>h2 {
+    color: #477A7B;
+    font-size: 30px;
+    margin: 40px 0;
+}
+
+
+
+
+
+
+
+
+.myPageAddressContainer table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.myPageAddressContainer table thead tr {
+    border-bottom: 1px solid #dfe9e8;
+    border-top: 1px solid #dfe9e8;
+}
+
+.myPageAddressContainer table thead td {
+    padding: 20px 0px;
+    font-size: 14px;
+    color: #477A7B;
+}
+
+.myPageAddressContainer table tbody tr {
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageAddressContainer table tbody td {
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+.myPageAddressContainer table tbody td:nth-child(2) {
+    padding: 20px 30px;
+}
+
+.myPageAddressContainer table tbody td:last-child {
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+}
+
+.myPageAddressContainer table tbody td:last-child img {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+
+.choiceButton {
+    margin: 50px auto;
+    display: flex;
+    justify-content: center
+}
+
+.choiceButton>* {
+    display: block;
+    text-align: center;
+    width: 35%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+}
+
+.choiceButton button {
+    border: 1px solid #477A7B;
+    color: #477A7B;
+    background-color: #fff;
+}
+
+.choiceButton a {
+    color: #fff;
+    background-color: #477A7B;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.noAddress {
+    line-height: 150px;
+}
