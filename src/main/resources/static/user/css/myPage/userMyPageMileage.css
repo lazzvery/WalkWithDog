@@ -1,0 +1,140 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+ul,li{
+    list-style:none;
+}
+
+a{
+    text-decoration: none;
+    color:#477A7B;;
+}
+
+
+
+.myPageMileageContainer{
+    max-width: 1000px;
+    margin:0 auto;
+    padding:0 10px;
+    border:1px solid #dfe9e8;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+
+.myPageMileageContainer > h2{
+    color:#477A7B;
+    font-size:30px;
+    margin:40px 0;
+}
+
+
+.myPageMileageContainer .menu{
+    padding-bottom:40px;
+    border-bottom:1px solid #dfe9e8;
+}
+.myPageMileageContainer .menu a{
+    display:inline-block;
+    padding: 10px 8px;
+    letter-spacing: -0.5px;
+}
+.myPageMileageContainer .menu a:hover{
+    border-bottom:1px solid #477A7B;
+}
+.myPageMileageContainer .menu a:first-child{
+    margin-right:10px;
+    border-bottom:1px solid #477A7B;
+}
+
+
+
+
+
+
+.myPageMileageContainer .mileageList{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #dfe9e8;
+}
+.myPageMileageContainer .mileageList .first{
+    width:100%;
+    border-bottom: 1px solid #dfe9e8;
+}
+.myPageMileageContainer .mileageList li{
+    display:flex;
+    flex-direction: column;
+    padding:50px 0;
+    gap:10px;
+}
+.myPageMileageContainer .mileageList li span{
+    color:#477A7B;
+    font-weight: bold;
+}
+
+
+
+
+.myPageMileageContainer table{
+    width:100%;
+    text-align: left;
+    color:#477A7B;
+    border-collapse: collapse;
+}
+
+.myPageMileageContainer table thead tr{
+    border-bottom:1px solid #dfe9e8;
+}
+.myPageMileageContainer table thead td{
+    padding:20px 0;
+    font-size:14px;
+}
+
+
+.myPageMileageContainer .pageNation{
+    margin:50px 0;
+    display:flex;
+    justify-content: center;
+}
+
+
+.myPageMileageContainer .pageNation ul{
+    margin:0 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.noOrder{
+    line-height:150px;
+}

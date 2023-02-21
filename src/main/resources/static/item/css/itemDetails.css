@@ -1,0 +1,596 @@
+/* ========================= 공통 ============================== */
+
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'IBMPlexSansKR-Regular';
+    user-select: none;
+    list-style-type: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 1024px;
+    margin: auto;
+}
+
+main select {
+    outline: none;
+}
+
+/* ===================== 이미지 컨테이너 ======================== */
+
+.big_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.img_container {
+    width: 55%;
+}
+
+.img_container {
+    position: relative;
+}
+
+/* 메인 이미지*/
+
+.main_image {
+    position: relative;
+    width: 100%;
+    transition: all .7s;
+}
+
+.mainImage_container {
+    position: relative;
+}
+
+.mainImage_container a {
+    position: absolute;
+    width: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .2;
+    transition: all .5s;
+}
+
+.mainImage_container a img {
+    width: 100%;
+}
+
+.mainImage_container .mainleftBtn {
+    left: 2%;
+}
+
+.mainImage_container .mainrightBtn {
+    right: 2%;
+}
+
+.main2 {
+    position: absolute;
+    left: 0;
+}
+
+.img_hidden {
+    opacity: 0;
+}
+
+.mainImage_container a:hover {
+    opacity: 1;
+}
+
+/* 서브 이미지 */
+
+.subImage_container {
+    display: flex;
+}
+
+.sub_image {
+    width: 10%;
+    cursor: pointer;
+}
+
+/* ===================== 상품 설명 컨테이너 ======================== */
+
+/* 상품명 */
+
+.shopInfo_container {
+    box-sizing: border-box;
+    width: 40%;
+    margin-left: 5%;
+    padding: 10px;
+    color: #353535;
+    position: relative;
+}
+
+.shopInfo_container h2 {
+    font-size: 25px;
+    padding: 10px 0;
+}
+
+.shopInfo_container hr {
+    border: 0;
+    height: 1px;
+    background-color: rgb(224, 224, 224);
+    margin: 20px 0;
+}
+
+.product_summary .bestBtn {
+    font-size: 0.8em;
+    background-color: rgb(255, 206, 71);
+    color: white;
+    padding: 1px 6px;
+}
+
+.product_summary .sharebBtn {
+    width: 20px;
+    opacity: .5;
+    cursor: pointer;
+
+    position: absolute;
+    top: 51px;
+    right: 10px;
+}
+
+.heartbBtn {
+    width: 20px;
+    opacity: .5;
+    cursor: pointer;
+
+    position: absolute;
+    top: 52px;
+    right: 40px;
+    transition: all .3s;
+}
+
+.heartbBtn:hover,
+.sharebBtn:hover {
+    opacity: 1;
+}
+
+
+.shareProduct {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 130px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 -1px 16px rgb(0 0 0 / 20%);
+    transition: all .4s;
+    opacity: 0;
+    visibility: hidden;
+
+    position: absolute;
+    top: -20px;
+    right: -5px;
+}
+
+.shareProduct::after {
+    border-color: transparent transparent #fff;
+    border-top: 10px solid #fff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 0px solid transparent;
+    content: "";
+    position: absolute;
+    top: 50px;
+    left: 95px;
+}
+
+.shareProduct img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+/* 상품 가격 */
+
+.product_summary .salePrice {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #353535;
+    padding-right: 10px;
+}
+
+.product_summary .brforePrice {
+    font-size: 1.1em;
+    text-decoration: line-through;
+    color: rgb(167, 167, 167);
+}
+
+/* 배송 정보 */
+
+.product_delivery {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8em;
+    color: #696969;
+    padding: 15px 0;
+    margin-top: 15px;
+}
+
+.product_delivery strong {
+    margin-right: 10px;
+}
+
+.product_delivery .deliverypadding {
+    margin-right: 25px;
+}
+
+/* 상품 주문 옵션 */
+
+.product_option select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgb(192, 192, 192);
+    cursor: pointer;
+}
+
+.product_totalPay {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 2px;
+}
+
+.product_totalPay .totalPay {
+    font-size: 1.2em;
+}
+
+/* 상품 주문 확인 */
+
+.product_checklist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 30px 10px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.product_check a {
+    color: #727272;
+}
+
+.product_checkName {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+    color: #353535;
+}
+
+.product_checkName span {
+    font-size: 0.8em;
+    color: #535353;
+}
+
+.product_checkNum {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.product_checkNum input {
+    width: 25px;
+    text-align: center;
+    border: 1px solid #727272;
+}
+
+.product_checkNum a {
+    width: 25px;
+    background-color: white;
+    text-decoration: none;
+}
+
+.downCheckbtn {
+    border: solid;
+    border-width: 1px 0 1px 1px;
+}
+
+.UpCheckbtn {
+    border: solid;
+    border-width: 1px 1px 1px 0;
+}
+
+.product_checkNum img {
+    width: 12px;
+    margin-left: calc(12px / 2);
+}
+
+.product_checkPrice span {
+    font-size: 0.9em;
+}
+
+.product_checkPrice img {
+    width: 12px;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+/* 상품 주문 버튼 */
+.btn_pay {
+    display: flex;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.btn_pay a {
+    text-align: center;
+    text-decoration: none;
+    line-height: 40px;
+    padding: 5px 0;
+    font-size: 0.9em;
+}
+
+.btn_pay .btn_cart {
+    width: 50%;
+    color: #477a7b;
+    border: 1px solid #477a7b;
+    transition: all .3s;
+}
+
+.btn_pay .btn_buy {
+    width: 50%;
+    color: white;
+    background-color: #477a7b;
+    transition: all .3s;
+}
+
+.btn_pay .btn_cart:hover {
+    color: #406768;
+}
+
+.btn_pay .btn_buy:hover {
+    background-color: #406768;
+}
+
+/* ===================== 카테고리 ======================== */
+
+.productCategory_box {
+    width: 70%;
+    margin: auto;
+}
+
+.product_category {
+    width: 100%;
+    margin: 5% auto;
+}
+
+.productCategory_list {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin-top: 70px;
+}
+
+.productCategory_list a {
+    width: 100%;
+    text-decoration: none;
+    color: #353535;
+    padding: 5px 20px;
+    font-size: 0.9em;
+}
+
+.productCategory_list .focusbtn {
+    color: white;
+    background-color: #477a7b;
+    padding: 5px 20px;
+    border-radius: 20px;
+}
+
+.product_detailInfo {
+    margin-top: 70px;
+}
+
+.product_detailInfo img {
+    width: 100%;
+    display: block;
+}
+
+/* ===================== 배송 관련 ======================== */
+
+.delivery_info {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 70px;
+    font-size: 0.8em;
+    color: #353535;
+}
+
+.delivery_detail {
+    /* display: none; */
+    width: 100%;
+}
+
+.delivery_info h3 {
+    font-size: 1.5em;
+}
+
+.delivery_info .deliverynameBox {
+    display: flex;
+    align-items: center;
+}
+
+.delivery_info table {
+    padding: 20px 0px 10px 0px;
+    color: rgb(92, 92, 92);
+}
+
+.delivery_detail th,
+.delivery_detail td {
+    border-bottom: solid 1px rgb(228, 228, 228);
+    padding: 10px;
+    text-align: left;
+}
+
+.delivery_detail td {
+    padding-left: 30px;
+}
+
+.exchangetable td {
+    padding-left: 82px;
+}
+
+.delivery_info_list {
+    padding: 10px;
+    margin-top: 10px;
+    list-style-type: initial;
+}
+
+.delivery_info_list li {
+    margin-bottom: 5px;
+}
+
+/* ================================================================= */
+/* ========================= 리뷰 쓰기 =========================== */
+
+.productCategory_review {
+    width: 70%;
+    margin: auto;
+    margin-top: 70px;
+    font-size: 0.8em;
+    color: #353535;
+}
+
+.review_category {
+    display: flex;
+}
+
+.productCategory_review li {
+    list-style-type: none;
+    margin: 15px 20px 20px 10px;
+    color: #c5c5c5;
+    cursor: pointer;
+}
+
+.productCategory_review .focustitle {
+    color: #353535;
+}
+
+.productCategory_review h3 {
+    font-size: 1.5em;
+    padding-bottom: 20px;
+}
+
+.review_starbox {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgb(228, 228, 228);
+}
+
+.review_starbox button {
+    height: 50px;
+    width: 200px;
+    border: 0;
+    color: white;
+    background-color: #477a7b;
+    border-radius: 5px;
+    font-size: 1.1em;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+/* ================================================================= */
+/* ========================= 큐엔에이 =========================== */
+
+.productCategory_qna {
+    width: 70%;
+    margin: auto;
+    margin-top: 70px;
+    font-size: 0.8em;
+    color: #353535;
+}
+
+.productCategory_qna .qna_span {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 20px;
+}
+
+.qna_span h3 {
+    font-size: 1.5em;
+}
+
+.qna_span span {
+    font-size: 1.1em;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.qna_span span:hover {
+    color: #477a7b;
+}
+
+.productCategory_qna .qna_box {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    margin-bottom: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ===================== 카테고리 리스트 ================================ */
+
+.categoryProduct {
+    position: fixed;
+    right: 40px;
+    bottom: 120px;
+    list-style-type: none;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 -1px 10px rgb(0 0 0 / 20%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s;
+}
+
+.categoryProduct li {
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.categoryProduct li a {
+    font-size: 0.8em;
+    display: block;
+    color: #353535;
+    text-decoration: none;
+}
+
+.categoryProduct li:hover {
+    background-color: #477A7B;
+}
+
+.categoryProduct li a:hover {
+    color: white;
+}

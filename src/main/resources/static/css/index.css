@@ -1,0 +1,222 @@
+* {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  list-style-type: none;
+  /* color: rgb(83, 121, 122); */
+  text-decoration: none;
+  /* font-family: "Nanum Gothic", sans-serif; */
+  font-family: "IBMPlexSansKR-Regular";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "IBMPlexSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ----------- 메인 컨테이너 ------------- */
+.mainContainer {
+  margin-top: 100px;
+  background-color: #f6f6f6;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* 이미지 슬라이드 버튼 */
+.mainContainer .button {
+  width: 20px;
+  /* height: 30px; */
+  border: none;
+  background: none;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  top: 50%;
+}
+
+.mainContainer .button:hover {
+  scale: 120%;
+}
+
+.mainContainer .button svg {
+  fill: rgb(83, 121, 122);
+}
+
+.mainContainer .prevBtn {
+  left: 100px;
+  position: absolute;
+}
+
+.mainContainer .nextBtn {
+  right: 100px;
+  position: absolute;
+}
+
+/* ---------------------------- 슬라이드 이미지 ------ */
+
+/* div container */
+.slideWrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slideWrapper img {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* ul */
+.slides {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: left 0.5s ease-out;
+  display: flex;
+}
+
+
+/* --------------- 상품 리스트 박스--------------- */
+.productContainer {
+  margin: 5% 10%;
+  max-width: 1200px;
+}
+
+.productContainer a {
+  /* font-size: 2rem; */
+  color: #4c4c4c;
+  font-weight: bold;
+}
+
+/* 메인 상품 이미지 */
+.productContainer img {
+  width: 100%;
+  height: 80%;
+  filter: brightness(97%);
+}
+
+/* 상품리스트 소제목 */
+.productContainer .productMent {
+  display: grid;
+  grid-template: repeat(4, 1fr) / repeat(11, 1fr);
+  height: 15em;
+}
+
+.productContainer .productMent h1 {
+  grid-column: 5 / -1;
+  grid-row: 3 / 3;
+  font-weight: bold;
+  font-size: 2rem;
+  color: rgb(83, 121, 122);
+}
+
+.productContainer .productMent h1 span {
+  color: #cad300;
+}
+
+.productContainer .prdMore {
+  margin-bottom: 2%;
+}
+
+.productContainer .prdMore a {
+  margin-left: 93%;
+}
+
+
+/*------- 상품 리스트 -------*/
+.productImgList {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(11, 1fr);
+  column-gap: 5px;
+  row-gap: 50px;
+}
+
+/* 상품명 칸 */
+.productImgList .name {
+  font-size: 1rem;
+  color: #4c4c4c;
+  font-weight: bold;
+  height: 9em;
+  margin-top: 1em;
+}
+
+/* 상품명 가격 */
+.productImgList p {
+  margin-top: 9px;
+}
+
+.productImgList p,
+.productImgList span {
+  text-align: left;
+  white-space: noWrap;
+}
+
+/* ------------------------------------상품 이미지 line----------------- */
+/* 이미지 1번째줄 */
+.productImg1,
+.productImg5,
+.productImg9 {
+  grid-column: 1 / span 2;
+  position: relative;
+}
+
+/* 이미지 2번째줄 */
+.productImg2,
+.productImg6,
+.productImg10 {
+  grid-column: 4 / span 2;
+  position: relative;
+}
+
+/* 이미지 3번째줄 */
+.productImg3,
+.productImg7,
+.productImg11 {
+  grid-column: 7 / span 2;
+  position: relative;
+}
+
+/* 이미지 4번째줄 */
+.productImg4,
+.productImg8,
+.productImg12 {
+  grid-column: 10 / span 2;
+  position: relative;
+}
+
+.productImgList .img1 {
+  position: relative;
+}
+
+.productImgList .img1 img {
+  position: relative;
+  z-index: 1;
+}
+
+.productImgList .img2 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

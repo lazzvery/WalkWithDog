@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #6b6b6b;
+}
+
+
+
+.myPageHomeContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+}
+
+
+
+.myPageHomeTop {
+    text-align: center;
+    border: 1px solid #dfe9e8;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.myPageHomeTop .myPageHomeTopBtn {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+}
+
+.myPageHomeTop .myPageHomeTopBtn a {
+    font-size: 12px;
+    color: #477A7B;
+    text-decoration: underline;
+    margin-right: 15px;
+    margin-top: 20px;
+}
+
+.myPageHomeTop .myPageHomeTopBtn a:hover {
+    text-decoration: none;
+}
+
+.myPageHomeTop .myPageHomeTopInfo li {
+    margin-bottom: 20px;
+}
+
+.myPageHomeTop .myPageHomeTopInfo li.infoText {
+    font-size: 25px;
+    color: #477A7B;
+}
+
+.myPageHomeTop .myPageHomeTopInfo li.infoText span {
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.myPageHomeTop .myPageHomeTopInfo li p {
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.myPageHomeTop .myPageHomeTopInfo li a {
+    color: #477A7B;
+    text-decoration: underline;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+.myPageHomeBottom {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #dfe9e8;
+    border-top: 0;
+}
+
+.myPageHomeBottom div {
+    box-sizing: border-box;
+}
+
+.myPageHomeBottom div h3 {
+    color: #477A7B;
+    font-size: 15px;
+}
+
+.myPageHomeBottom>div {
+    width: 50%;
+}
+
+.myPageHomeBottom .leftTop {
+    display: flex;
+    flex-wrap: wrap;
+    border-right: 1px solid #dfe9e8;
+
+}
+
+.myPageHomeBottom .leftTop>div {
+    width: 50%;
+    padding: 10px;
+}
+
+.myPageHomeBottom .leftTop>div:last-child {
+    width: 100%;
+    border-top: 1px solid #dfe9e8;
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageHomeBottom .leftTop div.coupon {
+    border-right: 1px solid #dfe9e8;
+}
+
+.myPageHomeBottom .leftTop div.coupon a,
+.myPageHomeBottom .leftTop div.mileage a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.myPageHomeBottom .leftTop div.coupon a h3,
+.myPageHomeBottom .leftTop div.mileage a h3 {
+    font-size: 25px;
+}
+
+
+.myPageHomeBottom .leftTop .order h3 span {
+    display: inline-block;
+    color: #4c4c4c;
+    font-size: 12px;
+    line-height: 20px;
+    vertical-align: top;
+}
+
+.myPageHomeBottom .leftTop .order h3 a {
+    float: right;
+}
+
+.myPageHomeBottom .leftTop .order ul {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.myPageHomeBottom .leftTop .order ul li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.myPageHomeBottom .leftTop .order ul li::after {
+    content: ">";
+    display: block;
+    position: absolute;
+    top: 20%;
+    left: 140%;
+    font-size: 20px;
+}
+
+.myPageHomeBottom .leftTop .order ul li:last-child:after {
+    display: none;
+}
+
+.myPageHomeBottom .leftTop .order ul li span {
+    display: block;
+    text-align: center;
+    width: 60px;
+    line-height: 60px;
+    background-color: #dfe9e8;
+    font-size: 25px;
+    color: #477A7B;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.myPageHomeBottom .leftTop .order ul li strong {
+    font-size: 12px;
+    font-weight: normal;
+    letter-spacing: -0.5px;
+}
+
+
+.myPageHomeBottom .rightTop {
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageHomeBottom .rightTop h3 {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.myPageHomeBottom .rightTop p {
+    text-align: center;
+    height: calc(100% - 35px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.myPageHomeBottom .rightTop p span {
+    color: #477A7B;
+    font-weight: bold;
+}
+
+.myPageHomeBottom .rightTop p strong {
+    font-size: 25px;
+    color: #477A7B;
+}
+
+
+
+
+.myPageHomeBottom .leftBottom {
+    border-right: 1px solid #dfe9e8;
+}
+
+.myPageHomeBottom .leftBottom h3 {
+    margin-top: 20px;
+    padding: 0 10px;
+}
+
+.myPageHomeBottom .leftBottom h3 a {
+    float: right;
+}
+
+.myPageHomeBottom .leftBottom .orderList {
+    margin: 30px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.myPageHomeBottom .leftBottom .orderList li a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.myPageHomeBottom .leftBottom .orderList li strong {
+    font-size: 30px;
+    font-weight: normal;
+    color: #477A7B;
+}
+
+
+.myPageHomeBottom .rightBottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.myPageHomeBottom .rightBottom h3.notice {
+    border-bottom: 1px solid #dfe9e8;
+}
+
+.myPageHomeBottom .rightBottom h3 {
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
