@@ -46,6 +46,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "bf967af743938534de32fcb01c9a8e85",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -67,10 +73,16 @@
       <option name="presentableId" value="Default" />
       <updated>1676963715055</updated>
       <workItem from="1676963716178" duration="41000" />
+      <workItem from="1676964089845" duration="2000" />
+      <workItem from="1676964101834" duration="324000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
