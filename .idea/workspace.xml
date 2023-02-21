@@ -4,64 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d21ab2b-5e12-4309-a66e-42d4aae5f85d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/awesome.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/UserFindId.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/UserFindId.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/UserFindPassword.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/UserFindPassword.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/UserJoin.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/UserJoin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/UserLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/UserLogin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageAddress.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageAddress.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageCommon.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageCommon.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageCoupon.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageCoupon.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageList.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageList.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageMileage.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageMileage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageModify.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageModify.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageOrder.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageOrder.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageRegister.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/static/user/css/myPage/userMyPageRegister.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/item/itemCart.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/item/itemCart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageAddress.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageAddress.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageCoupon.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageCoupon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageList.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageMileage.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageMileage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageModify.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageModify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageOrder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/myPage/userMyPageRegister.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/userFindId.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/userFindId.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/userFindPassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/userFindPassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/userJoin.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/userJoin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/html/user/userLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/html/user/userLogin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/user/css/UserFindId.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/user/css/userFindId.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/user/css/UserFindPassword.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/user/css/userFindPassword.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/user/css/UserJoin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/user/css/userJoin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/user/css/UserLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/user/css/userLogin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageAddress.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageAddress.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageCoupon.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageCoupon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageList.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageMileage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageMileage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageModify.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageModify.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageOrder.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageOrder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/myPage/userMyPageRegister.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/userFindId.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/userFindId.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/userFindPassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/userFindPassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/userJoin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/userJoin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/html/user/userLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/html/user/userLogin.html" afterDir="false" />
-    </list>
+    <list default="true" id="25898304-868b-4e59-a742-0908233d2946" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,12 +20,7 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="awesome" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -92,12 +30,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2M24w01RtfhFg0JcyGziZnCZ71o" />
+  <component name="ProjectId" id="2M2RUTarXCcIAbcR7Jct365G4LA" />
   <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -108,23 +46,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "bf967af743938534de32fcb01c9a8e85",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Spring Boot.AwesomeApplication (1)">
-    <configuration name="AwesomeApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="awesome.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.prj.AwesomeApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="AwesomeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="awesome.main" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.project.finalprj.AwesomeApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.prj.web.AwesomeApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,21 +61,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8d21ab2b-5e12-4309-a66e-42d4aae5f85d" name="Changes" comment="" />
-      <created>1676952577723</created>
+      <changelist id="25898304-868b-4e59-a742-0908233d2946" name="Changes" comment="" />
+      <created>1676963715055</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676952577723</updated>
-      <workItem from="1676952578824" duration="116000" />
-      <workItem from="1676952761929" duration="232000" />
+      <updated>1676963715055</updated>
+      <workItem from="1676963716178" duration="41000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
