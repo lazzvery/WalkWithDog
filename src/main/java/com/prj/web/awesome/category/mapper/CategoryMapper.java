@@ -3,9 +3,11 @@ package com.prj.web.awesome.category.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import com.prj.web.awesome.category.dto.CategoryDTO;
 
+@Repository
 @Mapper
 public interface CategoryMapper {
 	List<CategoryDTO> categoryList() throws Exception;

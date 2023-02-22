@@ -1,6 +1,5 @@
 package com.project.finalprj;
 
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +16,6 @@ import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/item")
-@Log4j2
 public class TestController {
 
     @Autowired
@@ -26,7 +24,7 @@ public class TestController {
 
     @RequestMapping(value="/test", method = RequestMethod.GET)
     public ModelAndView test(HttpServletRequest request) {
-        log.info("test 메소드 실행");
+//        log.info("test 메소드 실행");
 
         ModelAndView mv = new ModelAndView("test");
 
@@ -37,11 +35,11 @@ public class TestController {
 
     @RequestMapping(value="/test2", method = RequestMethod.GET)
     public String test2(Model model) {
-        log.info("test2 메소드 실행");
+//        log.info("test2 메소드 실행");
 
         String test = (String)model.getAttribute("test");
 
-        log.info("test ::::::::::::::: {}", test);
+//        log.info("test ::::::::::::::: {}", test);
 
         model.addAttribute("Bbaga", "babuting");
 
@@ -50,7 +48,7 @@ public class TestController {
 
     @RequestMapping(value="/newlist", method = RequestMethod.GET)
     public String retvNewItemList(Model model) {
-        log.info("retvNewItemList start");
+//        log.info("retvNewItemList start");
 
         String ctgr1 = (String) model.getAttribute("ctgr1");
         String ctgr2 = (String) model.getAttribute("ctgr2");

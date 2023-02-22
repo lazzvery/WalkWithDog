@@ -19,95 +19,9 @@
 
   <a class="toTop hidden_"> </a>
 
-  <header id="headerTop">
-    <div class="categoryContainer">
-      <div class="subContainer">
-        <div class="headerLogo">
-          <a href="#" class="hamburgerBtn"></a>
-          <a href="../../../index.html">
-            Home
-          </a>
-        </div>
-        <!--subContainer-->
-        <ul class="category list1">
-          <div class="subList">
-            <li class="subTitle"><strong>SHOP</strong></li>
-
-            <div class="categoryHover">
-              <ul>
-                <li>
-                  <a href="../../itemList/itemListNew.html">new</a>
-                </li>
-                <li><a href="#">living</a></li>
-                <li><a href="#">working</a></li>
-                <li><a href="#">food</a></li>
-                <li><a href="#">for cat</a></li>
-              </ul>
-            </div>
-          </div>
-        </ul>
-
-        <ul class="category list2">
-          <div class="subList">
-            <li class="subTitle"><strong>BEST</strong></li>
-            <div class="categoryHover"></div>
-          </div>
-        </ul>
-
-        <ul class="category list3">
-          <div class="subList">
-            <li class="subTitle"><strong>EVENT</strong></li>
-
-            <div class="categoryHover">
-              <ul>
-                <li><a href="#">event</a></li>
-                <li><a href="#">magazine</a></li>
-                <li><a href="#">curation</a></li>
-              </ul>
-            </div>
-          </div>
-        </ul>
-
-        <ul class="category list4">
-          <div class="subList">
-            <li class="subTitle"><strong>COMMUNITY</strong></li>
-
-            <div class="categoryHover">
-              <ul>
-                <li><a href="#">notice</a></li>
-                <li><a href="../faq/communityFaq.html">faq</a></li>
-                <li><a href="../QnA/communityQ&A.html">q&a</a></li>
-                <li><a href="../review/communityReview.html">review</a></li>
-              </ul>
-            </div>
-          </div>
-        </ul>
-
-        <ul class="category list5">
-          <li class="searchBtn">
-            <a href="#" class="searchBtn_a">검색</a>
-          </li>
-          <li class="cartBtn">
-            <a href="../../user/userCart.html" class="cartBtn_a">카트</a>
-          </li>
-
-          <li><a href="../../user/userLogin.html">Login</a></li>
-          <li><a href="../../user/userJoin.html">Join</a></li>
-          <li><a href="../../user/myPage/userMyPageHome.html">My Page</a></li>
-        </ul>
-      </div>
-      <!--subContainer-->
-    </div>
-    <!--categoryContainer-->
-    <div class="searchBarWrap hidden_">
-      <form class="mainSearch">
-        <!-- <h1>What are you looking for?</h1> -->
-        <input type="text" id="keyword" placeholder="상품명 검색" />
-        <input type="submit" value="Search" />
-        <a href="#" class="searchCloseBtn searchClose" alt="검색창닫기"></a>
-      </form>
-    </div>
-  </header>
+  <!-- ---------------- <header> 모듈 ------------------ -->
+  <header th:replace="html/fragments/headerFooter :: header"></header>
+  <!-- ---------------- <header> 모듈 ------------------ -->
 
   <article class="c_article">
     <div class="c_community_head">
@@ -272,38 +186,10 @@
     </aside>
   </main>
 
+  <!--------------------- <footer> 모듈 --------------------->
+  <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+  <!--------------------- <footer> 모듈 --------------------->
 
 </body>
-<div class="footerTop">
-  <a href="../../common/clause.html"> 이용약관 </a>
-  |
-  <a href="#"> 개인정보처리방침 </a>
-  |
-  <a href="#"> 이용안내 </a>
-</div>
-<!--------------------- <footer> 시작 --------------------->
-<footer>
-  <pre>
-
-
-  Service Center : 031-712-7447
-  
-  Business Hours : 평일 9:30 ~ 18:10 (점심시간 13:20 ~ 14:20) │ 토·일·공휴일 휴무
-  
-  Bank : 그린은행 100-220818-230317 │ 주식회사 PSY_C
-  
-  E-Mail : PSY_C@google.com
-  
-  Representative : 정선주, 최병현, 김민성, 유미현
-  
-  Address : 경기도 성남시 분당구 돌마로 46 (광천빌딩 5층)
-  
-  사업자 등록번호 안내 : [111-11-1111] | 통신판매업 신고 2019-서울강남-11111
-  
-  
-  </pre>
-  <p>Copyright © PSYC. All rights reserved.</p>
-</footer>
-<!--------------------- <footer> 끝 --------------------->
 
 </html>

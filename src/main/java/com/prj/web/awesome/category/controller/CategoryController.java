@@ -2,31 +2,30 @@ package com.prj.web.awesome.category.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.prj.web.awesome.category.dto.CategoryDTO;
 import com.prj.web.awesome.category.service.CategoryService;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.RequiredArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@RequestMapping(value="/category")
+@RequiredArgsConstructor
 @Controller
-@Log4j2
+@RequestMapping("/category")
 public class CategoryController {
 	
+	@Autowired
 	private CategoryService categoryService;
 	
-	@PostMapping(value = "/list")
+	@GetMapping("/list")
 	public String categoryList(Model model) {
 		List<CategoryDTO> categoryList = categoryService.categoryList();
+		
 		model.addAttribute("categoryList", categoryList);
 		return "index";
 	}

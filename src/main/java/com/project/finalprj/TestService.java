@@ -1,6 +1,5 @@
 package com.project.finalprj;
 
-import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,12 +10,11 @@ import java.util.Map;
 // @RestController 해당 class 는 REST API 처리하는 Controller 
 // @RequestMapping("/api") RequestMapping URI 를 지정해주는 Annotation 
 @Service
-@Log4j2
 public class TestService {
 	
     public List<Map<String, Object>> retvNewItemList(Map<String, Object> pMap) {
 
-       log.info("pMap.toString() {}", pMap.toString());
+//       log.info("pMap.toString() {}", pMap.toString());
 
        /**
         *   controller에서 service를 호출 한 것처럼
