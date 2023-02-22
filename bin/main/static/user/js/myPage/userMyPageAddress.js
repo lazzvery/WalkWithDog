@@ -24,26 +24,26 @@ window.onload = function () {
 
 
 
-// inputBoxinput[0].addEventListener("click", function () {
+inputBoxinput[0].addEventListener("click", function () {
 
-//     for (let i = 0; i < inputBoxinput.length; i++) {
-//         inputBoxinput[i].checked = this.checked;
-//     }
-// });
+    for (let i = 0; i < inputBoxinput.length; i++) {
+        inputBoxinput[i].checked = this.checked;
+    }
+});
 
-// for (let i = 0; i < inputBoxinput.length; i++) {
-//     inputBoxinput[i].checked = this.checked;
+for (let i = 0; i < inputBoxinput.length; i++) {
+    inputBoxinput[i].checked = this.checked;
 
-//     inputBoxinput[i].addEventListener("click", function () {
-//         if (this === inputBoxinput[0] && inputBoxinput[0].checked) {
-//             inputBoxinput[i].checked = true;
-//         } else if (this === inputBoxinput[0]) {
-//             inputBoxinput[i].checked = false;
-//         } else {
-//             inputBoxinput[0].checked = false;
-//         }
-//     });
-// }
+    inputBoxinput[i].addEventListener("click", function () {
+        if (this === inputBoxinput[0] && inputBoxinput[0].checked) {
+            inputBoxinput[i].checked = true;
+        } else if (this === inputBoxinput[0]) {
+            inputBoxinput[i].checked = false;
+        } else {
+            inputBoxinput[0].checked = false;
+        }
+    });
+}
 
 
 choiceButton.addEventListener('click', function () {

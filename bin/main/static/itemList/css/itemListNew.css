@@ -56,7 +56,7 @@ body {
   padding: 0 0 0;
   margin: 0 0;
   background: #BAAAD7;
-opacity: 0.4;
+  /*opacity: 0.4;*/
 }
 
 .white {
@@ -122,7 +122,7 @@ opacity: 0.4;
 }
 
 .pageNav ul li:hover a {
-  background: #BAAAD7;
+  background: #8E83A9;
   color: #fff;
   transition: all 0.2s ease-out;
 }

@@ -59,7 +59,7 @@ body {
 }
 
 .mainContainer .button svg {
-  fill: rgb(83, 121, 122);
+  fill: #8E83A9;
 }
 
 .mainContainer .prevBtn {
@@ -132,7 +132,7 @@ body {
 }
 
 .productContainer .productMent h1 span {
-  color: #cad300;
+  color: #8E83A9;
 }
 
 .productContainer .prdMore {

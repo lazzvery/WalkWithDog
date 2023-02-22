@@ -162,7 +162,7 @@ li strong {
 }
 
 .categoryHover li:hover a {
-  color: orange;
+  color: #8E83A9;
 }
 
 .categoryContainer:hover {
@@ -248,7 +248,7 @@ header:hover .fullDown {
 }
 
 .list5>li>a:hover {
-  opacity: 0.5;
+  color:#8E83A9;
   transition: all 0.5s;
 }
 

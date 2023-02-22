@@ -76,6 +76,7 @@ a {
     min-width: 180px;
     height: 40px;
     padding-left: 10px;
+    outline: 0;
 }
 
 .myPageOrderContainer .orderHistoryForm ul li input[type="date"] {

@@ -352,11 +352,11 @@ main select {
 }
 
 .btn_pay .btn_cart:hover {
-    color: #406768;
+    color: #8E83A9;
 }
 
 .btn_pay .btn_buy:hover {
-    background-color: #406768;
+    background-color: #8E83A9;
 }
 
 /* ===================== 카테고리 ======================== */
@@ -539,7 +539,7 @@ main select {
 }
 
 .qna_span span:hover {
-    color: #BAAAD7;
+    color: #8E83A9;
 }
 
 .productCategory_qna .qna_box {
@@ -588,7 +588,7 @@ main select {
 }
 
 .categoryProduct li:hover {
-    background-color: #BAAAD7;
+    background-color: #8E83A9;
 }
 
 .categoryProduct li a:hover {

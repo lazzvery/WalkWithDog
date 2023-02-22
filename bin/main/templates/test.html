@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2 th:text="${varTest}">    TEST gogo</h2>
+
+<h1 th:text="${Bbaga}">안들어왔다.</h1>
+
+<input type="button" name="TEST" />
+
+<table>
+    <tr>
+        <th>이름</th>
+        <th>나이</th>
+    </tr>
+    <tr th:each="item : ${itemList}">
+        <td th:text="${item.name}"></td>
+        <td th:text="${item.age}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

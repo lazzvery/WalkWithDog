@@ -60,7 +60,7 @@ a {
     height: 18px;
     text-align: center;
     background: #BAAAD7;
-opacity: 0.4;
+    opacity: 0.4;
     border-radius: 100%;
     box-shadow: none;
 }
@@ -72,6 +72,10 @@ opacity: 0.4;
 
 .checkBox input[type="radio"]:checked+label:after {
     content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: block;
     width: 18px;
     height: 18px;
