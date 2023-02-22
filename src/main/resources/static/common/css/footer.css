@@ -1,9 +1,10 @@
-footer {
+footer .footerBottom {
   padding: 10px;
   font-size: .8rem;
   background-color: rgb(37, 37, 37);
   color: white;
   line-height: 2vh;
+  box-sizing: border-box;
 }
 
 footer p {
