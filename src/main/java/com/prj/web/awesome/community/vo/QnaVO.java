@@ -1,7 +1,10 @@
 package com.prj.web.awesome.community.vo;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class QnaVO {
     private int qna_seq;
     private int attachment_file_seq;

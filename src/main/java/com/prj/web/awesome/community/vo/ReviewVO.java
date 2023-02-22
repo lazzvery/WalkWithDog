@@ -1,7 +1,10 @@
 package com.prj.web.awesome.community.vo;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class ReviewVO {
     private int review_seq;
     private int item_id;
