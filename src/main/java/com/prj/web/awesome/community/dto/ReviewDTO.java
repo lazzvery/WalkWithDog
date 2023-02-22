@@ -1,11 +1,11 @@
-package com.prj.web.awesome.community.vo;
+package com.prj.web.awesome.community.dto;
 
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class ReviewVO {
+public class ReviewDTO {
     private int review_seq;
     private int item_id;
     private int attachment_file_seq;

@@ -1,9 +1,9 @@
-package com.prj.web.awesome.community.vo;
+package com.prj.web.awesome.community.dto;
 
 import lombok.Data;
 
 @Data
-public class FaqVO {
+public class FaqDTO {
     private int faq_seq;
     private String ctgr_cd;
     private String faq_title;

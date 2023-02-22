@@ -1,11 +1,11 @@
-package com.prj.web.awesome.community.vo;
+package com.prj.web.awesome.community.dto;
 
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class QnaVO {
+public class QnaDTO {
     private int qna_seq;
     private int attachment_file_seq;
     private String user_id;
