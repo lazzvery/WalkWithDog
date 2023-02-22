@@ -1,9 +1,9 @@
-package com.prj.web.awesome.user.vo;
+package com.prj.web.awesome.user.dto;
 
 import lombok.Data;
 
 @Data
-public class CouponInfoVO {
+public class CouponInfoDTO {
 
     private String coupon_code;
     private String coupon_name;

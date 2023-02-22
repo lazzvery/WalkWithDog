@@ -1,9 +1,9 @@
-package com.prj.web.awesome.user.vo;
+package com.prj.web.awesome.user.dto;
 
 import lombok.Data;
 
 @Data
-public class UserVO {
+public class UserDTO {
     private String user_id;
     private String user_name;
     private String user_email;

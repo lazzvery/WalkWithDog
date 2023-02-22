@@ -1,9 +1,9 @@
-package com.prj.web.awesome.user.vo;
+package com.prj.web.awesome.user.dto;
 
 import lombok.Data;
 
 @Data
-public class AddrVO {
+public class AddrDTO {
 
     private int addr_seq;
     private String addr_name;
