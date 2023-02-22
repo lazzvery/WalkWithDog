@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -24,7 +24,10 @@
   <!-- ---------------- 버튼 ------------------ -->
   <a class="toTop hidden_" href="#"> </a>
   <!-- ---------------- 버튼 ------------------ -->
-  <header th:replace="html/fragments/header :: header"></header>
+
+  <!-- ---------------- <header> 모듈 ------------------ -->
+  <header th:replace="html/fragments/headerFooter :: header"></header>
+  <!-- ---------------- <header> 모듈 ------------------ -->
 
   <!--------------------- <main> 시작 --------------------->
   <main class="mainContainer">
@@ -264,8 +267,8 @@
   </main>
   <!--------------------- <main> 끝 --------------------->
 
-  <!--------------------- <footer> 끝 --------------------->
-  <footer th:replace="html/fragments/header :: footer"></footer>
-<!--------------------- <footer> 끝 --------------------->
+  <!--------------------- <footer> 모듈 --------------------->
+  <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+  <!--------------------- <footer> 모듈 --------------------->
 </body>
 </html>
