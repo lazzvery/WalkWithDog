@@ -1,10 +1,14 @@
 package com.prj.web.awesome.category.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.prj.web.awesome.category.dto.CategoryDTO;
 import com.prj.web.awesome.category.service.CategoryService;
 
 import lombok.AllArgsConstructor;
@@ -20,36 +24,12 @@ public class CategoryController {
 	
 	private CategoryService categoryService;
 	
-    @GetMapping("/new")
-    private String New(Model model){
-        return "html/category/new";
-    }
-    
-    @GetMapping("/living")
-    private String Living(Model model){
-        return "html/category/living";
-    }	
-    
-    @GetMapping("/working")
-    private String Working(Model model){
-        return "html/category/working";
-    }	
-    
-    @GetMapping("/food")
-    private String Food(Model model){
-        return "html/category/food";
-    }	
-	
-    @GetMapping("/clean")
-    private String Clean(Model model){
-        return "html/category/clean";
-    }	
-    
-    @GetMapping("/forcat")
-    private String ForCat(Model model){
-        return "html/category/forcat";
-    }	
-	
+	@PostMapping(value = "/list")
+	public String categoryList(Model model) {
+		List<CategoryDTO> categoryList = categoryService.categoryList();
+		model.addAttribute("categoryList", categoryList);
+		return "index";
+	}
 	
 	
 }

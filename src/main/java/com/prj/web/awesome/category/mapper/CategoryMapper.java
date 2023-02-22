@@ -1,5 +1,13 @@
 package com.prj.web.awesome.category.mapper;
 
-public class CategoryMapper {
+import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
+import com.prj.web.awesome.category.dto.CategoryDTO;
+
+@Mapper
+public interface CategoryMapper {
+	List<CategoryDTO> categoryList() throws Exception;
+	// 인터페이스에서 오류처리를 할 수 없기 때문에 Mapper에 Exception 이 발생하면 서비스에 넘겨주는 것 
 }
