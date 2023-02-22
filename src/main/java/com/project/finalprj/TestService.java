@@ -2,10 +2,6 @@ package com.project.finalprj;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,11 +14,6 @@ import java.util.Map;
 @Log4j2
 public class TestService {
 	
-//	@GetMapping("/hello") // http://localhost:8090/api/hello
-//	public String hello() {
-//		return "hello spring boot!"; //hello spring boot! 문자열 리턴 
-//	}
-
     public List<Map<String, Object>> retvNewItemList(Map<String, Object> pMap) {
 
        log.info("pMap.toString() {}", pMap.toString());

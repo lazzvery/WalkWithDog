@@ -13,7 +13,5 @@
 //	@Autowired
 //	private AdBoardService adBoardService;
 //
-////	@RequestMapping(value="/board")
-////	public ModelAndView
 //
 //	}
