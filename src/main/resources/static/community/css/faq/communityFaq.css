@@ -57,6 +57,11 @@ body {
   justify-content: center;
 }
 
+.c_page_catagory li .c_faq{
+  background-color: #BAAAD7;
+  color: white;
+}
+
 .c_page_catagory li a {
   color: #BAAAD7;
   text-decoration: none;
@@ -66,11 +71,6 @@ body {
   border-radius: 30px;
   background-color: #f3f3f3;
   font-size: initial;
-}
-
-.c_page_catagory li .faq {
-  background-color: #BAAAD7;
-  color: white;
 }
 
 .c_page_catagory li a:hover {
