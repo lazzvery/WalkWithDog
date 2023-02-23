@@ -124,3 +124,28 @@ hbgBtn.addEventListener("click", function (e) {
   }
   return false;
 });
+
+
+$(function() {
+
+ /* $.ajax({
+    method  : 'POST',
+    url     : '/category/list',
+    data    : { name : "test", age : "1000"},
+  }).done(function (result) {
+    console.log(result);
+    $('#categoryContainer').replaceWith(result);
+  });*/
+
+  $.ajax({
+    method  : 'POST',
+    url     : '/category/list2',
+    data    : { name : "test", age : "1000"},
+  }).done(function (result) {
+    console.log(result);
+    $('#textTest').replaceWith(result);
+  });
+
+
+
+});
