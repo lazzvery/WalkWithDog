@@ -8,3 +8,4 @@ spring.datasource.password=@Jsz0426
 mybatis.type-aliases-package=com.prj.web.*.*.mapper
 mybatis.mapper-locations=classpath:mybatis/mapper/**/**.xml
 spring.thymeleaf.suffix=.html
+
