@@ -3,7 +3,6 @@ package com.prj.web.awesome.KdhTest.api;
 import com.prj.web.awesome.KdhTest.controller.KdhTestController;
 import com.prj.web.awesome.KdhTest.payload.in.KdhTestInPayload;
 import com.prj.web.awesome.KdhTest.payload.out.KdhTestOutPayload;
-import com.prj.web.awesome.KdhTest.payload.out.dto.KdhTestOutDto;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
