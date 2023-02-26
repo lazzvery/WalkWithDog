@@ -13,14 +13,4 @@ public class KdhTestInDto {
 
     private String userId;
 
-    private String pwd;
-
-    private String name;
-
-    private String age;
-
-    private String email;
-
-    private String addr;
-
 }
