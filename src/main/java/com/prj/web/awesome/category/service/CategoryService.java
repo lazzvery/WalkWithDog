@@ -16,8 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CategoryService {
 	
-	@Autowired
-	private CategoryMapper mapper;
+	private final CategoryMapper mapper;
 	
 	public List<CategoryDTO> categoryList(){
 		List<CategoryDTO> categoryList = new ArrayList<CategoryDTO>();

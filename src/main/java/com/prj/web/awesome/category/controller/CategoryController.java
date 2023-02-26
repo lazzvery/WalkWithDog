@@ -1,10 +1,14 @@
 package com.prj.web.awesome.category.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.prj.web.awesome.category.dto.TestDTO;
+import com.prj.web.awesome.category.payload.out.dto.CategoryOutDto;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,45 +20,30 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.ModelAndView;
 
 @RequiredArgsConstructor
-@Controller
-@RequestMapping("/category")
+@Component
+@Log4j2
 public class CategoryController {
-	
-	@Autowired
-	private CategoryService categoryService;
 
-	@GetMapping("/list")
-	public String categoryList(Model model) {
+	private final CategoryService categoryService;
+
+	public List<CategoryOutDto> searchAllCtgr() {
 		List<CategoryDTO> categoryList = categoryService.categoryList();
 
-		model.addAttribute("categoryList", categoryList);
-		return "index";
+		List<CategoryOutDto> arrDto = new ArrayList<>();
+
+		for (CategoryDTO dto : categoryList) {
+			CategoryOutDto outDto = new CategoryOutDto();
+
+
+			outDto.setCtgr_cd(dto.getCtgr_cd());
+			outDto.setCtgr_nm(dto.getCtgr_nm());
+			outDto.setCtgr_order(dto.getCtgr_order());
+			outDto.setPrt_ctgr_cd(dto.getPrt_ctgr_cd());
+			outDto.setUse_yn(dto.getUse_yn());
+
+			arrDto.add(outDto);
+		}
+
+		return arrDto;
 	}
-
-	@PostMapping("/list")
-	public String postCategoryList(Model model, TestDTO inDto) {
-		List<CategoryDTO> categoryList = categoryService.categoryList();
-
-		System.out.println("list ::: name : " + inDto.getName() + " | age : " + inDto.getAge());
-
-		model.addAttribute("categoryList", categoryList);
-		model.addAttribute("name", inDto.getName());
-		model.addAttribute("age", inDto.getAge());
-
-		return "index :: #categoryContainer";
-	}
-
-	@PostMapping("/list2")
-	public String postCategoryList2(Model model, TestDTO inDto) {
-		List<CategoryDTO> categoryList = categoryService.categoryList();
-
-		System.out.println("list ::: name : " + inDto.getName() + " | age : " + inDto.getAge());
-
-		model.addAttribute("categoryList", categoryList);
-		model.addAttribute("name", inDto.getName());
-		model.addAttribute("age", inDto.getAge());
-
-		return "index :: #textTest";
-	}
-
 }

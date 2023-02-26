@@ -137,14 +137,6 @@ $(function() {
     $('#categoryContainer').replaceWith(result);
   });*/
 
-  $.ajax({
-    method  : 'POST',
-    url     : '/category/list2',
-    data    : { name : "test", age : "1000"},
-  }).done(function (result) {
-    console.log(result);
-    $('#textTest').replaceWith(result);
-  });
 
 
 

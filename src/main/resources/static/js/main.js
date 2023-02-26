@@ -12,18 +12,18 @@ let slideWrapper = document.querySelector(".slideWrapper"),
 
 // ----------------------------------- 이미지 슬라이드
 
-// function moveSlide(num) {
-//   slides.style.left = -num * 100 + "%";
-//   currentIdx = num;
-// }
+ function moveSlide(num) {
+   slides.style.left = -num * 100 + "%";
+   currentIdx = num;
+ }
 
-// function leftMove() {
-//   if (currentIdx < slideCount - 1) {
-//     moveSlide(currentIdx + 1);
-//   } else {
-//     moveSlide(0);
-//   }
-// }
+ function leftMove() {
+   if (currentIdx < slideCount - 1) {
+     moveSlide(currentIdx + 1);
+   } else {
+     moveSlide(0);
+   }
+ }
 
 nextBtn.addEventListener("click", leftMove);
 
