@@ -41,106 +41,106 @@
       <table class="c_board_table">
         <thead>
           <tr class="c_title">
-            <th scope="row" rowspan="3" class="c_disappear">분류</th>
+            <th scope="row" rowspan="3" class="c_disappear">글 번호</th>
             <th colspan="3">제목</th>
             <th colspan="2">작성자</th>
             <th class="c_disappear2">작성일</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr th:each="list:${qnaList}">
             <td class="c_disappear">
-              <p>배송</p>
+              <p th:text="${list.getQna_seq()}">1</p>
             </td>
-            <td colspan="3"><a href="./communityQ&ADetail.html">배송관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i>
+            <td th:text="${list.getQna_title()}" colspan="3"><a href="./communityQ&ADetail.html">배송관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i>
             </td>
-            <td colspan="2"> 최** </td>
-            <td class="c_disappear2"> 2022-11-02 </td>
+            <td th:text="${list.getUser_id()}" colspan="2"> 최** </td>
+            <td th:text="${list.getQna_reg_date()}" class="c_disappear2"> 2022-11-02 </td>
           </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>상품</p>
-            </td>
-            <td colspan="3"><a href=""> 상품관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>
-            <td colspan="2"> 이** </td>
-            <td class="c_disappear2"> 2022-11-01 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>답변</p>
-            </td>
-            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>
-            </td>
-            <td colspan="2"> PSYC </td>
-            <td class="c_disappear2"> 2022-11-01 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>기타</p>
-            </td>
-            <td colspan="3"><a href=""> 기타 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>
-            <td colspan="2"> 김** </td>
-            <td class="c_disappear2"> 2022-10-31 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>답변</p>
-            </td>
-            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>
-            </td>
-            <td colspan="2"> PSYC </td>
-            <td class="c_disappear2"> 2022-11-01 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>상품</p>
-            </td>
-            <td colspan="3"><a href=""> 상품관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>
-            <td colspan="2"> 이** </td>
-            <td class="c_disappear2"> 2022-11-01 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>답변</p>
-            </td>
-            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>
-            </td>
-            <td colspan="2"> PSYC </td>
-            <td class="c_disappear2"> 2022-11-01 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>기타</p>
-            </td>
-            <td colspan="3"><a href=""> 기타 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>
-            <td colspan="2"> 김** </td>
-            <td class="c_disappear2"> 2022-10-31 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>답변</p>
-            </td>
-            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>
-            </td>
-            <td colspan="2"> PSYC </td>
-            <td class="c_disappear2"> 2022-11-01 </td>
-          </tr>
-          <tr>
-            <td class="c_disappear">
-              <p>배송</p>
-            </td>
-            <td colspan="3"><a href="">배송관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>
-            <td colspan="2"> 최** </td>
-            <td class="c_disappear2"> 2022-11-02 </td>
-          </tr>
-          <td class="c_disappear">
-            <p>답변</p>
-          </td>
-          <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>
-          </td>
-          <td colspan="2"> PSYC </td>
-          <td class="c_disappear2"> 2022-11-01 </td>
-          </tr>
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>상품</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"><a href=""> 상품관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
+<!--            <td colspan="2"> 이** </td>-->
+<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>답변</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
+<!--            </td>-->
+<!--            <td colspan="2"> PSYC </td>-->
+<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>기타</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"><a href=""> 기타 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
+<!--            <td colspan="2"> 김** </td>-->
+<!--            <td class="c_disappear2"> 2022-10-31 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>답변</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
+<!--            </td>-->
+<!--            <td colspan="2"> PSYC </td>-->
+<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>상품</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"><a href=""> 상품관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
+<!--            <td colspan="2"> 이** </td>-->
+<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>답변</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
+<!--            </td>-->
+<!--            <td colspan="2"> PSYC </td>-->
+<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>기타</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"><a href=""> 기타 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
+<!--            <td colspan="2"> 김** </td>-->
+<!--            <td class="c_disappear2"> 2022-10-31 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>답변</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
+<!--            </td>-->
+<!--            <td colspan="2"> PSYC </td>-->
+<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td class="c_disappear">-->
+<!--              <p>배송</p>-->
+<!--            </td>-->
+<!--            <td colspan="3"><a href="">배송관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
+<!--            <td colspan="2"> 최** </td>-->
+<!--            <td class="c_disappear2"> 2022-11-02 </td>-->
+<!--          </tr>-->
+<!--          <td class="c_disappear">-->
+<!--            <p>답변</p>-->
+<!--          </td>-->
+<!--          <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
+<!--          </td>-->
+<!--          <td colspan="2"> PSYC </td>-->
+<!--          <td class="c_disappear2"> 2022-11-01 </td>-->
+<!--          </tr>-->
         </tbody>
 
       </table>

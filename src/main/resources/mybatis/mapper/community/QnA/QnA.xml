@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.web.awesome.community.mapper.QnAMapper">
+	<select id="qnaList" resultType="com.prj.web.awesome.community.dto.QnaDTO">
+		select
+			qna_seq,
+			user_id,
+			qna_title,
+			qna_content,
+			qna_reg_date
+	    from QnA
+	    order by qna_seq desc;
+	</select>
+
+
+</mapper>
