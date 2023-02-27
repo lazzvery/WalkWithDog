@@ -2,6 +2,7 @@ package com.prj.web.awesome.community.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -12,7 +13,7 @@ public class ReviewDTO {
     private String user_id;
     private String review_title;
     private String review_content;
-    private Date review_reg_date;
+    private LocalDate review_reg_date;
     private double review_rank;
     private int review_cnt;
     private int review_reply;

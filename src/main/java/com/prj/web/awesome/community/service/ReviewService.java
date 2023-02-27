@@ -26,4 +26,9 @@ public class ReviewService {
 
         return reviewList;
     }
+
+    public ReviewDTO reviewDetail(ReviewDTO dto) {
+        return mapper.reviewDetail(dto);
+    }
+
 }

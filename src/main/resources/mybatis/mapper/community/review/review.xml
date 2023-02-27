@@ -15,5 +15,19 @@
 	    order by review_seq desc;
 	</select>
 
+	<select id="reviewDetail" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
+		select
+			attachment_file_seq,
+		    user_id,
+			review_title,
+			review_content,
+			review_rank,
+			review_reg_date,
+			review_seq,
+			review_reply
+		from review
+		where review_seq = #{review_seq};
+	</select>
+
 
 </mapper>

@@ -2,7 +2,7 @@ package com.prj.web.awesome.community.dto;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class NoticeDTO {
@@ -10,5 +10,5 @@ public class NoticeDTO {
     private int attachment_file_seq;
     private String notice_title;
     private String notice_content;
-    private Date notice_reg_date;
+    private LocalDate notice_reg_date;
 }

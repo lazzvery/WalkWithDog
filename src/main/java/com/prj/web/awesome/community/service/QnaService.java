@@ -26,4 +26,12 @@ public class QnaService {
 
         return qnaList;
     }
+    public QnaDTO qnaPassword(QnaDTO dto) {
+        return mapper.qnaPassword(dto);
+    }
+
+    public QnaDTO qnaDetail(QnaDTO dto) {
+        return mapper.qnaDetail(dto);
+    }
+
 }
