@@ -16,6 +16,9 @@ public class ItemApi {
 
     private final ItemController controller;
 
+    /**
+     * Get은 Html 단순 호출
+     * */
     @GetMapping("/list")
     public ModelAndView getResultView() {
 
@@ -26,6 +29,12 @@ public class ItemApi {
         return mv;
     }
 
+    /**
+     *  Post는 Jquery에서 POST 로 호출하여 리스트를 조회해옴
+     *
+     * @Param : inDs
+     * @Return : itemOutPayload
+     * */
     @PostMapping("/list")
     public ItemOutPayload getItemList(@RequestBody ItemInPayload inDs) {
         ItemOutPayload itemOutPayload = new ItemOutPayload();
