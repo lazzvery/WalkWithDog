@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../common/css/header.css" />
+    <link rel="stylesheet" href="../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../user/css/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../user/css/userCart.css">
+    <script defer src="../../../user/js/userCart.js"></script>
+    <script defer src="../../../js/index.js"></script>
     <title>cart</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../../../item/css/itemCart.css">
 </head>
 
 <body>
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
     <main>
         <h1>CART</h1>
         <hr>
@@ -25,7 +37,7 @@
                             <label for="agreeCheck1" id="agreeCheck1"></label>
                         </div>
                         <a href="../item/itemDetails.html" class="cartlistimgbox1">
-                            <img src="./img/photo_5.jpg" alt="아르르 꿀잠 방석" class="cartlistimg">
+                            <img src="../../../img/order/photo_5.jpg" alt="아르르 꿀잠 방석" class="cartlistimg">
                         </a>
                         <a href="../item/itemDetails.html" class="cartlisttextbox1">
                             <strong>아르르 꿀잠 방석</strong>
@@ -36,42 +48,14 @@
                     <div class="shop_cartright">
                         <div class="product_checkNum">
                             <a href="#" class="downCheckbtn">
-                                <img src="./img/minus.png" alt="다운버튼" class="cartIcon">
+                                <img src="../../../img/order/minus.png" alt="다운버튼" class="cartIcon">
                             </a>
                             <input type="text" readonly="" value="1">
                             <a href="#" class="UpCheckbtn">
-                                <img src="./img/plus.png" alt="업버튼" class="cartIcon">
+                                <img src="../../../img/order/plus.png" alt="업버튼" class="cartIcon">
                             </a>
                         </div>
-                        <img src="./img/delete.png" alt="삭제버튼" class="cartdeleteIcon" name="1">
-                    </div>
-                </li>
-                <li class="shop_cartbox1">
-                    <div class="shop_cartleft">
-                        <div class="agreeAll checkBox">
-                            <input type="checkbox" name="agreeCheck2" id="agreeCheck2" checked="">
-                            <label for="agreeCheck2" id="agreeCheck2"></label>
-                        </div>
-                        <a href="../item/itemDetails.html" class="cartlistimgbox1">
-                            <img src="./img/payment_1.jpg" alt="아르르 꿀잠 방석" class="cartlistimg">
-                        </a>
-                        <a href="../item/itemDetails.html" class="cartlisttextbox1">
-                            <strong>사르르 미니 캔</strong>
-                            <span class="cartpayspan">9,500원</span>
-                            <span>[옵션: 치킨 &amp; 치킨간 30g*6개입]</span>
-                        </a>
-                    </div>
-                    <div class="shop_cartright">
-                        <div class="product_checkNum">
-                            <a href="#" class="downCheckbtn">
-                                <img src="./img/minus.png" alt="다운버튼" class="cartIcon">
-                            </a>
-                            <input type="text" readonly="" value="1">
-                            <a href="#" class="UpCheckbtn">
-                                <img src="./img/plus.png" alt="업버튼" class="cartIcon">
-                            </a>
-                        </div>
-                        <img src="./img/delete.png" alt="삭제버튼" class="cartdeleteIcon" name="2">
+                        <img src="../../../img/order/delete.png" alt="삭제버튼" class="cartdeleteIcon">
                     </div>
                 </li>
             </ul>
@@ -106,6 +90,10 @@
             </div>
         </article>
     </main>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
 </body>
 
 </html>
