@@ -23,95 +23,9 @@
 
   <a class="toTop hidden_"> </a>
 
-  <header id="headerTop">
-    <div class="categoryContainer">
-      <div class="subContainer">
-        <div class="headerLogo">
-          <a href="#" class="hamburgerBtn"></a>
-          <a href="../../../index.html">
-            Home
-          </a>
-        </div>
-        <!--subContainer-->
-        <ul class="category list1">
-          <div class="subList">
-            <li class="subTitle"><strong>SHOP</strong></li>
-
-            <div class="categoryHover">
-              <ul>
-                <li>
-                  <a href="../../itemList/itemListNew.html">new</a>
-                </li>
-                <li><a href="#">living</a></li>
-                <li><a href="#">working</a></li>
-                <li><a href="#">food</a></li>
-                <li><a href="#">for cat</a></li>
-              </ul>
-            </div>
-          </div>
-        </ul>
-
-        <ul class="category list2">
-          <div class="subList">
-            <li class="subTitle"><strong>BEST</strong></li>
-            <div class="categoryHover"></div>
-          </div>
-        </ul>
-
-        <ul class="category list3">
-          <div class="subList">
-            <li class="subTitle"><strong>EVENT</strong></li>
-
-            <div class="categoryHover">
-              <ul>
-                <li><a href="#">event</a></li>
-                <li><a href="#">magazine</a></li>
-                <li><a href="#">curation</a></li>
-              </ul>
-            </div>
-          </div>
-        </ul>
-
-        <ul class="category list4">
-          <div class="subList">
-            <li class="subTitle"><strong>COMMUNITY</strong></li>
-
-            <div class="categoryHover">
-              <ul>
-                <li><a href="/community/notice">notice</a></li>
-                <li><a href="/community/faq">faq</a></li>
-                <li><a href="/community/QnA">q&a</a></li>
-                <li><a href="#">review</a></li>
-              </ul>
-            </div>
-          </div>
-        </ul>
-
-        <ul class="category list5">
-          <li class="searchBtn">
-            <a href="#" class="searchBtn_a">검색</a>
-          </li>
-          <li class="cartBtn">
-            <a href="../../user/userCart.html" class="cartBtn_a">카트</a>
-          </li>
-
-          <li><a href="/user/login">Login</a></li>
-          <li><a href="/user/join">Join</a></li>
-          <li><a href="/user/myPage/myHome">My Page</a></li>
-        </ul>
-      </div>
-      <!--subContainer-->
-    </div>
-    <!--categoryContainer-->
-    <div class="searchBarWrap hidden_">
-      <form class="mainSearch">
-        <!-- <h1>What are you looking for?</h1> -->
-        <input type="text" id="keyword" placeholder="상품명 검색" />
-        <input type="submit" value="Search" />
-        <a href="#" class="searchCloseBtn searchClose" alt="검색창닫기"></a>
-      </form>
-    </div>
-  </header>
+  <!-- ---------------- <header> 모듈 ------------------ -->
+  <header th:replace="html/fragments/headerFooter :: header"></header>
+  <!-- ---------------- <header> 모듈 ------------------ -->
 
   <article class="c_article">
     <div class="c_community_head">
@@ -555,19 +469,19 @@
       </div>
     </div>
 
-    <div th:class="dt" class="content_section">
+    <div class="content_section">
       <div class="review_head">
         <div class="item_link">
           <div class="pic_section">
-            <img src="../../../../img/community/review/reviewpic.jpg" class="item_pic">
+            <img th:text="${reviewDetail}" src="../../../../img/community/review/reviewpic.jpg" class="item_pic">
           </div>
           <a href="../../item/itemDetails.html" class="item_detail">
-            <div th:text="${detail.getReview_title()}" class="title">
+            <div class="title">
               오가닉거즈 손가락칫솔
             </div>
             <div>
               <span class="review">리뷰</span>
-              <span th:text="${detail.getReview_rank()}" class="rank">평점</span>
+              <span  class="rank">평점</span>
             </div>
           </a>
         </div>
@@ -577,16 +491,16 @@
 
       <div class="review_body">
 
-        <div th:text="${detail.getReview_rank()}" class="score_section">
+        <div  class="score_section">
           아주 좋아요
         </div>
 
-        <div th:text="${detail.getUser_id()}" class="customer_section">
+        <div class="customer_section">
           사용자 정보
 
         </div>
 
-        <div th:text="${detail.getReview_content()}" class="review_detail">
+        <div class="review_detail">
           고객님의 소중한 후기입니다
         </div>
         <div class="review_reply">
@@ -594,7 +508,7 @@
           <span>1</span>
           <i class="fa-solid fa-caret-down"></i>
           <i class="fa-solid fa-caret-up"></i>
-          <div th:text="${detail.getReview_reply()}" class="replyContent">
+          <div  class="replyContent">
             Aliqua veniam irure enim non esse in exercitation. Incididunt exercitation cupidatat consectetur commodo
             commodo magna est et cillum deserunt cillum irure sunt duis. Eiusmod enim quis velit sunt cupidatat nostrud
             ad non. Deserunt aliqua qui aliquip enim et irure culpa mollit cillum. Ea non proident ut culpa excepteur
@@ -626,30 +540,9 @@
   |
   <a href="#"> 이용안내 </a>
 </div>
-<!--------------------- <footer> 시작 --------------------->
-<footer>
-  <pre>
-
-
-  Service Center : 031-712-7447
-  
-  Business Hours : 평일 9:30 ~ 18:10 (점심시간 13:20 ~ 14:20) │ 토·일·공휴일 휴무
-  
-  Bank : 그린은행 100-220818-230317 │ 주식회사 PSY_C
-  
-  E-Mail : PSY_C@google.com
-  
-  Representative : 정선주, 최병현, 김민성, 유미현
-  
-  Address : 경기도 성남시 분당구 돌마로 46 (광천빌딩 5층)
-  
-  사업자 등록번호 안내 : [111-11-1111] | 통신판매업 신고 2019-서울강남-11111
-  
-  
-  </pre>
-  <p>Copyright © PSYC. All rights reserved.</p>
-</footer>
-<!--------------------- <footer> 끝 --------------------->
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
 
 
 </html>

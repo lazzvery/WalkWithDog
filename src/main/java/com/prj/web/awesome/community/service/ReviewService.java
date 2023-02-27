@@ -27,10 +27,8 @@ public class ReviewService {
         return reviewList;
     }
 
-//    public ReviewDTO reviewDetail(ReviewDTO dto) throws Exception{
-//
-//        ReviewMapper.up
-//
-//        ReviewDTO detail = ReviewMapper.selectReviewDetail();
-//    }
+    public ReviewDTO reviewDetail(ReviewDTO dto) {
+        return mapper.reviewDetail(dto);
+    }
+
 }

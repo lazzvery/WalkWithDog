@@ -23,10 +23,10 @@
 			review_content,
 			review_rank,
 			review_reg_date,
-			review_seq
+			review_seq,
 			review_reply
 		from review
-		where review_seq = #{review_seq}
+		where review_seq = #{review_seq};
 	</select>
 
 

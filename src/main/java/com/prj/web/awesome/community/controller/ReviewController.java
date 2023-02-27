@@ -2,6 +2,7 @@ package com.prj.web.awesome.community.controller;
 
 import com.prj.web.awesome.community.dto.FaqDTO;
 import com.prj.web.awesome.community.dto.NoticeDTO;
+import com.prj.web.awesome.community.dto.QnaDTO;
 import com.prj.web.awesome.community.dto.ReviewDTO;
 import com.prj.web.awesome.community.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,27 +30,17 @@ public class ReviewController {
 
         model.addAttribute("reviewList", reviewList);
 
-
         return "html/community/review/communityReview";
 
     }
 
-//    @GetMapping("/detail")
-//    public Model detail(HttpServletRequest request, Model model, ReviewDTO dto){
-//
-////        dto = reviewService.reviewList(dto);
-////        if(dto != null){
-////            String loginID = (String)request.getSession().getAttribute("loginID");
-////            if(!dto.getUser_id().equals(loginID) && !"admin".equals(loginID) && !"U".equals(request.getParameter("jCode")) ){
-////                if(reviewService.countUp(dto)){
-////                    dto.setReview_cnt(dto.getReview_cnt() + 1);
-////                }
-////            }
-////        }
-//
-//        model.addAttribute("reviewDetail", reviewDetail);
-//
-//        return model;
-//
-//    }
+    @GetMapping("/reviewDetail")
+    public void reviewDetail(Model model, ReviewDTO dto){
+
+        ReviewDTO reviewDetail = reviewService.reviewDetail(dto);
+
+        model.addAttribute("reviewDetail", reviewDetail);
+
+    }
+
 }

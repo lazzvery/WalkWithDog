@@ -36,7 +36,8 @@ public class QnaController {
         model.addAttribute("qnaPassword", qnaPassword);
 
         return "html/community/QnA/communityQnAPassword";
-    }@GetMapping("qnaDetail")
+    }
+    @GetMapping("/qnaDetail")
     public String qnaDetail(Model model, QnaDTO dto){
 
         QnaDTO qnaDetail = qnaService.qnaDetail(dto);
