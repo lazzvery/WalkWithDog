@@ -105,6 +105,77 @@ input[type=number] {
 /* ----------------------------------------------- */
 
 
+/* 라디오 버튼 커스텀 */
+.checkBox {
+    position: relative;
+}
+
+.checkBox label {
+    display: inline-block;
+    font-size: 15px !important;
+    cursor: pointer;
+}
+
+.checkBox input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox input[type="radio"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkBox input[type="radio"]+label:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    background: #BAAAD7;
+    opacity: 0.4;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.checkBox input[type="radio"]:checked+label:before {
+    background: #fff;
+    border-color: #BAAAD7;
+}
+
+.checkBox input[type="radio"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 18px;
+    height: 18px;
+    background: #BAAAD7;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+
+
+.checkBox {
+    display: flex;
+}
+
 
 
 
@@ -227,7 +298,7 @@ input[type=number] {
 }
 
 .joinForm .ulContainer li input {
-    width: 245px;
+    width: 100%;
     border: 0;
     border-bottom: 1px solid #d8d8d8;
     padding-left: 10px;
@@ -241,13 +312,14 @@ input[type=number] {
     color: #b4b4b4
 }
 
-.joinForm .ulContainer li label {
+.joinForm .ulContainer > li > label {
+    width:35%;
     font-size: 12px;
     color: #222;
 }
 
 .joinForm .ulContainer li>div {
-    width: 245px;
+    width: 65%;
 }
 
 /* 비밀번호 입력 */
@@ -296,8 +368,14 @@ input[type=number] {
 }
 
 .joinForm .ulContainer li.phone input {
-    width: 80%;
+    width: 100%;
     display: inline-block;
+}
+
+.joinForm .ulContainer li.sms,
+.joinForm .ulContainer li.emailCheck,
+.joinForm .ulContainer li.gender{
+    justify-content: flex-start;
 }
 
 
