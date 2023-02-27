@@ -1,6 +1,9 @@
 "use strict";
 
 $(function() {
+
+
+
     let html = '';
 
     html += '<div class="categoryContainer">';
@@ -8,7 +11,7 @@ $(function() {
     html += '       <div class="headerLogo">';
     html += '           <a class="hamburgerBtn"></a>';
     html += '           <a href="#">';
-    html += '               <img src="./image/logo.png">';
+    html += '               <img src="/img/bannerImg/logo.png">';
     html += '           </a>';
     html += '       </div>';
 
@@ -64,6 +67,19 @@ $(function() {
         }
     });
 
+    html += '<ul class="category list5">';
+    html += '   <li class="searchBtn">';
+    html += '       <a class="searchBtn_a">검색</a>';
+    html += '   </li>';
+    html += '   <li class="cartBtn">';
+    html += '       <a class="cartBtn_a">카트</a>';
+    html += '   </li>';
+
+    html += '   <li><a href="/user/login">Login</a></li>';
+    html += '   <li><a href="/user/join">Join</a></li>';
+    html += '   <li><a href="/user/myPage/myHome">My Page</a></li>';
+    html += '</ul>';
+
     html += '   </div>';
     html += '</div>';
     html += '<div class="fullDown"></div>';
@@ -74,7 +90,7 @@ $(function() {
     html += '       <a class="searchCloseBtn searchClose" alt="검색창닫기"></a>';
     html += '   </form>';
     html += '</div>';
-
+    html += '<div id="fakeHeader"></div>';
 
 /*
 
@@ -82,6 +98,10 @@ $(function() {
     alert(test);
 */
     $('#headerTop').html(html);
+
+    // $('.cartBtn_a').css({'background' : 'url(img/icon/cart-shopping.svg)',
+    //     'filter' : 'invert(78%) sepia(28%) saturate(581%) hue-rotate(209deg) brightness(87%) contrast(93%)'
+    // });
 
 
 });
