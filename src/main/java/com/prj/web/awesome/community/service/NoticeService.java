@@ -27,4 +27,8 @@ public class NoticeService {
 
         return noticeList;
     }
+
+    public NoticeDTO noticeDetail(NoticeDTO dto) {
+        return mapper.noticeDetail(dto);
+    }
 }

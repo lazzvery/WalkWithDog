@@ -13,5 +13,24 @@
 	    order by qna_seq desc;
 	</select>
 
+	<select id="qnaPassword" resultType="com.prj.web.awesome.community.dto.QnaDTO">
+		select
+		    qna_seq,
+			qna_password
+		from QnA
+		where qna_seq = #{qna_seq};
+	</select>
+
+	<select id="qnaDetail" resultType="com.prj.web.awesome.community.dto.QnaDTO">
+		select
+		    qna_seq,
+		    user_id,
+		    qna_title,
+		    qna_content,
+		    qna_reg_date
+		from QnA
+		where qna_seq = #{qna_seq};
+	</select>
+
 
 </mapper>

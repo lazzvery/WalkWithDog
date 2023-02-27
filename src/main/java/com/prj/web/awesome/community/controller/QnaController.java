@@ -1,6 +1,5 @@
 package com.prj.web.awesome.community.controller;
 
-import com.prj.web.awesome.community.dto.NoticeDTO;
 import com.prj.web.awesome.community.dto.QnaDTO;
 import com.prj.web.awesome.community.service.QnaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,27 @@ public class QnaController {
 
         model.addAttribute("qnaList", qnaList);
 
-        return "html/community/QnA/communityQ&A";
+        return "html/community/QnA/communityQnA";
+    }
+    @GetMapping("/qnaPassword")
+    public String qnaPassword(Model model, QnaDTO dto){
+
+        QnaDTO qnaPassword = qnaService.qnaPassword(dto);
+
+        System.out.print(qnaPassword);
+
+        model.addAttribute("qnaPassword", qnaPassword);
+
+        return "html/community/QnA/communityQnAPassword";
+    }@GetMapping("qnaDetail")
+    public String qnaDetail(Model model, QnaDTO dto){
+
+        QnaDTO qnaDetail = qnaService.qnaDetail(dto);
+
+        System.out.print(qnaDetail);
+
+        model.addAttribute("qnaDetail", qnaDetail);
+
+        return "html/community/QnA/communityQnADetail";
     }
 }

@@ -555,19 +555,19 @@
       </div>
     </div>
 
-    <div class="content_section">
+    <div th:class="dt" class="content_section">
       <div class="review_head">
         <div class="item_link">
           <div class="pic_section">
             <img src="../../../../img/community/review/reviewpic.jpg" class="item_pic">
           </div>
           <a href="../../item/itemDetails.html" class="item_detail">
-            <div class="title">
+            <div th:text="${detail.getReview_title()}" class="title">
               오가닉거즈 손가락칫솔
             </div>
             <div>
               <span class="review">리뷰</span>
-              <span class="rank">평점</span>
+              <span th:text="${detail.getReview_rank()}" class="rank">평점</span>
             </div>
           </a>
         </div>
@@ -577,21 +577,16 @@
 
       <div class="review_body">
 
-        <div class="score_section">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
+        <div th:text="${detail.getReview_rank()}" class="score_section">
           아주 좋아요
         </div>
 
-        <div class="customer_section">
+        <div th:text="${detail.getUser_id()}" class="customer_section">
           사용자 정보
 
         </div>
 
-        <div class="review_detail">
+        <div th:text="${detail.getReview_content()}" class="review_detail">
           고객님의 소중한 후기입니다
         </div>
         <div class="review_reply">
@@ -599,7 +594,7 @@
           <span>1</span>
           <i class="fa-solid fa-caret-down"></i>
           <i class="fa-solid fa-caret-up"></i>
-          <div class="replyContent">
+          <div th:text="${detail.getReview_reply()}" class="replyContent">
             Aliqua veniam irure enim non esse in exercitation. Incididunt exercitation cupidatat consectetur commodo
             commodo magna est et cillum deserunt cillum irure sunt duis. Eiusmod enim quis velit sunt cupidatat nostrud
             ad non. Deserunt aliqua qui aliquip enim et irure culpa mollit cillum. Ea non proident ut culpa excepteur

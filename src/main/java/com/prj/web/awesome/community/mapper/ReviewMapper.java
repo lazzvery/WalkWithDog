@@ -11,4 +11,10 @@ import java.util.List;
 public interface ReviewMapper {
 
     List<ReviewDTO> reviewList() throws Exception;
+    // list 호출
+
+//    ReviewDTO selectReviewDetail(ReviewDTO dto) throws Exception;
+//    // detail 호출
+//
+//    void updateCntCount()
 }

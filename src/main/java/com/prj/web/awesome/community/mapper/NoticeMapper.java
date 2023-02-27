@@ -11,4 +11,6 @@ import java.util.List;
 public interface NoticeMapper {
 
     List<NoticeDTO> noticeList() throws Exception;
+
+    NoticeDTO noticeDetail(NoticeDTO dto);
 }

@@ -12,5 +12,15 @@
 	    order by notice_seq desc;
 	</select>
 
+	<select id="noticeDetail" resultType="com.prj.web.awesome.community.dto.NoticeDTO">
+		select
+		    notice_seq,
+		    notice_title,
+		    notice_content,
+			attachment_file_seq,
+			notice_reg_date
+		from notice
+		where notice_seq = #{notice_seq};
+	</select>
 
 </mapper>
