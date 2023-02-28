@@ -25,7 +25,7 @@ main {
     color: #353535;
 }
 
-main hr {
+main .shop_orderlist hr {
     border: 0px;
     height: 1px;
     background-color: #555555;
@@ -63,7 +63,6 @@ main input {
 /* ===================== 주문 상품 =================================== */
 
 .shop_orderlist .shop_orderlistbox {
-    height: 240px;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -115,8 +114,9 @@ main input {
 /* ===================== 주문자 정보 ======================== */
 /* 이름 / 휴대폰 / 이메일 */
 
-.shop_oderinfo span {
+.shop_oderinfo .inline_ortext {
     width: 80px;
+    font-weight: bold;
 }
 
 .shop_oderinfo input {
@@ -182,6 +182,12 @@ main input {
 .shop_deliinfoBox .shop_deliTitle {
     display: flex;
     align-items: center;
+}
+
+.delivery_info li strong {
+    color: #353535;
+    font-size: inherit;
+    cursor: inherit;
 }
 
 .shop_deliinfoBox .shop_deliTitle span {
