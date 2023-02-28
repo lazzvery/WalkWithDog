@@ -16,5 +16,5 @@ public class QnaDTO {
     private int qna_password;
     private String qna_secreat;
     private String qna_reply;
-    private LocalDate qna_sreply_reg_date;
+    private LocalDate qna_reply_reg_date;
 }

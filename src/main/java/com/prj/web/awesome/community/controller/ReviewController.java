@@ -35,11 +35,13 @@ public class ReviewController {
     }
 
     @GetMapping("/reviewDetail")
-    public void reviewDetail(Model model, ReviewDTO dto){
+    public Model reviewDetail(Model model, ReviewDTO dto){
 
         ReviewDTO reviewDetail = reviewService.reviewDetail(dto);
 
         model.addAttribute("reviewDetail", reviewDetail);
+
+        return model;
 
     }
 

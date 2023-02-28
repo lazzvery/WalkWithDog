@@ -16,4 +16,6 @@ public interface ReviewMapper {
 
     ReviewDTO reviewDetail(ReviewDTO dto);
 
+
+
 }

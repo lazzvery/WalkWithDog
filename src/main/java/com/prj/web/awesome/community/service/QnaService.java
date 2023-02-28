@@ -1,11 +1,11 @@
 package com.prj.web.awesome.community.service;
 
-import com.prj.web.awesome.community.dto.NoticeDTO;
 import com.prj.web.awesome.community.dto.QnaDTO;
 import com.prj.web.awesome.community.mapper.QnAMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +32,20 @@ public class QnaService {
 
     public QnaDTO qnaDetail(QnaDTO dto) {
         return mapper.qnaDetail(dto);
+    }
+
+    public void qnaInsert(QnaDTO dto){
+        mapper.qnaInsert(dto);
+    }
+
+    @Transactional
+    public void qnaUpdate(QnaDTO dto){
+        mapper.qnaUpdate(dto);
+    }
+
+    @Transactional
+    public void qnaDelete(QnaDTO dto){
+        mapper.qnaDelete(dto);
     }
 
 }

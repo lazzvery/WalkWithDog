@@ -32,5 +32,48 @@
 		where qna_seq = #{qna_seq};
 	</select>
 
+	<insert id="qnaInsert">
+		<selectKey keyProperty="qna_seq" resultType="int" order="BEFORE"  >
+			select IFNULL(max(qna_seq),0)+1 from QnA;
+		</selectKey>
+		insert into QnA
+		    (qna_seq,
+			 attachment_file_seq,
+		     user_id,
+		     ctgr_cd,
+			 qna_title,
+			 qna_content,
+			 qna_reg_date,
+			 qna_password,
+			 qna_secreat)
+		values(
+		    #{qna_seq},
+		    "300",
+		    "cbh",
+		    "0016",
+		    #{qna_title},
+		    #{qna_content},
+		    #{qna_reg_date},
+		    #{qna_password},
+		    #{qna_secreat}
+		    );
+	</insert>
+
+	<update id="qnaUpdate">
+		update QnA set
+		    qna_title = #{qna_title},
+		    qna_content = #{qna_content},
+		    attachment_file_seq = #{attachment_file_seq}
+		where qna_seq = #{qna_seq};
+	</update>
+
+	<delete id="qnaDelete">
+		delete
+		from QnA
+		<if test="qna_seq == qna_reply">where qna_reply = #{qna_seq}</if>
+		<if test="qna_seq != qna_reply">where qna_seq = #{qna_seq}</if>
+	</delete>
+
+
 
 </mapper>
