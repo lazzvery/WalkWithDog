@@ -11,6 +11,10 @@ spring:
     suffix: .html
 server:
   port: '8090'
+  devtools:
+    remote:
+      restart:
+        enabled: true
 
 springdoc:
   # 기본값: application/json
