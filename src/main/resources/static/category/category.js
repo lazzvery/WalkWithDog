@@ -92,6 +92,8 @@ $(function() {
     html += '</div>';
     html += '<div id="fakeHeader"></div>';
 
+
+
 /*
 
     let test = $('#headerTop').html();

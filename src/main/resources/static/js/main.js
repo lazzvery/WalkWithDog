@@ -38,6 +38,6 @@ prevBtn.addEventListener("click", function () {
   }
 });
 
-setInterval(leftMove, 5000);
+setInterval(leftMove, 7000);
 
 // --------------------------------------- 이미지 내 글자

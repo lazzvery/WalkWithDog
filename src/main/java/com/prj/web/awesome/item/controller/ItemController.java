@@ -1,12 +1,11 @@
 package com.prj.web.awesome.item.controller;
 
-import com.prj.web.awesome.item.dto.ItemDTO;
+import com.prj.web.awesome.item.dto.ItemDto;
 import com.prj.web.awesome.item.payload.in.dto.ItemInDto;
 import com.prj.web.awesome.item.payload.out.dto.ItemOutDto;
 import com.prj.web.awesome.item.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +17,11 @@ public class ItemController {
     private final ItemService itemService;
 
     public List<ItemOutDto> itemList(ItemInDto inDto) {
-        List<ItemDTO> itemArr = itemService.itemList(inDto.getCtgr_cd());
+        List<ItemDto> itemArr = itemService.itemList(inDto.getCtgr_cd());
 
         List<ItemOutDto> itemOutArr = new ArrayList<>();
 
-        for (ItemDTO item:itemArr) {
+        for (ItemDto item:itemArr) {
             ItemOutDto outDto = new ItemOutDto();
 
             outDto.setItem_id(item.getItem_id());

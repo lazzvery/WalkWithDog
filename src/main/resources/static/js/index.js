@@ -102,42 +102,42 @@ headerTop.addEventListener("click", function (e) {
 // }
 
 // ------------------------------ 햄버거버튼
-let idx = 0;
-hbgBtn.addEventListener("click", function (e) {
-  idx++;
-  console.log(idx);
-  e.target.preventDefault
-  for (let i = 0; i < category.length; i++) {
-    console.log(hbgBtn);
-    console.log(category[0]);
-    if (idx % 2 == 1) {
-      category[i].style.visibility = "visible";
-    } else {
-      category[i].style.visibility = "hidden";
-    }
-
-    category[i].addEventListener("mouseenter", function (e) {
-      if (matchMedia("screen and (max-width: 900px)").matches) {
-      }
-      category[i].style.background = "none";
-    });
-  }
-  return false;
-});
-
-
-$(function() {
-
- /* $.ajax({
-    method  : 'POST',
-    url     : '/category/list',
-    data    : { name : "test", age : "1000"},
-  }).done(function (result) {
-    console.log(result);
-    $('#categoryContainer').replaceWith(result);
-  });*/
-
-
-
-
-});
+// let idx = 0;
+// hbgBtn.addEventListener("click", function (e) {
+//   idx++;
+//   console.log(idx);
+//   e.target.preventDefault
+//   for (let i = 0; i < category.length; i++) {
+//     console.log(hbgBtn);
+//     console.log(category[0]);
+//     if (idx % 2 == 1) {
+//       category[i].style.visibility = "visible";
+//     } else {
+//       category[i].style.visibility = "hidden";
+//     }
+//
+//     category[i].addEventListener("mouseenter", function (e) {
+//       if (matchMedia("screen and (max-width: 900px)").matches) {
+//       }
+//       category[i].style.background = "none";
+//     });
+//   }
+//   return false;
+// });
+//
+//
+// $(function() {
+//
+//  /* $.ajax({
+//     method  : 'POST',
+//     url     : '/category/list',
+//     data    : { name : "test", age : "1000"},
+//   }).done(function (result) {
+//     console.log(result);
+//     $('#categoryContainer').replaceWith(result);
+//   });*/
+//
+//
+//
+//
+// });

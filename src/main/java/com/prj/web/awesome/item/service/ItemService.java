@@ -1,8 +1,7 @@
 package com.prj.web.awesome.item.service;
 
-import com.prj.web.awesome.item.dto.ItemDTO;
+import com.prj.web.awesome.item.dto.ItemDto;
 import com.prj.web.awesome.item.mapper.ItemMapper;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public class ItemService {
 
     private final ItemMapper mapper;
 
-    public List<ItemDTO> itemList(String ctgr_cd) {
+    public List<ItemDto> itemList(String ctgr_cd) {
         return mapper.itemList(ctgr_cd);
     }
 }
