@@ -1,17 +1,15 @@
-package com.prj.web.awesome.item.dto;
+package com.prj.web.awesome.item.payload.out.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ItemDTO {
+public class ItemOutDto {
 
     private String item_id;
 
@@ -26,5 +24,4 @@ public class ItemDTO {
     private String item_reg_date;
 
     private String item_data_del_yn;
-
 }

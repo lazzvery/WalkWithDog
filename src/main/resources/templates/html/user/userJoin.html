@@ -32,7 +32,7 @@
             <h2>join us</h2>
         </div>
 
-        <form class="joinForm">
+        <form id="insert" class="joinForm" action="join" method="post" >
             <div class="joinTitle">
                 <h3>일반 회원가입</h3>
             </div>
@@ -41,8 +41,8 @@
                     <li class="id">
                         <label>아이디 *</label>
                         <div class="inputBox">
-                            <input type="text" name="id">
-                            <p name="id">
+                            <input type="text" name="user_id" id="user_id" required>
+                            <p>
                                 <span>*</span>
                                 <span>대문자/공백/특수문자가 포함되었거나, 숫자로 시작 또는 숫자로만 이루어진 아이디는 사용할 수 없습니다.</span>
                             </p>
@@ -51,7 +51,7 @@
                     <li class="password">
                         <label>비밀번호 *</label>
                         <div class="inputBox">
-                            <input type="password" name="password">
+                            <input type="password" name="user_password" id="user_password" required>
                             <p>
                                 <span>*</span>
                                 <span>영문대소문자/숫자/특수문자 중 2가지 이상 조합</span>
@@ -61,13 +61,14 @@
                     <li class="passwordConfirm">
                         <label>비밀번호 확인 *</label>
                         <div class="inputBox">
-                            <input type="password" name="passwordConfirm">
+                            <input type="password" id="user_password2" required>
                             <p>
                                 <span>*</span>
                                 <span>비밀번호가 일치하지 않습니다.</span>
                             </p>
                         </div>
                     </li>
+                    <!--
                     <li class="authMember">
                         <label>본인 인증 *</label>
                         <div class="inputBox">
@@ -75,10 +76,11 @@
                             <p>* 본인 명의의 휴대폰으로 본인인증을 진행합니다.</p>
                         </div>
                     </li>
+                    -->
                     <li class="name">
                         <label>이름 *</label>
                         <div class="inputBox">
-                            <input type="text" name="name">
+                            <input type="text" name="user_name" id="user_name" required>
                             <p>
                                 <span>*</span>
                                 <span>유효한 이름을 입력해주세요</span>
@@ -89,28 +91,74 @@
                         <label>휴대전화 *</label>
                         <div class="phoneBox">
                             <div class="inputBox">
-                                <input name="phone1" value="010" readonly>
-                                <span>-</span>
-                                <input name="phone2" maxlength="4">
-                                <span>-</span>
-                                <input name="phone3" maxlength="4">
+                                <input name="user_phone" id="user_phone" placeholder="010" required>
                             </div>
                             <p class="phoneText">* 유효한 전화번호를 입력해주세요</p>
                         </div>
                     </li>
+                    <li class="sms">
+                        <label>SMS 수신여부 *</label>
+                        <ul class="checkBox cover">
+                            <li>
+                                <input type="radio" name="user_sns_check" id="y" value="y" checked />
+                                <label for="y" id="sms"></label>
+                                <label for="y">수신함</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="user_sns_check" id="n" value="n" />
+                                <label for="n" id="n"></label>
+                                <label for="n">수신안함</label>
+                            </li>
+                        </ul>
+                        <p class="tip">쇼핑몰에서 제공하는 유익한 이벤트 소식을 SMS로 받으실 수 있습니다.</p>
+                    </li>
                     <li class="email">
                         <label>이메일 *</label>
                         <div class="inputBox">
-                            <input type="email" name="email">
+                            <input type="email" name="user_email" required>
                             <p>
                                 <span>*</span>
                                 <span>유효한 이메일을 입력해주세요</span>
                             </p>
                         </div>
                     </li>
+                    <li class="emailCheck">
+                        <label>email 수신여부 *</label>
+                        <ul class="checkBox cover">
+                            <li>
+                                <input type="radio" name="user_email_Check" id="Y" value="y" checked />
+                                <label for="Y" id="Y"></label>
+                                <label for="Y">수신함</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="user_email_Check" id="N" value="n" />
+                                <label for="N" id="N"></label>
+                                <label for="N">수신안함</label>
+                            </li>
+                        </ul>
+                        <p class="tip">쇼핑몰에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</p>
+                    </li>
+                    <li class="gender">
+                        <label>성별</label>
+                        <ul class="checkBox">
+                            <li>
+                                <input type="radio" name="user_gen" id="w" value="woman" />
+                                <label for="w" id="w"></label>
+                                <label for="w">여</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="user_gen" id="m" value="men" />
+                                <label for="m" id="m"></label>
+                                <label for="m">남</label>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="recommender">
                         <label>추천인 아이디</label>
-                        <input type="text" name="recommender">
+                        <input type="text" name="user_rid">
+                    </li>
+                    <li>
+                        <input type="hidden" name="admin_yn" value="n">
                     </li>
                 </ul>
 
@@ -211,14 +259,14 @@
 
                 <div class="agree">
                     <div class="agreeAll checkBox">
-                        <input type="checkbox" name="agreeAll" id="agreeAll" />
+                        <input type="checkbox" name="agreeAll" id="agreeAll" required/>
                         <label for="agreeAll" id="agreeAll"></label>
                         <label for="agreeAll">약관 전체 동의</label>
                     </div>
                     <ul class="checkBox">
                         <li>
                             <div>
-                                <input type="checkbox" name="agreeServiceCheck" id="agreeServiceCheck" />
+                                <input type="checkbox" name="agreeServiceCheck" id="agreeServiceCheck" required/>
                                 <label for="agreeServiceCheck" id="agreeServiceCheck"></label>
                                 <label for="agreeServiceCheck">[필수] 이용약관 동의</label>
                             </div>
@@ -226,7 +274,7 @@
                         </li>
                         <li>
                             <div>
-                                <input type="checkbox" name="agreePrivacyCheck" id="agreePrivacyCheck" />
+                                <input type="checkbox" name="agreePrivacyCheck" id="agreePrivacyCheck" required/>
                                 <label for="agreePrivacyCheck" id="agreePrivacyCheck"></label>
                                 <label for="agreePrivacyCheck">[필수] 개인정보 수집 및 이용 동의</label>
                             </div>
