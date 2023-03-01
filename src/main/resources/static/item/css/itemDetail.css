@@ -543,13 +543,34 @@ main select {
 }
 
 .productCategory_qna .qna_box {
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid rgb(224, 224, 224);
     margin-bottom: 50px;
+}
+
+.productCategory_qna .qna_list {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px;
+    line-height: 1.6em;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.productCategory_qna .qna_list .qna_seq,
+.productCategory_qna .qna_list .qna_user {
+    margin-right: 50px;
+}
+
+.productCategory_qna .qna_reply .qna_seq {
+    margin-right: 80px;
+}
+
+
+.productCategory_qna .qna_list img {
+    width: 12px;
+    margin-right: 3px;
+}
+
+.productCategory_qna .qna_list .qna_reply_img {
+    width: 17px;
 }
 
 .hidden {

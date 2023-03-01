@@ -78,11 +78,11 @@ for (let i = 0; i < sub_image.length; i++) {
 let heart = false;
 heartBtn.addEventListener('click', function () {
     if (!heart) {
-        heartBtn.src = "./img/heartfill.png";
+        heartBtn.src = "../../../img/icon/iheartfill.png";
         heartBtn.style.opacity = "1";
         heart = true;
     } else {
-        heartBtn.src = "./img/heart.png";
+        heartBtn.src = "../../../img/icon/iheart.png";
         heartBtn.style.opacity = ".5";
         heart = false;
     }
