@@ -107,7 +107,6 @@ shareBtn.addEventListener('click', () => {
 let price = 0;
 selectBox.addEventListener('change', function (e) {
     let selectIndex = e.target.value;
-    console.log(deleteBtn[selectIndex].className);
 
     if (deleteBtn[selectIndex].classList.contains('hidden')) {
         deleteBtn[selectIndex].classList.remove('hidden');
