@@ -5,6 +5,6 @@
     # 유미현
 ### Swwager site (debuging 및 test)
 
-* [http://localhost:8090/swagger-ui/index.html](http://localhost:8090/swagger-ui/index.html/)
+* http://localhost:8090/swagger-ui/index.html
 
 

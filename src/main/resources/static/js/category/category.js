@@ -10,8 +10,8 @@ $(function() {
     html += '   <div class="subContainer">';
     html += '       <div class="headerLogo">';
     html += '           <a class="hamburgerBtn"></a>';
-    html += '           <a href="#">';
-    html += '               <img src="/img/bannerImg/logo.png">';
+    html += '           <a href="home">';
+    html += '               <img src="/img/bannerImg/logo.png" class="mainLogo">';
     html += '           </a>';
     html += '       </div>';
 
@@ -52,7 +52,7 @@ $(function() {
 
                     $.each(childrenArr, function(cIdx, ch) {
                         if(el.ctgr_cd == ch.prt_ctgr_cd) {
-                            html += '               <li><a href="#">'+ch.ctgr_nm+'</a></li>';
+                            html += '               <li><a href="/item/list">'+ch.ctgr_nm+'</a></li>';
                         }
                     });
 
@@ -86,24 +86,23 @@ $(function() {
     html += '<div class="searchBarWrap hidden_">';
     html += '   <form class="mainSearch">';
     html += '       <input type="text" id="keyword" placeholder="상품명 검색" />';
-    html += '       <input type="submit" value="Search" />';
+    html += '       <input type="submit" value="" />';
     html += '       <a class="searchCloseBtn searchClose" alt="검색창닫기"></a>';
     html += '   </form>';
     html += '</div>';
     html += '<div id="fakeHeader"></div>';
 
-
-
-/*
-
-    let test = $('#headerTop').html();
-    alert(test);
-*/
     $('#headerTop').html(html);
 
-    // $('.cartBtn_a').css({'background' : 'url(img/icon/cart-shopping.svg)',
-    //     'filter' : 'invert(78%) sepia(28%) saturate(581%) hue-rotate(209deg) brightness(87%) contrast(93%)'
-    // });
+    // ----------------------------------- 검색창
+    $(".searchBtn_a").click(function() {
+        $(".searchBarWrap").css("opacity" , "1");
+        $(".searchBarWrap").removeClass("hidden_");
+    });
 
+    $(".searchCloseBtn").click(function() {
+        $(".searchBarWrap").css("opacity" , "0");
+        $(".searchBarWrap").addClass("hidden_");
+    });
 
 });

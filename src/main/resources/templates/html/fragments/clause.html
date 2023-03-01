@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 
 <head>
     <meta charset="UTF-8" />
@@ -11,15 +10,26 @@
     <link rel="stylesheet" href="../../../css/index.css" />
     <link rel="stylesheet" href="../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../common/css/clause.css">
-    <script defer src="../../../js/index.js"></script>
-    <script defer src="../../../js/main.js"></script>
-    <script defer src="../../../js/sub.js"></script>
+    <script src="/js/category/category.js"></script>
+    <script defer src="/js/index.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/sub.js"></script>
     <!-- <script src="./COMMON/Header/Javascript/header.js"></script> -->
     <script src="https://kit.fontawesome.com/820cd623a1.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
+
+<!-- ---------------- 버튼 ------------------ -->
+<a class="toTop hidden_" href="#"> </a>
+<!-- ---------------- 버튼 ------------------ -->
+
+<!-- ---------------- <header> 모듈 ------------------ -->
+<header th:replace="html/fragments/headerFooter :: header"></header>
+<!-- ---------------- <header> 모듈 ------------------ -->
+
+<!-- 약관 본문 -->
     <h2>이용약관</h2>
 
     <pre>
@@ -494,6 +504,10 @@
     
     부 칙(시행일) 이 약관은 2019년 5월 1일부터 시행합니다.
 </pre>
+
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
 </body>
 
 </html>

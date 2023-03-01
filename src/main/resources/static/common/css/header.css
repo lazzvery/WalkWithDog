@@ -314,8 +314,7 @@ header:hover .fullDown {
   background: url(../../img/icon/search.svg) no-repeat center;
   width: 20px;
   height: 20px;
-  filter: invert(45%) sepia(9%) saturate(1174%) hue-rotate(133deg) brightness(95%) contrast(85%);
-  text-indent: -9999px;
+  filter: invert(57%) sepia(10%) saturate(911%) hue-rotate(216deg) brightness(92%) contrast(92%);
   margin: 1em;
 }
 
@@ -335,6 +334,8 @@ header:hover .fullDown {
   height: 50px;
   display: inline-block;
   margin-left: 1em;
+  filter: invert(57%) sepia(10%) saturate(911%) hue-rotate(216deg) brightness(92%) contrast(92%);
+  cursor: pointer;
 }
 
 .searchCloseBtn:hover {
