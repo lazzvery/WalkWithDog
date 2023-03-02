@@ -18,7 +18,7 @@ public interface QnAMapper {
 
     void qnaInsert(QnaDTO dto);
 
-    void qnaUpdate(QnaDTO dto);
+    int qnaUpdate(QnaDTO dto);
 
     void qnaDelete(QnaDTO dto);
 

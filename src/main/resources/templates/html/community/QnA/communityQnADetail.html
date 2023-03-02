@@ -52,7 +52,7 @@
   </div>
   <div class="c_button">
     <a href="/community/QnA">목록으로</a>
-    <a href="/community/qnaUpdate">수정하기</a>
+    <a th:href="@{/community/qnaUpdate(qna_seq=${qnaDetail.getQna_seq()})}">수정하기</a>
     <a th:href="@{/community/qnaDelete(qna_seq=${qnaDetail.getQna_seq()})}">삭제하기</a>
   </div>
 
