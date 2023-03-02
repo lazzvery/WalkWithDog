@@ -29,4 +29,14 @@ public class categoryApi {
 
         return pyld;
     }
+
+//    public CategoryOutPayload selectOut() {
+//        List<CategoryOutDto> arrDto = controller.searchAllCtgr();
+//        return null;
+//    }
+//
+//    public CategoryInPayload selectIn() {
+//        List<CategoryInDto>
+//        return null;
+//    }
 }

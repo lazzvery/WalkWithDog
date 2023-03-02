@@ -20,6 +20,26 @@ for (let i = 0; i < active.length; i++) {
     });
 }
 
+// $(function() {
+//
+//     $().ready(function() {
+//         let i=0;
+//         let tmp = $(".pageList a");
+//         console.log(tmp);
+//         let turnBC = new Array("#8E83A9");
+//         let turnFC = new Array("#ffffff");
+//         tmp.click(function() {
+//             let resultBC = turnBC[i];
+//             let resultFC = turnFC[i];
+//             $(this).css("background",resultBC);
+//             $(this).css("color",resultFC);
+//             i++;
+//         });
+//     });
+//
+//
+// });
+
 //-----------------------------------------------------------------
 
 // $(function() {
