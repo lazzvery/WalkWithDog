@@ -1,5 +1,6 @@
 package com.prj.web.awesome.user.controller;
 
+import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
 import com.prj.web.awesome.itemDetail.service.ItemDetailService;
 import com.prj.web.awesome.user.dto.HeartDTO;
 import com.prj.web.awesome.user.service.HeartService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -23,10 +25,17 @@ public class HeartController {
     private final ItemDetailService iservice;
 
     @GetMapping("/heart")
-    public String heart(HttpSession session, Model model){
+    public String heart(HttpSession session, Model model) {
         String loginID = (String) session.getAttribute("loginID");
 
         List<HeartDTO> list = hservice.findList(loginID);
+        List<ItemDetailDto> itemDetails = new ArrayList<>();
+        for (HeartDTO heartDTO : list) {
+            ItemDetailDto item = iservice.findItem(heartDTO.getItem_id());
+            itemDetails.add(item);
+        }
+
+        model.addAttribute("itemDetails", itemDetails);
         model.addAttribute("list", list);
 
         return "html/user/userHeart";

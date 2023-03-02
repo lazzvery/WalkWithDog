@@ -77,13 +77,39 @@ public class QnaController {
 
     }
 
-//    @GetMapping("/qnaUpdate")
-//    public String qnaUpdate(QnaDTO dto){
+    @GetMapping("/qnaUpdate")
+    public String qnaUpdateForm(Model model, QnaDTO dto){
+        System.out.println("get1 : " + dto);
+
+        QnaDTO qnaDetail = qnaService.qnaDetail(dto);
+
+        model.addAttribute("qnaDetail", qnaDetail);
+
+        System.out.println("get2: " + qnaDetail);
+
+        return "html/community/QnA/communityQnAUpdate";
+    }
+    @PostMapping ("/qnaUpdate")
+    public String qnaUpdate(Model model, QnaDTO dto){
+
+//        QnaDTO qnaDetail = qnaService.qnaDetail(dto);
 //
-//        qnaService.qnaUpdate(dto);
-//
-//        return "redirect:/community/qnaUpdate";
-//    }
+//        model.addAttribute("qnaDetail", qnaDetail);
+
+        System.out.println("post : " + dto);
+        String url = "redirect:QnA";
+
+//        QnaDTO qnaDTO = new QnaDTO();
+//        qnaDTO.setQna_title(dto.getQna_title());
+//        qnaDTO.setQna_content(dto.getQna_content());
+//        qnaDTO.setQna_seq(dto.getQna_seq());
+
+        if (qnaService.qnaUpdate(dto) <= 0){
+            url = "redirect:qnaUpdate?qna_seq=" + dto.getQna_seq();
+        }
+
+        return url;
+    }
 
     @GetMapping("/qnaDelete")
     public String qnaDelete(QnaDTO dto){

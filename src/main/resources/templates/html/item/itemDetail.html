@@ -348,7 +348,7 @@
                             <div class="imgbox">
                                 <img src="../../../img/item/item1.jpg"/>
                             </div>
-                            <strong>상품이름</strong>
+                            <strong th:text="${item.item_name}">상품이름</strong>
                         </li>
                         <hr>
                         <li>
@@ -372,8 +372,8 @@
                         </li>
                         <hr>
                         <li class="buttonBox">
-                            <button type="button">취소</button>
-                            <input type="submit" value="등록">
+                            <button type="button" style="cursor: pointer">취소</button>
+                            <input type="submit" value="등록" style="cursor: pointer">
                         </li>
                     </ul>
                 </form>
