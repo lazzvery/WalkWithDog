@@ -8,11 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Slf4j
@@ -32,11 +30,18 @@ public class ItemDetailController {
         model.addAttribute("item", item);
         model.addAttribute("qna", qna);
 
-        log.info("item_id={}", item_id);
-        log.info("item={}", item);
-        log.info("qna={}", qna);
-
         return "html/item/itemDetail";
+    }
+
+    @PostMapping
+    public String insertQna(ItemQnaDTO itemQnaDTO, HttpSession session) {
+        String userId = (String) session.getAttribute("loginID");
+
+        itemQnaDTO.setUser_id(userId);
+        itemQnaDTO.setItem_qna_pnum(itemQnaDTO.getItem_qna_pnum());
+        qservice.save(itemQnaDTO);
+
+        return "redirect:/item/itemDetail?item_id=" + itemQnaDTO.getItem_id();
     }
 
 }

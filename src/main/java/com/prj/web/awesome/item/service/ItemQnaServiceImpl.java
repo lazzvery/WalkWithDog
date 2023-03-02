@@ -22,4 +22,9 @@ public class ItemQnaServiceImpl implements ItemQnaService {
     public ItemQnaDTO findById(int item_qna_seq) {
         return mapper.findById(item_qna_seq);
     }
+
+    @Override
+    public void save(ItemQnaDTO itemQnaDTO) {
+        mapper.save(itemQnaDTO);
+    }
 }

@@ -557,11 +557,17 @@ main select {
 
 .productCategory_qna .qna_list .qna_seq,
 .productCategory_qna .qna_list .qna_user {
-    margin-right: 50px;
+    display: inline-block;
+    width: 60px;
+}
+
+.productCategory_qna .qna_list .qna_user {
+    text-align: center;
+    margin-right: 30px;
 }
 
 .productCategory_qna .qna_reply .qna_seq {
-    margin-right: 80px;
+    margin-right: 25px;
 }
 
 
@@ -582,8 +588,8 @@ main select {
 
 .categoryProduct {
     position: fixed;
-    right: 40px;
-    bottom: 120px;
+    right: 15px;
+    bottom: 100px;
     list-style-type: none;
     border-radius: 5px;
     background-color: #fff;
@@ -734,7 +740,7 @@ main select {
 
 .popBox input,
 .popBox textarea{
-    width:83%;
+    width:85%;
     border:1px solid #d8d8d8;
     padding-left:10px;
     outline: 0;
