@@ -301,6 +301,44 @@
     <!--------------------- <footer> 모듈 --------------------->
     <footer th:replace="html/fragments/headerFooter :: footer"></footer>
     <!--------------------- <footer> 모듈 --------------------->
+
+    <div class="itemQnaPopUp">
+        <div class="popBox">
+            <h2>상품 문의하기
+                <img src="../../../img/icon/iclose.png"/>
+            </h2>
+            <hr>
+            <form>
+                <ul>
+                    <li class="title">
+                        <div class="imgbox">
+                            <img src="../../../img/item/item1.jpg"/>
+                        </div>
+                        <strong>상품이름</strong>
+                    </li>
+                    <hr>
+                    <li>
+                        <label>제목</label>
+                        <input type="text" name="title">
+                    </li>
+                    <li>
+                        <label>내용</label>
+                        <textarea name="title"></textarea>
+                    </li>
+                    <li class="margin">
+                        <input type="radio">
+                        <label>비밀글로 문의하기</label>
+                    </li>
+                    <hr>
+                    <li class="buttonBox">
+                        <button type="button">취소</button>
+                        <input type="submit" value="등록">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>
