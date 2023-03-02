@@ -9,8 +9,8 @@ $(function() {
     html += '<div class="categoryContainer">';
     html += '   <div class="subContainer">';
     html += '       <div class="headerLogo">';
-    html += '           <a class="hamburgerBtn"></a>';
-    html += '           <a href="home">';
+    html += '           <a class=""></a>';
+    html += '           <a href="/home">';
     html += '               <img src="/img/bannerImg/logo.png" class="mainLogo">';
     html += '           </a>';
     html += '       </div>';
@@ -51,9 +51,23 @@ $(function() {
                     html += '           <ul>';
 
                     $.each(childrenArr, function(cIdx, ch) {
-                        if(el.ctgr_cd == ch.prt_ctgr_cd) {
+                        if( ch.prt_ctgr_cd == '0001' && el.ctgr_nm == 'SHOP' ) {
                             html += '               <li><a href="/item/list">'+ch.ctgr_nm+'</a></li>';
+                        } else if( ch.prt_ctgr_cd == '0003' && el.ctgr_nm == 'EVENT' ) {
+                            html += '               <li><a href=#>'+ch.ctgr_nm+'</a></li>';
+
+                        } else if( ch.ctgr_cd == '0014' && el.ctgr_nm == 'COMMUNITY' ) {
+                            html += '               <li><a href="/community/notice">'+ch.ctgr_nm+'</a></li>';
+                        } else if( ch.ctgr_cd == '0015' && el.ctgr_nm == 'COMMUNITY' ) {
+                            html += '               <li><a href="/community/faq">'+ch.ctgr_nm+'</a></li>';
+                        } else if( ch.ctgr_cd == '0016' && el.ctgr_nm == 'COMMUNITY' ) {
+                            html += '               <li><a href="/community/QnA">'+ch.ctgr_nm+'</a></li>';
+                        } else if( ch.ctgr_cd == '0017' && el.ctgr_nm == 'COMMUNITY' ) {
+                            html += '               <li><a href="/community/review">'+ch.ctgr_nm+'</a></li>';
                         }
+                        // if(el.ctgr_cd == ch.prt_ctgr_cd) {
+                        //     html += '               <li><a href="/item/list">'+ch.ctgr_nm+'</a></li>';
+                        // }
                     });
 
                     html += '           </ul>';
@@ -69,15 +83,15 @@ $(function() {
 
     html += '<ul class="category list5">';
     html += '   <li class="searchBtn">';
-    html += '       <a class="searchBtn_a">검색</a>';
+    html += '       <a class="searchBtn_a" title="검색">검색</a>';
     html += '   </li>';
     html += '   <li class="cartBtn">';
-    html += '       <a class="cartBtn_a">카트</a>';
+    html += '       <a class="cartBtn_a" href="/user/cart" title="장바구니">카트</a>';
     html += '   </li>';
 
-    html += '   <li><a href="/user/login">Login</a></li>';
-    html += '   <li><a href="/user/join">Join</a></li>';
-    html += '   <li><a href="/user/myPage/myHome">My Page</a></li>';
+    html += '   <li><a href="/user/login" title="로그인">Login</a></li>';
+    html += '   <li><a href="/user/join" title="회원가입">Join</a></li>';
+    html += '   <li><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>';
     html += '</ul>';
 
     html += '   </div>';
@@ -87,7 +101,7 @@ $(function() {
     html += '   <form class="mainSearch">';
     html += '       <input type="text" id="keyword" placeholder="상품명 검색" />';
     html += '       <input type="submit" value="" />';
-    html += '       <a class="searchCloseBtn searchClose" alt="검색창닫기"></a>';
+    html += '       <a class="searchCloseBtn searchClose" alt="검색창닫기" title="닫기"></a>';
     html += '   </form>';
     html += '</div>';
     html += '<div id="fakeHeader"></div>';

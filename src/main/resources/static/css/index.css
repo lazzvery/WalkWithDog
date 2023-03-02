@@ -50,7 +50,8 @@ body {
   position: relative;
   z-index: 1;
   cursor: pointer;
-  top: 50%;
+  /*top: 50%;*/
+  margin-top : calc(100vh / 2);
 }
 
 .mainContainer .button:hover {
@@ -64,6 +65,7 @@ body {
 .mainContainer .prevBtn {
   left: 100px;
   position: absolute;
+  margin-top : calc(100vh / 2);
 }
 
 .mainContainer .nextBtn {

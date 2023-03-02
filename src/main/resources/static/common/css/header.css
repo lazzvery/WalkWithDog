@@ -51,6 +51,11 @@ li strong {
   font-size: 1.3rem;
 }
 
+li strong:hover {
+  color: #8E83A9;
+  cursor: auto;
+}
+
 /* ====================================================== */
 
 /* 탑버튼 */
@@ -124,6 +129,12 @@ li strong {
 /* BEST */
 .categoryContainer .list2 strong {
   color: orange;
+  opacity: .9;
+}
+
+.categoryContainer .list2 strong:hover {
+  opacity: 1;
+  cursor: auto;
 }
 
 /* -------------------------마우스 호버했을 때 나오는 리스트들 ---------------------*/
