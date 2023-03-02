@@ -99,7 +99,13 @@ main .shop_likeboxnone {
 }
 
 .shop_likeleft strong {
-    font-size: 1em
+    font-size: 0.9em;
+    color: #353535;
+}
+
+.shop_likeleft strong:hover {
+    color: #353535;
+    cursor: pointer;
 }
 
 .shop_likeleft span {
