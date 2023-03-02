@@ -20,6 +20,40 @@ for (let i = 0; i < active.length; i++) {
     });
 }
 
+$(function(){
+
+    let inDs = {
+        itemInDto : {
+            ctgr_cd : $('input[name="ctgr_cd"]').val(),
+            prt_ctgr_cd : ''
+        }
+    };
+
+    $.ajax({
+        method: 'POST',
+        url: '/item/list',
+        async: false,
+        dataType: 'json',
+        data: JSON.stringify(inDs),
+        headers: {
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "POST"
+        },
+        success: function (result) {
+            //console.log(result.itemOutArr[0].item_name);
+            console.log('성공');
+
+            $.each(result.itemOutArr, function(idx, item) {
+                console.log('item.item_name : ' + item.item_name);
+                console.log('item.item_price : ' + item.item_price);
+            });
+        },
+        error : function (request, status, error) {
+            console.log('실패');
+        }
+    });
+});
+
 // $(function() {
 //
 //     $().ready(function() {
