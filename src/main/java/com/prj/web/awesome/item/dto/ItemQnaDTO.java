@@ -12,9 +12,8 @@ public class ItemQnaDTO {
     private String item_qna_content;
     private Date item_qna_reg_date;
     private int item_qna_password;
-    private String item_qna_secret;
     private String item_qna_reply;
-    private Date item_qna_reply_reg_date;
+    private int item_qna_pnum;
     private int item_id;
     private String user_id;
 

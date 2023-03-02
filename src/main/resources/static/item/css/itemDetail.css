@@ -615,3 +615,20 @@ main select {
 .categoryProduct li a:hover {
     color: white;
 }
+
+/*----------------------------------*/
+.qna_box .q_page {
+    text-align: center;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.qna_box .q_page a {
+    padding: 5px;
+}
+
+.qna_box .qna_empty {
+    text-align: center;
+    padding: 50px;
+    border-bottom: 1px solid #e8e8e8;
+}

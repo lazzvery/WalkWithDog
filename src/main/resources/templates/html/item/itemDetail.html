@@ -45,9 +45,8 @@
                     <span class="bestBtn">BEST</span>
                     <img src="../../../img/icon/ishare.png" alt="공유하기" class="sharebBtn">
                     <img src="../../../img/icon/iheart.png" alt="좋아요" class="heartbBtn">
-                    <h2>아르르 꿀잠 이불</h2>
-                    <span class="salePrice">29,900원</span>
-                    <span class="brforePrice">39,900원</span>
+                    <h2 th:text="${item.item_name}">아르르 꿀잠 이불</h2>
+                    <span class="salePrice" th:text="${item.item_price}">29,900원</span>
                 </div>
 
                 <div class="shareProduct">
@@ -250,28 +249,43 @@
             <hr>
 
             <div class="qna_box">
-                <div class="qna_list">
-                    <div>
-                        <span class="qna_seq">1</span>
-                        <img src="../../../img/icon/ilock.png">
-                        <span>[상품] 상품 관련 문의 드립니다.</span>
+                <div th:each="qna_list : ${qna}">
+                    <div class="qna_list" th:if="${qna_list.item_qna_reply == 'N'}">
+                        <div>
+                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">1</span>
+                            <img src="../../../img/icon/ilock.png">
+                            <a href="#" th:text="${qna_list.item_qna_title}">[상품] 상품 관련 문의 드립니다.</a>
+                        </div>
+                        <div>
+                            <span class="qna_user" th:text="${qna_list.user_id}">유**</span>
+                            <span th:text="${qna_list.item_qna_reg_date}">2023-03-01</span>
+                        </div>
                     </div>
-                    <div>
-                        <span class="qna_user">유**</span>
-                        <span>2023-03-01</span>
+                    <div class="qna_list qna_reply" th:if="${qna_list.item_qna_reply == 'Y'}">
+                        <div>
+                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">2</span>
+                            <img src="../../../img/icon/ireply.png" class="qna_reply_img">
+                            <img src="../../../img/icon/ilock.png">
+                            <a href="#" th:text="${qna_list.item_qna_title}">[답글] 상품 관련 답변 드립니다.</a>
+                        </div>
+                        <div>
+                            <span class="qna_user" th:text="${qna_list.user_id}">관리자</span>
+                            <span th:text="${qna_list.item_qna_reg_date}">2023-03-01</span>
+                        </div>
                     </div>
                 </div>
-                <div class="qna_list qna_reply">
-                    <div>
-                        <span class="qna_seq">2</span>
-                        <img src="../../../img/icon/ireply.png" class="qna_reply_img">
-                        <img src="../../../img/icon/ilock.png">
-                        <span>[답글] 상품 관련 답변 드립니다</span>
-                    </div>
-                    <div>
-                        <span class="qna_user">관리자</span>
-                        <span>2023-03-01</span>
-                    </div>
+                <div>
+                    <div th:if="${#lists.isEmpty(qna)}" class="qna_empty">게시물이 없습니다</div>
+                </div>
+
+                <div class="q_page">
+                    <span>&lt;</span>
+                    <a href=""><strong>1</strong></a>
+                    <a href="">2</a>
+                    <a href="">3</a>
+                    <a href="">4</a>
+                    <a href="">5</a>
+                    <span>&gt;</span>
                 </div>
             </div>
         </div>
