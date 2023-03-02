@@ -29,16 +29,18 @@ public class UserService {
         return selectList;
     }
 
-    //    // 2. selectOne : Detail
-//    UserDTO selectOne(UserDTO vo);
-//
+    // 2. selectOne : Detail
+    public UserDTO userSelectOne(UserDTO dto){
+        return mapper.userSelectOne(dto);
+    }
+
     // 3. insert
-    public int insert(UserDTO vo){
-        return mapper.insert(vo);
+    public int userInsert(UserDTO dto){
+        return mapper.userInsert(dto);
     };
 //
 //    // 4. update
-//    int update(UserDTO vo);
+    public int userUpdate(UserDTO dto) { return mapper.userUpdate(dto);};
 //
 //    // 5. delete
 //    int delete(UserDTO vo);

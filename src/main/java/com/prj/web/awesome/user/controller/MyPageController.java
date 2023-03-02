@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MyPageController {
 
-    @GetMapping("/myHome")
-    public String myHome(Model model){
-        return "html/user/myPage/userMyPageHome";
-    }
+//    @GetMapping("/myHome")
+//    public String myHome(Model model){
+//        return "html/user/myPage/userMyPageHome";
+//    }
 
     @GetMapping("/addr")
     public String addr(Model model){ return "html/user/myPage/userMyPageAddress"; }
@@ -28,8 +28,8 @@ public class MyPageController {
     @GetMapping("/coupon")
     public String coupon(Model model){ return "html/user/myPage/userMyPageCoupon"; }
 
-    @GetMapping("/modify")
-    public String modify(Model model){ return "html/user/myPage/userMyPageModify"; }
+//    @GetMapping("/modify")
+//    public String modify(Model model){ return "html/user/myPage/userMyPageModify"; }
 
     @GetMapping("/order")
     public String order(Model model){ return "html/user/myPage/userMyPageOrder"; }
