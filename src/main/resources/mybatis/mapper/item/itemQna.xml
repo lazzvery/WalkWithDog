@@ -3,4 +3,30 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prj.web.awesome.item.mapper.ItemQnaMapper">
 
+    <insert id="save" parameterType="com.prj.web.awesome.item.dto.ItemQnaDTO">
+        <selectKey keyProperty="item_qna_pnum" resultType="int" order="BEFORE"  >
+            select IFNULL(max(item_qna_seq),0)+1 from item_qna;
+        </selectKey>
+        INSERT INTO item_qna (
+            item_qna_title,
+            item_qna_content,
+            item_qna_reg_date,
+            item_qna_password,
+            item_qna_reply,
+            item_qna_pnum,
+            item_id,
+            user_id
+        )
+        VALUES (
+            #{item_qna_title},
+            #{item_qna_content},
+            NOW(),
+            1111,
+            'N',
+            #{item_qna_pnum},
+            #{item_id},
+            #{user_id}
+        )
+    </insert>
+
 </mapper>
