@@ -5,11 +5,17 @@
 let slideWrapper = document.querySelector(".slideWrapper"),
   slides = document.querySelector(".slides"),
   slidesLi = document.querySelectorAll(".slides li"),
-  slideCount = slidesLi.length / 2, //끝인지 마지막인지 구분할 용도
+  slideCount = slidesLi.length, //끝인지 마지막인지 구분할 용도
   currentIdx = 0, //시작인덱스
   prevBtn = document.querySelector(".prevBtn"), // 이전 버튼
   nextBtn = document.querySelector(".nextBtn"); // 다음 버튼
 
+// ----------------------------------- 이미지 슬라이드
+
+// $(function moveSlide(num) {
+//     $(".slides li").css("left", "-num(+1) * 100 + ")
+// });
+console.log(slideCount);
 // ----------------------------------- 이미지 슬라이드
 
  function moveSlide(num) {
@@ -38,6 +44,6 @@ prevBtn.addEventListener("click", function () {
   }
 });
 
-setInterval(leftMove, 7000);
+setInterval(leftMove, 6000);
 
-// --------------------------------------- 이미지 내 글자
+// ---------------------------------------
