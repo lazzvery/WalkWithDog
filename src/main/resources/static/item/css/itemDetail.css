@@ -669,7 +669,7 @@ main select {
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    width:60%;
+    width:55%;
     height:90vh;
     background-color: #fff;
     border-radius: 15px;
@@ -681,12 +681,15 @@ main select {
     height:90vh;
     background-color: #fff;
     border-radius: 15px;
-    padding:20px;
+    padding:35px;
     overflow-y: scroll;
 }
 
 .itemQnaPopUp hr{
-    opacity: 0.3;
+    border: 0;
+    height: 1px;
+    background-color: rgb(244, 244, 244);
+    margin: 30px 0;
 }
 
 .popBox h2{
@@ -694,6 +697,7 @@ main select {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    color:#333333;
 }
 .popBox h2 img{
     display:block;
@@ -708,7 +712,7 @@ main select {
 
 .popBox .imgbox,
 .popBox li label:first-child{
-    width:20%;
+    width:15%;
 }
 .popBox li.title{
     margin:20px 0;
@@ -716,11 +720,12 @@ main select {
 }
 .popBox li.title img{
     display:block;
-    width:90%;
+    width:75%;
     height:auto;
 }
 .popBox li.title strong{
-    color:#000;
+    color:#333333;
+    font-size: 16px;
 }
 
 .popBox li.margin{
@@ -729,7 +734,7 @@ main select {
 
 .popBox input,
 .popBox textarea{
-    width:80%;
+    width:83%;
     border:1px solid #d8d8d8;
     padding-left:10px;
     outline: 0;
@@ -752,7 +757,7 @@ main select {
 
 .buttonBox{
     display:flex;
-    margin-left:20%;
+    justify-content: center;
 }
 
 .buttonBox button,
@@ -781,7 +786,7 @@ main select {
 .checkBox {
     position: relative;
     display: block;
-    margin-left:20%;
+    margin-left:15%;
 }
 
 .checkBox li {
