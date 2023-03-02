@@ -552,6 +552,7 @@ main select {
     padding: 20px 10px;
     line-height: 1.6em;
     border-bottom: 1px solid #e8e8e8;
+    cursor: pointer;
 }
 
 .productCategory_qna .qna_list .qna_seq,
@@ -633,6 +634,23 @@ main select {
     border-bottom: 1px solid #e8e8e8;
 }
 
+.qna_box .qna_content {
+    display: none;
+    background-color: rgb(250, 250, 250);
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+
+.qna_box .qna_content_icon {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    color: #999999;
+}
+
+.qna_box .qna_content_icon span {
+    margin-left: 12px;
+}
+
 
 /* 상품문의 팝업창 */
 .itemQnaPopUp{
@@ -643,6 +661,7 @@ main select {
     height: 100vh;
     background-color: rgba(0,0,0,0.5);
     z-index: 99999999;
+    display: none;
 }
 
 .popBox{

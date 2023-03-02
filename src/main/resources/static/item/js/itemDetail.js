@@ -18,7 +18,14 @@ const img_container = document.querySelector('.img_container'),
     sideCategory = document.querySelector('.categoryProduct'),
     urlCopyBtn = document.querySelector('.urlCopy'),
     addCart = shop_container.querySelector('.btn_cart'),
-    butNow = shop_container.querySelector('.btn_buy');
+    butNow = shop_container.querySelector('.btn_buy'),
+    qna_box = document.querySelector('.qna_box'),
+    qna_list = qna_box.getElementsByTagName('li'),
+    qna_title = qna_box.getElementsByTagName('span'),
+    qna_content = document.getElementsByClassName('qna_content'),
+    qna_write = document.querySelector('.itemQnaPopUp'),
+    qna_write_btn = document.querySelector('.writebtn'),
+    qna_close = qna_write.getElementsByTagName('img');
 
 const optionSelect = [
     {
@@ -178,8 +185,8 @@ for (let i = 0; i < reviewCate.length; i++) {
     })
 }
 
-reviewBtn.addEventListener('click', loginCheck);
-qnaBtn.addEventListener('click', loginCheck);
+// reviewBtn.addEventListener('click', loginCheck);
+// qnaBtn.addEventListener('click', loginCheck);
 
 //===========================================================
 // 스크롤 이벤트
@@ -200,3 +207,29 @@ document.addEventListener('scroll', () => {
 // 공유버튼 (카피 이벤트)
 
 urlCopyBtn.addEventListener('click', clip);
+
+//===========================================================
+let before;
+let count = 0;
+for (let i = 0; i < qna_list.length; i++) {
+    qna_box.addEventListener('click', (e) => {
+        if (e.target == qna_list[i]) {
+            qna_content[i].style.display = "block";
+            if (count > 0) {
+                before.style.display = "none";
+            }
+            before = qna_content[i];
+            count++;
+        }
+    });
+}
+
+//===========================================================
+
+qna_write_btn.addEventListener('click', () => {
+    qna_write.style.display = "block";
+});
+
+qna_close[0].addEventListener('click', () => {
+    qna_write.style.display = "none";
+});

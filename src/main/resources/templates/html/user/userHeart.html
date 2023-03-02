@@ -27,11 +27,8 @@
     <main>
         <h1>Wishlist</h1>
         <hr>
-        <article class="shop_likelist">
+        <article class="shop_likelist" th:each="heart_list : ${list}">
             <ul>
-                <li class="shop_likeboxnone hidden">
-                    <span>보관함이 비어 있습니다.</span>
-                </li>
                 <li class="shop_likebox">
                     <div class="shop_likeleft">
                         <div class="agreeAll checkBox">
@@ -42,12 +39,15 @@
                             <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="likelistimg">
                         </a>
                         <a href="../item/itemDetail.html" class="likelisttextbox">
-                            <strong>아르르 꿀잠 방석</strong>
+                            <strong th:text="${heart_list.it}">아르르 꿀잠 방석</strong>
                         </a>
                     </div>
                     <div class="shop_likeright">
                         <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="likedeleteIcon" name="1">
                     </div>
+                </li>
+                <li class="shop_likeboxnone" th:if="${#lists.isEmpty(list)}">
+                    <span>보관함이 비어 있습니다.</span>
                 </li>
             </ul>
         </article>
