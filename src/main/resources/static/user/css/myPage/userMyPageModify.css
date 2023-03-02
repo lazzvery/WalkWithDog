@@ -296,6 +296,9 @@ opacity: 0.4;
     line-height: 40px;
 }
 
+.modifyForm .ulContainer li.gender{
+    justify-content: flex-start;
+}
 
 .modifyForm .ulContainer li.birth .birthBox {
     display: flex;

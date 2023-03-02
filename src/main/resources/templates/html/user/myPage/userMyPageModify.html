@@ -154,7 +154,7 @@
                         <label>휴대전화 *</label>
                         <div class="phoneBox">
                             <div class="inputBox">
-                                <input name="user_phone" id="user_phone" placeholder="010" required>
+                                <input name="user_phone" id="user_phone" th:value="${userinfo.user_phone}" >
                             </div>
                             <p class="phoneText">* 유효한 전화번호를 입력해주세요</p>
                         </div>
@@ -163,12 +163,12 @@
                         <label>SMS 수신여부 *</label>
                         <ul class="checkBox cover">
                             <li>
-                                <input type="radio" name="user_sns_check" id="y" value="y" checked/>
-                                <label for="y" id="sms"></label>
+                                <input type="radio" name="user_sns_check" id="y" value="y" th:checked="${userinfo.user_sns_check} == 'y' ? true : false " />
+                                <label for="y" id="y"></label>
                                 <label for="y">수신함</label>
                             </li>
                             <li>
-                                <input type="radio" name="user_sns_check" id="n" value="n"/>
+                                <input type="radio" name="user_sns_check" id="n" value="n" th:checked="${userinfo.user_sns_check} == 'n' ? true : false " />
                                 <label for="n" id="n"></label>
                                 <label for="n">수신안함</label>
                             </li>
@@ -189,12 +189,12 @@
                         <label>email 수신여부 *</label>
                         <ul class="checkBox cover">
                             <li>
-                                <input type="radio" name="user_email_Check" id="Y" value="y" checked/>
+                                <input type="radio" name="user_email_check" id="Y" value="y" th:checked="${userinfo.user_email_check} == 'y' ? true : false " />
                                 <label for="Y" id="Y"></label>
                                 <label for="Y">수신함</label>
                             </li>
                             <li>
-                                <input type="radio" name="user_email_Check" id="N" value="n"/>
+                                <input type="radio" name="user_email_check" id="N" value="n" th:checked="${userinfo.user_email_check} == 'n' ? true : false "  />
                                 <label for="N" id="N"></label>
                                 <label for="N">수신안함</label>
                             </li>
@@ -205,12 +205,12 @@
                         <label>성별</label>
                         <ul class="checkBox">
                             <li>
-                                <input type="radio" name="user_gen" id="w" value="woman"/>
+                                <input type="radio" name="user_gen" id="w" value="woman" th:checked="${userinfo.user_gen} == 'woman' ? true : false " />
                                 <label for="w" id="w"></label>
                                 <label for="w">여</label>
                             </li>
                             <li>
-                                <input type="radio" name="user_gen" id="m" value="men"/>
+                                <input type="radio" name="user_gen" id="m" value="men" th:checked="${userinfo.user_gen} == 'men' ? true : false " />
                                 <label for="m" id="m"></label>
                                 <label for="m">남</label>
                             </li>

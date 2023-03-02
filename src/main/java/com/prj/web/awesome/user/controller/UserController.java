@@ -131,6 +131,7 @@ public class UserController {
 
         mv.addAttribute("userinfo", dto);
         System.out.println(dto);
+        System.out.println(dto.getUser_email_check());
 
         return "html/user/myPage/userMyPageModify";
     }
@@ -145,7 +146,7 @@ public class UserController {
         UserDTO userDetail = service.userSelectOne(dto);
         mv.addObject("userInfo", userDetail);
         // => Update 성공/실패 모두 출력시 필요하므로
-        System.out.println(dto);
+        System.out.println(dto.getUser_email_check());
 
 
         if ( service.userUpdate(dto)>0 ) {
