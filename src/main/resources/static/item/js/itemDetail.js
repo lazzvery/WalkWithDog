@@ -25,7 +25,9 @@ const img_container = document.querySelector('.img_container'),
     qna_content = document.getElementsByClassName('qna_content'),
     qna_write = document.querySelector('.itemQnaPopUp'),
     qna_write_btn = document.querySelector('.writebtn'),
-    qna_close = qna_write.getElementsByTagName('img');
+    qna_close = qna_write.getElementsByTagName('img'),
+    body = document.querySelector("body");
+
 
 const optionSelect = [
     {
@@ -228,8 +230,10 @@ for (let i = 0; i < qna_list.length; i++) {
 
 qna_write_btn.addEventListener('click', () => {
     qna_write.style.display = "block";
+    body.style.overflow = "hidden";
 });
 
 qna_close[0].addEventListener('click', () => {
     qna_write.style.display = "none";
+    body.style.overflow = "auto";
 });
