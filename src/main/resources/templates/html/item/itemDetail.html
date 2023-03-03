@@ -342,8 +342,8 @@
                 <img src="../../../img/icon/iclose.png" style="cursor: pointer"/>
             </h2>
             <hr>
-            <form th:object="${itemQnaDTO}" th:action="@{/item/itemDetail/{itemId}(itemId=${itemId})}" method="post" onsubmit="return insertQna(event);">
-                <input type="hidden" name="item_id" th:value="${item.item_id}">
+            <form id="insert-form" th:object="${itemQnaDTO}" th:action="@{/item/itemDetail/{itemId}(itemId=${itemId})}" method="post" onsubmit="return insertQna(event);">
+                <input type="hidden" name="item_id" th:value="${item.item_id}" id="item_id">
                 <ul>
                     <li class="title">
                         <div class="imgbox">

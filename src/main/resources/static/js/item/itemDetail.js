@@ -242,29 +242,25 @@ qna_close[0].addEventListener('click', () => {
 // A-jax
 
 function insertQna(event) {
-    event.preventDefault();
+    event.preventDefault(); // 원래 submit 버튼 동작 안 하게
 
-    let formData = $('#insert-form').serialize(); // 폼 데이터 serialize
+    let formData = $('#insert-form').serialize(); // 폼 데이터 직렬화
 
     $.ajax({
-        type: $('form').attr("method"),
-        url: $('form').attr("action"), // 요청 URL
+        type: 'POST',
+        url: '/item/itemDetail/' + $('#item_id').val(),
         data: formData, // 폼 데이터
         success: function(result) {
             // 성공 시 처리할 내용
             if (result.success) {
-                // 성공적으로 질문이 등록되었다는 메시지를 사용자에게 알림
                 alert(result.message);
 
-                // 새로운 질문을 목록에 추가
-                let qnaList = $("#qnaList");
-                let newQuestion = $(result.html).find(".question");
-                qnaList.append(newQuestion);
+                $('.itemQnaPopUp').css('display', 'none');  // 팝업창 내리기
+                $('body').css('overflow', 'auto');  // body의 스크롤 다시 생기게
+                $('.qna_box').load('/item/itemDetail/' + $('#item_id').val() + ' .qna_box');    // 데이터 reload
+                $('#insert-form')[0].reset();   // form 안의 인풋들 전부 원상복구
 
-                // 입력 필드 초기화
-                $("form#qnaForm input[type=text]").val("");
             } else {
-                // 요청 처리 중 에러가 발생했다는 메시지를 사용자에게 알림
                 alert(result.message);
             }
         },
