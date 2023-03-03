@@ -305,10 +305,8 @@ function deleteQna(itemQnaSeq) {
 function updateHeart(hearted) {
     if (hearted) {
         heartBtn.src = "../../../img/icon/iheartfill.png";
-        heartBtn.style.opacity = "1";
     } else {
         heartBtn.src = "../../../img/icon/iheart.png";
-        heartBtn.style.opacity = ".5";
     }
 }
 
@@ -316,9 +314,11 @@ function saveHeart() {
     $.ajax({
         type: "POST",
         url: '/user/heart/' + $('#item_id').val(),
+        cache: false,
         success: function(result) {
             alert(result.message);
             updateHeart(true); // 세션에 저장된 상품인 경우
+            $('.product_summary').load('/item/itemDetail/' + $('#item_id').val() + ' .product_summary');
         },
         error: function(xhr) {
         }
@@ -329,9 +329,11 @@ function deleteHeart() {
     $.ajax({
         type: "DELETE",
         url: '/user/heart/' + $('#item_id').val(),
+        cache: false,
         success: function(result) {
             alert(result.message);
             updateHeart(false); // 세션에 저장되지 않은 상품인 경우
+            $('.product_summary').load('/item/itemDetail/' + $('#item_id').val() + ' .product_summary');
         },
         error: function(xhr) {
         }
