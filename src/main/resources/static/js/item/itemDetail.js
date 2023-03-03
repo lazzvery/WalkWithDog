@@ -251,6 +251,7 @@ function insertQna(event) {
         url: '/item/itemDetail/' + $('#item_id').val(),
         data: formData, // 폼 데이터
         success: function(result) {
+            $(".popBox").scrollTop(0);
             // 성공 시 처리할 내용
             if (result.success) {
                 alert(result.message);
@@ -260,8 +261,10 @@ function insertQna(event) {
                 $('.qna_box').load('/item/itemDetail/' + $('#item_id').val() + ' .qna_box');    // 데이터 reload
                 $('#insert-form')[0].reset();   // form 안의 인풋들 전부 원상복구
 
+
             } else {
                 alert(result.message);
+
             }
         },
         error: function(xhr) {
