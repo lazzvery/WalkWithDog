@@ -44,11 +44,9 @@
             <div class="product_summary">
                 <span class="bestBtn">BEST</span>
                 <img src="../../../img/icon/iheartfill.png" alt="좋아요" class="heartbBtn"
-                     th:if="${#session.getAttribute('heartList') != null and #session.getAttribute('heartList').contains(item.item_id)}"
-                     th:onclick="deleteHeart()">
+                     th:onclick="deleteHeart()" th:if="${checkHeart}">
                 <img src="../../../img/icon/iheart.png" alt="좋아요" class="heartbBtn"
-                     th:if="${#session.getAttribute('heartList') == null or !#session.getAttribute('heartList').contains(item.item_id)}"
-                     th:onclick="saveHeart()">
+                     th:onclick="saveHeart()" th:if="${!checkHeart}">
                 <img src="../../../img/icon/ishare.png" alt="공유하기" class="sharebBtn">
                 <h2 th:text="${item.item_name}">아르르 꿀잠 이불</h2>
                 <span class="salePrice" th:text="${item.item_price}">29,900원</span>

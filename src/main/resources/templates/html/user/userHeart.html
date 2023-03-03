@@ -27,7 +27,7 @@
     <main>
         <h1>Wishlist</h1>
         <hr>
-        <article class="shop_likelist" th:each="heart, i : ${list}">
+        <article class="shop_likelist" th:each="heart : ${list}">
             <ul>
                 <li class="shop_likebox">
                     <div class="shop_likeleft">
@@ -35,11 +35,11 @@
                             <input type="checkbox" name="agreeCheck1" id="agreeCheck1">
                             <label for="agreeCheck1" id="agreeCheck1"></label>
                         </div>
-                        <a href="../item/itemDetail.html" class="likelistimgbox">
+                        <a href="../item/itemDetail.html" class="likelistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
                             <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="likelistimg">
                         </a>
-                        <a href="../item/itemDetail.html" class="likelisttextbox">
-                            <strong th:text="${itemDetails[i.index].getItem_name()}">상품명</strong>
+                        <a href="../item/itemDetail.html" class="likelisttextbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
+                            <strong th:text="${heart.item_name}">상품명</strong>
                         </a>
                     </div>
                     <div class="shop_likeright">
@@ -57,8 +57,7 @@
                 <a href="#none" class="likepayBtnw">전체삭제</a>
             </div>
             <div class="shop_likeBtnright">
-                <a href="#" class="likepayBtnw">장바구니 담기</a>
-                <a href="#" class="likepayBtnb">상품 주문하기</a>
+                <a href="#" class="likepayBtnb">장바구니 담기</a>
             </div>
         </article>
     </main>

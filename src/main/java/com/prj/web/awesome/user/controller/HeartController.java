@@ -3,6 +3,7 @@ package com.prj.web.awesome.user.controller;
 import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
 import com.prj.web.awesome.itemDetail.service.ItemDetailService;
 import com.prj.web.awesome.user.dto.HeartDTO;
+import com.prj.web.awesome.user.dto.HeartItemDTO;
 import com.prj.web.awesome.user.service.HeartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,36 +24,32 @@ import java.util.Map;
 public class HeartController {
 
     private final HeartService hservice;
-    private final ItemDetailService iservice;
 
     @GetMapping
     public String showList(HttpSession session, Model model) {
+
         String loginID = (String) session.getAttribute("loginID");
 
-        List<HeartDTO> list = hservice.findList(loginID);
-        List<ItemDetailDto> itemDetails = new ArrayList<>();
-        for (HeartDTO heartDTO : list) {
-            ItemDetailDto item = iservice.findItem(heartDTO.getItem_id());
-            itemDetails.add(item);
-        }
-
-        model.addAttribute("itemDetails", itemDetails);
+        List<HeartItemDTO> list = hservice.findHeartItem(loginID);
         model.addAttribute("list", list);
 
         return "html/user/userHeart";
+
     }
 
     @ResponseBody
     @PostMapping("/{itemId}")
     public Map<String, Object> saveHeart(@PathVariable("itemId") int itemId, HeartDTO heartDTO, HttpSession session) {
+
         heartDTO.setItem_id(itemId);
         heartDTO.setUser_id((String) session.getAttribute("loginID"));
-
         List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
-        if (heartList == null || !heartList.contains(itemId)) {
-            if (heartList == null) {
-                heartList = new ArrayList<>();
-            }
+
+        if (heartList == null) {
+            heartList = new ArrayList<Integer>();
+        }
+
+        if (!heartList.contains(String.valueOf(itemId))) {
             hservice.save(heartDTO);
             heartList.add(itemId);
             session.setAttribute("heartList", heartList);
@@ -63,13 +60,16 @@ public class HeartController {
         result.put("message", "이 상품을 좋아합니다!");
 
         return result;
+
     }
 
     @ResponseBody
     @DeleteMapping("/{itemId}")
     public Map<String, Object> deleteHeart(@PathVariable("itemId") int itemId, HttpSession session) {
+
         List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
-        if (heartList != null && heartList.contains(itemId)) {
+
+        if (heartList.contains(itemId)) {
             hservice.delete(itemId);
             heartList.remove((Integer) itemId);
             session.setAttribute("heartList", heartList);
@@ -80,5 +80,6 @@ public class HeartController {
         result.put("message", "이 상품을 싫어합니다!");
 
         return result;
+
     }
 }
