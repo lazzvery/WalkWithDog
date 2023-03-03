@@ -18,7 +18,7 @@ $(function() {
 
         $('input[name="ctgr_cd"]').val($(this).data('ctgrCd'));
 
-        alert($('input[name="ctgr_cd"]').val());
+        // alert($('input[name="ctgr_cd"]').val());
 
         $('#transData').attr('action', '/item/list');
         $('#transData').attr('method', 'get');
