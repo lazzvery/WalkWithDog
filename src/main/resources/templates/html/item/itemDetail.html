@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../common/css/header.css"/>
-    <link rel="stylesheet" href="../../../common/css/footer.css"/>
-    <link rel="stylesheet" href="../../../common/css/indexCommon.css">
-    <link rel="stylesheet" href="../../../user/css/myPage/userMyPageCommon.css">
-    <link rel="stylesheet" href="../../../item/css/itemDetail.css">
-    <script defer src="../../../item/js/itemDetail.js"></script>
-    <script defer src="../../../js/index.js"></script>
+    <link rel="stylesheet" href="../../../../common/css/header.css" />
+    <link rel="stylesheet" href="../../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../../css/item/itemDetail.css">
+    <script defer src="../../../../js/item/itemDetail.js"></script>
+    <script defer src="../../../../js/index.js"></script>
     <title>detail</title>
 <body>
 <!-- ---------------- 버튼 ------------------ -->
@@ -343,7 +342,7 @@
             </h2>
             <hr>
             <form th:action method="post">
-                <input type="hidden" name="item_id" value="10000000">
+                <input type="hidden" name="item_id" th:value="${item.item_id}">
                 <ul>
                     <li class="title">
                         <div class="imgbox">

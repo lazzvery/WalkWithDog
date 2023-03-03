@@ -2,280 +2,286 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>HOME</title>
-  <link rel="stylesheet" href="../common/css/header.css" />
-  <link rel="stylesheet" href="../common/css/footer.css" />
-  <link rel="stylesheet" href="../css/index.css" />
-  <link rel="stylesheet" href="../common/css/indexCommon.css">
-  <script src="/js/jquery/jquery-3.6.3.min.js"></script>
-  <script src="/js/header.js"></script>
-  <script defer src="/js/index.js"></script>
-  <script defer src="/js/main.js"></script>
-  <script defer src="/js/sub.js"></script>
-  <!-- <script src="./COMMON/Header/Javascript/header.js"></script> -->
-  <script src="https://kit.fontawesome.com/820cd623a1.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <title>HOME</title>
+    <link rel="stylesheet" href="../common/css/header.css"/>
+    <link rel="stylesheet" href="../common/css/footer.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../common/css/indexCommon.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+    <script src="/js/header.js"></script>
+    <script defer src="/js/index.js"></script>
+    <script defer src="/js/main.js"></script>
+    <script defer src="/js/sub.js"></script>
+    <!-- <script src="./COMMON/Header/Javascript/header.js"></script> -->
+    <script src="https://kit.fontawesome.com/820cd623a1.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
-  <!-- ---------------- 버튼 ------------------ -->
-  <a class="toTop hidden_" href="#"> </a>
-  <!-- ---------------- 버튼 ------------------ -->
+<!-- ---------------- 버튼 ------------------ -->
+<a class="toTop hidden_" href="#"> </a>
+<!-- ---------------- 버튼 ------------------ -->
 
-  <!-- ---------------- <header> 모듈 ------------------ -->
-  <header th:replace="html/fragments/headerFooter :: header"></header>
-  <!-- ---------------- <header> 모듈 ------------------ -->
+<!-- ---------------- <header> 모듈 ------------------ -->
+<header th:replace="html/fragments/headerFooter :: header"></header>
+<!-- ---------------- <header> 모듈 ------------------ -->
 
-  <!--------------------- <main> 시작 --------------------->
-  <main class="mainContainer">
+<!--------------------- <main> 시작 --------------------->
+<main class="mainContainer">
     <button class="button prevBtn" type="button" area-label="Previous">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-        <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-        <path
-          d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+                    d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+        </svg>
     </button>
 
     <button class="button nextBtn" type="button" aria-label="Next">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
-        <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-        <path
-          d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
-      </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+                    d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/>
+        </svg>
     </button>
-<!--
+    <!--
 
-    <table id="textTest">
-      <tr>
-        <th>ctgr_cd</th>
-        <th>ctgr_nm</th>
-        <th>ctgr_order</th>
-        <th>prt_ctgr_cd</th>
-        <th>use_yn</th>
-      </tr>
-      <tr th:each="category:${categoryList}" th:if="${category.getPrt_ctgr_cd()} != ''">
-        <td th:text="${category.getCtgr_cd()}"></td>
-        <td th:text="${category.getCtgr_nm()}"></td>
-        <td th:text="${category.getCtgr_order()}"></td>
-        <td th:text="${category.getPrt_ctgr_cd()}"></td>
-        <td th:text="${category.getUse_yn()}"></td>
-      </tr>
-    </table>
--->
+        <table id="textTest">
+          <tr>
+            <th>ctgr_cd</th>
+            <th>ctgr_nm</th>
+            <th>ctgr_order</th>
+            <th>prt_ctgr_cd</th>
+            <th>use_yn</th>
+          </tr>
+          <tr th:each="category:${categoryList}" th:if="${category.getPrt_ctgr_cd()} != ''">
+            <td th:text="${category.getCtgr_cd()}"></td>
+            <td th:text="${category.getCtgr_nm()}"></td>
+            <td th:text="${category.getCtgr_order()}"></td>
+            <td th:text="${category.getPrt_ctgr_cd()}"></td>
+            <td th:text="${category.getUse_yn()}"></td>
+          </tr>
+        </table>
+    -->
 
     <!-- 메인 배너 이미지 슬라이드 박스 -->
     <div class="slideWrapper">
-      <ul class="slides">
-        <li>
-          <img class="pcImg" src="../img/bannerImg/microtofu_banner_pc.jpg" alt="메인배너" />
-        </li>
-        <li>
-          <img class="pcImg" src="../img/bannerImg/cushionv2_main.jpg" alt="메인배너" />
-        </li>
-        <li>
-          <img class="pcImg" src="../img/bannerImg/sundaybag_pc.png" alt="메인배너" />
-        </li>
-        <li>
-          <img class="pcImg" src="../img/bannerImg/mainbanner_pc.jpg" alt="메인배너" />
-        </li>
-      </ul>
+        <ul class="slides">
+            <li>
+                <img class="pcImg" src="../img/bannerImg/microtofu_banner_pc.jpg" alt="메인배너"/>
+            </li>
+            <li>
+                <img class="pcImg" src="../img/bannerImg/cushionv2_main.jpg" alt="메인배너"/>
+            </li>
+            <li>
+                <img class="pcImg" src="../img/bannerImg/sundaybag_pc.png" alt="메인배너"/>
+            </li>
+            <li>
+                <img class="pcImg" src="../img/bannerImg/mainbanner_pc.jpg" alt="메인배너"/>
+            </li>
+        </ul>
 
     </div>
 
     <!-- --------------------- 상품 소개---------------------- -->
     <section class="productContainer">
-      <div class="product">
-        <div class="productMent">
-          <h1># <span>NEW</span> PRODUCT</h1>
-        </div>
-        <div class="prdMore">
-          <a href="html/itemList/itemList.html">전체보기 +</a>
-        </div>
+        <div class="product">
+            <div class="productMent">
+                <h1># <span>NEW</span> PRODUCT</h1>
+            </div>
+            <div class="prdMore">
+                <a href="html/itemList/itemList.html">전체보기 +</a>
+            </div>
 
-        <div class="productImgList">
-          <div class="productImg productImg1">
-            <a href="/item/itemDetail?item_id=10000000" class="img1"><img src="../img/bannerImg/08_.jpg" alt="상품1"
-                class="prdImg1" /></a>
-            <a href="/item/itemDetail?item_id=10000000" class="img2"><img src="../img/bannerImg/08-1_.jpg" alt="상품1"
-                class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 아르르 꿀잠이불 </span>
-              <p>29,900원</p>
-            </h1>
-          </div>
+            <div class="productImgList">
+                <div class="productImg productImg1">
+                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}"
+                       class="img1">
+                        <img src="../img/bannerImg/08_.jpg" alt="상품1" class="prdImg1"/></a>
+                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}"
+                       class="img2">
+                        <img src="../img/bannerImg/08-1_.jpg" alt="상품1" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 아르르 꿀잠이불 </span>
+                        <p>29,900원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg2">
-            <a href="/item/itemDetail?item_id=10000001" class="img1"><img src="../img/bannerImg/00.png" alt="상품2" class="prdImg1" /></a>
-            <a href="/item/itemDetail?item_id=10000001" class="img2"><img src="../img/bannerImg/00-1.png" alt="상품2" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 선데이백 </span>
-              <p>149,000원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg2">
+                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}"
+                       class="img1">
+                        <img src="../img/bannerImg/00.png" alt="상품2" class="prdImg1"/></a>
+                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}"
+                       class="img2">
+                        <img src="../img/bannerImg/00-1.png" alt="상품2" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 선데이백 </span>
+                        <p>149,000원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg3">
-            <a href="#" class="img1"><img src="../img/bannerImg/01.jpg" alt="상품3" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/01-1.jpg" alt="상품3" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 사르르 미니캔 캣 대용량 </span>
-              <p>24,900원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg3">
+                    <a href="#" class="img1"><img src="../img/bannerImg/01.jpg" alt="상품3" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/01-1.jpg" alt="상품3" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 사르르 미니캔 캣 대용량 </span>
+                        <p>24,900원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg4">
-            <a href="#" class="img1"><img src="../img/bannerImg/02.png" alt="상품4" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/02-1.png" alt="상품4" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 바운싱 하네스 & 로프 리쉬 </span>
-              <p>31,900원</p>
-            </h1>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="productMent">
-          <h1># <span>BEST</span> PRODUCT</h1>
-        </div>
-        <div class="prdMore">
-          <a href="">전체보기 +</a>
+                <div class="productImg productImg4">
+                    <a href="#" class="img1"><img src="../img/bannerImg/02.png" alt="상품4" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/02-1.png" alt="상품4" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 바운싱 하네스 & 로프 리쉬 </span>
+                        <p>31,900원</p>
+                    </h1>
+                </div>
+            </div>
         </div>
 
-        <div class="productImgList">
-          <div class="productImg productImg5">
-            <a href="#" class="img1"><img src="../img/bannerImg/03.jpg" alt="상품5" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/03-1.jpg" alt="상품5" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 바운싱 하네스 & 로프 리쉬 </span>
-              <p>31,900원</p>
-            </h1>
-          </div>
+        <div class="product">
+            <div class="productMent">
+                <h1># <span>BEST</span> PRODUCT</h1>
+            </div>
+            <div class="prdMore">
+                <a href="">전체보기 +</a>
+            </div>
 
-          <div class="productImg productImg6">
-            <a href="#" class="img1"><img src="../img/bannerImg/04.png" alt="상품6" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/04-1.png" alt="상품6" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 선데이 풉백 케이스 </span>
-              <p>12,900원</p>
-            </h1>
-          </div>
+            <div class="productImgList">
+                <div class="productImg productImg5">
+                    <a href="#" class="img1"><img src="../img/bannerImg/03.jpg" alt="상품5" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/03-1.jpg" alt="상품5" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 바운싱 하네스 & 로프 리쉬 </span>
+                        <p>31,900원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg7">
-            <a href="#" class="img1"><img src="../img/bannerImg/05.png" alt="상품7" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/05-1.jpg" alt="상품7" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 포옹백 </span>
-              <p>69,900원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg6">
+                    <a href="#" class="img1"><img src="../img/bannerImg/04.png" alt="상품6" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/04-1.png" alt="상품6" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 선데이 풉백 케이스 </span>
+                        <p>12,900원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg8">
-            <a href="#" class="img1"><img src="../img/bannerImg/06.jpg" alt="상품8" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/06-1.png" alt="상품8" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 사르르 미니캔 독 </span>
-              <p>9,500원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg7">
+                    <a href="#" class="img1"><img src="../img/bannerImg/05.png" alt="상품7" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/05-1.jpg" alt="상품7" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 포옹백 </span>
+                        <p>69,900원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg9">
-            <a href="#" class="img1"><img src="../img/bannerImg/07.jpg" alt="상품9" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/07-1.png" alt="상품9" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 사르르 미니캔 캣 </span>
-              <p>9,500원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg8">
+                    <a href="#" class="img1"><img src="../img/bannerImg/06.jpg" alt="상품8" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/06-1.png" alt="상품8" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 사르르 미니캔 독 </span>
+                        <p>9,500원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg10">
-            <a href="#" class="img1"><img src="../img/bannerImg/08.jpg" alt="상품10" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/08_1.jpg" alt="상품10" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 사르르 영양스튜 캣 </span>
-              <p>2,500원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg9">
+                    <a href="#" class="img1"><img src="../img/bannerImg/07.jpg" alt="상품9" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/07-1.png" alt="상품9" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 사르르 미니캔 캣 </span>
+                        <p>9,500원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg11">
-            <a href="#" class="img1"><img src="../img/bannerImg/09.jpg" alt="상품11" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/09-1.jpg" alt="상품11" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 사르르 영양스튜 독 </span>
-              <p>2,500원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg10">
+                    <a href="#" class="img1"><img src="../img/bannerImg/08.jpg" alt="상품10" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/08_1.jpg" alt="상품10" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 사르르 영양스튜 캣 </span>
+                        <p>2,500원</p>
+                    </h1>
+                </div>
 
-          <div class="productImg productImg12">
-            <a href="#" class="img1"><img src="../img/bannerImg/10.jpg" alt="상품12" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/10-1.jpg" alt="상품12" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 마이핏 하네스 & 리쉬 라이트 </span>
-              <p>27,900원</p>
-            </h1>
-          </div>
+                <div class="productImg productImg11">
+                    <a href="#" class="img1"><img src="../img/bannerImg/09.jpg" alt="상품11" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/09-1.jpg" alt="상품11" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 사르르 영양스튜 독 </span>
+                        <p>2,500원</p>
+                    </h1>
+                </div>
+
+                <div class="productImg productImg12">
+                    <a href="#" class="img1"><img src="../img/bannerImg/10.jpg" alt="상품12" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/10-1.jpg" alt="상품12" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 마이핏 하네스 & 리쉬 라이트 </span>
+                        <p>27,900원</p>
+                    </h1>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="product">
-        <div class="productMent">
-          <h1># PRODUCT <span> REVIEW</span></h1>
+        <div class="product">
+            <div class="productMent">
+                <h1># PRODUCT <span> REVIEW</span></h1>
+            </div>
+            <div class="prdMore">
+                <a href="">전체보기 +</a>
+            </div>
+
+            <div class="productImgList">
+                <div class="productImg productImg1">
+                    <a href="./html/item/itemDetails.html" class="img1"><img src="../img/bannerImg/08_.jpg" alt="상품1"
+                                                                             class="prdImg1"/></a>
+                    <a href="./html/item/itemDetails.html" class="img2"><img src="../img/bannerImg/08-1_.jpg" alt="상품1"
+                                                                             class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 아르르 꿀잠이불 </span>
+                        <p>29,900원</p>
+                    </h1>
+                </div>
+
+                <div class="productImg productImg2">
+                    <a href="#" class="img1"><img src="../img/bannerImg/00.png" alt="상품2" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/00-1.png" alt="상품2" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 선데이백 </span>
+                        <p>149,000원</p>
+                    </h1>
+                </div>
+
+                <div class="productImg productImg3">
+                    <a href="#" class="img1"><img src="../img/bannerImg/01.jpg" alt="상품3" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/01-1.jpg" alt="상품3" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 사르르 미니캔 캣 대용량 </span>
+                        <p>24,900원</p>
+                    </h1>
+                </div>
+
+                <div class="productImg productImg4">
+                    <a href="#" class="img1"><img src="../img/bannerImg/02.png" alt="상품4" class="prdImg1"/></a>
+                    <a href="#" class="img2"><img src="../img/bannerImg/02-1.png" alt="상품4" class="prdImg2"/></a>
+                    <h1 class="name">
+                        <span> 바운싱 하네스 & 로프 리쉬 </span>
+                        <p>31,900원</p>
+                    </h1>
+                </div>
+            </div>
         </div>
-        <div class="prdMore">
-          <a href="">전체보기 +</a>
-        </div>
-
-        <div class="productImgList">
-          <div class="productImg productImg1">
-            <a href="./html/item/itemDetails.html" class="img1"><img src="../img/bannerImg/08_.jpg" alt="상품1"
-                class="prdImg1" /></a>
-            <a href="./html/item/itemDetails.html" class="img2"><img src="../img/bannerImg/08-1_.jpg" alt="상품1"
-                class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 아르르 꿀잠이불 </span>
-              <p>29,900원</p>
-            </h1>
-          </div>
-
-          <div class="productImg productImg2">
-            <a href="#" class="img1"><img src="../img/bannerImg/00.png" alt="상품2" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/00-1.png" alt="상품2" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 선데이백 </span>
-              <p>149,000원</p>
-            </h1>
-          </div>
-
-          <div class="productImg productImg3">
-            <a href="#" class="img1"><img src="../img/bannerImg/01.jpg" alt="상품3" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/01-1.jpg" alt="상품3" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 사르르 미니캔 캣 대용량 </span>
-              <p>24,900원</p>
-            </h1>
-          </div>
-
-          <div class="productImg productImg4">
-            <a href="#" class="img1"><img src="../img/bannerImg/02.png" alt="상품4" class="prdImg1" /></a>
-            <a href="#" class="img2"><img src="../img/bannerImg/02-1.png" alt="상품4" class="prdImg2" /></a>
-            <h1 class="name">
-              <span> 바운싱 하네스 & 로프 리쉬 </span>
-              <p>31,900원</p>
-            </h1>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- --------------------- 상품 소개---------------------- -->
-  </main>
-  <!--------------------- <main> 끝 --------------------->
+</main>
+<!--------------------- <main> 끝 --------------------->
 
-  <!--------------------- <footer> 모듈 --------------------->
-  <footer th:replace="html/fragments/headerFooter :: footer"></footer>
-  <!--------------------- <footer> 모듈 --------------------->
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
 </body>
 </html>

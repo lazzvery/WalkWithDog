@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -22,10 +23,10 @@ public class ItemDetailController {
     private final ItemDetailService dservice;
     private final ItemQnaService qservice;
 
-    @GetMapping
-    public String searchItem(int item_id, Model model){
-        ItemDetailDto item = dservice.findItem(item_id);
-        List<ItemQnaDTO> qna = qservice.findAll(item_id);
+    @GetMapping("/{itemId}")
+    public String searchItem(@PathVariable("itemId") int itemId, Model model){
+        ItemDetailDto item = dservice.findItem(itemId);
+        List<ItemQnaDTO> qna = qservice.findAll(itemId);
 
         model.addAttribute("item", item);
         model.addAttribute("qna", qna);
@@ -33,15 +34,18 @@ public class ItemDetailController {
         return "html/item/itemDetail";
     }
 
-    @PostMapping
-    public String insertQna(ItemQnaDTO itemQnaDTO, HttpSession session) {
+    @PostMapping("/{itemId}")
+    public String insertQna(@PathVariable("itemId") int itemId, ItemQnaDTO itemQnaDTO, HttpSession session, RedirectAttributes rttr) {
         String userId = (String) session.getAttribute("loginID");
 
         itemQnaDTO.setUser_id(userId);
         itemQnaDTO.setItem_qna_pnum(itemQnaDTO.getItem_qna_pnum());
         qservice.save(itemQnaDTO);
 
-        return "redirect:/item/itemDetail?item_id=" + itemQnaDTO.getItem_id();
+        rttr.addAttribute("itemId", itemQnaDTO.getItem_id());
+        log.info("itemId={}", itemQnaDTO.getItem_id());
+
+        return "redirect:/item/itemDetail/{itemId}";
     }
 
 }
