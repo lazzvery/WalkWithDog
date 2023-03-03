@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../../../common/css/footer.css" />
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../../css/item/itemDetail.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
     <script defer src="../../../../js/item/itemDetail.js"></script>
     <script defer src="../../../../js/index.js"></script>
     <title>detail</title>
@@ -341,7 +342,7 @@
                 <img src="../../../img/icon/iclose.png" style="cursor: pointer"/>
             </h2>
             <hr>
-            <form th:action method="post">
+            <form th:object="${itemQnaDTO}" th:action="@{/item/itemDetail/{itemId}(itemId=${itemId})}" method="post" onsubmit="return insertQna(event);">
                 <input type="hidden" name="item_id" th:value="${item.item_id}">
                 <ul>
                     <li class="title">

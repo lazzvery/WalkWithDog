@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -35,17 +37,18 @@ public class ItemDetailController {
     }
 
     @PostMapping("/{itemId}")
-    public String insertQna(@PathVariable("itemId") int itemId, ItemQnaDTO itemQnaDTO, HttpSession session, RedirectAttributes rttr) {
+    @ResponseBody
+    public Map<String, Object> insertQna(@PathVariable("itemId") int itemId, ItemQnaDTO itemQnaDTO, HttpSession session) {
         String userId = (String) session.getAttribute("loginID");
 
         itemQnaDTO.setUser_id(userId);
-        itemQnaDTO.setItem_qna_pnum(itemQnaDTO.getItem_qna_pnum());
         qservice.save(itemQnaDTO);
 
-        rttr.addAttribute("itemId", itemQnaDTO.getItem_id());
-        log.info("itemId={}", itemQnaDTO.getItem_id());
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
+        result.put("message", "질문이 성공적으로 등록되었습니다.");
 
-        return "redirect:/item/itemDetail/{itemId}";
+        return result;
     }
 
 }

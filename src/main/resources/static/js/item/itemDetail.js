@@ -237,3 +237,41 @@ qna_close[0].addEventListener('click', () => {
     qna_write.style.display = "none";
     body.style.overflow = "auto";
 });
+
+//==========================================================
+// A-jax
+
+function insertQna(event) {
+    event.preventDefault();
+
+    let formData = $('#insert-form').serialize(); // 폼 데이터 serialize
+
+    $.ajax({
+        type: $('form').attr("method"),
+        url: $('form').attr("action"), // 요청 URL
+        data: formData, // 폼 데이터
+        success: function(result) {
+            // 성공 시 처리할 내용
+            if (result.success) {
+                // 성공적으로 질문이 등록되었다는 메시지를 사용자에게 알림
+                alert(result.message);
+
+                // 새로운 질문을 목록에 추가
+                let qnaList = $("#qnaList");
+                let newQuestion = $(result.html).find(".question");
+                qnaList.append(newQuestion);
+
+                // 입력 필드 초기화
+                $("form#qnaForm input[type=text]").val("");
+            } else {
+                // 요청 처리 중 에러가 발생했다는 메시지를 사용자에게 알림
+                alert(result.message);
+            }
+        },
+        error: function(xhr) {
+            // 실패 시 처리할 내용
+        }
+    });
+
+    return false;
+}
