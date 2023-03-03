@@ -25,4 +25,5 @@ public interface UserMapper {
 
     // 5. delete
     int userDelete(UserDTO dto);
+
 }

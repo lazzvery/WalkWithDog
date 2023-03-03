@@ -60,31 +60,17 @@
                 </thead>
 
                 <tbody>
-                    <tr>
+                    <tr th:each="addrList : ${addrList}">
                         <td class="inputBox">
                             <div class="checkBox">
                                 <input type="checkbox" name="checkbox" id="checkbox" />
                                 <label for="checkbox" id="checkbox"></label>
                             </div>
                         </td>
-                        <td>그린</td>
-                        <td>아카데미</td>
-                        <td>010-1234-1234</td>
-                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
-                        <td><a href="../register/register.html">수정</a></td>
-                    </tr>
-
-                    <tr>
-                        <td class="inputBox">
-                            <div class="checkBox">
-                                <input type="checkbox" name="checkbox" id="checkbox2" />
-                                <label for="checkbox2" id="checkbox"></label>
-                            </div>
-                        </td>
-                        <td>그린</td>
-                        <td>아카데미</td>
-                        <td>010-1234-1234</td>
-                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
+                        <td th:text="${addrList.addr_name}"></td>
+                        <td th:text="${addrList.addr_reciver}"></td>
+                        <td th:text="${addrList.addr_phone}"></td></td>
+                        <td th:text="${addrList.addr_postcode}+${addrList.addr_addr}+${addrList.addr_addr2}"></td>
                         <td><a href="../register/register.html">수정</a></td>
                     </tr>
                 </tbody>
@@ -99,7 +85,7 @@
 
             <div class="choiceButton">
                 <button>선택 주소록 삭제</button>
-                <a href="/user/myPage/register">배송지 추가</a>
+                <a href="/user/myPage/addrInsert">배송지 추가</a>
             </div>
 
 

@@ -20,6 +20,7 @@ public class UserController {
 
     @Autowired
     UserService service;
+//    PasswordEncoder passwordEncoder;
 
     // 유저 리스트
     @GetMapping("/userList")
@@ -49,9 +50,12 @@ public class UserController {
         mv.addObject("userInfo", dto);
 
         System.out.println(dto);
-
+        System.out.println(dto.getUser_id());
 
         mv.setViewName("html/user/myPage/userMyPageHome");
+
+
+
         return mv;
     } //detail
 
@@ -133,6 +137,8 @@ public class UserController {
         dto = service.userSelectOne(dto);
         mv.addAttribute("userinfo", dto);
 
+        System.out.println(dto);
+
         return "html/user/myPage/userMyPageModify";
     }
     @PostMapping("/myPage/modify")
@@ -144,8 +150,8 @@ public class UserController {
         String uri="html/user/myPage/userMyPageHome" ;
 
         // => Update 성공/실패 모두 출력시 필요하므로
-        UserDTO userDetail = service.userSelectOne(dto);
-        mv.addObject("userInfo", userDetail);
+
+        mv.addObject("userInfo", dto);
 
 
         if ( service.userUpdate(dto)>0 ) {
