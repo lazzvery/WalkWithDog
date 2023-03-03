@@ -17,4 +17,14 @@ public class HeartServiceImpl implements HeartService {
     public List<HeartDTO> findList(String user_id) {
         return mapper.findList(user_id);
     }
+
+    @Override
+    public void save(HeartDTO heartDTO) {
+        mapper.save(heartDTO);
+    }
+
+    @Override
+    public void delete(int item_id) {
+        mapper.delete(item_id);
+    }
 }

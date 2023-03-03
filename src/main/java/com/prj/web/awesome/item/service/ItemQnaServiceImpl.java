@@ -27,4 +27,14 @@ public class ItemQnaServiceImpl implements ItemQnaService {
     public void save(ItemQnaDTO itemQnaDTO) {
         mapper.save(itemQnaDTO);
     }
+
+    @Override
+    public void update(ItemQnaDTO itemQnaDTO) {
+        mapper.update(itemQnaDTO);
+    }
+
+    @Override
+    public void delete(int item_qna_seq) {
+        mapper.delete(item_qna_seq);
+    }
 }

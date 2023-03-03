@@ -35,8 +35,8 @@ public class ItemDetailController {
         return "html/item/itemDetail";
     }
 
-    @PostMapping("/{itemId}")
     @ResponseBody
+    @PostMapping("/{itemId}")
     public Map<String, Object> insertQna(@PathVariable("itemId") int itemId, ItemQnaDTO itemQnaDTO, HttpSession session) {
         String userId = (String) session.getAttribute("loginID");
 
@@ -45,7 +45,31 @@ public class ItemDetailController {
 
         Map<String, Object> result = new HashMap<>();
         result.put("success", true);
-        result.put("message", "질문이 성공적으로 등록되었습니다.");
+        result.put("message", "질문이 등록되었습니다.");
+
+        return result;
+    }
+
+    @ResponseBody
+    @PatchMapping("/{itemId}")
+    public Map<String, Object> updateQna(@PathVariable("itemId") int itemId, ItemQnaDTO itemQnaDTO) {
+        qservice.update(itemQnaDTO);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
+        result.put("message", "질문이 수정되었습니다.");
+
+        return result;
+    }
+
+    @ResponseBody
+    @DeleteMapping("/{itemId}")
+    public Map<String, Object> deleteQna(@PathVariable("itemId") int itemId, int itemQnaSeq) {
+        qservice.delete(itemQnaSeq);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
+        result.put("message", "삭제되었습니다!");
 
         return result;
     }

@@ -8,15 +8,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/user/heart")
 @RequiredArgsConstructor
 @Controller
 public class HeartController {
@@ -24,8 +25,8 @@ public class HeartController {
     private final HeartService hservice;
     private final ItemDetailService iservice;
 
-    @GetMapping("/heart")
-    public String heart(HttpSession session, Model model) {
+    @GetMapping
+    public String showList(HttpSession session, Model model) {
         String loginID = (String) session.getAttribute("loginID");
 
         List<HeartDTO> list = hservice.findList(loginID);
@@ -41,4 +42,43 @@ public class HeartController {
         return "html/user/userHeart";
     }
 
+    @ResponseBody
+    @PostMapping("/{itemId}")
+    public Map<String, Object> saveHeart(@PathVariable("itemId") int itemId, HeartDTO heartDTO, HttpSession session) {
+        heartDTO.setItem_id(itemId);
+        heartDTO.setUser_id((String) session.getAttribute("loginID"));
+
+        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
+        if (heartList == null || !heartList.contains(itemId)) {
+            if (heartList == null) {
+                heartList = new ArrayList<>();
+            }
+            hservice.save(heartDTO);
+            heartList.add(itemId);
+            session.setAttribute("heartList", heartList);
+        }
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
+        result.put("message", "이 상품을 좋아합니다!");
+
+        return result;
+    }
+
+    @ResponseBody
+    @DeleteMapping("/{itemId}")
+    public Map<String, Object> deleteHeart(@PathVariable("itemId") int itemId, HttpSession session) {
+        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
+        if (heartList != null && heartList.contains(itemId)) {
+            hservice.delete(itemId);
+            heartList.remove((Integer) itemId);
+            session.setAttribute("heartList", heartList);
+        }
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", true);
+        result.put("message", "이 상품을 싫어합니다!");
+
+        return result;
+    }
 }

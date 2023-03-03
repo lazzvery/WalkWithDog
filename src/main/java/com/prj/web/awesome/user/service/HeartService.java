@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface HeartService {
     List<HeartDTO> findList(String user_id);
+    void save(HeartDTO heartDTO);
+    void delete(int item_id);
 }
