@@ -43,6 +43,8 @@ public class UserService {
     public int userUpdate(UserDTO dto) { return mapper.userUpdate(dto);};
 //
 //    // 5. delete
-//    int delete(UserDTO vo);
+    public int userDelete(UserDTO dto){
+        return mapper.userDelete(dto);
+    };
 
 }

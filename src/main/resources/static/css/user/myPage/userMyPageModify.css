@@ -296,12 +296,17 @@ opacity: 0.4;
     line-height: 40px;
 }
 
+.modifyForm .ulContainer li.phone .phoneBox .inputBox input{
+    width:100%;
+}
+
 .modifyForm .ulContainer li.gender{
     justify-content: flex-start;
 }
 
 .modifyForm .ulContainer li.birth .birthBox {
     display: flex;
+    width: 80%;
 }
 
 .modifyForm .ulContainer li.birth .birthBox input {
@@ -389,21 +394,25 @@ opacity: 0.4;
 
 
 
-.modifyForm .modifySubmit button {
+.modifyForm .modifySubmit button,
+.modifyForm .modifySubmit a{
     width: 100%;
     padding: 16px 0;
     font-size: 17px;
 }
 
-.modifyForm .modifySubmit button:first-child {
+.modifyForm .modifySubmit button {
     background-color: #BAAAD7;
     border: 0;
     margin-top: 50px;
     color: white;
 }
 
-.modifyForm .modifySubmit button:last-child {
+.modifyForm .modifySubmit a {
+    display:block;
     background-color: #fff;
     color: #BAAAD7;
     border: 1px solid #BAAAD7;
+    box-sizing: border-box;
+    text-align: center;
 }

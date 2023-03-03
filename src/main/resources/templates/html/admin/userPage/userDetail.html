@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../css/admin/userDetail.css" />
+    <script defer src="../../javascript/index.js"></script>
+
+    <title>회원 상세정보</title>
+</head>
+
+<body>
+
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+    <header id="headerTop">
+        <div class="title">
+            <h1>관리자페이지</h1>
+        </div>
+
+        <ul class="list">
+            <li class="dBoard">
+                <a href="../admin.html">대시보드</a>
+            </li>
+            <li class="userInfo">
+                <a href="userInfo.html">회원정보</a>
+                <ul>
+                    <li>
+                        <a href="#">회원 정보 관리</a>
+                    </li>
+                    <li>
+                        <a href="#">메일,sns 수신 관리</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="productInfo">
+                <a href="#">상품관리</a>
+                <ul>
+                    <li>
+                        <a href="#">상품관리</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="noticeInfo">
+                <a href="#">게시판관리</a>
+            </li>
+
+        </ul>
+    </header>
+
+
+    <div id="contents">
+        <ul class="topMenu">
+            <li>
+                <a href="userInfo.html">회원관리</a>
+            </li>
+            <li>
+                <a href="addressInfo.html">배송지관리</a>
+            </li>
+            <li>
+                <a href="couponInfo.html">쿠폰관리</a>
+            </li>
+        </ul>
+
+        <div class="userInfoBox">
+            <table class="userInfo">
+                <caption>회원 정보</caption>
+
+                <tr>
+                    <th>아이디</th>
+                    <td>awesome</td>
+                </tr>
+                <tr>
+                    <th>이름</th>
+                    <td>정선주</td>
+                </tr>
+                <tr>
+                    <th>e-mail</th>
+                    <td>awesome@naver.com</td>
+                </tr>
+                <tr>
+                    <th>e-amil 수신여부</th>
+                    <td>N</td>
+                </tr>
+                <tr>
+                    <th>주소(기본 배송지)</th>
+                    <td>경기 광주시 능평동 오포읍 423 (금강빌라?)</td>
+                </tr>
+                <tr>
+                    <th>휴대전화</th>
+                    <td>010-8900-2824</td>
+                </tr>
+                <tr>
+                    <th>SNS 수신여부</th>
+                    <td>N</td>
+                </tr>
+                <tr>
+                    <th>성별</th>
+                    <td>여자</td>
+                </tr>
+                <tr>
+                    <th>생일</th>
+                    <td>4월26일</td>
+                </tr>
+                <tr>
+                    <th>추천인 아이디</th>
+                    <td>ms</td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="addressInfoBox">
+            <table class="addressInfo">
+                <caption>배송지 관리</caption>
+
+                <tr>
+                    <th>배송지번호</th>
+                    <th>아이디</th>
+                    <th>배송지명</th>
+                    <th>수령인</th>
+                    <th>주소</th>
+                    <th>휴대전화</th>
+                    <th>기본 배송지</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td><a href="#">awesome</a></td>
+                    <td>괜히 </td>
+                    <td>파이</td>
+                    <td>경기 광주시 능평동 오포읍 423 (금강빌라?)</td>
+                    <td>010-8900-2824</td>
+                    <td>Y</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td><a href="#">CBH</a></td>
+                    <td>한다</td>
+                    <td>모코코</td>
+                    <td>경기 용인시 수지구?</td>
+                    <td>010-5339-2807</td>
+                    <td>N</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td><a href="#">jjang</a></td>
+                    <td>했나? </td>
+                    <td>보리</td>
+                    <td>경기 광주시 태전동 성원아파트? 402동 1401호?</td>
+                    <td>010-4731-4579</td>
+                    <td>N</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="couponInfoBox">
+            <table class="couponInfo">
+                <caption>쿠폰 관리</caption>
+
+                <tr>
+                    <th>쿠폰번호</th>
+                    <th>쿠폰코드</th>
+                    <th>쿠폰명</th>
+                    <th>최소구매금액</th>
+                    <th>쿠폰혜택</th>
+                    <th>쿠폰수량</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>a01-1</td>
+                    <td>신규가입 쿠폰</td>
+                    <td>10,000원 이상</td>
+                    <td>5,000원 할인</td>
+                    <td>1개</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>a02-1</td>
+                    <td>파이 쿠폰</td>
+                    <td>10,000원 이상</td>
+                    <td>5,000원 할인</td>
+                    <td>2개</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>a03-1</td>
+                    <td>보리 쿠폰</td>
+                    <td>10,000원 이상</td>
+                    <td>5,000원 할인</td>
+                    <td>3개</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="couponInfoBox">
+            <table class="orderInfo">
+                <caption>주문 관리</caption>
+
+                <tr>
+                    <th>상품명</th>
+                    <th>주문코드</th>
+                    <th>쿠폰 코드</th>
+                    <th>배송지번호</th>
+                    <th>주문일자</th>
+                    <th>최종 결제 금액</th>
+                    <th>결제수단</th>
+                    <th>주문 처리상태</th>
+                    <th>취소/교환/반품</th>
+                </tr>
+
+                <tr>
+                    <td>보리가방</td>
+                    <td>11-11</td>
+                    <td>a01-1</td>
+                    <td>1</td>
+                    <td>2022-02-08</td>
+                    <td>56,200원</td>
+                    <td>신용카드 (2개월 할부)</td>
+                    <td>상품 준비중</td>
+                    <td>-</td>
+                </tr>
+
+                <tr>
+                    <td>언제 다 만들지..</td>
+                    <td>11-11</td>
+                    <td>a01-1</td>
+                    <td>1</td>
+                    <td>2022-02-08</td>
+                    <td>56,200원</td>
+                    <td>신용카드 (2개월 할부)</td>
+                    <td>상품 준비중</td>
+                    <td>-</td>
+                </tr>
+
+                <tr>
+                    <td>이렇게 만드는거 아니면 나 안해</td>
+                    <td>11-11</td>
+                    <td>a01-1</td>
+                    <td>1</td>
+                    <td>2022-02-08</td>
+                    <td>56,200원</td>
+                    <td>신용카드 (2개월 할부)</td>
+                    <td>상품 준비중</td>
+                    <td>-</td>
+                </tr>
+
+            </table>
+
+            <div class="pageNation">
+                &lt;
+                <ul>
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                </ul>
+                &gt;
+            </div>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>

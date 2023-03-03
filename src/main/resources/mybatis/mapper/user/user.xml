@@ -28,7 +28,8 @@
 
 	<update id="userUpdate">
 		update user set
-			user_password=#{user_password},
+
+			user_password = CASE when '' THEN user_password ELSE #{user_password} END,
 			user_phone=#{user_phone},
 		    user_sns_check=#{user_sns_check},
 		    user_email=#{user_email},
@@ -40,6 +41,10 @@
 		    where user_id=#{user_id};
 
 	</update>
+
+	<delete id="userDelete">
+		delete from user where user_id=#{user_id};
+	</delete>
 
 
 

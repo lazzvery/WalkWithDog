@@ -126,28 +126,46 @@
                         <label>email 수신여부 *</label>
                         <ul class="checkBox cover">
                             <li>
-                                <input type="radio" name="user_email_Check" id="Y" value="y" checked />
+                                <input type="radio" name="user_email_check" id="Y" value="y" checked />
                                 <label for="Y" id="Y"></label>
                                 <label for="Y">수신함</label>
                             </li>
                             <li>
-                                <input type="radio" name="user_email_Check" id="N" value="n" />
+                                <input type="radio" name="user_email_check" id="N" value="n" />
                                 <label for="N" id="N"></label>
                                 <label for="N">수신안함</label>
                             </li>
                         </ul>
                         <p class="tip">쇼핑몰에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</p>
                     </li>
+                    <li class="birth">
+                        <label>생년월일</label>
+                        <ul class="birthBox">
+                            <input type="hidden" name="user_birthday" id="birthday" >
+                            <li class="petYear">
+                                <input type="text" name="year" id="year" />
+                                <span>년</span>
+                            </li>
+                            <li class="petMonth">
+                                <input type="text" name="month" id="month" />
+                                <span>월</span>
+                            </li>
+                            <li class="petDay">
+                                <input type="text" name="day" id="day" />
+                                <span>일</span>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="gender">
                         <label>성별</label>
                         <ul class="checkBox">
                             <li>
-                                <input type="radio" name="user_gen" id="w" value="woman" />
+                                <input type="radio" name="user_gen" id="w" value="woman" required />
                                 <label for="w" id="w"></label>
                                 <label for="w">여</label>
                             </li>
                             <li>
-                                <input type="radio" name="user_gen" id="m" value="men" />
+                                <input type="radio" name="user_gen" id="m" value="men" required />
                                 <label for="m" id="m"></label>
                                 <label for="m">남</label>
                             </li>
@@ -180,23 +198,6 @@
                                 <input type="radio" name="petSex" id="m" />
                                 <label for="m" id="m"></label>
                                 <label for="m">남</label>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="petBirth">
-                        <label>반려동물 생일</label>
-                        <ul class="birthBox">
-                            <li class="petYear">
-                                <input type="number" name="petYear" />
-                                <span>년</span>
-                            </li>
-                            <li class="petMonth">
-                                <input type="number" name="petMonth" />
-                                <span>월</span>
-                            </li>
-                            <li class="petDay">
-                                <input type="number" name="petDay" />
-                                <span>월</span>
                             </li>
                         </ul>
                     </li>
@@ -259,7 +260,7 @@
 
                 <div class="agree">
                     <div class="agreeAll checkBox">
-                        <input type="checkbox" name="agreeAll" id="agreeAll" required/>
+                        <input type="checkbox" name="agreeAll" id="agreeAll" />
                         <label for="agreeAll" id="agreeAll"></label>
                         <label for="agreeAll">약관 전체 동의</label>
                     </div>
@@ -292,7 +293,7 @@
                 </div>
 
                 <div class="joinSubmit">
-                    <button type="submit">회원 가입하기</button>
+                    <button type="submit" class="join">회원 가입하기</button>
                 </div>
             </fieldset>
         </form>

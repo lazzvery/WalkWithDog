@@ -378,6 +378,19 @@ input[type=number] {
     justify-content: flex-start;
 }
 
+.joinForm .ulContainer li ul li{
+    margin-bottom: 0;
+}
+
+/* 반려동물 생일 */
+.joinForm .ulContainer li.birth .birthBox {
+    width: 65%;
+    display: flex;
+}
+
+.joinForm .ulContainer li.birth .birthBox li input {
+    width: 100%;
+}
 
 
 /* 반려동물 추가정보 */
@@ -391,20 +404,9 @@ input[type=number] {
     display: block;
 }
 
-/* 반려동물 성별 */
-.joinForm .moreInformation li.petSex .checkBox {
-    width: 245px;
-}
 
-/* 반려동물 생일 */
-.joinForm .moreInformation li.petBirth .birthBox {
-    width: 245px;
-    display: flex;
-}
 
-.joinForm .moreInformation li.petBirth .birthBox li input {
-    width: 100%;
-}
+
 
 /* 반려동물 이미지 등록 */
 .joinForm .moreInformation li.petImg input {

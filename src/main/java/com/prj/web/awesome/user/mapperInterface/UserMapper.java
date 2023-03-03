@@ -22,8 +22,7 @@ public interface UserMapper {
 
     // 4. update
     int userUpdate(UserDTO dto);
-//
-//    // 5. delete
-//    @Delete("delete from member where id=#{id}")
-//    int delete(UserDTO vo);
+
+    // 5. delete
+    int userDelete(UserDTO dto);
 }

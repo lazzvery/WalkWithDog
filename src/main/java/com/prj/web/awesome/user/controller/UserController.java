@@ -106,6 +106,7 @@ public class UserController {
 
     @PostMapping("/join")
     public String userInsert(UserDTO dto){
+
         UserDTO userInfo = new UserDTO();
         userInfo.setUser_id(dto.getUser_id());
         userInfo.setUser_password(dto.getUser_password());
@@ -114,6 +115,7 @@ public class UserController {
         userInfo.setUser_email_check(dto.getUser_email_check());
         userInfo.setUser_phone(dto.getUser_phone());
         userInfo.setUser_sns_check(dto.getUser_sns_check());
+        userInfo.setUser_birthday(dto.getUser_birthday());
         userInfo.setUser_gen(dto.getUser_gen());
 
 
@@ -123,15 +125,13 @@ public class UserController {
     }
 
 
-    // ** Member Update **
+    // ** user Update **
     @GetMapping("/myPage/modify")
     public String UserUpdatef(Model mv , UserDTO dto, HttpServletRequest request) throws IOException{
         dto.setUser_id((String)request.getSession().getAttribute("loginID"));
-        dto = service.userSelectOne(dto);
 
+        dto = service.userSelectOne(dto);
         mv.addAttribute("userinfo", dto);
-        System.out.println(dto);
-        System.out.println(dto.getUser_email_check());
 
         return "html/user/myPage/userMyPageModify";
     }
@@ -143,10 +143,9 @@ public class UserController {
         // => 실패 -> 친절하게 안내하고 재수정 유도, updateForm
         String uri="html/user/myPage/userMyPageHome" ;
 
+        // => Update 성공/실패 모두 출력시 필요하므로
         UserDTO userDetail = service.userSelectOne(dto);
         mv.addObject("userInfo", userDetail);
-        // => Update 성공/실패 모두 출력시 필요하므로
-        System.out.println(dto.getUser_email_check());
 
 
         if ( service.userUpdate(dto)>0 ) {
@@ -157,11 +156,31 @@ public class UserController {
         }
         // 3) View 처리
         mv.setViewName(uri);
-        System.out.println(dto+uri);
+
         return mv;
     } //update
 
 
+    // ** Member Delete **
+
+    @GetMapping("/delete")
+    public ModelAndView userDelete(HttpServletRequest request, ModelAndView mv, UserDTO dto) {
+        // 1) 요청분석
+        // 1.1) login 정보: session 에서 loginID 를 get
+        // 1.2) 관리자 기능: loginID=='admin' and Parameter id 가 존재하는경우
+
+        dto.setUser_id((String)request.getSession().getAttribute("loginID"));
+
+        // 2) Service 실행
+        // => 성공
+        //	-> 본인탈퇴: 반드시 session 처리 해야함
+        service.userDelete(dto);
+        request.getSession().invalidate();
+
+        // 3) View 처리
+        mv.setViewName("redirect:/home");
+        return mv;
+    } //delete
 
 
     @GetMapping("/findid")

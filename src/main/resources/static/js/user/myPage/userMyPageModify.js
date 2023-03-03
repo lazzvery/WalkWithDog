@@ -4,7 +4,12 @@ const joinContainer = document.querySelector('.joinContainer'),
     inputJoin = joinContainer.getElementsByTagName('input'),
     phoneText = joinContainer.querySelector('.phoneText'),
     petInfoBox = document.querySelector('.petInfoCover'),
-    [dogSelct, catSelect] = petInfoBox.getElementsByTagName('select');
+    // [dogSelct, catSelect] = petInfoBox.getElementsByTagName('select'),
+    birthday =  joinContainer.querySelector('#birthday'),
+    year =  document.querySelector('#year'),
+    month =  document.querySelector('#month'),
+    day =  document.querySelector('#day'),
+    join =  document.querySelector('.join');
 
 console.log(joinContainer);
 
@@ -70,13 +75,20 @@ for (let i = 0; i < inputJoin.length; i++) {
 }   // 정규식 유효성 검사
 
 
-petInfoBox.addEventListener('click', (e) => {
-    if (e.target.id === 'dog') {
-        dogSelct.style.display = 'block';
-        catSelect.style.display = 'none';
-    } else if (e.target.id === 'cat') {
-        catSelect.style.display = 'block';
-        dogSelct.style.display = 'none';
-    }
-});     // 반려동물 선택
+// petInfoBox.addEventListener('click', (e) => {
+//     if (e.target.id === 'dog') {
+//         dogSelct.style.display = 'block';
+//         catSelect.style.display = 'none';
+//     } else if (e.target.id === 'cat') {
+//         catSelect.style.display = 'block';
+//         dogSelct.style.display = 'none';
+//     }
+// });     // 반려동물 선택
 
+join.addEventListener("click", () => {
+
+    if(year.value != '' && month.value != '' && day.value != '' ){
+        birthday.value = year.value+month.value+day.value;
+    }
+
+});
