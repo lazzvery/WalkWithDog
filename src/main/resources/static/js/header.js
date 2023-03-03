@@ -70,7 +70,7 @@ let initDialogue = function() {
     html += '       <div class="headerLogo">';
     html += '           <a class=""></a>';
     html += '           <a href="/home">';
-    html += '               <img src="/img/bannerImg/logo.png" class="mainLogo">';
+    html += '               <img src="/img/logo_1.png" class="mainLogo">';
     html += '           </a>';
     html += '       </div>';
 
