@@ -80,8 +80,8 @@
                             <div class="sortWrap">
                                 <!-- list wrap -->
                                 <form action=#>
-                                    <label for="listSort">상품정렬 : </label>
-                                    <select name="listSort" id="">
+                                    <label>상품정렬 : </label>
+                                    <select name="listSort">
                                         <option value="new">신상품</option>
                                         <option value="best">인기상품</option>
                                         <option value="high">낮은가격</option>
@@ -99,79 +99,81 @@
 
                             <div class="productImgList">
                                 <div class="productImg productImg1">
-                                    <a href="../item/itemDetails.html" class="img1"><img
-                                            src="/img/bannerImg/08_.jpg" alt="상품1" class="prdImg1"></a>
-                                    <a href="../item/itemDetails.html" class="img2"><img
-                                            src="/img/bannerImg/08-1_.jpg" alt="상품1" class="prdImg2"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
+                                            src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img
+                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>
                                     <h1 class="name">
                                         <span>
-                                            아르르 푸푸 배변패드
+                                            헤어 방수 밴드
                                         </span>
                                         <p>
-                                            29,900원
+                                            15,900원
                                         </p>
                                     </h1>
                                 </div>
 
                                 <div class="productImg productImg2">
-                                    <a href="../item/itemDetails.html" class="img1"><img
-                                            src="/img/bannerImg/00.png" alt="상품2" class="prdImg1"></a>
-                                    <a href="../item/itemDetails.html" class="img2"><img
-                                            src="/img/bannerImg/00-1.png" alt="상품2" class="prdImg2"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
+                                            src="/img/item/0001.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img
+                                            src="/img/item/0001-1.jpeg" alt="상품1" class="prdImg2"></a>
                                     <h1 class="name">
                                         <span>
-                                            아르르 꿀잠이불
+                                            수딩 오인먼트
                                         </span>
                                         <p>
-                                            29,900원
+                                            12,900원
                                         </p>
                                     </h1>
                                 </div>
 
+
+
                                 <div class="productImg productImg3">
-                                    <a href="../item/itemDetails.html" class="img1"><img
-                                            src="/img/bannerImg/00.png" alt="상품2" class="prdImg1"></a>
-                                    <a href="../item/itemDetails.html" class="img2"><img
-                                            src="/img/bannerImg/00-1.png" alt="상품2" class="prdImg2"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
+                                            src="/img/item/0002.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img
+                                            src="/img/item/0002-1.jpeg" alt="상품1" class="prdImg2"></a>
                                     <h1 class="name">
                                         <span>
-                                            아르르 꿀잠이불
+                                            베리덴탈 스프레이
                                         </span>
                                         <p>
-                                            29,900원
+                                            12,900원
                                         </p>
                                     </h1>
                                 </div>
 
                                 <div class="productImg productImg4">
-                                    <a href="../item/itemDetails.html" class="img1"><img
-                                            src="/img/bannerImg/00.png" alt="상품2" class="prdImg1"></a>
-                                    <a href="../item/itemDetails.html" class="img2"><img
-                                            src="/img/bannerImg/00-1.png" alt="상품2" class="prdImg2"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
+                                            src="/img/item/0003.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img
+                                            src="/img/item/0003-1.jpeg" alt="상품1" class="prdImg2"></a>
                                     <h1 class="name">
                                         <span>
-                                            아르르 꿀잠이불
+                                            토일렛 페이퍼 토이
                                         </span>
                                         <p>
-                                            29,900원
+                                            14,900원
                                         </p>
                                     </h1>
                                 </div>
 
-                                <div class="productImg productImg5">
-                                    <a href="../item/itemDetails.html" class="img1"><img
-                                            src="/img/bannerImg/00.png" alt="상품2" class="prdImg1"></a>
-                                    <a href="../item/itemDetails.html" class="img2"><img
-                                            src="/img/bannerImg/00-1.png" alt="상품2" class="prdImg2"></a>
-                                    <h1 class="name">
-                                        <span>
-                                            아르르 꿀잠이불
-                                        </span>
-                                        <p>
-                                            29,900원
-                                        </p>
-                                    </h1>
-                                </div>
+<!--                                <div class="productImg productImg5">-->
+<!--                                    <a href="../item/itemDetails.html" class="img1"><img-->
+<!--                                            src="/img/bannerImg/00.png" alt="상품2" class="prdImg1"></a>-->
+<!--                                    <a href="../item/itemDetails.html" class="img2"><img-->
+<!--                                            src="/img/bannerImg/00-1.png" alt="상품2" class="prdImg2"></a>-->
+<!--                                    <h1 class="name">-->
+<!--                                        <span>-->
+<!--                                            아르르 꿀잠이불-->
+<!--                                        </span>-->
+<!--                                        <p>-->
+<!--                                            29,900원-->
+<!--                                        </p>-->
+<!--                                    </h1>-->
+<!--                                </div>-->
                             </div>
                         </div>
                 </div>
