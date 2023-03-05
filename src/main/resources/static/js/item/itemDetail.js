@@ -8,47 +8,31 @@ const img_container = document.querySelector('.img_container'),
     shareBtn = shop_container.querySelector('.sharebBtn'),
     shareBox = shop_container.querySelector('.shareProduct'),
     checkBox = document.querySelector('.product_check'),
-    deleteBtn = shop_container.getElementsByClassName('product_checklist'),
     selectBox = document.querySelector('.optionSelect'),
     option = selectBox.getElementsByTagName('option'),
-    totalPay = document.querySelector('.totalPay'),
     input = checkBox.getElementsByTagName('input'),
     sideCategory = document.querySelector('.categoryProduct'),
     urlCopyBtn = document.querySelector('.urlCopy'),
-    addCart = shop_container.querySelector('.btn_cart'),
-    butNow = shop_container.querySelector('.btn_buy'),
-    qna_box = document.querySelector('.qna_box'),
-    qna_list = qna_box.getElementsByTagName('li'),
-    title_list = document.getElementsByClassName('title'),
-    qna_content = document.getElementsByClassName('qna_content'),
     qna_write = document.querySelector('.itemQnaPopUp'),
     qna_update = document.querySelector('.updateQnaPopUp'),
     qna_write_btn = document.querySelector('.writebtn'),
     body = document.querySelector("body");
 
+//===========================================================
+// 이미지 슬라이드
 
-const optionSelect = [
-    {
-        name: "캐시미어 블루 M",
-        price: 29900,
-        amount: 1,
-    },
-    {
-        name: "캐시미어 블루 L",
-        price: 39900,
-        amount: 1,
-    },
-    {
-        name: "라벤더 포그 M",
-        price: 29900,
-        amount: 1,
-    },
-    {
-        name: "라벤더 포그 L",
-        price: 39900,
-        amount: 1,
-    }
-];
+for (let i = 0; i < sub_image.length; i++) {
+    sub_image[i].addEventListener('mouseenter', function (event) {
+        if (event.target === sub_image[i]) {
+            main_image[(i + 1) % main_image.length].src = `${sub_image[i].src}`;
+            main_image[(i + 1) % main_image.length].classList.remove('img_hidden');
+            main_image[i % main_image.length].classList.add('img_hidden');
+        }
+    })
+}
+
+//===========================================================
+// url 복사
 
 function clip() {
     let url = '';
@@ -64,17 +48,9 @@ function clip() {
     alert("URL이 복사되었습니다.");
 }
 
-// 함수 ==========================================================
 
-for (let i = 0; i < sub_image.length; i++) {
-    sub_image[i].addEventListener('mouseenter', function (event) {
-        if (event.target === sub_image[i]) {
-            main_image[(i + 1) % main_image.length].src = `${sub_image[i].src}`;
-            main_image[(i + 1) % main_image.length].classList.remove('img_hidden');
-            main_image[i % main_image.length].classList.add('img_hidden');
-        }
-    })
-}       // 이미지 슬라이드
+//===========================================================
+// 공유 아이콘
 
 let share = false;
 shareBtn.addEventListener('click', () => {
@@ -87,70 +63,13 @@ shareBtn.addEventListener('click', () => {
         shareBox.style.visibility = 'hidden';
         share = false;
     }
-});     // 공유 아이콘
+});
+
+urlCopyBtn.addEventListener('click', clip);
 
 //===========================================================
 // 결제 금액
 
-let price = 0;
-selectBox.addEventListener('change', function (e) {
-    let selectIndex = e.target.value;
-
-    if (deleteBtn[selectIndex].classList.contains('hidden')) {
-        deleteBtn[selectIndex].classList.remove('hidden');
-        option[0].disabled = true;
-
-        price += optionSelect[selectIndex].price * optionSelect[selectIndex].amount;
-        totalPay.textContent = `${price.toLocaleString()}원`;
-    }
-});     // 옵션 선택시 상품 탭 보이게
-
-for (let i = 0; i < deleteBtn.length; i++) {
-    deleteBtn[i].addEventListener('click', function (event) {
-        event.preventDefault();
-        if (event.target.className === "deleteoptionBtn") {
-            if (confirm('정말 삭제하시겠습니까?')) {
-                deleteBtn[i].classList.add('hidden');
-                option[0].selected = true;
-
-                price -= optionSelect[i].price * optionSelect[i].amount;
-                totalPay.textContent = `${price.toLocaleString()}원`;
-                optionSelect[i].amount = 1;
-                input[i].value = optionSelect[i].amount;
-            }
-        }
-
-        if (event.target.parentNode.className === "downCheckbtn" ||
-            event.target.className === "downCheckbtn") {
-            if (optionSelect[i].amount > 1) {
-                optionSelect[i].amount = optionSelect[i].amount - 1;
-                input[i].value = optionSelect[i].amount;
-                price -= optionSelect[i].price;
-                totalPay.textContent = `${price.toLocaleString()}원`;
-            }
-        } else if (event.target.parentNode.className === "UpCheckbtn" ||
-            event.target.className === "UpCheckbtn") {
-            if (optionSelect[i].amount < 10) {
-                optionSelect[i].amount = optionSelect[i].amount + 1;
-                input[i].value = optionSelect[i].amount;
-                price += optionSelect[i].price;
-                totalPay.textContent = `${price.toLocaleString()}원`;
-            }
-        }
-    })
-}       // 상품 탭 x버튼 클릭시 삭제
-
-shop_container.addEventListener('click', function (event) {
-    let eventObj = event.target;
-
-    if (eventObj === butNow || eventObj === addCart) {
-        if (price !== 0) {
-            eventObj.href = eventObj === addCart ? "./product_shopping_cart.html" : "./product_shopping_payment.html";
-        } else {
-            alert('구매하실 상품을 선택해 주세요!');
-        }
-    }
-});     // 상품 미선택시 경고창 띄우는 이벤트
 
 //===========================================================
 // 스크롤 이벤트 (하단 오른쪽 메뉴바)
@@ -168,26 +87,32 @@ document.addEventListener('scroll', () => {
 });
 
 //===========================================================
-// 공유버튼 (카피 이벤트)
-
-urlCopyBtn.addEventListener('click', clip);
-
-//===========================================================
 // qna 게시판 컨텐츠 보이게 하기
 
-let before;
-let count = 0;
-for (let i = 0; i < qna_list.length; i++) {
-    qna_box.addEventListener('click', (e) => {
-        if (e.target == qna_list[i] || e.target == title_list[i]) {
-            qna_content[i].style.display = "block";
-            if (count > 0) {
-                before.style.display = "none";
-            }
-            before = qna_content[i];
-            count++;
+let open = false;
+
+function checkId(check, password, index) {
+    let content = document.getElementById("content" + index);
+
+    if (!!check) {
+        openbtn(content);
+    } else {
+        if (!!password) {
+            alert("비밀글입니다");
+        } else {
+            openbtn(content);
         }
-    });
+    }
+}
+
+function openbtn(content) {
+    if (!open) {
+        content.style.display = "block";
+        open = true;
+    } else {
+        content.style.display = "none";
+        open = false;
+    }
 }
 
 //===========================================================
@@ -204,21 +129,32 @@ function closeForm() {
     body.style.overflow = "auto";
 }
 
-function updateForm(title, content, seq) {
+function updateForm(title, content, seq, password) {
     qna_update.style.display = "block";
     body.style.overflow = "hidden";
     document.querySelector("#uitem_qna_title").value = title;
     document.querySelector("#uitem_qna_content").value = content;
     document.querySelector("#item_qna_seq").value = seq;
+    document.querySelector("#ubtCheck").checked = password == 1 ? "checked" : "";
 }
 
 //==========================================================
 // A-jax
 
 function insertQna(event) {
+    let titleInput = document.getElementById('item_qna_title');
+    let contentTextarea = document.getElementById('item_qna_content');
+    let formData = $('#insert-form').serialize(); // 폼 데이터 직렬화
+
     event.preventDefault(); // 원래 submit 버튼 동작 안 하게
 
-    let formData = $('#insert-form').serialize(); // 폼 데이터 직렬화
+    if (!titleInput.value.trim()) {
+        alert('문의글의 제목을 입력해주세요.');
+        return false;
+    } else if(!contentTextarea.value.trim()) {
+        alert('문의글의 내용을 입력해주세요.');
+        return false;
+    }
 
     $.ajax({
         type: 'POST',
@@ -237,10 +173,12 @@ function insertQna(event) {
 
             } else {
                 alert(result.message);
+                window.location.href = '/user/login';
             }
         },
         error: function(xhr) {
             // 실패 시 처리할 내용
+            alert('등록에 실패하였습니다. 다시 시도해주세요.');
         }
     });
 
@@ -273,6 +211,7 @@ function updateQna(event) {
         },
         error: function(xhr) {
             // 실패 시 처리할 내용
+            alert('수정에 실패하였습니다. 다시 시도해주세요.');
         }
     });
 
@@ -295,6 +234,7 @@ function deleteQna(itemQnaSeq) {
         },
         error: function(xhr) {
             // 실패 시 처리할 내용
+            alert('삭제에 실패하였습니다. 다시 시도해주세요.');
         }
     });
 }
@@ -316,11 +256,17 @@ function saveHeart() {
         url: '/user/heart/' + $('#item_id').val(),
         cache: false,
         success: function(result) {
-            alert(result.message);
-            updateHeart(true); // 세션에 저장된 상품인 경우
-            $('.product_summary').load('/item/itemDetail/' + $('#item_id').val() + ' .product_summary');
+            if (result.success) {
+                alert(result.message);
+                updateHeart(true); // 세션에 저장된 상품인 경우
+                $('.product_summary').load('/item/itemDetail/' + $('#item_id').val() + ' .product_summary');
+            } else {
+                alert(result.message);
+                window.location.href = '/user/login';
+            }
         },
         error: function(xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
         }
     });
 }
@@ -336,6 +282,7 @@ function deleteHeart() {
             $('.product_summary').load('/item/itemDetail/' + $('#item_id').val() + ' .product_summary');
         },
         error: function(xhr) {
+            alert('삭제에 실패하였습니다. 다시 시도해주세요.');
         }
     });
 }

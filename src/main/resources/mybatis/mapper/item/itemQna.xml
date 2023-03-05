@@ -21,7 +21,7 @@
             #{item_qna_title},
             #{item_qna_content},
             NOW(),
-            1111,
+            #{item_qna_password},
             'N',
             #{item_qna_pnum},
             #{item_id},

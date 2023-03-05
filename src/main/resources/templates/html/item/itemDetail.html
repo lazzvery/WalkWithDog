@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../common/css/header.css" />
-    <link rel="stylesheet" href="../../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../../common/css/header.css"/>
+    <link rel="stylesheet" href="../../../../common/css/footer.css"/>
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../../css/item/itemDetail.css">
     <script src="/js/jquery/jquery-3.6.3.min.js"></script>
@@ -68,7 +68,6 @@
                         <span>결제완료 후 평균 3일 이내 출고(공휴일 제외)</span>
                     </span>
             </div>
-            <hr>
 
             <div class="product_option">
                 <select class="optionSelect">
@@ -174,7 +173,9 @@
             </div>
         </div>
     </div>
+    <hr>
 </main>
+
 
 <nav>
     <div class="productCategory_box">
@@ -278,39 +279,49 @@
         <div class="qna_box">
             <div th:each="qna_list, i : ${qna}">
                 <ul>
-                    <li class="qna_list" th:if="${qna_list.item_qna_reply == 'N'}">
+                    <li class="qna_list"
+                        th:if="${qna_list.item_qna_reply == 'N'}"
+                        th:onclick="|checkId(${qna_list.user_id == loginID}, ${qna_list.item_qna_password == 1}, ${i.index})|">
                         <div>
-                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">1</span>
-                            <img src="../../../img/icon/ilock.png">
-                            <span th:text="${qna_list.item_qna_title}" class="title">[상품] 상품 관련 문의 드립니다.</span>
+                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">seq</span>
+                            <img src="../../../img/icon/ilock.png" th:if="${qna_list.item_qna_password == 1}">
+                            <span th:text="${qna_list.item_qna_title}" class="title">타이틀</span>
                         </div>
                         <div>
-                            <span class="qna_user" th:text="${qna_list.user_id}">유**</span>
-                            <span th:text="${qna_list.item_qna_reg_date}">2023-03-01</span>
+                            <span class="qna_user" th:text="${qna_list.user_id}">작성자</span>
+                            <span th:text="${qna_list.item_qna_reg_date}">작성일</span>
                         </div>
                     </li>
-                    <li class="qna_list qna_reply" th:if="${qna_list.item_qna_reply == 'Y'}">
+                    <li class="qna_list qna_reply"
+                        th:if="${qna_list.item_qna_reply == 'Y'}"
+                        th:onclick="|checkId(${qna_list.user_id == loginID}, ${qna_list.item_qna_password == 1}, ${i.index})|">
                         <div>
-                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">2</span>
+                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">seq</span>
                             <img src="../../../img/icon/ireply.png" class="qna_reply_img">
-                            <img src="../../../img/icon/ilock.png">
-                            <span th:text="${qna_list.item_qna_title}" class="title">[답글] 상품 관련 답변 드립니다.</span>
+                            <img src="../../../img/icon/ilock.png" th:if="${qna_list.item_qna_password == 1}">
+                            <span th:text="${qna_list.item_qna_title}" class="title">타이틀</span>
                         </div>
                         <div>
-                            <span class="qna_user" th:text="${qna_list.user_id}">관리자</span>
-                            <span th:text="${qna_list.item_qna_reg_date}">2023-03-01</span>
+                            <span class="qna_user">관리자</span>
+                            <span th:text="${qna_list.item_qna_reg_date}">작성일</span>
                         </div>
                     </li>
                 </ul>
-                <div class="qna_list qna_content">
-                    <div th:text="${qna_list.item_qna_content}" class="content"></div>
-                    <div class="qna_content_icon" th:if="${qna_list.item_qna_reply == 'N'}">
+                <div class="qna_list qna_content" th:id="'content' + ${i.index}">
+                    <div th:text="${qna_list.item_qna_content}" class="content" th:if="|${qna_list.user_id == loginID || qna_list.item_qna_password == 0}|"></div>
+                    <div class="qna_content_icon" th:if="${qna_list.item_qna_reply == 'N' and qna_list.user_id == loginID}">
                         <span class="updatebtn"
+                              style="cursor: pointer"
                               th:itemQnaTitle="${qna_list.item_qna_title}"
                               th:itemQnaContent="${qna_list.item_qna_content}"
                               th:itemQnaSeq="${qna_list.item_qna_seq}"
-                              th:onclick="updateForm(this.getAttribute('itemQnaTitle'), this.getAttribute('itemQnaContent'), this.getAttribute('itemQnaSeq'))">수정</span>
-                        <span th:itemQnaSeq="${qna_list.item_qna_seq}" th:onclick="deleteQna(this.getAttribute('itemQnaSeq'))">삭제</span>
+                              th:itemQnaPassword="${qna_list.item_qna_password}"
+                              th:onclick="updateForm(this.getAttribute('itemQnaTitle'),
+                               this.getAttribute('itemQnaContent'),
+                               this.getAttribute('itemQnaSeq'),
+                               this.getAttribute('itemQnaPassword'))">수정</span>
+                        <span th:itemQnaSeq="${qna_list.item_qna_seq}"
+                              th:onclick="deleteQna(this.getAttribute('itemQnaSeq'))" style="cursor: pointer">삭제</span>
                     </div>
                 </div>
             </div>
@@ -371,9 +382,9 @@
                         <ul class="checkBox">
                             <li>
                                 <div>
-                                    <input type="checkbox" name="btCheck" id="btCheck"/>
-                                    <label for="btCheck" id="btCheck"></label>
-                                    <label for="btCheck">비밀글로 문의하기</label>
+                                    <input type="checkbox" name="item_qna_password" id="item_qna_password" value="1"/>
+                                    <label for="item_qna_password" id="item_qna_password"></label>
+                                    <label for="item_qna_password">비밀글로 문의하기</label>
                                 </div>
                             </li>
                         </ul>
@@ -399,7 +410,7 @@
             </h2>
             <hr>
             <form id="update-form" th:action method="post" onsubmit="return updateQna(event);">
-                <input type="hidden" name="item_qna_seq" value="63" id="item_qna_seq">
+                <input type="hidden" name="item_qna_seq" id="item_qna_seq">
                 <ul>
                     <li class="title">
                         <div class="imgbox">
@@ -410,7 +421,7 @@
                     <hr>
                     <li>
                         <label>제목</label>
-                        <input type="text" name="item_qna_title" id="uitem_qna_title" >
+                        <input type="text" name="item_qna_title" id="uitem_qna_title">
                     </li>
                     <li>
                         <label>내용</label>
@@ -420,7 +431,7 @@
                         <ul class="checkBox">
                             <li>
                                 <div>
-                                    <input type="checkbox" name="btCheck" id="ubtCheck"/>
+                                    <input type="checkbox" name="btCheck" id="ubtCheck" readonly/>
                                     <label for="btCheck" id="ubtCheck"></label>
                                     <label for="btCheck">비밀글로 문의하기</label>
                                 </div>

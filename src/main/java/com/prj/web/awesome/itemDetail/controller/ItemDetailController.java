@@ -31,15 +31,16 @@ public class ItemDetailController {
 
         String userId = (String) session.getAttribute("loginID");
 
+        ItemDetailDto item = dservice.findItem(itemId);
+        List<ItemQnaDTO> qna = qservice.findAll(itemId);
+
         if(hservice.findHeart(itemId, userId) != null) {
             model.addAttribute("checkHeart", true);
         } else {
             model.addAttribute("checkHeart", false);
-        }
+        }   // 좋아요 누른 상품인지 아닌지 구분
 
-        ItemDetailDto item = dservice.findItem(itemId);
-        List<ItemQnaDTO> qna = qservice.findAll(itemId);
-
+        model.addAttribute("loginID", userId);
         model.addAttribute("item", item);
         model.addAttribute("qna", qna);
 
@@ -53,15 +54,18 @@ public class ItemDetailController {
 
         String userId = (String) session.getAttribute("loginID");
 
-        itemQnaDTO.setUser_id(userId);
-        qservice.save(itemQnaDTO);
-
         Map<String, Object> result = new HashMap<>();
-        result.put("success", true);
-        result.put("message", "질문이 등록되었습니다.");
+        if(userId != null) {
+            itemQnaDTO.setUser_id(userId);  // 답글이면 세션에 있는 아이디 대신 부모 글의 아이디 넣는 작업 필요
+            qservice.save(itemQnaDTO);
+            result.put("success", true);
+            result.put("message", "질문이 등록되었습니다.");
+        } else {
+            result.put("success", false);
+            result.put("message", "로그인 후 이용 가능합니다.");
+        }
 
         return result;
-
     }
 
     @ResponseBody

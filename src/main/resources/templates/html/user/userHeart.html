@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../css/user/myPage/userMyPageCommon.css">
     <link rel="stylesheet" href="../../../css/user/userLike.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
     <script defer src="../../../js/user/userHeart.js"></script>
     <script defer src="../../../js/index.js"></script>
     <title>heart</title>
@@ -27,23 +28,24 @@
     <main>
         <h1>Wishlist</h1>
         <hr>
-        <article class="shop_likelist" th:each="heart : ${list}">
+        <article class="shop_likelist">
             <ul>
-                <li class="shop_likebox">
+                <li class="shop_likebox" th:each="heart, i : ${list}">
                     <div class="shop_likeleft">
                         <div class="agreeAll checkBox">
-                            <input type="checkbox" name="agreeCheck1" id="agreeCheck1">
-                            <label for="agreeCheck1" id="agreeCheck1"></label>
+                            <input type="checkbox" name="agreeCheck" th:id="'agreeCheck' + ${i.index}" th:value="${heart.item_id}">
+                            <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
                         </div>
                         <a href="../item/itemDetail.html" class="likelistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
                             <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="likelistimg">
                         </a>
                         <a href="../item/itemDetail.html" class="likelisttextbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
                             <strong th:text="${heart.item_name}">상품명</strong>
+                            <input type="hidden" name="item_id" th:value="${heart.item_id}" id="item_id">
                         </a>
                     </div>
                     <div class="shop_likeright">
-                        <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="likedeleteIcon" name="1">
+                        <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="likedeleteIcon" th:onclick="'deleteHeart(' + ${i.index} + ')'">
                     </div>
                 </li>
                 <li class="shop_likeboxnone" th:if="${#lists.isEmpty(list)}">
@@ -53,8 +55,8 @@
         </article>
         <article class="shop_likeBtnlist">
             <div class="shop_likeBtnleft">
-                <a href="#none" class="likepayBtnw">선택삭제</a>
-                <a href="#none" class="likepayBtnw">전체삭제</a>
+                <a href="#none" class="likepayBtnw" th:onclick="'deleteHearts(event)'">선택삭제</a>
+                <a href="#none" class="likepayBtnw" th:onclick="'deleteAll(event)'">전체삭제</a>
             </div>
             <div class="shop_likeBtnright">
                 <a href="#" class="likepayBtnb">장바구니 담기</a>

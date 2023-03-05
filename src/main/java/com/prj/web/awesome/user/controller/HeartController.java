@@ -27,46 +27,49 @@ public class HeartController {
 
     @GetMapping
     public String showList(HttpSession session, Model model) {
-
         String loginID = (String) session.getAttribute("loginID");
 
         List<HeartItemDTO> list = hservice.findHeartItem(loginID);
         model.addAttribute("list", list);
 
         return "html/user/userHeart";
-
     }
 
     @ResponseBody
     @PostMapping("/{itemId}")
     public Map<String, Object> saveHeart(@PathVariable("itemId") int itemId, HeartDTO heartDTO, HttpSession session) {
+        Map<String, Object> result = new HashMap<>();
+        String userId = (String) session.getAttribute("loginID");
 
         heartDTO.setItem_id(itemId);
-        heartDTO.setUser_id((String) session.getAttribute("loginID"));
+        heartDTO.setUser_id(userId);
         List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
 
         if (heartList == null) {
             heartList = new ArrayList<Integer>();
         }
 
-        if (!heartList.contains(String.valueOf(itemId))) {
-            hservice.save(heartDTO);
-            heartList.add(itemId);
-            session.setAttribute("heartList", heartList);
+        if(userId != null) {
+            if (!heartList.contains(String.valueOf(itemId))) {
+                hservice.save(heartDTO);
+                heartList.add(itemId);
+                session.setAttribute("heartList", heartList);
+
+                result.put("success", true);
+                result.put("message", "이 상품을 좋아합니다!");
+            }
+        } else {
+            result.put("success", false);
+            result.put("message", "로그인 후 이용해 주세요!");
         }
 
-        Map<String, Object> result = new HashMap<>();
-        result.put("success", true);
-        result.put("message", "이 상품을 좋아합니다!");
-
         return result;
-
     }
 
     @ResponseBody
     @DeleteMapping("/{itemId}")
     public Map<String, Object> deleteHeart(@PathVariable("itemId") int itemId, HttpSession session) {
-
+        Map<String, Object> result = new HashMap<>();
         List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
 
         if (heartList.contains(itemId)) {
@@ -75,11 +78,30 @@ public class HeartController {
             session.setAttribute("heartList", heartList);
         }
 
-        Map<String, Object> result = new HashMap<>();
         result.put("success", true);
         result.put("message", "이 상품을 싫어합니다!");
 
         return result;
+    }
 
+    @ResponseBody
+    @DeleteMapping
+    public Map<String, Object> deleteHearts(@RequestBody List<String> items, HttpSession session) {
+        log.info("items={}", items);
+        Map<String, Object> result = new HashMap<>();
+        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
+
+        for (String itemId : items) {
+            int itemIdInt = Integer.parseInt(itemId);
+
+            if (heartList.contains(itemIdInt)) {
+                hservice.delete(itemIdInt);
+                heartList.remove((Integer) itemIdInt);
+                result.put("success", true);
+                result.put("message", "상품을 삭제하였습니다!");
+            }
+        }
+
+        return result;
     }
 }
