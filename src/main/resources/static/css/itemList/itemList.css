@@ -114,6 +114,7 @@ body {
   background: #f3f3f3;
   color: #BAAAD7;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .pageNav ul li.active a {

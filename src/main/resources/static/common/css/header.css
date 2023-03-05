@@ -134,7 +134,7 @@ li strong:hover {
 
 .categoryContainer .list2 strong:hover {
   opacity: 1;
-  cursor: auto;
+  cursor: pointer;
 }
 
 /* -------------------------마우스 호버했을 때 나오는 리스트들 ---------------------*/
