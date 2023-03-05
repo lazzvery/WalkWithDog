@@ -17,6 +17,7 @@ for (let i = 0; i < active.length; i++) {
         tmp.style.color = "#BAAAD7";
 
         tmp = e.target;
+
     });
 }
 
@@ -53,6 +54,23 @@ $(function(){
         }
     });
 });
+
+// ** itemList 뿌리기
+function newList() {
+
+    $.ajax({
+        type: 'Get',
+        url: 'item/list/new',
+        success: (resultPage) => {
+            $('#resultArea1').html(resultPage);
+        },
+        error: function () {
+            $('#resultArea1').html('~~ Error 발생 !!! ~~');
+        }
+    }); //ajax
+    $('#resultArea2').html('');
+}//axmlist
+
 
 // $(function() {
 //

@@ -5,7 +5,6 @@ import com.prj.web.awesome.item.payload.in.ItemInPayload;
 import com.prj.web.awesome.item.payload.out.ItemOutPayload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,7 +29,7 @@ public class ItemApi {
 
         mv.addObject("ctgr_cd", ctgr_cd);
 
-        mv.setViewName("html/itemList/itemList");
+        mv.setViewName("itemListNew");
 
         return mv;
     }

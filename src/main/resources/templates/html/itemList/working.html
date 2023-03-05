@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itemList New</title>
+    <link rel="stylesheet" href="/common/css/header.css">
+    <link rel="stylesheet" href="/common/css/footer.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/itemList/itemList.css">
+    <link rel="stylesheet" href="/common/css/indexCommon.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+    <script src="/js/header.js"></script>
+    <script defer src="/js/itemList/itemList.js"></script>
+    <script defer src="/js/index.js"></script>
+    <script defer src="/js/sub.js"></script>
+    <!-- <script defer src="../javascript/main.js"></script> -->
+
+</head>
+<!-- <body oncontextmenu="return false" onselectstart="return false"> -->
+
+<body>
+
+    <input type="hidden" name="ctgr_cd" th:value="${ctgr_cd}" />
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+
+    </header>
+
+    <!-- ---------------- 메인 ------------------ -->
+    <main>
+
+        <div id="wrap">
+            <!--헤더 영역 포함 / Footer 제외 컨테이너-->
+
+            <div id="container">
+                <!-- contents 감싸는 컨테이너 -->
+                <div class="contents">
+                    <!--헤더를 제외한 모든 내용을 포함한 박스-->
+
+                    <div class="pageTitleWrap white">
+                        <!--큰 제목 감싸는 박스-->
+
+                        <div class="pageTitle">SHOP</div>
+                        <!--큰 제목-->
+                        <div class="pageNav">
+                            <!--제목 아래 세부 카테고리-->
+                            <ul class="pageList">
+                                <!-- 세부 품목들-->
+                                <li class="active">
+                                    <a href="/item/list/new">NEW</a>
+                                </li>
+                                <li>
+                                    <a href="/item/list/living">LIVING</a>
+                                </li>
+                                <li>
+                                    <a href="item/list/working">WORKING</a>
+                                </li>
+                                <li>
+                                    <a href="/item/list/food">FOOD</a>
+                                </li>
+                                <li>
+                                    <a href="/item/list/clean">CLEAN</a>
+                                </li>
+                                <li>
+                                    <a href="/item/list/forcat">FOR CAT</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sort">
+                            <!-- 상품정렬순 체크박스 -->
+                            <div class="sortWrap">
+                                <!-- list wrap -->
+                                <form action=#>
+                                    <label>상품정렬 : </label>
+                                    <select name="listSort">
+                                        <option value="new">신상품</option>
+                                        <option value="best">인기상품</option>
+                                        <option value="high">낮은가격</option>
+                                        <option value="low">높은가격</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- --------------------- 상품 소개---------------------- -->
+                    <section class="productContainer">
+                        <div class="product">
+
+                            <div class="productImgList">
+                                <div class="productImg productImg1">
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
+                                            src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img
+                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>
+                                    <h1 class="name">
+                                        <span>
+                                            헤어 방수 밴드
+                                        </span>
+                                        <p>
+                                            15,900원
+                                        </p>
+                                    </h1>
+                                </div>
+
+                                <div class="productImg productImg2">
+                                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}" class="img1"><img
+                                            src="/img/item/0001.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}" class="img2"><img
+                                            src="/img/item/0001-1.jpeg" alt="상품1" class="prdImg2"></a>
+                                    <h1 class="name">
+                                        <span>
+                                            수딩 오인먼트
+                                        </span>
+                                        <p>
+                                            12,900원
+                                        </p>
+                                    </h1>
+                                </div>
+
+
+
+                                <div class="productImg productImg3">
+                                    <a href="/item/itemDetail?item_id=10000002" th:href="@{/item/itemDetail/{itemId}(itemId=10000002)}" class="img1"><img
+                                            src="/img/item/0002.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000002" th:href="@{/item/itemDetail/{itemId}(itemId=10000002)}" class="img2"><img
+                                            src="/img/item/0002-1.jpeg" alt="상품1" class="prdImg2"></a>
+                                    <h1 class="name">
+                                        <span>
+                                            베리덴탈 스프레이
+                                        </span>
+                                        <p>
+                                            12,900원
+                                        </p>
+                                    </h1>
+                                </div>
+
+                                <div class="productImg productImg4">
+                                    <a href="/item/itemDetail?item_id=10000003" th:href="@{/item/itemDetail/{itemId}(itemId=10000003)}" class="img1"><img
+                                            src="/img/item/0003.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000003" th:href="@{/item/itemDetail/{itemId}(itemId=10000003)}" class="img2"><img
+                                            src="/img/item/0003-1.jpeg" alt="상품1" class="prdImg2"></a>
+                                    <h1 class="name">
+                                        <span>
+                                            토일렛 페이퍼 토이
+                                        </span>
+                                        <p>
+                                            14,900원
+                                        </p>
+                                    </h1>
+                                </div>
+
+<!--                                <div class="productImg productImg5">-->
+<!--                                    <a href="../item/itemDetails.html" class="img1"><img-->
+<!--                                            src="/img/bannerImg/00.png" alt="상품2" class="prdImg1"></a>-->
+<!--                                    <a href="../item/itemDetails.html" class="img2"><img-->
+<!--                                            src="/img/bannerImg/00-1.png" alt="상품2" class="prdImg2"></a>-->
+<!--                                    <h1 class="name">-->
+<!--                                        <span>-->
+<!--                                            아르르 꿀잠이불-->
+<!--                                        </span>-->
+<!--                                        <p>-->
+<!--                                            29,900원-->
+<!--                                        </p>-->
+<!--                                    </h1>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </section>
+
+        </div>
+        </div>
+
+        </div>
+
+    </main>
+    <!--------------------- <main> 끝 --------------------->
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+</html>
