@@ -15,8 +15,9 @@ $(function(){
 
     $('#searchBtn').click(function(){
         self.location='QnA'
-            + '${pageNation.makeQuery(1)}'
+            & '${pageNation.makeQuery(1)}'
             + '&searchType='+$('#searchType').val()
             + '&keyword='+$('#keyword').val();
     }); //click
 }); // ready
+

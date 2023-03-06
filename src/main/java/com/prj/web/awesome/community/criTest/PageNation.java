@@ -77,6 +77,8 @@ public class PageNation {
             } //for
         }
 
+        System.out.println(currPage);
+
         UriComponents uriComponents =
                 UriComponentsBuilder.newInstance().
                         queryParam("currPage", currPage).
@@ -84,8 +86,9 @@ public class PageNation {
                         queryParam("searchType", cri.getSearchType()).
                         queryParam("keyword", cri.getKeyword()).
                         queryParams(checkMap).
-                        build().
+                        build(true).
                         encode();
+
         return uriComponents.toString();
     } //searchQuery
 }
