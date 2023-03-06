@@ -8,10 +8,12 @@
   <title>Q&A</title>
   <script src="https://kit.fontawesome.com/32d3a53583.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../../../css/community/QnA/communityQnA.css">
+  <script th:inline="javascript" defer src="../../../../js/community/QnA/communityQnA.js"></script>
   <link rel="stylesheet" href="../../../../common/css/header.css" />
   <link rel="stylesheet" href="../../../../common/css/footer.css" />
   <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
   <script defer src="../../../../js/index.js"></script>
+  <script src="/js/jquery/jquery-3.6.3.min.js"></script>
 
 </head>
 
@@ -38,6 +40,18 @@
   </article>
   <main>
     <aside>
+      <div id="searchBar">
+        <select name="searchType" id="searchType">
+          <option value="n" th:selected="${pageNation.cri.searchType==null}">전체</option>
+          <option value="t" th:selected="${pageNation.cri.searchType=='t'}">Title</option>
+          <option value="c" th:selected="${pageNation.cri.searchType=='c'}">Content</option>
+          <option value="i" th:selected="${pageNation.cri.searchType=='i'}">ID(글쓴이)</option>
+          <option value="r" th:selected="${pageNation.cri.searchType=='r'}">RegDate</option>
+        </select>
+        <input type="text" name="keyword" id="keyword" th:value="${pageNation.cri.keyword}">
+        <button id="searchBtn">Search</button>
+      </div>
+      <div>
       <table class="c_board_table">
         <thead>
           <tr class="c_title">
@@ -57,108 +71,41 @@
             <td th:text="${list.getUser_id()}" colspan="2"> 최** </td>
             <td th:text="${#temporals.format(list.getQna_reg_date(), 'yyyy.MM.dd')}" class="c_disappear2"> 2022-11-02 </td>
           </tr>
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>상품</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"><a href=""> 상품관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
-<!--            <td colspan="2"> 이** </td>-->
-<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>답변</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
-<!--            </td>-->
-<!--            <td colspan="2"> PSYC </td>-->
-<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>기타</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"><a href=""> 기타 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
-<!--            <td colspan="2"> 김** </td>-->
-<!--            <td class="c_disappear2"> 2022-10-31 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>답변</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
-<!--            </td>-->
-<!--            <td colspan="2"> PSYC </td>-->
-<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>상품</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"><a href=""> 상품관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
-<!--            <td colspan="2"> 이** </td>-->
-<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>답변</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
-<!--            </td>-->
-<!--            <td colspan="2"> PSYC </td>-->
-<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>기타</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"><a href=""> 기타 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
-<!--            <td colspan="2"> 김** </td>-->
-<!--            <td class="c_disappear2"> 2022-10-31 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>답변</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
-<!--            </td>-->
-<!--            <td colspan="2"> PSYC </td>-->
-<!--            <td class="c_disappear2"> 2022-11-01 </td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <td class="c_disappear">-->
-<!--              <p>배송</p>-->
-<!--            </td>-->
-<!--            <td colspan="3"><a href="">배송관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i></td>-->
-<!--            <td colspan="2"> 최** </td>-->
-<!--            <td class="c_disappear2"> 2022-11-02 </td>-->
-<!--          </tr>-->
-<!--          <td class="c_disappear">-->
-<!--            <p>답변</p>-->
-<!--          </td>-->
-<!--          <td colspan="3"> <a href="">&nbsp; &nbsp; &nbsp; &nbsp; [PSYC] 답변 드립니다.</a> <i class="fa-solid fa-lock"></i>-->
-<!--          </td>-->
-<!--          <td colspan="2"> PSYC </td>-->
-<!--          <td class="c_disappear2"> 2022-11-01 </td>-->
-<!--          </tr>-->
         </tbody>
-
       </table>
+      </div>
     </aside>
 
     <div class="c_write">
       <a href="/community/qnaInsert">글 쓰기</a>
     </div>
 
-    <div class="c_page">
-      <p>&lt;</p>
-      <a href=""><strong>1</strong></a>
-      <a href="">2</a>
-      <a href="">3</a>
-      <a href="">4</a>
-      <a href="">5</a>
-      <p>&gt;</p>
+    <!-- ** Cri_Paging **
+         FirstPage, Prev -->
+  <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
+    <a th:href="@{/community/QnA(${pageNation.searchQuery(1)})}">FP</a>&nbsp;
+    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.spageNo - 1)})}">&lt;</a>&nbsp;&nbsp;
+  </div>
+  <div th:unless="${pageNation.prev and pageNation.spageNo > 1}">
+    <font color="Gray">FP&nbsp;&lt;&nbsp;&nbsp;</font>
+  </div>
+<!--Display PageNo-->
+  <div th:each="i : ${#numbers.sequence(pageNation.spageNo, pageNation.epageNo)}">
+    <div th:if="${i == pageNation.cri.currPage}">
+      <font size="5" color="Orange" th:text="${i}"></font>&nbsp;
     </div>
+    <div th:unless="${i == pageNation.cri.currPage}">
+      <a th:href="@{/community/QnA(${pageNation.searchQuery(i)})}" th:text="${i}"></a>&nbsp;
+    </div>
+  </div>
+<!--Next, LastPage-->
+  <div th:if="${pageNation.next and pageNation.epageNo > 0}">
+    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.epageNo + 1)})}">&nbsp;&gt;</a>
+    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.lastPageNo)})}">&nbsp;LP</a>
+  </div>
+  <div th:unless="${pageNation.next and pageNation.epageNo > 0}">
+    <font color="Gray">&nbsp;&gt;&nbsp;LP</font>
+  </div>
 
   </main>
 

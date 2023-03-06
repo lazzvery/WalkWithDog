@@ -1,5 +1,7 @@
 package com.prj.web.awesome.community.controller;
 
+import com.prj.web.awesome.community.criTest.PageNation;
+import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.community.dto.QnaDTO;
 import com.prj.web.awesome.community.service.QnaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +24,15 @@ public class QnaController {
     @Autowired
     private QnaService qnaService;
 
-    @GetMapping("/QnA")
-    public String qna(Model model){
-
-        List<QnaDTO> qnaList = qnaService.qnaList();
-
-        model.addAttribute("qnaList", qnaList);
-
-        return "html/community/QnA/communityQnA";
-    }
+//    @GetMapping("/QnA")
+//    public String qna(Model model){
+//
+//        List<QnaDTO> qnaList = qnaService.qnaList();
+//
+//        model.addAttribute("qnaList", qnaList);
+//
+//        return "html/community/QnA/communityQnA";
+//    }
     @GetMapping("/qnaPassword")
     public String qnaPassword(Model model, QnaDTO dto){
 
@@ -119,4 +121,34 @@ public class QnaController {
         return "redirect:/community/QnA";
 
     }
+
+    // ** Criteria PageList
+    // => ver01 : Criteria cri
+    // => ver02 : SearchCriteria cri
+    @GetMapping("/QnA")
+    public ModelAndView qna(ModelAndView mv, SearchCriteria cri, PageNation pageNation) {
+        // 1) Criteria 처리
+        // => rowsPerPage, currPage 값은 Parameter 로 전달 : 자동으로 set
+        // => 그러므로 currPage 를 이용해서 setSnoEno 만 하면됨.
+        cri.setSnoEno();
+
+        // ** ver02
+        // => SearchCriteria: searchType, keyword 는 Parameter로 전달되어 자동으로 set
+
+        // 2) Service 처리
+        mv.addObject("banana", qnaService.searchList(cri)); // ver02
+
+        // 3) View 처리 => PageMaker
+        // => cri, totalRowsCount (DB에서 읽어와야함)
+        pageNation.setCriteria(cri);
+        pageNation.setTotalRowsCount(qnaService.searchTotalCount(cri)); // ver02: 조건과 일치하는 Rows 갯수
+        mv.addObject("pageNation", pageNation);
+
+        List<QnaDTO> qnaList = qnaService.criList(cri);
+
+        mv.addObject("qnaList", qnaList);
+
+        mv.setViewName("/html/community/QnA/communityQnA");
+        return mv;
+    }//bcrilist
 }
