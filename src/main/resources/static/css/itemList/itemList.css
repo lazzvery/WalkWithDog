@@ -46,7 +46,21 @@ body {
 }
 
 .productContainer {
-  margin: 0 auto;
+  margin : 0 auto;
+  display : flex;
+  justify-content: center;
+}
+
+.productContainer .product {
+  display: flex;
+}
+
+.productContainer h1 {
+  font-size: 1.2rem;
+}
+
+.prdImg1 {
+  width: 350px;
 }
 
 /* 큰 제목 감싸는 박스 */

@@ -8,7 +8,7 @@
     <title>itemList New</title>
     <link rel="stylesheet" href="/common/css/header.css">
     <link rel="stylesheet" href="/common/css/footer.css">
-    <link rel="stylesheet" href="/css/index.css">
+<!--    <link rel="stylesheet" href="/css/index.css">-->
     <link rel="stylesheet" href="/css/itemList/itemList.css">
     <link rel="stylesheet" href="/common/css/indexCommon.css">
     <script src="/js/jquery/jquery-3.6.3.min.js"></script>
@@ -53,24 +53,25 @@
                         <div class="pageNav">
                             <!--제목 아래 세부 카테고리-->
                             <ul class="pageList">
-                                <!-- 세부 품목들-->
+                                <!-- 작은 카테고리-->
                                 <li class="active">
-                                    <a href="/item/list/new">NEW</a>
+<!--                                    <a href="#" th:href="@{/item/list2?ctgr_cd={ctgr_cd}(ctgr_cd='0005')}">NEW</a>-->
+                                        <a th:href="@{/item/list2(ctgr_cd=${'0005'})}">new</a>
                                 </li>
                                 <li>
-                                    <a href="/item/list/living">LIVING</a>
+                                        <a th:href="@{/item/list2(ctgr_cd=${'0006'})}">living</a>
                                 </li>
                                 <li>
-                                    <a href="/item/list/working">WORKING</a>
+                                        <a th:href="@{/item/list2(ctgr_cd=${'0007'})}">working</a>
                                 </li>
                                 <li>
-                                    <a href="/item/list/food">FOOD</a>
+                                        <a th:href="@{/item/list2(ctgr_cd=${'0008'})}">food</a>
                                 </li>
                                 <li>
-                                    <a href="/item/list/clean">CLEAN</a>
+                                        <a th:href="@{/item/list2(ctgr_cd=${'0009'})}">clean</a>
                                 </li>
                                 <li>
-                                    <a href="/item/list/forcat">FOR CAT</a>
+                                        <a th:href="@{/item/list2(ctgr_cd=${'0010'})}">for cat</a>
                                 </li>
                             </ul>
                         </div>
@@ -95,70 +96,69 @@
 
                     <!-- --------------------- 상품 소개---------------------- -->
                     <section class="productContainer">
-                        <div class="product">
-
+                        <div class="product" th:each="item:${itemDto}">
                             <div class="productImgList">
                                 <div class="productImg productImg1">
                                     <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
                                             src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
-                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img
-                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>
+<!--                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img-->
+<!--                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>-->
                                     <h1 class="name">
-                                        <span>
+                                        <span th:text="${item.item_name}">
                                             헤어 방수 밴드
                                         </span>
-                                        <p>
+                                        <p th:text="${item.item_price}">
                                             15,900원
                                         </p>
                                     </h1>
                                 </div>
 
-                                <div class="productImg productImg2">
-                                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}" class="img1"><img
-                                            src="/img/item/0001.jpeg" alt="상품1" class="prdImg1"></a>
-                                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}" class="img2"><img
-                                            src="/img/item/0001-1.jpeg" alt="상품1" class="prdImg2"></a>
-                                    <h1 class="name">
-                                        <span>
-                                            수딩 오인먼트
-                                        </span>
-                                        <p>
-                                            12,900원
-                                        </p>
-                                    </h1>
-                                </div>
+<!--                                <div class="productImg productImg2">-->
+<!--                                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}" class="img1"><img-->
+<!--                                            src="/img/item/0001.jpeg" alt="상품1" class="prdImg1"></a>-->
+<!--                                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}" class="img2"><img-->
+<!--                                            src="/img/item/0001-1.jpeg" alt="상품1" class="prdImg2"></a>-->
+<!--                                    <h1 class="name">-->
+<!--                                        <span>-->
+<!--                                            수딩 오인먼트-->
+<!--                                        </span>-->
+<!--                                        <p>-->
+<!--                                            12,900원-->
+<!--                                        </p>-->
+<!--                                    </h1>-->
+<!--                                </div>-->
 
 
 
-                                <div class="productImg productImg3">
-                                    <a href="/item/itemDetail?item_id=10000002" th:href="@{/item/itemDetail/{itemId}(itemId=10000002)}" class="img1"><img
-                                            src="/img/item/0002.jpeg" alt="상품1" class="prdImg1"></a>
-                                    <a href="/item/itemDetail?item_id=10000002" th:href="@{/item/itemDetail/{itemId}(itemId=10000002)}" class="img2"><img
-                                            src="/img/item/0002-1.jpeg" alt="상품1" class="prdImg2"></a>
-                                    <h1 class="name">
-                                        <span>
-                                            베리덴탈 스프레이
-                                        </span>
-                                        <p>
-                                            12,900원
-                                        </p>
-                                    </h1>
-                                </div>
+<!--                                <div class="productImg productImg3">-->
+<!--                                    <a href="/item/itemDetail?item_id=10000002" th:href="@{/item/itemDetail/{itemId}(itemId=10000002)}" class="img1"><img-->
+<!--                                            src="/img/item/0002.jpeg" alt="상품1" class="prdImg1"></a>-->
+<!--                                    <a href="/item/itemDetail?item_id=10000002" th:href="@{/item/itemDetail/{itemId}(itemId=10000002)}" class="img2"><img-->
+<!--                                            src="/img/item/0002-1.jpeg" alt="상품1" class="prdImg2"></a>-->
+<!--                                    <h1 class="name">-->
+<!--                                        <span>-->
+<!--                                            베리덴탈 스프레이-->
+<!--                                        </span>-->
+<!--                                        <p>-->
+<!--                                            12,900원-->
+<!--                                        </p>-->
+<!--                                    </h1>-->
+<!--                                </div>-->
 
-                                <div class="productImg productImg4">
-                                    <a href="/item/itemDetail?item_id=10000003" th:href="@{/item/itemDetail/{itemId}(itemId=10000003)}" class="img1"><img
-                                            src="/img/item/0003.jpeg" alt="상품1" class="prdImg1"></a>
-                                    <a href="/item/itemDetail?item_id=10000003" th:href="@{/item/itemDetail/{itemId}(itemId=10000003)}" class="img2"><img
-                                            src="/img/item/0003-1.jpeg" alt="상품1" class="prdImg2"></a>
-                                    <h1 class="name">
-                                        <span>
-                                            토일렛 페이퍼 토이
-                                        </span>
-                                        <p>
-                                            14,900원
-                                        </p>
-                                    </h1>
-                                </div>
+<!--                                <div class="productImg productImg4">-->
+<!--                                    <a href="/item/itemDetail?item_id=10000003" th:href="@{/item/itemDetail/{itemId}(itemId=10000003)}" class="img1"><img-->
+<!--                                            src="/img/item/0003.jpeg" alt="상품1" class="prdImg1"></a>-->
+<!--                                    <a href="/item/itemDetail?item_id=10000003" th:href="@{/item/itemDetail/{itemId}(itemId=10000003)}" class="img2"><img-->
+<!--                                            src="/img/item/0003-1.jpeg" alt="상품1" class="prdImg2"></a>-->
+<!--                                    <h1 class="name">-->
+<!--                                        <span>-->
+<!--                                            토일렛 페이퍼 토이-->
+<!--                                        </span>-->
+<!--                                        <p>-->
+<!--                                            14,900원-->
+<!--                                        </p>-->
+<!--                                    </h1>-->
+<!--                                </div>-->
 
 <!--                                <div class="productImg productImg5">-->
 <!--                                    <a href="../item/itemDetails.html" class="img1"><img-->

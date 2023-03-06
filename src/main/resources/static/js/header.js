@@ -108,7 +108,7 @@ let initDialogue = function() {
                 if (el.ctgr_nm == 'SHOP') {
                     html += '       <li class="subTitle"><strong>'+el.ctgr_nm+'</strong></li>';
                 } else if (el.ctgr_nm == 'BEST') {
-                    html += '       <li class="subTitle"><a href="/item/list/best"><strong>'+el.ctgr_nm+'</strong></a></li>';
+                    html += '       <li class="subTitle"><a href="/item/list2?ctgr_cd=0002"><strong>'+el.ctgr_nm+'</strong></a></li>';
                 } else if (el.ctgr_nm == 'EVENT' || el.ctgr_nm == 'COMMUNITY') {
                     html += '       <li class="subTitle"><strong>'+el.ctgr_nm+'</strong></li>';
                 }
@@ -121,17 +121,17 @@ let initDialogue = function() {
                     if( ch.prt_ctgr_cd == '0001' && el.ctgr_nm == 'SHOP' ) {
                         // html += '               <li><a href="#" data-ctgr-cd="' + ch.ctgr_cd + '" >'+ch.ctgr_nm+'</a></li>';
                         if ( ch.ctgr_nm == 'new' ) {
-                            html += '               <li><a href="/item/list/new">'+ch.ctgr_nm+'</a></li>';
+                            html += '               <li><a href="/item/list2?ctgr_cd=0005">'+ch.ctgr_nm+'</a></li>';
                         } else if ( ch.ctgr_nm == 'living' ) {
-                            html += '               <li><a href="/item/list/living">'+ch.ctgr_nm+'</a></li>';
+                            html += '               <li><a href="/item/list2?ctgr_cd=0006">'+ch.ctgr_nm+'</a></li>';
                         } else if ( ch.ctgr_nm == 'working' ) {
-                            html += '               <li><a href="/item/list/working">'+ch.ctgr_nm+'</a></li>';
+                            html += '               <li><a href="/item/list2?ctgr_cd=0007">'+ch.ctgr_nm+'</a></li>';
                         } else if ( ch.ctgr_nm == 'food' ) {
-                            html += '               <li><a href="/item/list/food">'+ch.ctgr_nm+'</a></li>';
+                            html += '               <li><a href="/item/list2?ctgr_cd=0008">'+ch.ctgr_nm+'</a></li>';
                         } else if ( ch.ctgr_nm == 'clean' ) {
-                            html += '               <li><a href="/item/list/clean">'+ch.ctgr_nm+'</a></li>';
+                            html += '               <li><a href="/item/list2?ctgr_cd=0009">'+ch.ctgr_nm+'</a></li>';
                         } else if ( ch.ctgr_nm == 'for cat' ) {
-                            html += '               <li><a href="/item/list/forcat">'+ch.ctgr_nm+'</a></li>';
+                            html += '               <li><a href="/item/list2?ctgr_cd=0010">'+ch.ctgr_nm+'</a></li>';
                         }
                     }
 

@@ -10,77 +10,88 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/item/list")
+@RequestMapping("/item/list2")
 @Controller
 public class ItemTypeController {
 
     @Autowired
     private ItemService itemService;
 
-    @GetMapping("/new")
-    public String listNew(Model model, ItemDto itemDto){
+    @GetMapping
+    public String searchCategory(String ctgr_cd, Model model) {
 
-        List<ItemDto> listNew = itemService.itemList(itemDto.getCtgr_cd());
+//        System.out.println(ctgr_cd);
 
-        model.addAttribute("listNew", listNew);
+        List<ItemDto> itemDto = itemService.itemList(ctgr_cd);
+        model.addAttribute("itemDto", itemDto);
+        System.out.println(itemDto);
 
-        return "html/itemList/new";
+        return "html/itemList/itemList";
     }
-
-
-    @GetMapping("/living")
-    public String listLiving(Model model, ItemDto itemDto){
-
-        List<ItemDto> listLiving = itemService.itemList(itemDto.getCtgr_cd());
-
-        model.addAttribute("listLiving", listLiving);
-
-        return "html/itemList/living";
-    }
-
-
-    @GetMapping("/working")
-    public String listWorking(Model model, ItemDto itemDto){
-
-        List<ItemDto> listWorking = itemService.itemList(itemDto.getCtgr_cd());
-
-        model.addAttribute("listWorking", listWorking);
-
-        return "html/itemList/working";
-    }
-
-
-    @GetMapping("/food")
-    public String listFood(Model model, ItemDto itemDto){
-
-        List<ItemDto> listFood = itemService.itemList(itemDto.getCtgr_cd());
-
-        model.addAttribute("listFood", listFood);
-
-        return "html/itemList/food";
-    }
-
-
-    @GetMapping("/clean")
-    public String listClean(Model model, ItemDto itemDto){
-
-        List<ItemDto> listClean = itemService.itemList(itemDto.getCtgr_cd());
-
-        model.addAttribute("listClean", listClean);
-
-        return "html/itemList/clean";
-    }
-
-
-    @GetMapping("/forcat")
-    public String listForCat(Model model, ItemDto itemDto){
-
-        List<ItemDto> listForCat = itemService.itemList(itemDto.getCtgr_cd());
-
-        model.addAttribute("listForCat", listForCat);
-
-        return "html/itemList/forcat";
-    }
+//    @GetMapping("/new")
+//    public String newList (Model model, ItemDto itemDto){
+//
+//        List<ItemDto> newList = itemService.itemList(itemDto.getCtgr_cd());
+//
+//        model.addAttribute("newList", newList);
+//
+//        return "html/itemList/new";
+//    }
+//
+//
+//    @GetMapping("/living")
+//    public String living(Model model, ItemDto itemDto){
+//
+//        List<ItemDto> living = itemService.itemList(itemDto.getCtgr_cd());
+//
+//        model.addAttribute("living", living);
+//
+//        return "html/itemList/living";
+//    }
+//
+//
+//    @GetMapping("/working")
+//    public String working(Model model, ItemDto itemDto){
+//
+//        List<ItemDto> working = itemService.itemList(itemDto.getCtgr_cd());
+//
+//        model.addAttribute("working", working);
+//
+//        return "html/itemList/working";
+//    }
+//
+//
+//    @GetMapping("/food")
+//    public String food(Model model, ItemDto itemDto){
+//
+//        List<ItemDto> food = itemService.itemList(itemDto.getCtgr_cd());
+//
+//        model.addAttribute("food", food);
+//
+//        return "html/itemList/food";
+//    }
+//
+//
+//    @GetMapping("/clean")
+//    public String clean(Model model, ItemDto itemDto){
+//
+//        List<ItemDto> clean = itemService.itemList(itemDto.getCtgr_cd());
+//
+//        model.addAttribute("clean", clean);
+//
+//        return "html/itemList/clean";
+//    }
+//
+//
+//    @GetMapping("/forcat")
+//    public String forcat(Model model, ItemDto itemDto){
+//
+//        List<ItemDto> forcat = itemService.itemList(itemDto.getCtgr_cd());
+//
+//        model.addAttribute("forcat", forcat);
+//
+//        return "html/itemList/forcat";
+//    }
 
 
 

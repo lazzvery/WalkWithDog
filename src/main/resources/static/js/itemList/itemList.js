@@ -30,6 +30,10 @@ $(function(){
         }
     };
 
+    // var ctgr_cd = document.getElementsByName("ctgr_cd")[0].value;
+    //
+    // if (ctgr_cd == )
+
     $.ajax({
         method: 'POST',
         url: '/item/list',
@@ -55,21 +59,7 @@ $(function(){
     });
 });
 
-// ** itemList 뿌리기
-function newList() {
-
-    $.ajax({
-        type: 'Get',
-        url: 'item/list/new',
-        success: (resultPage) => {
-            $('#resultArea1').html(resultPage);
-        },
-        error: function () {
-            $('#resultArea1').html('~~ Error 발생 !!! ~~');
-        }
-    }); //ajax
-    $('#resultArea2').html('');
-}//axmlist
+// -----------------------------------
 
 
 // $(function() {
