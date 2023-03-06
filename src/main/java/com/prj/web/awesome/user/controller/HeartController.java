@@ -50,17 +50,20 @@ public class HeartController {
         }
 
         if(userId != null) {
-            if (!heartList.contains(String.valueOf(itemId))) {
+            if (!heartList.contains(itemId)) {
                 hservice.save(heartDTO);
                 heartList.add(itemId);
                 session.setAttribute("heartList", heartList);
 
                 result.put("success", true);
-                result.put("message", "이 상품을 좋아합니다!");
+                result.put("message", "이 상품을 좋아합니다.");
+            } else {
+                result.put("success", true);
+                result.put("message", "이미 좋아요 한 상품입니다.");
             }
         } else {
             result.put("success", false);
-            result.put("message", "로그인 후 이용해 주세요!");
+            result.put("message", "로그인 후 이용해 주세요.");
         }
 
         return result;

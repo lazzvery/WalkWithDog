@@ -297,3 +297,28 @@ function deleteHeart() {
         }
     });
 }
+
+//===========================================================
+// 장바구니 관련 ajax
+
+function saveCart() {
+    $.ajax({
+        type: "POST",
+        url: '/user/cart/' + $('#item_id').val(),
+        data: {
+            'selected': $('.form-control option:selected').val()
+        },
+        cache: false,
+        success: function(result) {
+            if (result.success) {
+                alert(result.message);
+            } else {
+                alert(result.message);
+                window.location.href = '/user/login';
+            }
+        },
+        error: function(xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
+}
