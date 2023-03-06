@@ -1,5 +1,6 @@
 package com.prj.web.awesome.item.service;
 
+import com.prj.web.awesome.item.cri.CriteriaQna;
 import com.prj.web.awesome.item.dto.ItemQnaDTO;
 import com.prj.web.awesome.item.mapper.ItemQnaMapper;
 import lombok.RequiredArgsConstructor;
@@ -36,5 +37,15 @@ public class ItemQnaServiceImpl implements ItemQnaService {
     @Override
     public void delete(int item_qna_seq) {
         mapper.delete(item_qna_seq);
+    }
+
+    @Override
+    public List<ItemQnaDTO> criList(CriteriaQna cri) {
+        return mapper.criList(cri);
+    }
+
+    @Override
+    public int criTotalCount(int item_id) {
+        return mapper.criTotalCount(item_id);
     }
 }
