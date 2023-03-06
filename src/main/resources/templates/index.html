@@ -101,10 +101,10 @@
 
             <div class="productImgList">
                 <div class="productImg productImg1">
-                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}"
+                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000,currPage=${currPage})}"
                        class="img1">
                         <img src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"/></a>
-                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}"
+                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000,currPage=${currPage})}"
                        class="img2">
                         <img src="/img/item/0000-2.jpeg" alt="상품1" class="prdImg2"/></a>
                     <h1 class="name">
@@ -112,12 +112,11 @@
                         <p>15,900원</p>
                     </h1>
                 </div>
-
                 <div class="productImg productImg2">
-                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}"
+                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001,currPage=${currPage})}"
                        class="img1">
                         <img src="/img/item/0001.jpeg" alt="상품2" class="prdImg1"/></a>
-                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001)}"
+                    <a href="/item/itemDetail?item_id=10000001" th:href="@{/item/itemDetail/{itemId}(itemId=10000001,currPage=${currPage})}"
                        class="img2">
                         <img src="/img/item/0001-1.jpeg" alt="상품2" class="prdImg2"/></a>
                     <h1 class="name">

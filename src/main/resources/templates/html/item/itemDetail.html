@@ -49,7 +49,7 @@
                      th:onclick="saveHeart()" th:if="${!checkHeart}">
                 <img src="../../../img/icon/ishare.png" alt="공유하기" class="sharebBtn">
                 <h2 th:text="${item.item_name}">아르르 꿀잠 이불</h2>
-                <span class="salePrice" th:text="${item.item_price}">29,900원</span>
+                <span class="salePrice" th:text="${item.item_price} + 원">29,900원</span>
             </div>
 
             <div class="shareProduct">
@@ -69,102 +69,27 @@
                     </span>
             </div>
 
-            <div class="product_option">
-                <select class="optionSelect">
-                    <option value="" selected>[필수] 옵션을 선택해 주세요</option>
-                    <option value="0">캐시미어 블루 M</option>
-                    <option value="1">캐시미어 블루 L (+10,000원)</option>
-                    <option value="2">라벤더 포그 M</option>
-                    <option value="3">라벤더 포그 L (+10,000원)</option>
+            <div class="selling_option">
+                <span th:text="${item.item_name}">선택창</span>
+                <select class="form-control">
+                    <option selected="" value="0">1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                    <option value="4">5</option>
+                    <option value="5">6</option>
+                    <option value="6">7</option>
+                    <option value="7">8</option>
+                    <option value="8">9</option>
+                    <option value="9">10+</option>
                 </select>
             </div>
 
-            <div class="product_check">
-                <div class="product_checklist check1 hidden">
-                    <div class="product_checkName">
-                        <strong>아르르 꿀잠 이불</strong>
-                        <span>캐시미어 블루 M</span>
-                    </div>
-                    <div class="product_checkNum">
-                        <a href="#" class="downCheckbtn">
-                            <img src="../../../img/icon/iminus.png" alt="다운버튼">
-                        </a>
-                        <input type="text" value="1" readonly>
-                        <a href="#" class="UpCheckbtn">
-                            <img src="../../../img/icon/iplus.png" alt="업버튼">
-                        </a>
-                    </div>
-                    <div class="product_checkPrice">
-                        <span>29,900원</span>
-                        <img src="../../../img/icon/iclose.png" class="deleteoptionBtn" alt="삭제">
-                    </div>
-                </div>
-
-                <!--<div class="product_checklist check2 hidden">
-                    <div class="product_checkName">
-                        <strong>아르르 꿀잠 이불</strong>
-                        <span>캐시미어 블루 L</span>
-                    </div>
-                    <div class="product_checkNum">
-                        <a href="#" class="downCheckbtn">
-                            <img src="../../../img/icon/minus.png" alt="다운버튼">
-                        </a>
-                        <input type="text" value="1" readonly>
-                        <a href="#" class="UpCheckbtn">
-                            <img src="../../../img/icon/plus.png" alt="업버튼">
-                        </a>
-                    </div>
-                    <div class="product_checkPrice">
-                        <span>39,900원</span>
-                        <img src="../../../img/icon/close.png" class="deleteoptionBtn" alt="삭제">
-                    </div>
-                </div>
-
-                <div class="product_checklist check3 hidden">
-                    <div class="product_checkName">
-                        <strong>아르르 꿀잠 이불</strong>
-                        <span>라벤더 포그 M</span>
-                    </div>
-                    <div class="product_checkNum">
-                        <a href="#" class="downCheckbtn">
-                            <img src="../../../img/icon/minus.png" alt="다운버튼">
-                        </a>
-                        <input type="text" value="1" readonly>
-                        <a href="#" class="UpCheckbtn">
-                            <img src="../../../img/icon/plus.png" alt="업버튼">
-                        </a>
-                    </div>
-                    <div class="product_checkPrice">
-                        <span>29,900원</span>
-                        <img src="../../../img/icon/close.png" class="deleteoptionBtn" alt="삭제">
-                    </div>
-                </div>
-
-                <div class="product_checklist check4 hidden">
-                    <div class="product_checkName">
-                        <strong>아르르 꿀잠 이불</strong>
-                        <span>라벤더 포그 L</span>
-                    </div>
-                    <div class="product_checkNum">
-                        <a href="#" class="downCheckbtn">
-                            <img src="../../../img/order/minus.png" alt="다운버튼">
-                        </a>
-                        <input type="text" value="1" readonly>
-                        <a href="#" class="UpCheckbtn">
-                            <img src="../../../img/order/plus.png" alt="업버튼">
-                        </a>
-                    </div>
-                    <div class="product_checkPrice">
-                        <span>39,900원</span>
-                        <img src="../../../img/order/close.png" class="deleteoptionBtn" alt="삭제">
-                    </div>
-                </div>-->
-            </div>
             <hr>
 
             <div class="product_totalPay">
                 <span>주문 금액</span>
-                <strong class="totalPay">0원</strong>
+                <strong class="totalPay" th:text="${item.item_price} + 원">0원</strong>
             </div>
 
             <div class="btn_pay">
@@ -329,15 +254,14 @@
                 <div th:if="${#lists.isEmpty(qna)}" class="qna_empty">게시물이 없습니다</div>
             </div>
 
-            <div class="q_page">
-                <span>&lt;</span>
-                <a href=""><strong>1</strong></a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a href="">4</a>
-                <a href="">5</a>
-                <span>&gt;</span>
+            <div class="q_page" th:if="${cri.totalCount > 0}">
+                <a href="#none" th:if="${page.prev}" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id},currPage=1)}" th:onclick="saveScrollPosition()"> &lt;&lt; </a>
+                <a href="#none" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id},currPage=${pageNumber})}"
+                   th:each="pageNumber : ${#numbers.sequence(1, page.pageViewCount)}"
+                   th:text="${pageNumber}" th:onclick="saveScrollPosition()">번호</a>
+                <a href="#none" th:if="${page.next}" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id},currPage=${cri.edPage})}" th:onclick="saveScrollPosition()"> &gt;&gt; </a>
             </div>
+
         </div>
     </div>
 </nav>

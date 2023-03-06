@@ -17,10 +17,6 @@
     list-style-type: none;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 main, nav {
     width: 1024px;
     margin: auto;
@@ -217,7 +213,7 @@ main hr {
     flex-direction: column;
     font-size: 0.8em;
     color: #696969;
-    padding: 15px 0 50px 0;
+    padding: 15px 0 40px 0;
     margin-top: 15px;
 }
 
@@ -229,15 +225,6 @@ main hr {
     margin-right: 25px;
 }
 
-/* 상품 주문 옵션 */
-
-.product_option select {
-    width: 100%;
-    height: 40px;
-    border: 1px solid rgb(192, 192, 192);
-    cursor: pointer;
-}
-
 .product_totalPay {
     display: flex;
     justify-content: space-between;
@@ -246,76 +233,6 @@ main hr {
 
 .product_totalPay .totalPay {
     font-size: 1.2em;
-}
-
-/* 상품 주문 확인 */
-
-.product_checklist {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f5f5f5;
-    padding: 30px 10px;
-    margin: 10px 0;
-    position: relative;
-}
-
-.product_check a {
-    color: #727272;
-}
-
-.product_checkName {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.9em;
-    color: #353535;
-}
-
-.product_checkName span {
-    font-size: 0.8em;
-    color: #535353;
-}
-
-.product_checkNum {
-    display: flex;
-    box-sizing: border-box;
-}
-
-.product_checkNum input {
-    width: 25px;
-    text-align: center;
-    border: 1px solid #727272;
-}
-
-.product_checkNum a {
-    width: 25px;
-    background-color: white;
-    text-decoration: none;
-}
-
-.downCheckbtn {
-    border: solid;
-    border-width: 1px 0 1px 1px;
-}
-
-.UpCheckbtn {
-    border: solid;
-    border-width: 1px 1px 1px 0;
-}
-
-.product_checkNum img {
-    width: 12px;
-    margin-left: calc(12px / 2);
-}
-
-.product_checkPrice span {
-    font-size: 0.9em;
-}
-
-.product_checkPrice img {
-    width: 12px;
-    cursor: pointer;
-    margin-left: 7px;
 }
 
 /* 상품 주문 버튼 */
@@ -628,6 +545,8 @@ main hr {
 
 .qna_box .q_page a {
     padding: 5px;
+    text-decoration: none;
+    color: #353535;
 }
 
 .qna_box .qna_empty {
@@ -858,11 +777,30 @@ main hr {
     font-size: 17px;
 }
 
-/* ----------------------------------------------- */
+/* ----------------------- 상품 선택창 ------------------------ */
+.selling_option {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 8px;
+    padding: 20px 10px;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+}
 
+.selling_option span {
+    font-weight: 600;
+    font-size: 13px;
+}
 
-
-
-
-
-
+.form-control {
+    height: 24px;
+    padding: 0 10px;
+    font-size: 13px;
+    line-height: 22px;
+    border-radius: 3px;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    color: #424242;
+    width: 100px;
+    text-align: center;
+}

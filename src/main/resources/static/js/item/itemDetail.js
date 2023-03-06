@@ -7,10 +7,6 @@ const img_container = document.querySelector('.img_container'),
     heartBtn = shop_container.querySelector('.heartbBtn'),
     shareBtn = shop_container.querySelector('.sharebBtn'),
     shareBox = shop_container.querySelector('.shareProduct'),
-    checkBox = document.querySelector('.product_check'),
-    selectBox = document.querySelector('.optionSelect'),
-    option = selectBox.getElementsByTagName('option'),
-    input = checkBox.getElementsByTagName('input'),
     sideCategory = document.querySelector('.categoryProduct'),
     urlCopyBtn = document.querySelector('.urlCopy'),
     qna_write = document.querySelector('.itemQnaPopUp'),
@@ -136,6 +132,21 @@ function updateForm(title, content, seq, password) {
     document.querySelector("#uitem_qna_content").value = content;
     document.querySelector("#item_qna_seq").value = seq;
     document.querySelector("#ubtCheck").checked = password == 1 ? "checked" : "";
+}
+
+//==========================================================
+// 스크롤 저장 코드
+
+function saveScrollPosition() {
+    localStorage.setItem("scrollPosition", window.pageYOffset);
+}
+
+window.onload = function() {
+    let scrollPosition = localStorage.getItem("scrollPosition");
+    if (scrollPosition !== null) {
+        window.scrollTo(0, scrollPosition);
+        localStorage.removeItem("scrollPosition");
+    }
 }
 
 //==========================================================

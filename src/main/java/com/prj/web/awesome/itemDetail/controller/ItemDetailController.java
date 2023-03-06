@@ -1,5 +1,7 @@
 package com.prj.web.awesome.itemDetail.controller;
 
+import com.prj.web.awesome.item.cri.CriteriaQna;
+import com.prj.web.awesome.item.cri.PageNationQna;
 import com.prj.web.awesome.item.dto.ItemQnaDTO;
 import com.prj.web.awesome.item.service.ItemQnaService;
 import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
@@ -27,13 +29,20 @@ public class ItemDetailController {
     private final HeartService hservice;
 
     @GetMapping("/{itemId}")
-    public String searchItem(@PathVariable("itemId") int itemId, Model model, HttpSession session){
+    public String searchItem(@PathVariable("itemId") int itemId,
+                             @RequestParam(defaultValue = "1") int currPage,
+                             Model model, HttpSession session){
+
+        CriteriaQna criteriaQna = new CriteriaQna(5, currPage);
+        PageNationQna pageNationQna = new PageNationQna(criteriaQna);
+        criteriaQna.setTotalCount(qservice.criTotalCount(itemId));
+        criteriaQna.setItem_id(itemId);
+        pageNationQna.calc();   // 게시판 페이징
+
+        ItemDetailDto item = dservice.findItem(itemId); // 아이템 조회
+        List<ItemQnaDTO> qna = qservice.criList(criteriaQna);   // 게시판 조회
 
         String userId = (String) session.getAttribute("loginID");
-
-        ItemDetailDto item = dservice.findItem(itemId);
-        List<ItemQnaDTO> qna = qservice.findAll(itemId);
-
         if(hservice.findHeart(itemId, userId) != null) {
             model.addAttribute("checkHeart", true);
         } else {
@@ -43,6 +52,8 @@ public class ItemDetailController {
         model.addAttribute("loginID", userId);
         model.addAttribute("item", item);
         model.addAttribute("qna", qna);
+        model.addAttribute("page", pageNationQna);
+        model.addAttribute("cri", criteriaQna);
 
         return "html/item/itemDetail";
 
