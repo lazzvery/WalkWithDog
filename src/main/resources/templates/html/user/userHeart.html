@@ -36,10 +36,10 @@
                             <input type="checkbox" name="agreeCheck" th:id="'agreeCheck' + ${i.index}" th:value="${heart.item_id}">
                             <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
                         </div>
-                        <a href="../item/itemDetail.html" class="likelistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
+                        <a href="#" class="likelistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
                             <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="likelistimg">
                         </a>
-                        <a href="../item/itemDetail.html" class="likelisttextbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
+                        <a href="#" class="likelisttextbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
                             <strong th:text="${heart.item_name}">상품명</strong>
                             <input type="hidden" name="item_id" th:value="${heart.item_id}" id="item_id">
                         </a>

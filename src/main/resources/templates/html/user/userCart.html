@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../css/user/myPage/userMyPageCommon.css">
     <link rel="stylesheet" href="../../../css/user/userCart.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
     <script defer src="../../../js/user/userCart.js"></script>
     <script defer src="../../../js/index.js"></script>
     <title>cart</title>
@@ -29,20 +30,18 @@
         <hr>
         <article class="shop_cartlist">
             <ul>
-                <li class="shop_cartboxnone hidden"><span>장바구니가 비어 있습니다.</span></li>
-                <li class="shop_cartbox1">
+                <li class="shop_cartbox1" th:each="cart, i : ${cartItem}">
                     <div class="shop_cartleft">
                         <div class="agreeAll checkBox">
-                            <input type="checkbox" name="agreeCheck1" id="agreeCheck1" checked="">
-                            <label for="agreeCheck1" id="agreeCheck1"></label>
+                            <input type="checkbox" name="agreeCheck" th:id="'agreeCheck' + ${i.index}" th:value="${cart.item_id}">
+                            <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
                         </div>
-                        <a href="../item/itemDetail.html" class="cartlistimgbox1">
+                        <a href="#" class="cartlistimgbox1" th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">
                             <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="cartlistimg">
                         </a>
-                        <a href="../item/itemDetail.html" class="cartlisttextbox1">
-                            <strong>아르르 꿀잠 방석</strong>
-                            <span class="cartpayspan">29,900원</span>
-                            <span>[옵션: 캐시미어 블루 M]</span>
+                        <a href="#" class="cartlisttextbox1" th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">
+                            <strong th:text="${cart.item_name}" style="cursor: pointer">상품명</strong>
+                            <span class="cartpayspan" th:text="${cart.item_price} + 원">가격</span>
                         </a>
                     </div>
                     <div class="shop_cartright">
@@ -50,20 +49,23 @@
                             <a href="#" class="downCheckbtn">
                                 <img src="../../../img/icon/iminus.png" alt="다운버튼" class="cartIcon">
                             </a>
-                            <input type="text" readonly="" value="1">
+                            <input type="text" readonly="" value="1" th:value="${cart.cart_amount}">
                             <a href="#" class="UpCheckbtn">
                                 <img src="../../../img/icon/iplus.png" alt="업버튼" class="cartIcon">
                             </a>
                         </div>
-                        <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="cartdeleteIcon">
+                        <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="cartdeleteIcon" th:onclick="'deleteCart(' + ${i.index} + ')'">
                     </div>
+                </li>
+                <li class="shop_cartboxnone" th:if="${#lists.isEmpty(cartItem)}">
+                    <span>장바구니가 비어 있습니다.</span>
                 </li>
             </ul>
         </article>
         <article class="shop_Btnlist">
             <div class="shop_Btnleft">
-                <a href="#none" class="payBtnw">선택삭제</a>
-                <a href="#none" class="payBtnw">전체삭제</a>
+                <a href="#none" class="payBtnw" th:onclick="'deleteCarts(event)'">선택삭제</a>
+                <a href="#none" class="payBtnw" th:onclick="'deleteAllCart(event)'">전체삭제</a>
             </div>
             <div class="shop_Btnright">
                 <a href="#" class="payBtnw">선택상품 주문</a>
