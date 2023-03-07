@@ -29,19 +29,19 @@ public class CartController {
     @GetMapping
     public String cart(HttpSession session, Model model) {
         String loginID = (String) session.getAttribute("loginID");
-
-        List<CartItemDTO> cartItem = cservice.findCartItem(loginID);
+        List<CartItemDTO> cartItem = cservice.findCartItem(loginID);    // 장바구니 조회
 
         int price = 0;
         for (CartItemDTO cartItemDTO : cartItem) {
             price += cartItemDTO.getItem_price() * cartItemDTO.getCart_amount();
-        }
+        }   // 주문 금액
 
         if(price >= 50000) {
             model.addAttribute("delivery", 0);
         } else {
             model.addAttribute("delivery", 3000);
-        }
+        }   // 배송비
+
         model.addAttribute("cartItem", cartItem);
         model.addAttribute("price", price);
 
@@ -60,13 +60,13 @@ public class CartController {
             int itemPrice = iservice.findItem(itemId).getItem_price();
 
             price += itemPrice * itemAmount;
-        }
+        }   // 주문 금액
 
         if(price >= 50000) {
             result.put("delivery", 0);
         } else {
             result.put("delivery", 3000);
-        }
+        }   // 배송비
 
         result.put("price", price);
         return result;
@@ -80,19 +80,11 @@ public class CartController {
 
         cartDTO.setUser_id(userId);
         cartDTO.setItem_id(itemId);
-        cartDTO.setCart_amount(selected);
-        List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
-
-        if (cartList == null) {
-            cartList = new ArrayList<Integer>();
-        }
+        cartDTO.setCart_amount(selected);   // 값 저장
 
         if (userId != null) {
             if (cservice.findCart(itemId, userId) == null) {
                 cservice.saveCart(cartDTO);
-                cartList.add(itemId);
-                session.setAttribute("cartList", cartList);
-
                 result.put("success", true);
                 result.put("message", "장바구니에 상품을 담았습니다.");
             } else {
@@ -110,16 +102,12 @@ public class CartController {
     @ResponseBody
     @PostMapping
     public Map<String, Object> saveCarts(@RequestBody List<String> items, HttpSession session) {
-        List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
         String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
 
-        if (cartList == null) {
-            cartList = new ArrayList<Integer>();
-        }
-
-        if (items != null && items.size() > 0) {
+        if (items != null && items.size() > 0) {    // 좋아요 -> 장바구니 저장
             for (String itemId : items) {
+
                 CartDTO cartDTO = new CartDTO();
                 cartDTO.setItem_id(Integer.parseInt(itemId));
                 cartDTO.setUser_id(userId);
@@ -127,15 +115,13 @@ public class CartController {
 
                 if (cservice.findCart(Integer.valueOf(itemId), userId) == null) {
                     cservice.saveCart(cartDTO);
-                    cartList.add(Integer.valueOf(itemId));
-                    session.setAttribute("cartList", cartList);
-
                     result.put("success", true);
                     result.put("message", "장바구니에 상품을 담았습니다. \n장바구니로 이동하시겠습니까?");
                 } else {
                     result.put("success", true);
                     result.put("message", "이미 담은 상품을 제외하고 장바구니에 담았습니다. \n장바구니로 이동하시겠습니까?");
                 }
+
             }
         } else {
             result.put("success", false);
@@ -148,14 +134,11 @@ public class CartController {
     @ResponseBody
     @DeleteMapping("/{itemId}")
     public Map<String, Object> deleteCart(@PathVariable("itemId") int itemId, HttpSession session) {
-        List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
         String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
 
         if (cservice.findCart(itemId, userId) != null) {
             cservice.deleteCart(itemId);
-            cartList.remove((Integer) itemId);
-            session.setAttribute("cartList", cartList);
         }
 
         result.put("success", true);
@@ -167,7 +150,6 @@ public class CartController {
     @ResponseBody
     @DeleteMapping
     public Map<String, Object> deleteCarts(@RequestBody List<String> items, HttpSession session) {
-        List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
         String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
 
@@ -176,7 +158,6 @@ public class CartController {
 
             if (cservice.findCart(Integer.valueOf(itemId), userId) != null) {
                 cservice.deleteCart(itemIdInt);
-                cartList.remove((Integer) itemIdInt);
                 result.put("success", true);
                 result.put("message", "상품을 삭제하였습니다!");
             }

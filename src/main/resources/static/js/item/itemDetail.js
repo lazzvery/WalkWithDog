@@ -11,7 +11,6 @@ const img_container = document.querySelector('.img_container'),
     urlCopyBtn = document.querySelector('.urlCopy'),
     qna_write = document.querySelector('.itemQnaPopUp'),
     qna_update = document.querySelector('.updateQnaPopUp'),
-    qna_write_btn = document.querySelector('.writebtn'),
     body = document.querySelector("body");
 
 //===========================================================
@@ -81,39 +80,40 @@ document.addEventListener('scroll', () => {
 //===========================================================
 // qna 게시판 컨텐츠 보이게 하기
 
-let open = false;
-
 function checkId(check, password, index) {
     let content = document.getElementById("content" + index);
 
     if (!!check) {
-        openbtn(content);
+        if (content.classList.contains("openContent")) {
+            content.classList.remove("openContent");
+        } else {
+            content.classList.add("openContent");
+        }
     } else {
         if (!!password) {
             alert("비밀글입니다");
         } else {
-            openbtn(content);
+            if (content.classList.contains("openContent")) {
+                content.classList.remove("openContent");
+            } else {
+                content.classList.add("openContent");
+            }
         }
-    }
-}
-
-function openbtn(content) {
-    if (!open) {
-        content.style.display = "block";
-        open = true;
-    } else {
-        content.style.display = "none";
-        open = false;
     }
 }
 
 //===========================================================
 // Form 열고 닫기
 
-qna_write_btn.addEventListener('click', () => {
-    qna_write.style.display = "block";
-    body.style.overflow = "hidden";
-});
+function openForm(login) {
+    if(!!login) {
+        qna_write.style.display = "block";
+        body.style.overflow = "hidden";
+    } else {
+        alert("로그인 후 이용해 주세요.");
+        location.href="/user/login";
+    }
+}
 
 function closeForm() {
     qna_write.style.display = "none";
@@ -145,12 +145,8 @@ window.onload = function() {
     }
 }
 
-//===========================================================
-// 결제 금액
-
-
-
 //==========================================================
+// 결제 금액
 // A-jax
 
 function addPrice() {

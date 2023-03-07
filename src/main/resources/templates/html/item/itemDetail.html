@@ -195,7 +195,7 @@
         <div class="qna_span">
             <h3>Q&A</h3>
             <div>
-                <span class="writebtn">Write</span>
+                <span class="writebtn" th:onclick="|openForm(${loginID != null})|">Write</span>
                 <span th:onclick="|location.href='@{/community/QnA}'|">All</span>
             </div>
         </div>

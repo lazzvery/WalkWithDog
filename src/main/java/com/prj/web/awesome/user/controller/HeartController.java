@@ -39,21 +39,14 @@ public class HeartController {
     @PostMapping("/{itemId}")
     public Map<String, Object> saveHeart(@PathVariable("itemId") int itemId, HeartDTO heartDTO, HttpSession session) {
         String userId = (String) session.getAttribute("loginID");
-        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
         Map<String, Object> result = new HashMap<>();
 
         heartDTO.setItem_id(itemId);
         heartDTO.setUser_id(userId);
 
-        if (heartList == null) {
-            heartList = new ArrayList<Integer>();
-        }
-
         if(userId != null) {
             if (hservice.findHeart(itemId, userId) == null) {
                 hservice.save(heartDTO);
-                heartList.add(itemId);
-                session.setAttribute("heartList", heartList);
 
                 result.put("success", true);
                 result.put("message", "이 상품을 좋아합니다.");
@@ -72,14 +65,11 @@ public class HeartController {
     @ResponseBody
     @DeleteMapping("/{itemId}")
     public Map<String, Object> deleteHeart(@PathVariable("itemId") int itemId, HttpSession session) {
-        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
         String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
 
         if (hservice.findHeart(itemId, userId) != null) {
             hservice.delete(itemId);
-            heartList.remove((Integer) itemId);
-            session.setAttribute("heartList", heartList);
         }
 
         result.put("success", true);
@@ -91,7 +81,6 @@ public class HeartController {
     @ResponseBody
     @DeleteMapping
     public Map<String, Object> deleteHearts(@RequestBody List<String> items, HttpSession session) {
-        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
         String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
 
@@ -99,7 +88,6 @@ public class HeartController {
             int itemIdInt = Integer.parseInt(itemId);
             if (hservice.findHeart(itemIdInt, userId) != null) {
                 hservice.delete(itemIdInt);
-                heartList.remove((Integer) itemIdInt);
                 result.put("success", true);
                 result.put("message", "상품을 삭제하였습니다!");
             }

@@ -804,3 +804,7 @@ main hr {
     width: 100px;
     text-align: center;
 }
+
+.qna_box .openContent {
+    display: block;
+}

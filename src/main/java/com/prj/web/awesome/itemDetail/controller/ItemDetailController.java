@@ -81,9 +81,6 @@ public class ItemDetailController {
                 qservice.save(itemQnaDTO);
                 result.put("success", true);
                 result.put("message", "질문이 등록되었습니다.");
-            } else {
-                result.put("success", false);
-                result.put("message", "로그인 후 이용 가능합니다.");
             }
         }   // 문의글 등록
 
