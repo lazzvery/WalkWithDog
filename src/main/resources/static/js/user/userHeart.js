@@ -1,7 +1,7 @@
 'use strict';
 
 const checkBox = document.querySelector('.shop_likelist'),
-    checkList = checkBox.getElementsByTagName('input');
+    checkList = document.querySelectorAll('.checkedCheck');
 
 checkBox.addEventListener('click', (e) => {
     for (let i = 1; i <= checkList.length - 1; i++) {
@@ -15,7 +15,11 @@ checkBox.addEventListener('click', (e) => {
             }
         }
     }
-});     // 전체 수량 체크
+
+    if(document.querySelectorAll('.checkedCheck:checked').length == checkList.length - 1) {
+        checkList[0].checked = true;
+    }
+});      // 전체 수량 체크
 
 //========================================================
 

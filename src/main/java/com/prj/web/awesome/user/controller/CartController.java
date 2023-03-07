@@ -81,7 +81,6 @@ public class CartController {
         cartDTO.setUser_id(userId);
         cartDTO.setItem_id(itemId);
         cartDTO.setCart_amount(selected);
-        log.info("selected={}", selected);
         List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
 
         if (cartList == null) {
@@ -104,7 +103,6 @@ public class CartController {
             result.put("success", false);
             result.put("message", "로그인 후 이용해 주세요!");
         }
-        log.info("cartList={}", cartList);
 
         return result;
     }
@@ -126,11 +124,6 @@ public class CartController {
                 cartDTO.setItem_id(Integer.parseInt(itemId));
                 cartDTO.setUser_id(userId);
                 cartDTO.setCart_amount(1);
-
-                log.info("itemId={}", itemId);
-                log.info("userId={}", userId);
-                log.info("cartDTO={}", cartDTO);
-                log.info("cartList={}", cartList);
 
                 if (cservice.findCart(Integer.valueOf(itemId), userId) == null) {
                     cservice.saveCart(cartDTO);
@@ -158,7 +151,6 @@ public class CartController {
         List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
         String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
-        log.info("cartList={}", cartList);
 
         if (cservice.findCart(itemId, userId) != null) {
             cservice.deleteCart(itemId);
@@ -178,7 +170,6 @@ public class CartController {
         List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
         String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
-        log.info("items={}", items);
 
         for (String itemId : items) {
             int itemIdInt = Integer.parseInt(itemId);
