@@ -47,7 +47,7 @@ public class MyPageController {
     }
 
     @PostMapping("/addrInsert")
-    public String addrInsert(AddrDTO dto, HttpServletRequest request){
+    public String addrInsert( AddrDTO dto, HttpServletRequest request){
         dto.setUser_id((String)request.getSession().getAttribute("loginID"));
 
 
