@@ -24,15 +24,24 @@ public class QnaController {
     @Autowired
     private QnaService qnaService;
 
-//    @GetMapping("/QnA")
-//    public String qna(Model model){
-//
-//        List<QnaDTO> qnaList = qnaService.qnaList();
-//
-//        model.addAttribute("qnaList", qnaList);
-//
-//        return "html/community/QnA/communityQnA";
-//    }
+    @GetMapping("/QnA")
+    public ModelAndView qna(ModelAndView mv, SearchCriteria cri, PageNation pageNation) {
+        cri.setSnoEno();
+
+        mv.addObject("banana", qnaService.searchList(cri));
+
+        pageNation.setCriteria(cri);
+        pageNation.setTotalRowsCount(qnaService.searchTotalCount(cri));
+        mv.addObject("pageNation", pageNation);
+
+        List<QnaDTO> qnaList = qnaService.criList(cri);
+
+        mv.addObject("qnaList", qnaList);
+
+        mv.setViewName("/html/community/QnA/communityQnA");
+        return mv;
+    }
+
     @GetMapping("/qnaPassword")
     public String qnaPassword(Model model, QnaDTO dto){
 
@@ -42,7 +51,7 @@ public class QnaController {
 
         return "html/community/QnA/communityQnAPassword";
     }
-    @GetMapping("/qnaDetail")
+    @PostMapping("/qnaDetail")
     public String qnaDetail(Model model, QnaDTO dto){
 
         QnaDTO qnaDetail = qnaService.qnaDetail(dto);
@@ -61,12 +70,12 @@ public class QnaController {
     }
 
     @PostMapping("/qnaInsert")
-    public String qnaInsert(QnaDTO dto){
+    public String qnaInsert(QnaDTO dto,HttpServletRequest request){
 
         QnaDTO qnaDTO = new QnaDTO();
         qnaDTO.setQna_seq(dto.getQna_seq());
         qnaDTO.setAttachment_file_seq(dto.getAttachment_file_seq());
-        qnaDTO.setUser_id(dto.getUser_id());
+        qnaDTO.setUser_id((String) request.getSession().getAttribute("loginID"));
         qnaDTO.setQna_title(dto.getQna_title());
         qnaDTO.setQna_content(dto.getQna_content());
         qnaDTO.setQna_reg_date(dto.getQna_reg_date());
@@ -81,30 +90,21 @@ public class QnaController {
 
     @GetMapping("/qnaUpdate")
     public String qnaUpdateForm(Model model, QnaDTO dto){
-        System.out.println("get1 : " + dto);
+
+        System.out.println("d1" +dto);
 
         QnaDTO qnaDetail = qnaService.qnaDetail(dto);
 
         model.addAttribute("qnaDetail", qnaDetail);
 
-        System.out.println("get2: " + qnaDetail);
+        System.out.println("d2" +qnaDetail);
 
         return "html/community/QnA/communityQnAUpdate";
     }
     @PostMapping ("/qnaUpdate")
     public String qnaUpdate(Model model, QnaDTO dto){
 
-//        QnaDTO qnaDetail = qnaService.qnaDetail(dto);
-//
-//        model.addAttribute("qnaDetail", qnaDetail);
-
-        System.out.println("post : " + dto);
         String url = "redirect:QnA";
-
-//        QnaDTO qnaDTO = new QnaDTO();
-//        qnaDTO.setQna_title(dto.getQna_title());
-//        qnaDTO.setQna_content(dto.getQna_content());
-//        qnaDTO.setQna_seq(dto.getQna_seq());
 
         if (qnaService.qnaUpdate(dto) <= 0){
             url = "redirect:qnaUpdate?qna_seq=" + dto.getQna_seq();
@@ -122,33 +122,11 @@ public class QnaController {
 
     }
 
-    // ** Criteria PageList
-    // => ver01 : Criteria cri
-    // => ver02 : SearchCriteria cri
-    @GetMapping("/QnA")
-    public ModelAndView qna(ModelAndView mv, SearchCriteria cri, PageNation pageNation) {
-        // 1) Criteria 처리
-        // => rowsPerPage, currPage 값은 Parameter 로 전달 : 자동으로 set
-        // => 그러므로 currPage 를 이용해서 setSnoEno 만 하면됨.
-        cri.setSnoEno();
+    @PostMapping("/qnaReply")
+    public String qnaReply(QnaDTO dto){
 
-        // ** ver02
-        // => SearchCriteria: searchType, keyword 는 Parameter로 전달되어 자동으로 set
+        qnaService.qnaReply(dto);
 
-        // 2) Service 처리
-        mv.addObject("banana", qnaService.searchList(cri)); // ver02
-
-        // 3) View 처리 => PageMaker
-        // => cri, totalRowsCount (DB에서 읽어와야함)
-        pageNation.setCriteria(cri);
-        pageNation.setTotalRowsCount(qnaService.searchTotalCount(cri)); // ver02: 조건과 일치하는 Rows 갯수
-        mv.addObject("pageNation", pageNation);
-
-        List<QnaDTO> qnaList = qnaService.criList(cri);
-
-        mv.addObject("qnaList", qnaList);
-
-        mv.setViewName("/html/community/QnA/communityQnA");
-        return mv;
-    }//bcrilist
+        return "redirect:qnaDetail";
+    }
 }

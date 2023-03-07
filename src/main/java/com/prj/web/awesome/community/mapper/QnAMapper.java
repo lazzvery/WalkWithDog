@@ -31,4 +31,5 @@ public interface QnAMapper {
     List<QnaDTO> criList(Criteria cri);
     int criTotalCount();
 
+    void qnaReply(QnaDTO dto);
 }

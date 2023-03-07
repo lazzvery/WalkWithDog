@@ -14,7 +14,7 @@ public class Criteria {
 
     // 1) 필요한 초기값 생성자로 초기화 (Default 생성자)
     public Criteria() {
-        this.rowsPerPage=5;
+        this.rowsPerPage=9;
         this.currPage=1;
     }
     // 2) setCurrPage : 요청받은(출력할) PageNo set
