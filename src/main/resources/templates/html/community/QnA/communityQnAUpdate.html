@@ -88,7 +88,7 @@
       <tr>
         <th> 아이디 </th>
         <td>
-          <input th:text="${qnaDetail.user_id}" name="user_id">
+          <input th:value="${session.loginID}" name="user_id">
         </td>
       </tr>
       <tr>

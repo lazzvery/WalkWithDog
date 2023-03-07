@@ -9,12 +9,13 @@
   <script src="https://kit.fontawesome.com/32d3a53583.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../../../css/community/review/communityReview.css">
   <link rel="stylesheet" href="../../../../css/community/review/communityReviewPopup.css">
-  <script defer src="../../../../js/community/review/communituReviewPopup.js"></script>
+  <script defer src="../../../../js/community/review/communityReview.js"></script>
   <link rel="stylesheet" href="../../../../common/css/header.css" />
   <link rel="stylesheet" href="../../../../common/css/footer.css" />
    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
   <script src="https://kit.fontawesome.com/32d3a53583.js" crossorigin="anonymous"></script>
   <script defer src="../../../../js/index.js"></script>
+  <script src="/js/jquery/jquery-3.6.3.min.js"></script>
 
 
 </head>
@@ -43,118 +44,30 @@
   <main>
     <div>
       <div class="c_goodshead">상품후기</div>
-      <ul class="c_goodsinfo">
-        <li th:each="list:${reviewList}">
-          <div class="c_img_container">
-            <img th:text="${list.getAttachment_file_seq()}" src="../../../../img/community/review/goods_info.jpg" alt="">
-          </div>
-          <div>
-            <a th:text="${list.getReview_content()}" href="">고객님의 소중한 후기입니다.</a>
-            <a th:text="${list.getUser_id()}" href="" class="c_username">c**</a>
-          </div>
-          <div class="c_review_target">
-            <img th:text="${list.getAttachment_file_seq()}" src="../../../../img/community/review/goodspic.jpg" alt="" class="c_review_targetimg">
-            <div>
-              <a th:text="${list.getReview_title()}" href="../../item/itemDetails.html">오가닉거즈 손가락칫솔</a>
-              <div class="c_user_rank">
-                <span>리뷰
-                  <strong>46</strong>
-                </span>
-                <span>평점</span>
-                <strong th:text="${list.getReview_rank()}">9.4</strong>
-              </div>
-            </div>
-          </div>
-        </li>
-<!--        <li>-->
+<!--      <ul class="c_goodsinfo">-->
+<!--        <li th:each="list:${reviewList}">-->
 <!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/goods_info.jpg" alt="">-->
+<!--            <img th:value="${list.getAttachment_file_seq()}" src="../../../../img/community/review/goods_info.jpg" alt="">-->
 <!--          </div>-->
 <!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
+<!--            <a th:text="${list.getReview_content()}" href="">고객님의 소중한 후기입니다.</a>-->
+<!--            <a th:text="${list.getUser_id()}" href="" class="c_username">c**</a>-->
 <!--          </div>-->
 <!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/goodspic.jpg" alt="" class="c_review_targetimg">-->
+<!--            <img th:value="${list.getAttachment_file_seq()}" src="../../../../img/community/review/goodspic.jpg" alt="" class="c_review_targetimg">-->
 <!--            <div>-->
-<!--              <a href="../../item/itemDetails.html">오가닉거즈 손가락칫솔</a>-->
+<!--              <a th:text="${list.getReview_title()}" href="../../item/itemDetails.html">오가닉거즈 손가락칫솔</a>-->
 <!--              <div class="c_user_rank">-->
 <!--                <span>리뷰-->
 <!--                  <strong>46</strong>-->
 <!--                </span>-->
 <!--                <span>평점</span>-->
-<!--                <strong>9.4</strong>-->
+<!--                <strong th:text="${list.getReview_rank()}">9.4</strong>-->
 <!--              </div>-->
 <!--            </div>-->
 <!--          </div>-->
 <!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/goods_info.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/goodspic.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../../item/itemDetails.html">오가닉거즈 손가락칫솔</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>46</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.4</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/goods_info.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/goodspic.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../../item/itemDetails.html">오가닉거즈 손가락칫솔</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>46</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.4</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/goods_info.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/goodspic.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../../item/itemDetails.html">오가닉거즈 손가락칫솔</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>46</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.4</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-      </ul>
+<!--      </ul>-->
     </div>
 
     <div class="c_reviewhead">리뷰</div>
@@ -171,365 +84,68 @@
       </div>
     </div>
 
-    <div class="c_write"><a href="./community_review_write.html">글 쓰기</a></div>
+    <div class="c_write"><a href="/community/reviewInsert">글 쓰기</a></div>
 
     <div class="c_reviewlist">
       <ul>
         <li th:each="list:${reviewList}">
+          <div th:text="${list.getReview_seq()}" style="display: none"></div>
           <div class="c_img_container">
-            <img th:text="${list.getAttachment_file_seq()}" class="img" src="../../../../img/community/review/reviewpic.jpg" alt="">
+            <img th:value="${list.getAttachment_file_seq()}" class="img" src="../../../../img/community/review/reviewpic.jpg" alt="">
           </div>
           <div>
-            <a th:text="${list.getReview_content()}" href="">고객님의 소중한 후기입니다.</a>
-            <a th:text="${list.getUser_id() }" href="" class="c_username">c**</a>
+            <a th:text="${list.getReview_content()}" href="/community/reviewDetail">고객님의 소중한 후기입니다.</a>
+            <a th:text="${list.getUser_id() }" href="/community/reviewDetail" class="c_username">c**</a>
           </div>
           <div class="c_review_target">
-            <img th:text="${list.getAttachment_file_seq()}" src="../../../../img/community/review/reviewpicsmall.jpg" alt="" class="c_review_targetimg">
+            <img th:value="${list.getAttachment_file_seq()}" src="../../../../img/community/review/reviewpicsmall.jpg" alt="" class="c_review_targetimg">
             <div>
-              <a th:text="${list.getReview_title()}" href="../../item/itemDetails.html">[BEST] 워킹 세이프 스프레이</a>
+              <a th:text="${list.getReview_title()}" href="/community/reviewDetail">[BEST] 워킹 세이프 스프레이</a>
               <div class="c_user_rank">
                 <span>리뷰
                   <strong >46</strong>
                 </span>
                 <span>평점</span>
-                <strong th:text="${list.getReview_rank()}">9.4</strong>
+                <strong th:text="${list.review_rank}">9.4</strong>
               </div>
             </div>
           </div>
         </li>
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../../item/itemDetails.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>115</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.7</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../../item/itemDetails.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>76</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.2</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>152</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.8</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>87</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.6</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>11</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.6</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>26</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>8.7</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>59</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.1</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>99</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.3</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>76</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.2</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>132</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.7</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          <div class="c_img_container">-->
-<!--            <img src="../../image/arr/reviewpic.jpg" alt="">-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <a href="">고객님의 소중한 후기입니다.</a>-->
-<!--            <a href="" class="c_username">c**</a>-->
-<!--          </div>-->
-<!--          <div class="c_review_target">-->
-<!--            <img src="../../image/arr/reviewpicsmall.jpg" alt="" class="c_review_targetimg">-->
-<!--            <div>-->
-<!--              <a href="../Product/product_shopping_details.html">[BEST] 워킹 세이프 스프레이</a>-->
-<!--              <div class="c_user_rank">-->
-<!--                <span>리뷰-->
-<!--                  <strong>87</strong>-->
-<!--                </span>-->
-<!--                <span>평점</span>-->
-<!--                <strong>9.1</strong>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </li>-->
+      </ul>
 
     </div>
-
     <div class="c_page">
-      <p>&lt;</p>
-      <a href=""><strong>1</strong></a>
-      <a href="">2</a>
-      <a href="">3</a>
-      <a href="">4</a>
-      <a href="">5</a>
-      <p>&gt;</p>
+      <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
+        <a href="review?currPage=1&rowsPerPage=9"><<</a>&nbsp;
+        <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;
+      </div>
+      <div th:unless="${pageNation.prev and pageNation.spageNo > 1}">
+        <font color="Gray"><<&nbsp;&lt;&nbsp;&nbsp;</font>
+      </div>
+      <!--Display PageNo-->
+      <div th:each="i : ${#numbers.sequence(pageNation.spageNo, pageNation.epageNo)}">
+        <div th:if="${i == pageNation.cri.currPage}">
+          <font size="initial" color="#8E83A9" th:text="${i}"></font>&nbsp;
+        </div>
+        <div th:unless="${i == pageNation.cri.currPage}">
+          <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${i})}" th:text="${i}"></a>&nbsp;
+        </div>
+      </div>
+      <!--Next, LastPage-->
+      <div th:if="${pageNation.next and pageNation.epageNo > 0}">
+        <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.epageNo+1})}">&nbsp;&gt;</a>
+        <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.lastPageNo})}">&nbsp;>></a>
+
+      </div>
+      <div th:unless="${pageNation.next and pageNation.epageNo > 0}">
+        <font color="Gray">&nbsp;&gt;&nbsp;>></font>
+      </div>
     </div>
+
+      </div>
+    </div>
+
   </main>
-
-  <div class="popup_page">
-
-    <div class="picture_section">
-      <div class="review_pic_large">
-        <img src="../../../../img/community/review/reviewpicsmall.jpg">
-      </div>
-
-      <div class="review_pic_small">
-        <ul class="review_attachment">
-          <li class="review_file1"><img src="../../../../img/community/review/reviewpic.jpg"></li>
-          <li class="review_file2"><img src="../../../../img/community/review/reviewpic.jpg"></li>
-          <li class="review_file3"><img src="../../../../img/community/review/reviewpic.jpg"></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="content_section">
-      <div class="review_head">
-        <div class="item_link">
-          <div class="pic_section">
-            <img th:text="${reviewDetail.get}" src="../../../../img/community/review/reviewpic.jpg" class="item_pic">
-          </div>
-          <a href="../../item/itemDetails.html" class="item_detail">
-            <div class="title">
-              오가닉거즈 손가락칫솔
-            </div>
-            <div>
-              <span class="review">리뷰</span>
-              <span  class="rank">평점</span>
-            </div>
-          </a>
-        </div>
-        <div class="close-area"><i class="fa-solid fa-x"></i></div>
-      </div>
-      <hr>
-
-      <div class="review_body">
-
-        <div  class="score_section">
-          아주 좋아요
-        </div>
-
-        <div class="customer_section">
-          사용자 정보
-
-        </div>
-
-        <div class="review_detail">
-          고객님의 소중한 후기입니다
-        </div>
-        <div class="review_reply">
-          <span>댓글</span>
-          <span>1</span>
-          <i class="fa-solid fa-caret-down"></i>
-          <i class="fa-solid fa-caret-up"></i>
-          <div  class="replyContent">
-            Aliqua veniam irure enim non esse in exercitation. Incididunt exercitation cupidatat consectetur commodo
-            commodo magna est et cillum deserunt cillum irure sunt duis. Eiusmod enim quis velit sunt cupidatat nostrud
-            ad non. Deserunt aliqua qui aliquip enim et irure culpa mollit cillum. Ea non proident ut culpa excepteur
-            minim proident officia culpa ut. Proident et amet minim tempor et commodo anim adipisicing nulla. Laborum
-            nulla anim proident minim laborum Lorem commodo nulla laborum minim esse.
-          </div>
-        </div>
-
-        <hr>
-        <div class="review_other">
-          <div>이 상품의 다른 리뷰</div>
-
-
-        </div>
-
-      </div>
-
-
-
-    </div>
-  </div>
 
 
 </body>

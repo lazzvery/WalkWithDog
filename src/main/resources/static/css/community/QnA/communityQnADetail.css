@@ -80,6 +80,31 @@ form {
   height: 500px;
 }
 
+main .c_pageTitle {
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+  color: #BAAAD7;
+}
+
+main .c_date_created {
+  font-size: initial;
+  width: 55%;
+  text-align: center;
+  color: #BAAAD7;
+  padding-bottom: 40px;
+  margin: 30px auto;
+  border-bottom: 1px solid #BAAAD7;
+}
+
+main .c_detail {
+  font-size: initial;
+  width: 55%;
+  word-wrap: break-word;
+  margin: 0 auto;
+}
+
 .c_subtitle {
   font-size: 30px;
   font-weight: bold;
@@ -133,6 +158,18 @@ form {
 .c_button .list {
   background-color: white;
   color: #BAAAD7;
+}
+
+.c_button .reply{
+  width: 77.45px;
+  height: 39px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 10px;
+  border: 1px solid #BAAAD7;
+  background-color: #BAAAD7;
+  color: white;
 }
 
 .c_button .c_confirm {

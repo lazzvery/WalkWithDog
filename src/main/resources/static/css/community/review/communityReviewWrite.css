@@ -82,6 +82,11 @@ body {
   flex-direction: column;
 }
 
+.c_form{
+  width: 1024px;
+  margin: auto;
+}
+
 .c_write_space {
   margin: auto;
   min-width: 1000px;
@@ -90,32 +95,58 @@ body {
 .c_review_title {
   padding: 6px;
   outline: none;
-  width: 800px;
+  width: 880px;
 }
 
-th {
+.c_underul{
+  display: flex;
+  box-sizing: border-box;
   font-size: initial;
-  display: inline-block;
-  margin-right: 30px;
   line-height: 40px;
+  width: 1024px;
+}
+
+.textarea_li{
+  width: 100%;
 }
 
 textarea {
   resize: none;
-  width: 100%;
+  width: 1024px;
   margin-top: 20px;
   outline: none;
   padding: 10px;
   font-size: 20px;
   font-weight: bold;
   font-family: 'IBMPlexSansKR-Regular';
+  box-sizing: border-box;
+}
+
+
+.c_underli{
+  width: 10%;
+}
+.c_underli_title{
+  width: 5%;
+}
+.c_belowli{
+  width: 95%;
+}
+
+.qna_title{
+  width: 100%;
+  box-sizing: border-box;
+  height: 30px;
+  margin-bottom: 10px;
+  outline: none;
+  padding: 5px;
 }
 
 select {
   padding: 0 10px;
   color: #BAAAD7;
   border: 0;
-  width: 800px;
+  width: 80px;
   background-color: rgba(186,170,216,0.2);
   min-height: 40px;
   outline: none;
