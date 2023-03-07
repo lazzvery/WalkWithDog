@@ -83,7 +83,7 @@ body {
   flex-direction: column;
 }
 
-.c_pageTitle {
+main .c_pageTitle {
   margin-top: 50px;
   font-size: 30px;
   font-weight: 800;
@@ -91,7 +91,7 @@ body {
   color: #BAAAD7;
 }
 
-.c_date_created {
+main .c_date_created {
   font-size: initial;
   width: 55%;
   text-align: center;
@@ -101,7 +101,7 @@ body {
   border-bottom: 1px solid #BAAAD7;
 }
 
-.c_detail {
+main .c_detail {
   font-size: initial;
   width: 55%;
   word-wrap: break-word;
@@ -124,6 +124,8 @@ body {
   padding: 7px;
   color: black;
 }
+
+
 
 @media screen and (max-width: 1024px) {
   .c_page_catagory ul {

@@ -116,7 +116,7 @@ body {
   display: inline-block;
 }
 
-.pageList li a {
+.itemSub {
   position: relative;
   display: block;
   margin: 0 5px;
@@ -129,11 +129,7 @@ body {
   color: #BAAAD7;
   border-radius: 50px;
   cursor: pointer;
-}
 
-.pageNav ul li.active a {
-  /* background: rgb(71, 122, 123); */
-  /* color: #ffffff; */
 }
 
 .pageNav ul li:hover a {
@@ -175,3 +171,7 @@ body {
 }
 
 /* ----------------------------------------------- */
+
+.itemSub [href^="/item/list2?ctgr_cd=0008"]{
+  background-color: #8E83A9;
+}

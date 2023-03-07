@@ -13,4 +13,6 @@ public interface ItemMapper {
 //    List<ItemDto> itemList() throws Exception;
 
     List<ItemDto> itemList(String ctgr_cd);
+
+//    List<ItemDto> itemSearchAll(String prt_ctgr_cd);
 }

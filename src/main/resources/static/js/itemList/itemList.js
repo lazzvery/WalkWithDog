@@ -1,25 +1,67 @@
 "use strict";
+const active = document.querySelectorAll(".itemSub"),
+    pageList = document.querySelector(".pageList"),
+    itemSub = pageList.querySelectorAll("a");
 
-const active = document.querySelectorAll(".pageList a");
+
+const urlParams = new URL(location.href).searchParams;
+let name = urlParams.get('ctgr_cd');
+
+function handleClick(event) {
+    event.preventDefault(); // 기본 이벤트 동작(페이지 이동)을 방지합니다.
+    // 인라인 스타일로 배경색을 변경합니다.
+    event.target.style.setProperty('background-color', '#8E83A9', 'important');
+    // 페이지를 이동합니다.
+    window.location.href = event.target.href;
+}
+
+// let code = [[${param.ctgr_cd}]];
+// if (code) {
+//     // 가져온 코드 값을 사용하는 자바스크립트 코드
+//    console.log(code);
+// }
+
+// function change() {}
+// items.forEach(category => {
+//     category.addEventListener('click', () => {
+//         items.forEach(c => c.classList.add('change'));
+//         category.classList.add('change');
+//     })
+// })
+
+
 
 // 카테고리 클릭시 카테고리 색깔 변경
-console.log(active);
-let tmp = active[0];
+// console.log(subs);
+// let tmp = active[0];
+//
+//
+// tmp.style.backgroundColor = "#8E83A9";
+// tmp.style.color = "#ffffff";
+// subs.forEach(function(itemSub) {
+//     itemSub.addEventListener('click', function() {
+//         // 현재 선택된 카테고리에 selected 클래스를 추가하고,
+//         // 나머지 카테고리에서는 selected 클래스를 제거한다
+//         subs.forEach(function(otherCategory) {
+//             // otherCategory.classList.remove('selected');
+//         });
+//         category.classList.add('selected');
+//     });
+// });
 
+// function change() {
+//     for (let i = 0; i < active.length; i++) {
+//         active[i].addEventListener('click', function (e) {
+//             e.target.style.backgroundColor = "#8E83A9";
+//             e.target.style.color = "#ffffff";
+//             tmp.style.backgroundColor = "#f3f3f3";
+//             tmp.style.color = "#BAAAD7";
+//
+//             tmp = e.target;
+//         });
+//     }
+// }
 
-tmp.style.backgroundColor = "#8E83A9";
-tmp.style.color = "#ffffff";
-for (let i = 0; i < active.length; i++) {
-    active[i].addEventListener('click', function (e) {
-        e.target.style.backgroundColor = "#8E83A9";
-        e.target.style.color = "#ffffff";
-        tmp.style.backgroundColor = "#f3f3f3";
-        tmp.style.color = "#BAAAD7";
-
-        tmp = e.target;
-
-    });
-}
 
 $(function(){
 
@@ -118,3 +160,28 @@ $(function(){
 //             });
 
 // })
+
+window.addEventListener("load", (e) =>{
+
+    if(name == "0005"){
+        itemSub[0].style.backgroundColor = "#000";
+    }
+
+    else if(name == "0006"){
+        itemSub[1].style.backgroundColor = "#000";
+
+    }
+
+    else if(name == "0007"){
+        itemSub[2].style.backgroundColor = "#000";
+    }
+
+    else if(name == "0008"){
+        itemSub[3].style.backgroundColor = "#000";
+    }
+
+    else if(name == "0009"){
+        itemSub[4].style.backgroundColor = "#000";
+    }
+
+});

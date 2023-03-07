@@ -31,6 +31,19 @@ public class CategoryService {
 		return categoryList;
 	}
 
+	public List<CategoryDTO> searchCtgr(String prt_ctgr_cd){
+		List<CategoryDTO> searchCtgr = new ArrayList<CategoryDTO>();
+
+		try {
+			searchCtgr = mapper.searchCtgr(prt_ctgr_cd);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return searchCtgr;
+	}
+
 }
 
 

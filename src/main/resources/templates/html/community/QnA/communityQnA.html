@@ -40,17 +40,7 @@
   </article>
   <main>
     <aside>
-      <div id="searchBar">
-        <select name="searchType" id="searchType">
-          <option value="n" th:selected="${pageNation.cri.searchType==null}">전체</option>
-          <option value="t" th:selected="${pageNation.cri.searchType=='t'}">Title</option>
-          <option value="i" th:selected="${pageNation.cri.searchType=='i'}">ID(글쓴이)</option>
-          <option value="r" th:selected="${pageNation.cri.searchType=='r'}">RegDate</option>
-        </select>
-        <input type="text" name="keyword" id="keyword" th:value="${pageNation.cri.keyword}">
-        <button id="searchBtn" >Search</button>
-<!--    th:href="@{/QnA?currPage={i}&rowsPerPage=5(i=${#numbers.sequence(pageNation.spageNo, pageNation.epageNo)})"-->
-      </div>
+
       <div>
       <table class="c_board_table">
         <thead>
@@ -69,7 +59,7 @@
             <td colspan="3"> <a th:text="${list.getQna_title()}" th:href="@{/community/qnaPassword(qna_seq=${list.getQna_seq()})}">배송관련 문의 드립니다.</a> <i class="fa-solid fa-lock"></i>
             </td>
             <td th:text="${list.getUser_id()}" colspan="2"> 최** </td>
-            <td th:text="${#temporals.format(list.getQna_reg_date(), 'yyyy.MM.dd')}" class="c_disappear2"> 2022-11-02 </td>
+            <td th:text="${#temporals.format(list.getQna_reg_date(), 'yyyy.MM.dd')}" class="c_disappear2" name="qna_reg_date"> 2022-11-02 </td>
           </tr>
         </tbody>
       </table>
@@ -85,9 +75,9 @@
 <div class="c_page">
   <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
 <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(1)})}">FP</a>&nbsp;-->
-    <a href="QnA?currPage=1&rowsPerPage=5"><<</a>&nbsp;
+    <a href="QnA?currPage=1&rowsPerPage=9"><<</a>&nbsp;
 <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.spageNo - 1)})}">&lt;</a>&nbsp;&nbsp;-->
-    <a th:href="@{QnA?currPage={i}&rowsPerPage=5(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;
+    <a th:href="@{QnA?currPage={i}&rowsPerPage=9(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;
   </div>
   <div th:unless="${pageNation.prev and pageNation.spageNo > 1}">
     <font color="Gray"><<&nbsp;&lt;&nbsp;&nbsp;</font>
@@ -99,15 +89,15 @@
     </div>
     <div th:unless="${i == pageNation.cri.currPage}">
 <!--      <a th:href="@{/community/QnA(${pageNation.searchQuery(i)})}" th:text="${i}"></a>&nbsp;-->
-      <a th:href="@{QnA?currPage={i}&rowsPerPage=5(i=${i})}" th:text="${i}"></a>&nbsp;
+      <a th:href="@{QnA?currPage={i}&rowsPerPage=9(i=${i})}" th:text="${i}"></a>&nbsp;
     </div>
   </div>
 <!--Next, LastPage-->
   <div th:if="${pageNation.next and pageNation.epageNo > 0}">
 <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.epageNo + 1)})}">&nbsp;&gt;</a>-->
-    <a th:href="@{QnA?currPage={i}&rowsPerPage=5(i=${pageNation.epageNo+1})}">&nbsp;&gt;</a>
+    <a th:href="@{QnA?currPage={i}&rowsPerPage=9(i=${pageNation.epageNo+1})}">&nbsp;&gt;</a>
 <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.lastPageNo)})}">&nbsp;LP</a>-->
-    <a th:href="@{QnA?currPage={i}&rowsPerPage=5(i=${pageNation.lastPageNo})}">&nbsp;>></a>
+    <a th:href="@{QnA?currPage={i}&rowsPerPage=9(i=${pageNation.lastPageNo})}">&nbsp;>></a>
 
   </div>
   <div th:unless="${pageNation.next and pageNation.epageNo > 0}">

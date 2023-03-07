@@ -17,17 +17,6 @@ public class QnaService {
     @Autowired
     private QnAMapper mapper;
 
-//    public List<QnaDTO> qnaList(){
-//        List<QnaDTO> qnaList = new ArrayList<QnaDTO>();
-//
-//        try {
-//            qnaList = mapper.qnaList();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return qnaList;
-//    }
     public QnaDTO qnaPassword(QnaDTO dto) {
         return mapper.qnaPassword(dto);
     }
@@ -66,5 +55,9 @@ public class QnaService {
     public int criTotalCountAnInt(){
         return mapper.criTotalCount();
     };
+
+    public void qnaReply(QnaDTO dto){
+        mapper.qnaReply(dto);
+    }
 
 }

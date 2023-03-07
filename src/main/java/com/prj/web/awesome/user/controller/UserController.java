@@ -87,7 +87,7 @@ public class UserController {
                 // 로그인 성공 -> session 에 로그인정보 보관
                 request.getSession().setAttribute("loginID", dto.getUser_id());
                 request.getSession().setAttribute("loginName", dto.getUser_name());
-                uri="redirect:/"; // * 주의 : 반드시 요청명사용
+                uri="redirect:/home"; // * 주의 : 반드시 요청명사용
             }else {
                 // password 오류
                 mv.addObject("message", "~~ password 오류 !! 다시 하세요 ~~");

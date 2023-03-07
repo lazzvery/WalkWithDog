@@ -26,10 +26,11 @@
 		    qna_seq,
 		    user_id,
 		    qna_title,
+		    qna_password,
 		    qna_content,
 		    qna_reg_date
 		from QnA
-		where qna_seq = #{qna_seq};
+		where qna_seq = #{qna_seq} AND qna_password = #{qna_password};
 	</select>
 
 	<insert id="qnaInsert">
@@ -49,11 +50,11 @@
 		values(
 		    #{qna_seq},
 		    "300",
-		    "cbh",
+		    #{user_id},
 		    "0016",
 		    #{qna_title},
 		    #{qna_content},
-		    #{qna_reg_date},
+		    now(),
 		    #{qna_password},
 		    #{qna_secreat}
 		    );
@@ -115,6 +116,18 @@
 	<select id="criTotalCount" resultType="int" >
 		select count(*) from QnA
 	</select>
+
+	<insert id="qnaReply">
+		insert into QnA
+		(qna_seq,
+		 qna_reply,
+		 qna_reply_reg_date)
+		values (
+		#{qna_seq},
+		#{qna_reply},
+		#{qna_reply_reg_date}
+		);
+	</insert>
 
 
 </mapper>

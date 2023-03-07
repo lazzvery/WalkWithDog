@@ -10,9 +10,6 @@ const title = document.querySelector('.c_review_title'),
 
 let checkPW;
 
-pwBox.addEventListener("input", function () {
-  checkPW = this.value;
-});
 
 confirm.addEventListener('click', function () {
 

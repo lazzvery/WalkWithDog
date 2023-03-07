@@ -171,8 +171,8 @@ let initDialogue = function() {
     html += '       <a class="cartBtn_a" href="/user/cart" title="장바구니">카트</a>';
     html += '   </li>';
 
-    html += '   <li><a href="/user/login" title="로그인">Login</a></li>';
-    html += '   <li><a href="/user/join" title="회원가입">Join</a></li>';
+    // html += '   <li><a href="/user/login" title="로그인">Login</a></li>';
+    // html += '   <li><a href="/user/join" title="회원가입">Join</a></li>';
     html += '   <li><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>';
     html += '</ul>';
 
