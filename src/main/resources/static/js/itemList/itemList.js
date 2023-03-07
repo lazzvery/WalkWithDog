@@ -3,6 +3,10 @@ const active = document.querySelectorAll(".itemSub"),
     pageList = document.querySelector(".pageList"),
     itemSub = pageList.querySelectorAll("a");
 
+
+const urlParams = new URL(location.href).searchParams;
+let name = urlParams.get('ctgr_cd');
+
 function handleClick(event) {
     event.preventDefault(); // 기본 이벤트 동작(페이지 이동)을 방지합니다.
     // 인라인 스타일로 배경색을 변경합니다.
@@ -159,5 +163,25 @@ $(function(){
 
 window.addEventListener("load", (e) =>{
 
+    if(name == "0005"){
+        itemSub[0].style.backgroundColor = "#000";
+    }
+
+    else if(name == "0006"){
+        itemSub[1].style.backgroundColor = "#000";
+
+    }
+
+    else if(name == "0007"){
+        itemSub[2].style.backgroundColor = "#000";
+    }
+
+    else if(name == "0008"){
+        itemSub[3].style.backgroundColor = "#000";
+    }
+
+    else if(name == "0009"){
+        itemSub[4].style.backgroundColor = "#000";
+    }
 
 });
