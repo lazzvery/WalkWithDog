@@ -61,20 +61,31 @@ public class ItemDetailController {
 
     @ResponseBody
     @PostMapping("/{itemId}")
-    public Map<String, Object> insertQna(@PathVariable("itemId") int itemId, ItemQnaDTO itemQnaDTO, HttpSession session) {
+    public Map<String, Object> insertQna(@PathVariable("itemId") int itemId,
+                                         Integer selected, ItemQnaDTO itemQnaDTO, HttpSession session) {
 
         String userId = (String) session.getAttribute("loginID");
-
+        ItemDetailDto item = dservice.findItem(itemId);
         Map<String, Object> result = new HashMap<>();
-        if(userId != null) {
-            itemQnaDTO.setUser_id(userId);  // 답글이면 세션에 있는 아이디 대신 부모 글의 아이디 넣는 작업 필요
-            qservice.save(itemQnaDTO);
-            result.put("success", true);
-            result.put("message", "질문이 등록되었습니다.");
-        } else {
-            result.put("success", false);
-            result.put("message", "로그인 후 이용 가능합니다.");
-        }
+
+        if(itemQnaDTO.getItem_qna_content() == null) {
+            if (selected > 0) {
+                int orderPrice = item.getItem_price() * selected;
+                result.put("orderPrice", orderPrice);
+            }
+        }   // 상품 가격 계산
+
+        if(itemQnaDTO.getItem_qna_content() != null) {
+            if(userId != null) {
+                itemQnaDTO.setUser_id(userId);  // 답글이면 세션에 있는 아이디 대신 부모 글의 아이디 넣는 작업 필요
+                qservice.save(itemQnaDTO);
+                result.put("success", true);
+                result.put("message", "질문이 등록되었습니다.");
+            } else {
+                result.put("success", false);
+                result.put("message", "로그인 후 이용 가능합니다.");
+            }
+        }   // 문의글 등록
 
         return result;
     }

@@ -250,7 +250,7 @@ main .shop_cartboxnone {
     margin-top: 5px
 }
 
-.checkBox input[type=checkbox] {
+.shop_cartlist input[type=checkbox] {
     clip: rect(0, 0, 0, 0);
     border: 0;
     height: 1px;
@@ -261,14 +261,14 @@ main .shop_cartboxnone {
     width: 1px
 }
 
-.checkBox input[type=checkbox]+label {
+.shop_cartlist input[type=checkbox]+label {
     cursor: pointer;
     display: inline-block;
     padding-left: 40px;
     position: relative
 }
 
-.checkBox input[type=checkbox]+label:before {
+.shop_cartlist input[type=checkbox]+label:before {
     background: #fff;
     border: 1px solid #d8d8d8;
     border-radius: 2px;
@@ -284,14 +284,14 @@ main .shop_cartboxnone {
     width: 18px
 }
 
-.checkBox input[type=checkbox]:checked+label:before {
+.shop_cartlist input[type=checkbox]:checked+label:before {
     background: #BAAAD7;
     border: 0;
     height: 18px;
     width: 18px
 }
 
-.checkBox input[type=checkbox]:checked+label:after {
+.shop_cartlist input[type=checkbox]:checked+label:after {
     border-radius: 2px;
     bottom: -5px;
     box-shadow: none;
@@ -301,6 +301,17 @@ main .shop_cartboxnone {
     left: 13px;
     position: absolute;
     width: 10px
+}
+
+.allCheckBox {
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+#allCheck span {
+    position: absolute;
+    width: 100px;
+    bottom: -4px;
 }
 
 @media screen and (max-width:1024px) {

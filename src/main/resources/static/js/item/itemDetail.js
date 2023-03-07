@@ -64,10 +64,6 @@ shareBtn.addEventListener('click', () => {
 urlCopyBtn.addEventListener('click', clip);
 
 //===========================================================
-// 결제 금액
-
-
-//===========================================================
 // 스크롤 이벤트 (하단 오른쪽 메뉴바)
 
 document.addEventListener('scroll', () => {
@@ -147,6 +143,32 @@ window.onload = function() {
         window.scrollTo(0, scrollPosition);
         localStorage.removeItem("scrollPosition");
     }
+}
+
+//===========================================================
+// 결제 금액
+
+
+
+//==========================================================
+// A-jax
+
+function addPrice() {
+    $.ajax({
+        type: "POST",
+        url: '/item/itemDetail/' + $('#item_id').val(),
+        data: {
+            'selected': $('.form-control option:selected').val()
+        },
+        success: function(result) {
+            let totalPay = result.orderPrice.toLocaleString();
+            let html = '<span>주문 금액</span><strong class="totalPay">' + totalPay + '원</strong>';
+            $('.product_totalPay').html(html);
+        },
+        error: function(xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
 }
 
 //==========================================================

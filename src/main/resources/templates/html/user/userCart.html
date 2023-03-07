@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../common/css/header.css" />
-    <link rel="stylesheet" href="../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../common/css/header.css"/>
+    <link rel="stylesheet" href="../../../common/css/footer.css"/>
     <link rel="stylesheet" href="../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../css/user/myPage/userMyPageCommon.css">
     <link rel="stylesheet" href="../../../css/user/userCart.css">
@@ -17,85 +17,96 @@
 </head>
 
 <body>
-    <!-- ---------------- 버튼 ------------------ -->
-    <a class="toTop hidden_" href="#"> </a>
-    <!-- ---------------- 버튼 ------------------ -->
+<!-- ---------------- 버튼 ------------------ -->
+<a class="toTop hidden_" href="#"> </a>
+<!-- ---------------- 버튼 ------------------ -->
 
-    <!-- ---------------- <header> 모듈 ------------------ -->
-    <header th:replace="html/fragments/headerFooter :: header"></header>
-    <!-- ---------------- <header> 모듈 ------------------ -->
+<!-- ---------------- <header> 모듈 ------------------ -->
+<header th:replace="html/fragments/headerFooter :: header"></header>
+<!-- ---------------- <header> 모듈 ------------------ -->
 
-    <main>
-        <h1>CART</h1>
+<main>
+    <h1>CART</h1>
+    <article class="shop_cartlist">
+        <div class="allCheckBox">
+            <input type="checkbox" class="allCheck checkedCheck" id="allCheck" checked>
+            <label for="allCheck" id="allCheck">
+                <span>전체 선택</span>
+            </label>
+        </div>
         <hr>
-        <article class="shop_cartlist">
-            <ul>
-                <li class="shop_cartbox1" th:each="cart, i : ${cartItem}">
-                    <div class="shop_cartleft">
-                        <div class="agreeAll checkBox">
-                            <input type="checkbox" name="agreeCheck" th:id="'agreeCheck' + ${i.index}" th:value="${cart.item_id}">
-                            <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
-                        </div>
-                        <a href="#" class="cartlistimgbox1" th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">
-                            <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="cartlistimg">
+        <ul>
+            <li class="shop_cartbox1" th:each="cart, i : ${cartItem}">
+                <div class="shop_cartleft">
+                    <div class="agreeAll checkBox">
+                        <input type="checkbox" class="checkedCheck" name="agreeCheck" th:id="'agreeCheck' + ${i.index}"
+                               th:value="${cart.item_id}" checked>
+                        <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
+                    </div>
+                    <a href="#" class="cartlistimgbox1"
+                       th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">
+                        <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="cartlistimg">
+                    </a>
+                    <a href="#" class="cartlisttextbox1"
+                       th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">
+                        <strong th:text="${cart.item_name}" style="cursor: pointer">상품명</strong>
+                        <span class="cartpayspan"
+                              data-th-text="${#numbers.formatInteger(cart.item_price, 3, 'COMMA') + '원'}">상품 가격</span>
+                    </a>
+                </div>
+                <div class="shop_cartright">
+                    <div class="product_checkNum">
+                        <a href="#" class="downCheckbtn amountBtn">
+                            <img src="../../../img/icon/iminus.png" alt="다운버튼" class="cartIcon amountBtn">
                         </a>
-                        <a href="#" class="cartlisttextbox1" th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">
-                            <strong th:text="${cart.item_name}" style="cursor: pointer">상품명</strong>
-                            <span class="cartpayspan" th:text="${cart.item_price} + 원">가격</span>
+                        <input type="text" value="1" th:value="${cart.cart_amount}" id="cartAmountValue" readonly>
+                        <a href="#" class="UpCheckbtn amountBtn">
+                            <img src="../../../img/icon/iplus.png" alt="업버튼" class="cartIcon amountBtn">
                         </a>
                     </div>
-                    <div class="shop_cartright">
-                        <div class="product_checkNum">
-                            <a href="#" class="downCheckbtn">
-                                <img src="../../../img/icon/iminus.png" alt="다운버튼" class="cartIcon">
-                            </a>
-                            <input type="text" readonly="" value="1" th:value="${cart.cart_amount}">
-                            <a href="#" class="UpCheckbtn">
-                                <img src="../../../img/icon/iplus.png" alt="업버튼" class="cartIcon">
-                            </a>
-                        </div>
-                        <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="cartdeleteIcon" th:onclick="'deleteCart(' + ${i.index} + ')'">
-                    </div>
-                </li>
-                <li class="shop_cartboxnone" th:if="${#lists.isEmpty(cartItem)}">
-                    <span>장바구니가 비어 있습니다.</span>
-                </li>
-            </ul>
-        </article>
-        <article class="shop_Btnlist">
-            <div class="shop_Btnleft">
-                <a href="#none" class="payBtnw" th:onclick="'deleteCarts(event)'">선택삭제</a>
-                <a href="#none" class="payBtnw" th:onclick="'deleteAllCart(event)'">전체삭제</a>
-            </div>
-            <div class="shop_Btnright">
-                <a href="#" class="payBtnw">선택상품 주문</a>
-                <a href="#" class="payBtnb">전체상품 주문</a>
-            </div>
-        </article>
-        <article class="shoptotalpayBox">
-            <div class="paydeliverybox">
-                <div class="paybox">
-                    <strong>주문금액</strong>
-                    <span>39,400원</span>
+                    <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="cartdeleteIcon"
+                         th:onclick="'deleteCart(' + ${i.index} + ')'">
                 </div>
-                <div class="deliverybox">
-                    <strong>배송비</strong>
-                    <span>3,000원</span>
-                </div>
+            </li>
+            <li class="shop_cartboxnone" th:if="${#lists.isEmpty(cartItem)}">
+                <span>장바구니가 비어 있습니다.</span>
+            </li>
+        </ul>
+    </article>
+    <article class="shop_Btnlist">
+        <div class="shop_Btnleft">
+            <a href="#none" class="payBtnw" th:onclick="'deleteCarts(event)'">선택삭제</a>
+            <a href="#none" class="payBtnw" th:onclick="'deleteAllCart(event)'">전체삭제</a>
+        </div>
+        <div class="shop_Btnright">
+            <a href="#" class="payBtnw">선택상품 주문</a>
+            <a href="#" class="payBtnb">전체상품 주문</a>
+        </div>
+    </article>
+    <article class="shoptotalpayBox">
+        <div class="paydeliverybox">
+            <div class="paybox">
+                <strong>주문금액</strong>
+                <span data-th-text="${#numbers.formatInteger(price, 0, 'COMMA') + '원'}">주문 금액</span>
             </div>
-            <div class="totalbox">
-                <strong class="importantTotal">합계</strong>
-                <span>42,400원</span>
+            <div class="deliverybox">
+                <strong>배송비</strong>
+                <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">배송비</span>
             </div>
-            <div class="tatalBtnall">
-                <a href="#" class="totalpayBtnb">주문하기</a>
-            </div>
-        </article>
-    </main>
+        </div>
+        <div class="totalbox">
+            <strong class="importantTotal">합계</strong>
+            <span data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">42,400원</span>
+        </div>
+        <div class="tatalBtnall">
+            <a href="#" class="totalpayBtnb">주문하기</a>
+        </div>
+    </article>
+</main>
 
-    <!--------------------- <footer> 모듈 --------------------->
-    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
-    <!--------------------- <footer> 모듈 --------------------->
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
 </body>
 
 </html>

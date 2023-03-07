@@ -1,5 +1,7 @@
 package com.prj.web.awesome.user.controller;
 
+import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
+import com.prj.web.awesome.itemDetail.service.ItemDetailService;
 import com.prj.web.awesome.user.dto.CartDTO;
 import com.prj.web.awesome.user.dto.CartItemDTO;
 import com.prj.web.awesome.user.service.CartService;
@@ -22,23 +24,59 @@ import java.util.Map;
 public class CartController {
 
     private final CartService cservice;
+    private final ItemDetailService iservice;
 
     @GetMapping
-    public String cart(HttpSession session, Model model){
+    public String cart(HttpSession session, Model model) {
         String loginID = (String) session.getAttribute("loginID");
 
         List<CartItemDTO> cartItem = cservice.findCartItem(loginID);
+
+        int price = 0;
+        for (CartItemDTO cartItemDTO : cartItem) {
+            price += cartItemDTO.getItem_price() * cartItemDTO.getCart_amount();
+        }
+
+        if(price >= 50000) {
+            model.addAttribute("delivery", 0);
+        } else {
+            model.addAttribute("delivery", 3000);
+        }
         model.addAttribute("cartItem", cartItem);
-        log.info("cartItem={}", cartItem);
+        model.addAttribute("price", price);
 
         return "html/user/userCart";
     }
 
     @ResponseBody
-    @PostMapping("/{itemId}")
-    public Map<String, Object> saveHeart(@PathVariable("itemId") int itemId, int selected, CartDTO cartDTO, HttpSession session) {
+    @PostMapping("/calcPrice")
+    public Map<String, Object> calcPrice(@RequestBody List<Map<String, Object>> items) {
         Map<String, Object> result = new HashMap<>();
+
+        int price = 0;
+        for (Map<String, Object> item : items) {
+            int itemId = Integer.parseInt((String) item.get("item_id"));
+            int itemAmount = Integer.parseInt((String) item.get("item_amount"));
+            int itemPrice = iservice.findItem(itemId).getItem_price();
+
+            price += itemPrice * itemAmount;
+        }
+
+        if(price >= 50000) {
+            result.put("delivery", 0);
+        } else {
+            result.put("delivery", 3000);
+        }
+
+        result.put("price", price);
+        return result;
+    }
+
+    @ResponseBody
+    @PostMapping("/{itemId}")
+    public Map<String, Object> saveCart(@PathVariable("itemId") int itemId, int selected, CartDTO cartDTO, HttpSession session) {
         String userId = (String) session.getAttribute("loginID");
+        Map<String, Object> result = new HashMap<>();
 
         cartDTO.setUser_id(userId);
         cartDTO.setItem_id(itemId);
@@ -50,8 +88,8 @@ public class CartController {
             cartList = new ArrayList<Integer>();
         }
 
-        if(userId != null) {
-            if (!cartList.contains(itemId)) {
+        if (userId != null) {
+            if (cservice.findCart(itemId, userId) == null) {
                 cservice.saveCart(cartDTO);
                 cartList.add(itemId);
                 session.setAttribute("cartList", cartList);
@@ -72,13 +110,57 @@ public class CartController {
     }
 
     @ResponseBody
+    @PostMapping
+    public Map<String, Object> saveCarts(@RequestBody List<String> items, HttpSession session) {
+        List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
+        String userId = (String) session.getAttribute("loginID");
+        Map<String, Object> result = new HashMap<>();
+
+        if (cartList == null) {
+            cartList = new ArrayList<Integer>();
+        }
+
+        if (items != null && items.size() > 0) {
+            for (String itemId : items) {
+                CartDTO cartDTO = new CartDTO();
+                cartDTO.setItem_id(Integer.parseInt(itemId));
+                cartDTO.setUser_id(userId);
+                cartDTO.setCart_amount(1);
+
+                log.info("itemId={}", itemId);
+                log.info("userId={}", userId);
+                log.info("cartDTO={}", cartDTO);
+                log.info("cartList={}", cartList);
+
+                if (cservice.findCart(Integer.valueOf(itemId), userId) == null) {
+                    cservice.saveCart(cartDTO);
+                    cartList.add(Integer.valueOf(itemId));
+                    session.setAttribute("cartList", cartList);
+
+                    result.put("success", true);
+                    result.put("message", "장바구니에 상품을 담았습니다. \n장바구니로 이동하시겠습니까?");
+                } else {
+                    result.put("success", true);
+                    result.put("message", "이미 담은 상품을 제외하고 장바구니에 담았습니다. \n장바구니로 이동하시겠습니까?");
+                }
+            }
+        } else {
+            result.put("success", false);
+            result.put("message", "담을 상품을 선택해 주세요.");
+        }
+
+        return result;
+    }
+
+    @ResponseBody
     @DeleteMapping("/{itemId}")
     public Map<String, Object> deleteCart(@PathVariable("itemId") int itemId, HttpSession session) {
-        Map<String, Object> result = new HashMap<>();
         List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
+        String userId = (String) session.getAttribute("loginID");
+        Map<String, Object> result = new HashMap<>();
         log.info("cartList={}", cartList);
 
-        if (cartList.contains(itemId)) {
+        if (cservice.findCart(itemId, userId) != null) {
             cservice.deleteCart(itemId);
             cartList.remove((Integer) itemId);
             session.setAttribute("cartList", cartList);
@@ -93,14 +175,15 @@ public class CartController {
     @ResponseBody
     @DeleteMapping
     public Map<String, Object> deleteCarts(@RequestBody List<String> items, HttpSession session) {
-        log.info("items={}", items);
-        Map<String, Object> result = new HashMap<>();
         List<Integer> cartList = (List<Integer>) session.getAttribute("cartList");
+        String userId = (String) session.getAttribute("loginID");
+        Map<String, Object> result = new HashMap<>();
+        log.info("items={}", items);
 
         for (String itemId : items) {
             int itemIdInt = Integer.parseInt(itemId);
 
-            if (cartList.contains(itemIdInt)) {
+            if (cservice.findCart(Integer.valueOf(itemId), userId) != null) {
                 cservice.deleteCart(itemIdInt);
                 cartList.remove((Integer) itemIdInt);
                 result.put("success", true);
