@@ -89,9 +89,13 @@
           <a class="cartBtn_a" href="/user/cart" title="장바구니">카트</a>
         </li>
 
-        <li><a href="/user/login" title="로그인">Login</a></li>
-        <li><a href="/user/join" title="회원가입">Join</a></li>
-        <li><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>
+        <th:block th:if="${session.loginID == null}">
+            <li><a href="/user/login" title="로그인">Login</a></li>
+            <li><a href="/user/join" title="회원가입">Join</a></li>
+
+        </th:block>
+          <li th:if="${session.loginID != null}"><a href="/home" title="로그아웃">logout</a></li>
+          <li th:if="${session.loginID != null}"><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>
       </ul>
     </div>
     <!--subContainer-->
