@@ -31,9 +31,11 @@ public class ItemController {
             outDto.setItem_amount(item.getItem_amount());
             outDto.setItem_reg_date(item.getItem_reg_date());
             outDto.setItem_data_del_yn(item.getItem_data_del_yn());
+            outDto.setItem_best(item.getItem_best());
 
             itemOutArr.add(outDto);
         }
         return itemOutArr;
+
     }
 }

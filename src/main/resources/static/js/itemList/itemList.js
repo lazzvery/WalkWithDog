@@ -30,6 +30,8 @@ $(function(){
         }
     };
 
+    console.log(inDs);
+
     // var ctgr_cd = document.getElementsByName("ctgr_cd")[0].value;
     //
     // if (ctgr_cd == )

@@ -11,6 +11,7 @@
 			 ,item_amount
 			 ,item_reg_date
 			 ,item_data_del_yn
+			 ,item_best
 		from item
 		where ctgr_cd = #{ctgr_cd}
 	</select>
