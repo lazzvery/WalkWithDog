@@ -1,5 +1,7 @@
 package com.prj.web.awesome.item.controller;
 
+import com.prj.web.awesome.category.dto.CategoryDTO;
+import com.prj.web.awesome.category.service.CategoryService;
 import com.prj.web.awesome.item.dto.ItemDto;
 import com.prj.web.awesome.item.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +18,19 @@ public class ItemTypeController {
 
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping
     public String searchCategory(String ctgr_cd, Model model) {
 
-//        System.out.println(ctgr_cd);
-
         List<ItemDto> itemDto = itemService.itemList(ctgr_cd);
+        List<CategoryDTO> categoryDTO = categoryService.searchCtgr("0001");
+
+        model.addAttribute("ctgr_cd", ctgr_cd);
         model.addAttribute("itemDto", itemDto);
-        System.out.println(itemDto);
+        model.addAttribute("categoryDto", categoryDTO);
+        System.out.println(categoryDTO);
 
         return "html/itemList/itemList";
     }

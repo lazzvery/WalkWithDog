@@ -13,4 +13,15 @@
 		 where use_yn	= "Y"
 	</select>
 
+	<select id="searchCtgr" resultType="com.prj.web.awesome.category.dto.CategoryDTO">
+		select
+			ctgr_cd
+			 ,ctgr_nm
+			 ,ctgr_order
+			 ,prt_ctgr_cd
+			 ,use_yn
+		from category
+		where prt_ctgr_cd = #{prt_ctgr_cd}
+	</select>
+
 </mapper>
