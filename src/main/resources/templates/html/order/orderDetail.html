@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css" />
+    <link rel="stylesheet" href="../../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../../css/order/orderDetail.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+    <script defer src="../../../../js/order/orderDetail.js"></script>
+    <script defer src="../../../../js/index.js"></script>
+    <title>order</title>
+</head>
+
+
+<body>
+<!-- ---------------- 버튼 ------------------ -->
+<a class="toTop hidden_" href="#"> </a>
+<!-- ---------------- 버튼 ------------------ -->
+
+<!-- ---------------- <header> 모듈 ------------------ -->
+<header th:replace="html/fragments/headerFooter :: header"></header>
+<!-- ---------------- <header> 모듈 ------------------ -->
+
+<main>
+    <h1>주문/결제</h1>
+    <article class="shop_orderlist">
+        <h2>주문 상품</h2>
+        <hr>
+        <ul class="shop_orderlistbox" th:each="list : ${orderList}">
+            <li class="orderlist1">
+                <div class="detailname_box">
+                    <a href="../item/itemDetail.html" class="orderlistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">
+                        <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="orderlistimg">
+                    </a>
+                    <a href="./product_shopping_details.html" class="ordername1" th:text="${list.item_name}"
+                       th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">상품명</a>
+                </div>
+                <div class="detailnum_box">
+                    <span class="order_number" th:text="${list.item_count} + 개">수량</span>
+                    <span data-th-text="${#numbers.formatInteger(list.item_price, 3, 'COMMA') + '원'}">가격</span>
+                </div>
+            </li>
+        </ul>
+    </article>
+
+    <article class="shop_oderinfo">
+        <h2>주문자 정보</h2>
+        <hr>
+        <div class="shop_ordername">
+            <label>
+                <span class="inline_ortext">이름</span>
+                <span th:text="${user.user_name}">이름</span>
+            </label>
+        </div>
+
+        <div class="shop_orderphone">
+            <label>
+                <span class="inline_ortext">휴대폰</span>
+                <span th:text="${user.user_phone}">휴대폰</span>
+            </label>
+        </div>
+
+        <div class="shop_ordermail">
+            <label>
+                <span class="inline_ortext">이메일</span>
+                <span th:text="${user.user_email}">이메일</span>
+            </label>
+        </div>
+    </article>
+    <a href="../item/itemDetail.html"></a>
+
+    <form>
+        <div class="orderalldiv">
+            <div class="paycouponbox">
+                <article class="shop_deliinfoBox">
+                    <div class="shop_deliTitle">
+                        <h2>배송 정보</h2>
+                        <a href="../User/myPage/address/list/list.html">
+                            <span>변경</span>
+                        </a>
+                    </div>
+                    <hr>
+
+                    <div class="delivery_info">
+                        <ul>
+                            <li><strong>경기도 성남시 분당구 돌마로 46 <br> 5층 그린컴퓨터학원</strong></li>
+                            <li class="delivery_infonav">유미현, 010-8282-5353</li>
+                        </ul>
+                    </div>
+
+                    <label>
+                        <select class="shop_deliveryplz">
+                            <option value="0">배송시 요청사항을 선택해주세요.</option>
+                            <option value="1">부재시 문앞에 놓아주세요</option>
+                            <option value="2">배송 전에 미리 연락주세요</option>
+                            <option value="3">부재시 경비실에 맡겨주세요</option>
+                            <option value="4">부재시 전화주시거나 문자 남겨주세요</option>
+                            <option value="5" option="text">직접 입력</option>
+                        </select>
+                    </label>
+                    <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
+                </article>
+
+                <article class="couponpaydiv">
+                    <div class="shop_orderway">
+                        <h2>결제 수단</h2>
+                        <hr>
+                        <div class="order_select">
+                            <span class="inline_ortext">결제수단 선택</span>
+                            <div class="paycontainer">
+                                <button style='cursor:pointer' class="cardTab bordButton">신용카드</button>
+                                <button style='cursor:pointer' class="easyTab">간편 결제</button>
+                                <button style='cursor:pointer' class="phoneTab">휴대폰</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="paycontainer_Box checkBox2">
+                        <ul class="paycontainer_easy">
+                            <li>
+                                <input type="radio" name="pay" id="pay1" checked>
+                                <label for="pay1" id="pay1"></label>
+                                <label for="pay1"><span>카카오페이</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="pay" id="pay2">
+                                <label for="pay2" id="pay2"></label>
+                                <label for="pay2"><span>네이버페이</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="pay" id="pay3">
+                                <label for="pay3" id="pay3"></label>
+                                <label for="pay3"><span>토스</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="pay" id="pay4">
+                                <label for="pay4" id="pay4"></label>
+                                <label for="pay4"><span>페이코</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="pay" id="pay5">
+                                <label for="pay5" id="pay5"></label>
+                                <label for="pay5"><span>스마일페이</span></label>
+                            </li>
+                        </ul>
+
+                        <div class="paycontainer_card">
+                            <select class="cardSelect">
+                                <option value="0">카드를 선택해 주세요</option>
+                                <option value="1">삼성카드</option>
+                                <option value="2">우리카드</option>
+                                <option value="3">신한카드</option>
+                                <option value="4">현대카드</option>
+                                <option value="5">KB국민카드</option>
+                                <option value="6">롯데카드</option>
+                                <option value="7">NH농협카드</option>
+                                <option value="8">비씨카드</option>
+                                <option value="9">하나카드</option>
+                                <option value="10">씨티카드</option>
+                                <option value="11">카카오뱅크카드</option>
+                            </select>
+
+                            <select class="monthSelect" disabled>
+                                <option value="0">일시불</option>
+                                <option value="1">2개월 (무이자)</option>
+                                <option value="2">3개월 (무이자)</option>
+                                <option value="3">4개월</option>
+                                <option value="4">5개월</option>
+                                <option value="5">6개월</option>
+                                <option value="6">7개월</option>
+                                <option value="7">8개월</option>
+                                <option value="8">9개월</option>
+                                <option value="9">10개월</option>
+                                <option value="10">11개월</option>
+                                <option value="11">12개월</option>
+                            </select>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="shop_ordercoupon">
+                    <h2>쿠폰</h2>
+                    <hr>
+                    <div class="order_coupon">
+                        <span class="inline_ortext">쿠폰 적용</span>
+                        <button type="button" class="couponnumber">사용가능 쿠폰 0장 / 전체 0장</button>
+                    </div>
+                </article>
+            </div>
+
+            <article class="shop_orderpay">
+                <h2>결제 금액</h2>
+                <div class="order_allpay">
+                    <div>총 주문 금액</div>
+                    <span data-th-text="${#numbers.formatInteger(price, 0, 'COMMA') + '원'}">39,400원</span>
+                </div>
+                <div class="order_deliverypay">
+                    <div>배송비</div>
+                    <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">+ 3,000원</span>
+                </div>
+                <div class="order_couponpay">
+                    <div>쿠폰 사용</div>
+                    <span>0원</span>
+                </div>
+                <hr>
+
+                <div class="order_totalpay">
+                    <div>최종 결제 금액</div>
+                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">42,400원</strong></div>
+                </div>
+                <div class="order_pointbox">
+                    <div class="order_colorbox">적립</div>
+                    <div>구매 시 300p</div>
+                </div>
+            </article>
+        </div>
+
+        <article class="shop_orderprivacy">
+            <h2>개인정보 수집 제공</h2>
+            <hr>
+            <ul class="orderprivacybox checkBox">
+                <li>
+                    <div class="agreeAll checkBox">
+                        <input type="checkbox" name="agreeAll" id="agreeAll"/>
+                        <label for="agreeAll" id="agreeAll"></label>
+                        <label for="agreeAll"><span>결제 진행 필수 전체 동의</span></label>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="agreeCheck checkBox">
+                        <input type="checkbox" name="agreeCheck1" id="agreeCheck1"/>
+                        <label for="agreeCheck1" id="agreeCheck1"></label>
+                        <label for="agreeCheck1"><span>(필수) 개인정보 수집/이용 및 처리 동의</span></label>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="agreeCheck checkBox">
+                        <input type="checkbox" name="agreeCheck2" id="agreeCheck2"/>
+                        <label for="agreeCheck2" id="agreeCheck2"></label>
+                        <label for="agreeCheck2"><span>(필수) 개인정보 제3자 제공 동의</span></label>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="agreeCheck checkBox">
+                        <input type="checkbox" name="agreeCheck3" id="agreeCheck3"/>
+                        <label for="agreeCheck3" id="agreeCheck3"></label>
+                        <label for="agreeCheck3"><span>(필수) 전자지급 결제대행 서비스 이용약관 동의</span></label>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="orderbuttonpar">
+                <button class="totalorderbutton" style='cursor:pointer;'>42,400원 결제하기</button>
+            </div>
+        </article>
+    </form>
+</main>
+
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
+</body>
+
+</html>

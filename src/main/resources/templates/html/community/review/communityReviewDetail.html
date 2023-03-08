@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 상세페이지</title>
+    <script src="https://kit.fontawesome.com/32d3a53583.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../../../css/community/review/communityReviewDetail.css" />
+    <script defer src="../../../../js/community/review/communityReviewDetail.js"> </script>
+    <link rel="stylesheet" href="../../../../common/css/header.css" />
+    <link rel="stylesheet" href="../../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <script src="https://kit.fontawesome.com/32d3a53583.js" crossorigin="anonymous"></script>
+    <script defer src="../../../../js/index.js"></script>
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+
+</head>
+
+<body>
+
+    <a class="toTop hidden_"> </a>
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+    <article class="c_article">
+        <div class="c_community_head">
+            <div class="c_community_contents">COMMUNITY</div>
+            <div class="c_page_catagory">
+                <ul>
+                    <li><a href="/community/notice">NOTICE</a></li>
+                    <li><a href="/community/faq">FAQ</a></li>
+                    <li><a href="/community/QnA">Q&amp;A</a></li>
+                    <li><a href="/community/review" class="c_review">REVIEW</a></li>
+                </ul>
+            </div>
+        </div>
+    </article>
+    <aside>
+        <div class="picture_section">
+            <ul class="slides">
+                <li>
+                    <img th:text="${reviewDetail.getReview_attachment1()}" src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
+                </li>
+                <li class="review_file1">
+                    <img th:text="${reviewDetail.getReview_attachment2()}" src="../../../../img/community/review/reviewpic.jpg" class="main_pic">
+                </li>
+                <li class="review_file2">
+                    <img th:text="${reviewDetail.getReview_attachment3()}" src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
+                </li>
+            </ul>
+            <p class="controller">
+                <span class="prev"><img src="../../../../img/icon/ileft_arrow.png"></span>
+                <span class="next"><img src="../../../../img/icon/iright_arrow.png"></span>
+            </p>
+        </div>
+
+        <div class="content_section">
+            <div class="review_head">
+                <div class="title">
+                    오가닉거즈 손가락칫솔
+                </div>
+                <div class="rank_section">
+                    <div class="rank">
+                        평점
+                    </div>
+                    <span th:text="${reviewDetail.getReview_rank()}" id="review_rank" class="rank">8.9</span>
+                </div>
+                <div th:text="${reviewDetail.getUser_id()}" id="user_id" class="customer_section">
+                    사용자 정보
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="review_body">
+            <div th:text="${reviewDetail.getReview_content()}" id="review_content" class="review_detail">
+                고객님의 소중한 후기입니다
+            </div>
+        </div>
+        <hr>
+
+        <div class="reply_section">
+            <a class="insert_reply">댓글달기</a>
+            <textarea class="reply_area"></textarea>
+            <div th:value="${reviewDetail.getReview_reply()}" name="review_reply">댓글</div>
+            <div th:value="${reviewDetail.getReview_step()}" name="review_reply">답글</div>
+            <div th:value="${reviewDetail.getReview_indent()}" name="review_reply">대댓글</div>
+        </div>
+
+        <div class="c_button">
+            <a href="/community/review">목록으로</a>
+            <th:block th:if="${session.loginID == reviewDetail.user_id}">
+                <a th:href="@{/community/reviewUpdate(review_seq=${reviewDetail.getReview_seq()})}">수정하기</a>
+                <a th:href="@{/community/reviewDelete(review_seq=${reviewDetail.getReview_seq()})}">삭제하기</a>
+            </th:block>
+        </div>
+    </aside>
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+    </div>
+
+</body>
+
+</html>
