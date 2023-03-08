@@ -17,14 +17,16 @@
 
 	<select id="reviewDetail" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
 		select
-			attachment_file_seq,
 		    user_id,
 			review_title,
 			review_content,
 			review_rank,
 			review_reg_date,
 			review_seq,
-			review_reply
+			review_reply,
+			review_attachmetn1,
+			review_attachmetn2,
+			review_attachmetn3
 		from review
 		where review_seq = #{review_seq};
 	</select>
@@ -35,36 +37,47 @@
 		</selectKey>
 		insert into review
 		(review_seq,
-		attachment_file_seq,
 		user_id,
 		item_id,
 		review_title,
 		review_content,
 		review_reg_date,
-		review_rank
+		review_rank,
+		review_attachmetn1,
+		review_attachmetn2,
+		review_attachmetn3
 		)
 		values(
 		#{review_seq},
-		"300",
 		#{user_id},
 		"10000016",
 		#{review_title},
 		#{review_content},
 		now(),
-		#{review_rank}
+		#{review_rank},
+		#{review_attachment1},
+		#{review_attachment2},
+		#{review_attachment3}
 		);
 	</insert>
 
-	<update id="qnaUpdate">
+	<update id="reviewUpdate">
 		update review set
 					review_title = #{review_title},
-					review_content = #{review_content}
+					review_content = #{review_content},
+					review_attachment1 = #{review_attachment1},
+					review_attachment2 = #{review_attachment2},
+					review_attachment3 = #{review_attachment3}
 		where review_seq = #{review_seq};
 	</update>
 
-	<delete id="qnaDelete">
+	<delete id="reviewDelete">
 		delete
 		from review
+		<if test="review_seq==review_root">where review_root=#{review_seq}</if>
+		<!-- 원글 삭제 : 동일 root 는 모두 삭제 -->
+		<if test="review_seq!=review_root">where review_seq=#{review_seq}</if>
+		<!-- 답글만 삭제 -->
 	</delete>
 
 	<sql id="search">

@@ -9,7 +9,6 @@ import java.util.Date;
 public class ReviewDTO {
     private int review_seq;
     private int item_id;
-    private int attachment_file_seq;
     private String user_id;
     private String review_title;
     private String review_content;
@@ -19,4 +18,7 @@ public class ReviewDTO {
     private int review_reply;
     private int review_step;
     private int review_indent;
+    private String review_attachment1;
+    private String review_attachment2;
+    private String review_attachment3;
 }
