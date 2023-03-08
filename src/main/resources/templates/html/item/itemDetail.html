@@ -49,7 +49,7 @@
                      th:onclick="saveHeart()" th:if="${!checkHeart}">
                 <img src="../../../img/icon/ishare.png" alt="공유하기" class="sharebBtn">
                 <h2 th:text="${item.item_name}">아르르 꿀잠 이불</h2>
-                <span class="salePrice" th:text="${item.item_price} + 원">29,900원</span>
+                <strong class="salePrice" data-th-text="${#numbers.formatInteger(item.item_price, 3, 'COMMA') + '원'}">상품 가격</strong>
             </div>
 
             <div class="shareProduct">
@@ -71,7 +71,7 @@
 
             <div class="selling_option">
                 <span th:text="${item.item_name}">선택창</span>
-                <select class="form-control">
+                <select class="form-control" th:onchange="addPrice()">
                     <option selected="" value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -89,12 +89,12 @@
 
             <div class="product_totalPay">
                 <span>주문 금액</span>
-                <strong class="totalPay" th:text="${item.item_price} + 원">0원</strong>
+                <strong class="totalPay" data-th-text="${#numbers.formatInteger(item.item_price, 3, 'COMMA') + '원'}">상품 가격</strong>
             </div>
 
             <div class="btn_pay">
-                <a href="#" class="btn_cart" th:onclick="saveCart()">ADD TO CART</a>
-                <a href="#" class="btn_buy">BUY NOW</a>
+                <a href="#none" class="btn_cart" th:onclick="saveCart()">ADD TO CART</a>
+                <a href="#none" class="btn_buy">BUY NOW</a>
             </div>
         </div>
     </div>
@@ -195,7 +195,7 @@
         <div class="qna_span">
             <h3>Q&A</h3>
             <div>
-                <span class="writebtn">Write</span>
+                <span class="writebtn" th:onclick="|openForm(${loginID != null})|">Write</span>
                 <span th:onclick="|location.href='@{/community/QnA}'|">All</span>
             </div>
         </div>
@@ -271,6 +271,7 @@
         <li><a href="#deliveryInfo">배송 / 교환</a></li>
         <li><a href="#reviewInfo">REVIEW</a></li>
         <li><a href="#qnaInfo">Q & A</a></li>
+        <li><a href="#" th:href="@{/user/heart}">좋아요</a></li>
     </ul>
 </div>
 <!--------------------- <footer> 모듈 --------------------->
@@ -296,11 +297,11 @@
                     <hr>
                     <li>
                         <label>제목</label>
-                        <input type="text" name="item_qna_title" id="item_qna_title">
+                        <input type="text" name="item_qna_title" id="item_qna_title" placeholder="제목을 입력해 주세요." maxlength="20">
                     </li>
                     <li>
                         <label>내용</label>
-                        <textarea name="item_qna_content" id="item_qna_content"></textarea>
+                        <textarea name="item_qna_content" id="item_qna_content" placeholder="상품 문의를 입력해 주세요." maxlength="500"></textarea>
                     </li>
                     <li class="margin">
                         <ul class="checkBox">

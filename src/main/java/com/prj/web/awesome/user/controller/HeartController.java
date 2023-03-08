@@ -38,22 +38,15 @@ public class HeartController {
     @ResponseBody
     @PostMapping("/{itemId}")
     public Map<String, Object> saveHeart(@PathVariable("itemId") int itemId, HeartDTO heartDTO, HttpSession session) {
-        Map<String, Object> result = new HashMap<>();
         String userId = (String) session.getAttribute("loginID");
+        Map<String, Object> result = new HashMap<>();
 
         heartDTO.setItem_id(itemId);
         heartDTO.setUser_id(userId);
-        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
-
-        if (heartList == null) {
-            heartList = new ArrayList<Integer>();
-        }
 
         if(userId != null) {
-            if (!heartList.contains(itemId)) {
+            if (hservice.findHeart(itemId, userId) == null) {
                 hservice.save(heartDTO);
-                heartList.add(itemId);
-                session.setAttribute("heartList", heartList);
 
                 result.put("success", true);
                 result.put("message", "이 상품을 좋아합니다.");
@@ -72,13 +65,11 @@ public class HeartController {
     @ResponseBody
     @DeleteMapping("/{itemId}")
     public Map<String, Object> deleteHeart(@PathVariable("itemId") int itemId, HttpSession session) {
+        String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
-        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
 
-        if (heartList.contains(itemId)) {
+        if (hservice.findHeart(itemId, userId) != null) {
             hservice.delete(itemId);
-            heartList.remove((Integer) itemId);
-            session.setAttribute("heartList", heartList);
         }
 
         result.put("success", true);
@@ -90,16 +81,13 @@ public class HeartController {
     @ResponseBody
     @DeleteMapping
     public Map<String, Object> deleteHearts(@RequestBody List<String> items, HttpSession session) {
-        log.info("items={}", items);
+        String userId = (String) session.getAttribute("loginID");
         Map<String, Object> result = new HashMap<>();
-        List<Integer> heartList = (List<Integer>) session.getAttribute("heartList");
 
         for (String itemId : items) {
             int itemIdInt = Integer.parseInt(itemId);
-
-            if (heartList.contains(itemIdInt)) {
+            if (hservice.findHeart(itemIdInt, userId) != null) {
                 hservice.delete(itemIdInt);
-                heartList.remove((Integer) itemIdInt);
                 result.put("success", true);
                 result.put("message", "상품을 삭제하였습니다!");
             }

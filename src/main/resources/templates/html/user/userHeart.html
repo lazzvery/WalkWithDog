@@ -27,13 +27,20 @@
 
     <main>
         <h1>Wishlist</h1>
-        <hr>
         <article class="shop_likelist">
+            <div class="allCheckBox">
+                <input type="checkbox" class="allCheck checkedCheck" id="allCheck" checked>
+                <label for="allCheck" id="allCheck">
+                    <span>전체 선택</span>
+                </label>
+            </div>
+            <hr>
             <ul>
                 <li class="shop_likebox" th:each="heart, i : ${list}">
                     <div class="shop_likeleft">
                         <div class="agreeAll checkBox">
-                            <input type="checkbox" name="agreeCheck" th:id="'agreeCheck' + ${i.index}" th:value="${heart.item_id}">
+                            <input type="checkbox" class="checkedCheck" name="agreeCheck" th:id="'agreeCheck' + ${i.index}"
+                                   th:value="${heart.item_id}" checked>
                             <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
                         </div>
                         <a href="#" class="likelistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
@@ -59,7 +66,7 @@
                 <a href="#none" class="likepayBtnw" th:onclick="'deleteAll(event)'">전체삭제</a>
             </div>
             <div class="shop_likeBtnright">
-                <a href="#" class="likepayBtnb">장바구니 담기</a>
+                <a href="#" class="likepayBtnb" th:onclick="savetoCart()">장바구니 담기</a>
             </div>
         </article>
     </main>
