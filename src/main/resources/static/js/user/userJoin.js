@@ -85,11 +85,17 @@ checkBox.addEventListener('click', (e) => {
                 checkList[i].checked = true;
             } else if (e.target === checkList[0]) {
                 checkList[i].checked = false;
-            } else {
+            }
+            else {
                 checkList[0].checked = false;
             }
+
         }
+
     }
+
+
+
 });     // 개인정보 약관 동의
 
 // petInfoBox.addEventListener('click', (e) => {

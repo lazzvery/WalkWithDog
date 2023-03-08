@@ -24,9 +24,9 @@ public class AdminMyPageService {
 //        return addrList;
 //    }
 
-    public AddrDTO addrList(AddrDTO dto){
-        return mapper.addrList(dto);
-    }
+//    public AddrDTO addrList(AddrDTO dto){
+//        return mapper.addrList(dto);
+//    }
 //
 //    // 2. selectOne : Detail
 //    public UserDTO userSelectOne(UserDTO dto){

@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -99,6 +101,24 @@ public class UserController {
         mv.setViewName(uri);
         return mv;
     } //login
+
+
+    @GetMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request, ModelAndView mv, RedirectAttributes rttr) {
+        // 1) 요청분석 & 해당하는 Service 실행
+        // => Logout: session 무효화, home
+
+        HttpSession session = request.getSession(false);
+        // => false : session이 없을때는 null return
+        //			 사용전에 반드시 null 확인해야함 (NullPointerException 예방)
+        if ( session !=null ) {
+            session.invalidate(); // session 무효화
+            rttr.addFlashAttribute("message", " ~~ Logout 성공 ~~ ");
+        }
+        mv.setViewName("redirect:/home");
+        return mv;
+    } //logout
+
 
 
 

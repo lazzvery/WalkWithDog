@@ -5,6 +5,8 @@ import com.prj.web.awesome.user.mapperInterface.MyPageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MyPageService {
 
@@ -12,21 +14,22 @@ public class MyPageService {
     MyPageMapper mapper;
 
     // 1. selectList
-//    public List<AddrDTO> addrList(){
+    public List<AddrDTO> addrList(String user_id){
 //        List<AddrDTO> addrList = new ArrayList<AddrDTO>();
 //
 //        try {
-//            addrList = mapper.addrList();
+//            addrList = mapper.addrList(user_id);
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
 //
 //        return addrList;
-//    }
-
-    public AddrDTO addrList(AddrDTO dto){
-        return mapper.addrList(dto);
+        return mapper.addrList(user_id);
     }
+
+//    public AddrDTO addrList(AddrDTO dto){
+//        return mapper.addrList(dto);
+//    }
 //
 //    // 2. selectOne : Detail
 //    public UserDTO userSelectOne(UserDTO dto){

@@ -94,7 +94,7 @@
             <li><a href="/user/join" title="회원가입">Join</a></li>
 
         </th:block>
-          <li th:if="${session.loginID != null}"><a href="/home" title="로그아웃">logout</a></li>
+          <li th:if="${session.loginID != null}"><a href="/user/logout" title="로그아웃">logout</a></li>
           <li th:if="${session.loginID != null}"><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>
       </ul>
     </div>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RequestMapping(value = "/user/myPage")
 @Controller
@@ -28,13 +29,13 @@ public class MyPageController {
 
 
     @GetMapping("/addrList")
-    public String addrList(Model model, AddrDTO dto, HttpServletRequest request) {
-        dto.setUser_id((String)request.getSession().getAttribute("loginID"));
+    public String addrList(Model model, HttpServletRequest request) {
 
-        dto=service.addrList(dto);
 
-        model.addAttribute("addrList", dto);
+        List<AddrDTO> loginID = service.addrList((String) request.getSession().getAttribute("loginID"));
+        System.out.println("loginID = " + loginID);
 
+        model.addAttribute("addrList", loginID);
 
 
         return "html/user/myPage/userMyPageAddrList";

@@ -39,7 +39,11 @@ for (let i = 0; i < inputBoxinput.length; i++) {
             inputBoxinput[i].checked = true;
         } else if (this === inputBoxinput[0]) {
             inputBoxinput[i].checked = false;
-        } else {
+        }
+        else if (inputBoxinput[i]) {
+            inputBoxinput[0].checked = true;
+        }
+        if(inputBoxinput[i].checked == false ) {
             inputBoxinput[0].checked = false;
         }
     });
