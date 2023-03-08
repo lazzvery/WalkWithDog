@@ -1,0 +1,355 @@
+@font-face {
+  font-family: "IBMPlexSansKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 헤더 전체 */
+#headerTop {
+  display: flex;
+  font-size: 1.2rem;
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  letter-spacing: 1px;
+  top: 0;
+  z-index: 2;
+  font-family: "IBMPlexSansKR-Regular";
+}
+
+#headerTop * {
+  text-decoration: none;
+}
+
+/* 로고 */
+.headerLogo {
+  width: 150px;
+  height: 100px;
+  text-align: center;
+  z-index: 2;
+  white-space: noWrap;
+  box-sizing: border-box;
+  margin-left: 2em;
+  justify-content: center;
+}
+
+.headerLogo a {
+  width: 150px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.headerLogo a:nth-of-type(1) {
+  display: none;
+}
+
+li strong {
+  color: #BAAAD7;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+li strong:hover {
+  color: #8E83A9;
+  cursor: auto;
+}
+
+/* ====================================================== */
+
+/* 탑버튼 */
+.toTop {
+  background: url(../../img/icon/toTop.png) 0/100%;
+  opacity: 0.7;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 3%;
+  top: 90%;
+  z-index: 2;
+}
+
+.toTop:hover {
+  opacity: 1;
+}
+
+.hidden_ {
+  visibility: hidden;
+  /* display: none; */
+}
+
+/* ====================================================== */
+
+/* header 내 카테고리 제목 */
+.categoryContainer {
+  display: flex;
+  top: 0;
+  width: 100%;
+  height: auto;
+  transition: all .3s;
+}
+
+/* SHOP, BEST, EVENT, COMMUNITY 카테고리들 */
+.subContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: greenyellow; */
+}
+
+.subContainer ul {
+  line-height: 80px;
+}
+
+/* 큰 카테고리 a 태그 */
+.subContainer a {
+  color: #BAAAD7;
+  /* font-size: 1rem; */
+}
+
+.categoryContainer .subList {
+  /* background-color: tomato; */
+  width: 100%;
+  position: relative;
+}
+
+/* 카테고리 큰 제목 써있는 태그 */
+.categoryContainer .subTitle {
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+}
+
+/* header에서 SHOP, BEST, EVENT, COMMUNITY 와 우측 검색항목 개별로 묶은 박스  */
+.categoryContainer .category {
+  text-align: center;
+}
+
+/* BEST */
+.categoryContainer .list2 strong {
+  color: orange;
+  opacity: .9;
+}
+
+.categoryContainer .list2 strong:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* -------------------------마우스 호버했을 때 나오는 리스트들 ---------------------*/
+.categoryHover {
+  /* height: 0; */
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* height: 100%; */
+  /* transition: all 5s; */
+  font-weight: bold;
+  width: 200px;
+  position: absolute;
+  top: -170px;
+  left: 0;
+  z-index: -9999;
+  transition: top 0.5s;
+}
+
+.categoryHover:nth-of-type(1):hover {
+  /* background: none; */
+}
+
+.categoryHover ul {
+  /* display: none; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  padding: 20px;
+  gap: 10px;
+}
+
+.categoryHover li {
+  line-height: 150%;
+}
+
+.categoryHover li:hover a {
+  color: #8E83A9;
+}
+
+.categoryContainer:hover {
+  /* background-color: white; */
+  /* transition: all 0.5s; */
+}
+
+header:hover .categoryHover {
+  top: 100px;
+}
+
+.categoryHover a {
+  font-size: 1rem;
+}
+
+.fullDown {
+  position: absolute;
+  top: -170px;
+  left: 0;
+  width: 100%;
+  height: 270px;
+  background-color: #fff;
+  z-index: -10000;
+  transition: top 0.5s;
+}
+
+header:hover .fullDown {
+  top: 100px;
+}
+
+/* ------------------ 우측 검색 항목-------------------------------------------- */
+
+/* 검색, 카트, 로그인, 회원가입, 마이페이지 박스 */
+.categoryContainer .subContainer {
+  top: 0;
+  /* height: 400px; */
+  background-color: white;
+}
+
+.categoryContainer .subContainer:hover {
+  /* height: 400px; */
+}
+
+/* 검색, 카트, 로그인, 회원가입, 마이페이지 항목 */
+.categoryContainer .list5 {
+  /* background-color: pink; */
+  height: 100px;
+  display: flex;
+  gap: 2em;
+  line-height: 100px;
+  white-space: noWrap;
+  margin-right: 1em;
+  font-weight: bold;
+  font-size: .8rem;
+}
+
+.categoryContainer .searchBtn,
+.categoryContainer .cartBtn {
+  margin-top: calc((100px - 20px) / 2);
+  cursor: pointer;
+}
+
+.list5 .cartBtn_a {
+  background: url(../../img/icon/cart-shopping.svg) no-repeat center;
+  width: 20px;
+  height: 20px;
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  filter: invert(78%) sepia(28%) saturate(581%) hue-rotate(209deg) brightness(87%) contrast(93%);
+}
+
+.list5 .searchBtn_a {
+  background: url(../../img/icon/search.svg) no-repeat center;
+  width: 20px;
+  height: 20px;
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  filter: invert(78%) sepia(28%) saturate(581%) hue-rotate(209deg) brightness(87%) contrast(93%);
+}
+
+.list5>li>a:hover {
+  color:#8E83A9;
+  transition: all 0.5s;
+}
+
+
+.list5 a {
+  color: #BAAAD7;
+  /* font-size: 1.4rem; */
+}
+
+/* ====================================================== */
+/* 클릭시 내려오는 search바 박스 */
+
+.searchBarWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  width: 100%;
+  background: #fff;
+  border: 0;
+  z-index: 9999;
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+  /* -------js 적용 ----- */
+  height: 196px;
+  overflow: hidden;
+  opacity: 1;
+  transition: all 0.5s;
+  transform: translateY(-20px);
+}
+
+/* ---- search 바 ----*/
+.mainSearch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 상품명검색 글씨 입력하는 부분 */
+.mainSearch input[type="text"] {
+  width: 350px;
+  font-size: 1.2rem;
+  margin-right: -6px;
+  padding-left: 40px;
+  box-sizing: border-box;
+  padding: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #BAAAD7;
+  background-color: transparent;
+  outline: none;
+  color: #BAAAD7;
+}
+
+.mainSearch input[type="submit"] {
+  padding: 20px;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  background: url(../../img/icon/search.svg) no-repeat center;
+  width: 20px;
+  height: 20px;
+  filter: invert(57%) sepia(10%) saturate(911%) hue-rotate(216deg) brightness(92%) contrast(92%);
+  margin: 1em;
+}
+
+.mainSearch input[type="submit"]:hover {
+  opacity: 0.7;
+  transition: all 0.5s;
+}
+
+.mainSearch input[type="text"]::placeholder {
+  color: #BAAAD7;
+  opacity: 0.9;
+}
+
+.searchCloseBtn {
+  background: url(../../img/icon/close.svg) no-repeat center;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin-left: 1em;
+  filter: invert(57%) sepia(10%) saturate(911%) hue-rotate(216deg) brightness(92%) contrast(92%);
+  cursor: pointer;
+}
+
+.searchCloseBtn:hover {
+  opacity: 0.7;
+  transition: all 0.5s;
+}

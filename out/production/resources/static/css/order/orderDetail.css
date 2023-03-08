@@ -1,0 +1,669 @@
+/* ========================= 공통 ========================== */
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    user-select: none;
+    font-family: 'IBMPlexSansKR-Regular';
+}
+
+/* ===================== 메인 중복 ======================== */
+
+main {
+    width: 1024px;
+    margin: auto;
+    box-sizing: border-box;
+    margin: 0 auto;
+    color: #353535;
+}
+
+main .shop_orderlist hr {
+    border: 0px;
+    height: 1px;
+    background-color: #555555;
+}
+
+main h1 {
+    font-size: 1.4em;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+main h2 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    margin-left: 2px;
+}
+
+main article {
+    margin-bottom: 70px;
+}
+
+main span {
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+main select,
+main input {
+    outline: none;
+}
+
+/* ===================== 결제 페이지 시작 ============================ */
+/* =================================================================== */
+/* ===================== 주문 상품 =================================== */
+
+.shop_orderlist .shop_orderlistbox {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.shop_orderlist .orderlist1,
+.shop_orderlist .orderlist2 {
+    display: flex;
+    justify-content: space-between;
+    height: 120px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.shop_orderlist .detailname_box {
+    display: flex;
+    align-items: center;
+}
+
+.shop_orderlist .detailnum_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.shop_orderlist a {
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #353535;
+    font-weight: bold;
+}
+
+.shop_orderlist span {
+    margin-left: 50px;
+}
+
+/* 이미지 박스 */
+.shop_orderlist .orderlistimg {
+    display: block;
+    width: 90px;
+    height: 90px;
+}
+
+.shop_orderlist .ordername1,
+.shop_orderlist .ordername2 {
+    margin-left: 20px;
+}
+
+/* ===================== 주문자 정보 ======================== */
+/* 이름 / 휴대폰 / 이메일 */
+
+.shop_oderinfo .inline_ortext {
+    width: 80px;
+    font-weight: bold;
+}
+
+.shop_oderinfo input {
+    font-family: 'IBMPlexSansKR-Regular';
+    width: 15%;
+    height: 28px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.shop_oderinfo select {
+    font-family: 'IBMPlexSansKR-Regular';
+    height: 40px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+}
+
+.shop_oderinfo .shop_orderphone input {
+    width: 95px;
+}
+
+.shop_oderinfo .shop_orderphone select {
+    width: 55px;
+}
+
+.shop_oderinfo .shop_ordermail .emailWhelk {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.shop_oderinfo .shop_ordermail select {
+    width: 130px;
+}
+
+.shop_oderinfo .shop_ordername,
+.shop_oderinfo .shop_orderphone,
+.shop_oderinfo .shop_ordermail {
+    margin: 20px 0;
+}
+
+/* =================================================================== */
+/* ===================== 배송/결제/쿠폰/금액 (통합) ================= */
+
+.orderalldiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.orderalldiv .paycouponbox {
+    box-sizing: border-box;
+    width: 60%;
+}
+
+.orderalldiv .shop_orderpay {
+    box-sizing: border-box;
+    width: 35%;
+}
+
+/* ===================== 배송 정보 ======================== */
+
+.shop_deliinfoBox .shop_deliTitle {
+    display: flex;
+    align-items: center;
+}
+
+.delivery_info li strong {
+    color: #353535;
+    font-size: inherit;
+    cursor: inherit;
+}
+
+.shop_deliinfoBox .shop_deliTitle span {
+    color: #BAAAD7;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+.shop_deliinfoBox .shop_deliTitle span:hover {
+    color: #8E83A9;
+}
+
+.shop_deliinfoBox .delivery_info {
+    padding: 20px 30px 30px 0;
+}
+
+.shop_deliinfoBox .delivery_infonav {
+    font-size: 0.9em;
+    padding: 5px 5px 5px 0;
+    color: grey;
+}
+
+.shop_deliinfoBox .shop_defaultAd {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 3px;
+}
+
+.shop_deliinfoBox select {
+    font-family: 'IBMPlexSansKR-Regular';
+    width: 99%;
+    height: 40px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.shop_deliinfoBox .shop_defaultAd input {
+    width: 16px;
+    height: 20px;
+}
+
+.shop_deliinfoBox .shop_defaultAd span {
+    margin-left: 10px;
+    line-height: 20px;
+}
+
+/* ===================== 결제 수단 =================================== */
+
+.couponpaydiv,
+.shop_orderway {
+    width: 100%;
+    position: relative;
+}
+
+.order_select {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0 20px 0;
+}
+
+.order_select span {
+    width: 19%;
+}
+
+.paycontainer {
+    width: 80%;
+}
+
+.order_select button {
+    width: 32%;
+    height: 35px;
+    border: 1px solid rgb(182, 182, 182);
+    background-color: white;
+    border-radius: 3px;
+    color: #353535;
+}
+
+.order_select .bordButton {
+    background-color: #BAAAD7;
+    border: 1px solid #BAAAD7;
+    color: white;
+}
+
+/* 결제 수단 탭 */
+
+.paycontainer_Box {
+    margin-left: 20.8%;
+}
+
+/* 간편 결제 */
+
+.paycontainer_Box .paycontainer_easy {
+    display: none;
+}
+
+/* 카드 결제 */
+
+.paycontainer_card {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.paycontainer_card select {
+    height: 40px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.monthSelect {
+    background-color: #f5f5f5;
+    color: #bdbdbd;
+}
+
+/* ===================== 쿠폰 적립금 ================================= */
+
+/* 쿠폰 */
+.shop_ordercoupon span {
+    width: 17%;
+}
+
+.shop_ordercoupon .order_coupon {
+    padding: 20px 0px 20px 0;
+}
+
+.shop_ordercoupon .order_coupon button {
+    font-family: 'IBMPlexSansKR-Regular';
+    padding: 10px;
+
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    background-color: rgb(248, 248, 248);
+    color: rgb(167, 167, 167);
+    width: 80%;
+}
+
+/* 적립금 */
+.shop_ordercoupon .order_point {
+    position: relative;
+}
+
+.shop_ordercoupon .order_point button {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    background-color: white;
+    font-family: 'IBMPlexSansKR-Regular';
+    width: 25.8%;
+}
+
+.shop_ordercoupon .order_point input {
+    padding: 10px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    color: rgb(167, 167, 167);
+    width: 50%;
+}
+
+.shop_ordercoupon .order_point div {
+    font-size: 0.8em;
+    margin-top: 5px;
+    margin-left: 18%;
+}
+
+.shop_ordercoupon .order_point strong {
+    color: #BAAAD7;
+    margin-left: 3px;
+}
+
+/* ===================== 결제 금액 ================================= */
+
+.shop_orderpay {
+    background-color: rgb(250, 250, 250);
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 2%;
+    padding: 20px;
+    position: sticky;
+    top: 50px;
+    height: 290px;
+}
+
+.shop_orderpay hr {
+    border: 0px;
+    height: 1px;
+    background-color: #dfdfdf;
+}
+
+.shop_orderpay h2 {
+    margin-left: 0;
+}
+
+.shop_orderpay .order_allpay,
+.shop_orderpay .order_deliverypay,
+.shop_orderpay .order_couponpay,
+.shop_orderpay .order_pointpay,
+.shop_orderpay .order_totalpay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shop_orderpay .order_pointbox {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.shop_orderpay div {
+    font-size: 0.9em;
+    padding: 3px 3px 3px 0;
+}
+
+.shop_orderpay span {
+    font-size: 1.1em;
+}
+
+/* 최종 결제 금액 */
+.shop_orderpay .order_totalpay>div:nth-child(1) {
+    font-size: 1.1em;
+}
+
+.shop_orderpay .order_totalpay strong {
+    font-size: 1.8em;
+    color: #BAAAD7;
+}
+
+/* 적립금 고지 */
+.shop_orderpay .order_colorbox {
+    width: 30px;
+    border-radius: 5px;
+    background-color: #BAAAD7;
+    text-align: center;
+    color: white;
+}
+
+.shop_orderpay .order_pointbox div {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+/* =================================================================== */
+/* ===================== 개인정보 + 결제 버튼 ======================== */
+/* ===================== 개인정보 수집 제공 ======================== */
+
+.shop_orderprivacy .orderprivacybox {
+    margin-bottom: 50px;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    padding: 15px 20px 20px 0px;
+}
+
+.shop_orderprivacy .orderprivacflex,
+.shop_orderprivacy .orderprivacflexBig {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.shop_orderprivacy a {
+    color: black;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+.shop_orderprivacy strong {
+    color: black;
+    font-size: 1.1em;
+    margin-left: 8px;
+}
+
+.shop_orderprivacy input {
+    margin: 0 5px;
+}
+
+/* ===================== 결제 버튼 ================================ */
+
+.shop_orderprivacy .orderbuttonpar {
+    display: flex;
+    justify-content: center;
+}
+
+.shop_orderprivacy .orderbuttonpar button {
+    font-family: 'IBMPlexSansKR-Regular';
+    padding: 10px;
+    width: 250px;
+    color: white;
+    border-radius: 3px;
+    background-color: #BAAAD7;
+    font-size: 1.0em;
+    border: 0;
+    font-weight: bold;
+}
+
+/* ===================== 체크박스 커스텀 ================================ */
+
+/* 체크박스 버튼 커스텀 */
+.checkBox {
+    position: relative;
+    display: block;
+}
+
+.checkBox li {
+    display: flex;
+    margin-top: 5px;
+}
+
+.checkBox input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox input[type="checkbox"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+}
+
+.checkBox input[type="checkbox"]+label:before {
+    content: '✓';
+    position: absolute;
+    left: 8px;
+    bottom: -5px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    color: #d8d8d8;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+.checkBox input[type="checkbox"]:checked+label:before {
+    width: 18px;
+    height: 18px;
+    background: #BAAAD7;
+    border: 0;
+}
+
+.checkBox input[type="checkbox"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    bottom: -5px;
+    width: 10px;
+    height: 10px;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+/* 경고창 */
+
+.shop_ordermail .alertEmail {
+    width: 20%;
+    font-size: 0.8em;
+    color: red;
+    margin-left: 8%;
+    display: none;
+}
+
+.shop_ordername .alertName {
+    width: 20%;
+    font-size: 0.8em;
+    color: red;
+    margin-left: 8%;
+    display: none;
+}
+
+.shop_orderphone .alertPhone {
+    width: 20%;
+    font-size: 0.8em;
+    color: red;
+    margin-left: 8%;
+    display: none;
+}
+
+.selfTextbox {
+    display: none;
+}
+
+.selfDeliverybox {
+    font-family: 'IBMPlexSansKR-Regular';
+    width: 97.3%;
+    height: 40px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    padding-left: 9px;
+    margin-top: 8px;
+    display: none;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 라디오 버튼 커스텀 */
+.checkBox2 {
+    position: relative;
+    display: flex;
+}
+
+.checkBox2 label {
+    display: inline-block;
+    font-size: 15px !important;
+    cursor: pointer;
+}
+
+.checkBox2 input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox2 input[type="radio"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+}
+
+.checkBox2 input[type="radio"]+label:before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    bottom: -6px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.checkBox2 input[type="radio"]:checked+label:before {
+    width: 18px;
+    height: 18px;
+    background: #BAAAD7;
+    border-color: #BAAAD7;
+}
+
+.checkBox2 input[type="radio"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    bottom: -1px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+/* ----------------------------------------------- */

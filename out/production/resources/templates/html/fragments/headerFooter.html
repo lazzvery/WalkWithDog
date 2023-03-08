@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>header,footer</title>
+</head>
+<dody>
+<header th:fragment="header" id="headerTop">
+  <div class="categoryContainer">
+    <div class="subContainer">
+      <div class="headerLogo">
+        <a></a>
+        <a href="/home">
+          <img id="logoImg" src="/img/logo_1.png">
+        </a>
+      </div>
+      <!--subContainer-->
+      <ul class="category list1">
+        <div class="subList">
+          <li class="subTitle"><strong>SHOP</strong></li>
+
+          <div class="categoryHover">
+            <ul>
+              <li>
+<!--                <a href="/item/list/new" th:href="@{/item/list2?ctgr_cd={ctgr_cd}(ctgr_cd='0005')}">new</a>-->
+                    <a th:href="@{/item/list2(ctgr_cd=${'0005'})}">NEW</a>
+              </li>
+              <li>
+                    <a th:href="@{/item/list2(ctgr_cd=${'0006'})}">living</a>
+              </li>
+              <li>
+                    <a th:href="@{/item/list2(ctgr_cd=${'0007'})}">working</a>
+              </li>
+              <li>
+                    <a th:href="@{/item/list2(ctgr_cd=${'0008'})}">food</a>
+              </li>
+              <li>
+                    <a th:href="@{/item/list2(ctgr_cd=${'0009'})}">clean</a>
+              </li>
+              <li>
+                    <a th:href="@{/item/list2(ctgr_cd=${'0010'})}">for cat</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="category list2">
+        <div class="subList">
+          <li class="subTitle"><strong th:href="@{/item/list2?ctgr_cd={ctgr_cd}(ctgr_cd='0002')}">BEST</strong></li>
+          <div class="categoryHover"></div>
+        </div>
+      </ul>
+
+      <ul class="category list3">
+        <div class="subList">
+          <li class="subTitle"><strong>EVENT</strong></li>
+
+          <div class="categoryHover">
+            <ul>
+              <li><a href="#">event</a></li>
+              <li><a href="#">magazine</a></li>
+              <li><a href="#">curation</a></li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="category list4">
+        <div class="subList">
+          <li class="subTitle"><strong>COMMUNITY</strong></li>
+
+          <div class="categoryHover">
+            <ul>
+              <li><a href="/community/notice">notice</a></li>
+              <li><a href="/community/faq">FAQ</a></li>
+              <li><a href="/community/QnA">Q&A</a></li>
+              <li><a href="/community/review">review</a></li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="category list5">
+        <li class="searchBtn">
+          <a class="searchBtn_a" title="검색">검색</a>
+        </li>
+        <li class="cartBtn">
+          <a class="cartBtn_a" href="/user/cart" title="장바구니">카트</a>
+        </li>
+
+        <th:block th:if="${session.loginID == null}">
+            <li><a href="/user/login" title="로그인">Login</a></li>
+            <li><a href="/user/join" title="회원가입">Join</a></li>
+
+        </th:block>
+          <li th:if="${session.loginID != null}"><a href="/user/logout" title="로그아웃">logout</a></li>
+          <li th:if="${session.loginID != null}"><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>
+      </ul>
+    </div>
+    <!--subContainer-->
+  </div>
+  <!--categoryContainer-->
+  <div class="fullDown"></div>
+  <!-- fullDown -->
+  <div class="searchBarWrap hidden_">
+    <form class="mainSearch">
+      <!-- <h1>What are you looking for?</h1> -->
+      <input type="text" id="keyword" placeholder="상품명 검색" />
+      <input type="submit" value="" />
+      <a class="searchCloseBtn searchClose" alt="검색창닫기" title="닫기"></a>
+    </form>
+  </div>
+  <div id="fakeHeader"></div>
+</header>
+
+
+  <!--------------------- <footer> 시작 --------------------->
+  <footer th:fragment="footer" >
+    <div class="footerTop">
+      <a href="/clause"> 이용약관 </a>
+      |
+      <a href="#"> 개인정보처리방침 </a>
+      |
+      <a href="#"> 이용안내 </a>
+    </div>
+    <div class="footerBottom">
+    <p class="footerContent">
+
+      <span class="footerTitle">Service Center </span> 031-712-7447 &nbsp;
+
+      <span class="footerTitle">Business Hours </span> 평일 9:30 ~ 18:10 (점심시간 13:20 ~ 14:20) │ 토·일·공휴일 휴무 <br>
+
+      <span class="footerTitle">Bank </span> 그린은행 100-220818-230317 주식회사 PSY_C
+
+      <span class="footerTitle">E-Mail </span>PSY_C@google.com <br>
+
+      <span class="footerTitle">Representative </span>정선주, 최병현, 김민성, 유미현 <br>
+
+      <span class="footerTitle">Address </span> 경기도 성남시 분당구 돌마로 46 (광천빌딩 5층)
+
+      <span class="footerTitle">사업자 등록번호 안내 </span> [111-11-1111] | 통신판매업 신고 2019-서울강남-11111
+
+    <p class="fcTitle">Copyright © PSYC. All rights reserved.</p>
+
+    </p>
+    </div>
+    <!--footerContent-->
+
+  </footer>
+</dody>
+</html>

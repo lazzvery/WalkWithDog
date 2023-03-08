@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.web.awesome.user.mapperInterface.MyPageMapper">
+	<select id="addrList" resultType="com.prj.web.awesome.user.dto.AddrDTO">
+		select * from addr where user_id=#{user_id};
+	</select>
+
+<!--	<select id="userSelectOne" resultType="com.prj.web.awesome.user.dto.UserDTO">-->
+<!--		select * from user where user_id=#{user_id};-->
+<!--	</select>-->
+
+
+	<insert id="addrInsert">
+		insert into addr values(
+			#{addr_seq},
+			#{addr_name},
+			#{addr_reciver},
+			#{addr_postcode},
+			#{addr_addr},
+			#{addr_addr2},
+			#{addr_phone},
+			#{addr_default},
+			#{user_id} )
+	</insert>
+
+<!--	<update id="userUpdate">-->
+<!--		update user set-->
+
+<!--			user_password = CASE when '' THEN user_password ELSE #{user_password} END,-->
+<!--			user_phone=#{user_phone},-->
+<!--		    user_sns_check=#{user_sns_check},-->
+<!--		    user_email=#{user_email},-->
+<!--		    user_email_check=#{user_email_check},-->
+<!--		    user_gen=#{user_gen},-->
+<!--		    user_birthday=#{user_birthday},-->
+<!--		    user_rid=#{user_rid}-->
+
+<!--		    where user_id=#{user_id};-->
+
+<!--	</update>-->
+
+<!--	<delete id="userDelete">-->
+<!--		delete from user where user_id=#{user_id};-->
+<!--	</delete>-->
+
+
+
+
+</mapper>

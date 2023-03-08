@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../css/community/QnA/communityWrite.css">
+    <link rel="stylesheet" href="../../../../common/css/header.css"/>
+    <link rel="stylesheet" href="../../../../common/css/footer.css"/>
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <!--    <script defer src="../../../../js/community/QnA/communityWrite.js"></script>-->
+    <script defer src="../../../../js/index.js"></script>
+
+    <title>글 작성</title>
+</head>
+
+<body>
+
+<a class="toTop hidden_"> </a>
+
+<!-- ---------------- <header> 모듈 ------------------ -->
+<header th:replace="html/fragments/headerFooter :: header"></header>
+<!-- ---------------- <header> 모듈 ------------------ -->
+
+<article class="c_article">
+    <div class="c_community_head">
+        <div class="c_community_contents">COMMUNITY</div>
+        <div class="c_page_catagory">
+            <ul>
+                <li><a href="/community/notice">NOTICE</a></li>
+                <li><a href="/community/faq">FAQ</a></li>
+                <li><a href="/community/QnA" class="Q_A">Q&amp;A</a></li>
+                <li><a href="/community/review">REVIEW</a></li>
+            </ul>
+        </div>
+    </div>
+</article>
+
+<main>
+    <form action="qnaInsert" method="post" class="c_form">
+        <ul class="c_ul">
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li class="c_underli_title">
+                        제목
+                    </li>
+                    <li class="c_belowli">
+                        <input th:text="${qnaInsert.getQna_title()}" name="qna_title" class="qna_title">
+                    </li>
+                </ul>
+            </li>
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li class="c_underli">
+                        <select name="QnA_type">
+                            <option value="goods">[상품] 상품관련 문의 드립니다.</option>
+                            <option value="transfor">[배송] 배송관련 문의 드립니다.</option>
+                            <option value="moneycheck">[입금확인] 입금관련 문의 드립니다.</option>
+                            <option value="ordercancle">[주문취소] 주문취소 문의 드립니다.</option>
+                            <option value="refund">[환불] 환불 문의 드립니다.</option>
+                            <option value="etc">[기타] 기타 문의 드립니다.</option>
+                        </select>
+                    </li>
+                </ul>
+            </li>
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li class="textarea_li">
+                        <textarea th:text="${qnaInsert.getQna_content()}" name="qna_content" id="" cols="30" rows="10"
+                                  placeholder="내용을 입력해주세요"
+                                  oninvalid="this.setCustomValidity(' ')" required></textarea>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li th:value="${qnaInsert.getAttachment_file_seq()}" class="c_underli"> 첨부파일1</li>
+                    <li class="files"><input type="file"></li>
+                </ul>
+            </li>
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li th:value="${qnaInsert.getAttachment_file_seq()}" class="c_underli"> 첨부파일2</li>
+                    <li class="files"><input type="file"></li>
+                </ul>
+            </li>
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li th:value="${qnaInsert.getAttachment_file_seq()}" class="c_underli"> 첨부파일3</li>
+                    <li class="files"><input type="file"></li>
+                </ul>
+            </li>
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li class="c_underli">
+                        아이디
+                    </li>
+                    <li>
+                        <input th:value=" ${session.loginID}
+                    " readonly>
+                    </li>
+                </ul>
+            </li>
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li class="c_underli">
+                        비밀번호
+                    </li>
+                    <li class=" inputPassword
+                    ">
+                        <input name="qna_password" c1ass="c_password" autocomplete="off" maxlength="6"
+                               oninvalid="this.setCustomValidity(' ')" type="password" required
+                               style="outline: none; background-color: rgba(186,170,216,0.2); padding: 6px;border: none;">
+                    </li>
+                </ul>
+            </li>
+            <li class="c_li">
+                <ul class="c_underul">
+                    <li class="c_underli">
+                        비밀글 설정
+                    </li>
+                    <li>
+                        <input type="radio" name="secreat_type" id="open">
+                        <label for="open">공개글</label>
+                        <input type="radio" name="secreat_type" id="secreat" checked>
+                        <label for="secreat">비밀글</label>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div class="c_button">
+            <a href="/community/QnA" class="list">목록으로</a>
+            <button type="submit" class="confirm">등록</button>
+        </div>
+    </form>
+    </div>
+
+</main>
+
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+
+</html>

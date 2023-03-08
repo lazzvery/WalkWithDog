@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css" />
+    <link rel="stylesheet" href="../../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css" />
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageList.css">
+    <script defer src="../../../../js/user/myPage/userMyPageList.js"></script>
+    <script defer src="../../../../js/index.js"></script>
+
+    <title>list</title>
+</head>
+
+<body>
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+    <div class="myPageContainer">
+        <div class="pageTopContainer">
+            <div class="pageTitle">
+                <h2>MY PAGE</h2>
+            </div>
+            <ul class="pageNav">
+                <li><a href="../../home/home.html">홈</a></li>
+                <li><a href="../../order/order.html">주문내역</a></li>
+                <li><a href="../../coupon/coupon.html">쿠폰</a></li>
+                <li><a href="../../mileage/mileage.html">적립금</a></li>
+                <li><a href="../../modify/modify.html">회원정보</a></li>
+            </ul>
+        </div>
+
+        <div class="myPageAddressContainer">
+            <h2>배송 주소록 관리</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td class="inputBox">
+                            <div class="checkBoxAll checkBox">
+                                <input type="checkbox" name="checkBoxAll" id="checkBoxAll" />
+                                <label for="checkBoxAll" id="checkBoxAll"></label>
+                            </div>
+                        </td>
+                        <td>배송지명</td>
+                        <td>수령인</td>
+                        <td>휴대전화</td>
+                        <td>주소</td>
+                        <td>수정</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="addrList : ${addrList}">
+                        <td class="inputBox">
+                            <div class="checkBox">
+                                <input type="checkbox" name="checkbox" id="checkbox" />
+                                <label for="checkbox" id="checkbox"></label>
+                            </div>
+                        </td>
+                        <td th:text="${addrList.addr_name}"></td>
+                        <td th:text="${addrList.addr_reciver}"></td>
+                        <td th:text="${addrList.addr_phone}"></td></td>
+                        <td th:text="${addrList.addr_postcode}+${addrList.addr_addr}+${addrList.addr_addr2}"></td>
+                        <td><a href="../register/register.html">수정</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="noAddress">
+                <p>
+                    등록된 주소가 없어요..
+                </p>
+            </div>
+
+            <div class="choiceButton">
+                <button>선택 주소록 삭제</button>
+                <a href="/user/myPage/addrInsert">배송지 추가</a>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+</html>

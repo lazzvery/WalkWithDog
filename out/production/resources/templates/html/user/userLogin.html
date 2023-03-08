@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../common/css/header.css" />
+    <link rel="stylesheet" href="../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../css/user/userLogin.css">
+    <script defer src="../../../js/index.js"></script>
+
+    <title>LOGIN</title>
+</head>
+
+<body>
+
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+
+    <div id="contents">
+
+        <div class="title">
+            <h2>LOGIN</h2>
+        </div>
+
+        <form action="login" class="loginForm" method="post">
+            <fieldset>
+                <ul class="loginContainer">
+                    <li class="id">
+                        <label>아이디</label>
+                        <input type="text" name="user_id">
+                    </li>
+                    <li class="password">
+                        <label>비밀번호</label>
+                        <input type="password" name="user_password">
+                    </li>
+                    <li class="loginButton">
+                        <button>로그인</button>
+                    </li>
+                </ul>
+                <div class="loginUtil">
+                    <div>
+                        <a href="/user/findid">아이디찾기</a>
+                        <a href="/user/findpw">비밀번호찾기</a>
+                    </div>
+                </div>
+                <div class="join">
+                    <a href="/user/join">신규 회원가입</a>
+                </div>
+            </fieldset>
+        </form>
+
+
+    </div>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+
+</html>

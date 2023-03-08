@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css">
+    <link rel="stylesheet" href="../../../../common/css/footer.css">
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css" />
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageHome.css">
+    <script defer src="../../../../js/index.js"></script>
+
+    <title>home</title>
+</head>
+
+<body>
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+    <div class="myPageContainer">
+        <div class="pageTopContainer">
+            <div class="pageTitle">
+                <h2>MY PAGE</h2>
+            </div>
+            <ul class="pageNav">
+                <li><a href="#">홈</a></li>
+                <li><a href="../order/order.html">주문내역</a></li>
+                <li><a href="../coupon/coupon.html">쿠폰</a></li>
+                <li><a href="../mileage/mileage.html">적립금</a></li>
+                <li><a href="/user/myPage/modify">회원정보</a></li>
+            </ul>
+        </div>
+
+        <div class="myPageHomeContainer">
+            <div class="myPageHomeTop">
+                <div class="myPageHomeTopBtn">
+                    <a href="/user/myPage/modify" >회원정보 수정</a>
+
+                    <a href="/user/myPage/addrList">배송 주소록 관리</a>
+                </div>
+                <ul class="myPageHomeTopInfo">
+                    <li class="img">
+                        <a href="../modify/modify.html">
+                            <img src="../../../../image/myPageHomeImg.png" alt="" />
+                        </a>
+                    </li>
+                    <li class="infoText">
+                        <span>우리 아이</span>등록하기
+                    </li>
+                    <li>
+                        <p>
+                            김민성님, 더 자세한 <br />
+                            반려동물 정보를 입력해주세요.
+                        </p>
+                    </li>
+                    <li>
+                        <a href="../modify/modify.html">더 입력하기</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="myPageHomeBottom">
+                <div class="leftTop">
+                    <div class="coupon">
+                        <a href="../coupon/coupon.html">
+                            <span>사용가능한쿠폰</span>
+                            <h3>1장</h3>
+                        </a>
+                    </div>
+                    <div class="mileage">
+                        <a href="../mileage/mileage.html">
+                            <span>적립금</span>
+                            <h3>0원</h3>
+                        </a>
+                    </div>
+                    <div class="order">
+                        <h3>
+                            주문배송조회
+                            <span>최근 3개월기준</span>
+                            <a href="../order/order.html">&gt</a>
+                        </h3>
+                        <ul>
+                            <li>
+                                <span>0</span>
+                                <strong>입금전</strong>
+                            </li>
+                            <li>
+                                <span>0</span>
+                                <strong>배송준비중</strong>
+                            </li>
+                            <li>
+                                <span>0</span>
+                                <strong>배송중</strong>
+                            </li>
+                            <li>
+                                <span>0</span>
+                                <strong>배송완료</strong>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="rightTop">
+                    <h3>고객센터</h3>
+                    <p class="service">
+                        <strong>02 - 6951 - 2688</strong><br />
+                        <span>AM 09:00 ~ PM 17:00</span>
+                        Lunch PM 12:00 ~ 13:00<br />
+                        Sat, Sun, Holiday OFF
+                    </p>
+                </div>
+
+                <div class="leftBottom">
+                    <h3>취소/ 교환/ 반품내역
+                        <a href="../order/order.html">&gt</a>
+                    </h3>
+                    <ul class="orderList">
+                        <li>
+                            <a href="#">
+                                취소<strong>0</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                교환<strong>0</strong>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                반품<strong>0</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="rightBottom">
+                    <h3 class="notice">
+                        공지사항
+                        <a href="../../../Community/community_notice.html">&gt</a>
+                    </h3>
+                    <h3 class="faq">
+                        자주 묻는 질문
+                        <a href="../../../Community/communtiy_faq.html">&gt</a>
+                    </h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+
+
+</html>

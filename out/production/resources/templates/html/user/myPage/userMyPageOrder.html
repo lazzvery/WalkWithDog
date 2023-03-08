@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css">
+    <link rel="stylesheet" href="../../../../common/css/footer.css">
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageOrder.css">
+    <script defer src="../../../../js/index.js"></script>
+
+    <title>order</title>
+</head>
+
+<body>
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+
+    <div class="myPageContainer">
+        <div class="pageTopContainer">
+            <div class="pageTitle">
+                <h2>MY PAGE</h2>
+            </div>
+            <ul class="pageNav">
+                <li><a href="../home/home.html">홈</a></li>
+                <li><a href="#">주문내역</a></li>
+                <li><a href="../coupon/coupon.html">쿠폰</a></li>
+                <li><a href="../mileage/mileage.html">적립금</a></li>
+                <li><a href="../modify/modify.html">회원정보</a></li>
+            </ul>
+        </div>
+
+        <div class="myPageOrderContainer">
+            <h2>주문내역</h2>
+
+            <div class="menu">
+                <a href="#">주문내역조희 [0]</a>
+                <a href="#">취소/반품/교환 내역 [0]</a>
+            </div>
+
+            <form class="orderHistoryForm">
+                <ul>
+                    <li>
+                        <select id="order_status" name="order_status" class="fSelect">
+                            <option value="all">전체 주문처리상태</option>
+                            <option value="shipped_before">입금전</option>
+                            <option value="shipped_standby">배송준비중</option>
+                            <option value="shipped_begin">배송중</option>
+                            <option value="shipped_complate">배송완료</option>
+                            <option value="order_cancel">취소</option>
+                            <option value="order_exchange">교환</option>
+                            <option value="order_return">반품</option>
+                        </select>
+                    </li>
+                    <li>
+                        <span class="period">
+                            <a href="#none" class="btnLine" days="00">오늘</a>
+                            <a href="#none" class="btnLine" days="07">1주일</a>
+                            <a href="#none" class="btnLine" days="30">1개월</a>
+                            <a href="#none" class="btnLine" days="90">3개월</a>
+                            <a href="#none" class="btnLine" days="180">6개월</a>
+                        </span>
+                    </li>
+                    <li class="calendar">
+                        <input type="date">
+                        ~
+                        <input type="date">
+                    </li>
+                    <li>
+                        <button>조회</button>
+                    </li>
+                </ul>
+            </form>
+
+            <ul class="tip">
+                <li>
+                    기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.
+                </li>
+                <li>
+                    주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.
+                </li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>주문일자[주문번호]</td>
+                        <td>상품</td>
+                        <td>주문처리상태</td>
+                        <td>취소/교환/반품</td>
+                    </tr>
+                </thead>
+
+            </table>
+
+            <div class="noOrder">
+                <p>
+                    주문 내역이 없습니다.
+                </p>
+            </div>
+
+            <div class="pageNation">
+                &lt;
+                <ul>
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                </ul>
+                &gt;
+            </div>
+
+        </div>
+    </div>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+
+</html>

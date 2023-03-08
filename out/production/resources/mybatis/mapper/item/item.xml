@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.web.awesome.item.mapper.ItemMapper">
+	<select id="itemList" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		select
+			item_id
+			 ,ctgr_cd
+			 ,item_name
+			 ,item_price
+			 ,item_amount
+			 ,item_reg_date
+			 ,item_data_del_yn
+			 ,item_best
+		from item
+		where ctgr_cd = #{ctgr_cd}
+	</select>
+
+
+</mapper>

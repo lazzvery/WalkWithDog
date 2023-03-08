@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psyc 고객센터</title>
+  <link rel="stylesheet" href="../../../../css/community/notice/communityNotice.css">
+  <link rel="stylesheet" href="../../../../common/css/header.css" />
+  <link rel="stylesheet" href="../../../../common/css/footer.css" />
+  <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+  <script defer src="../../../../js/index.js"></script>
+
+
+</head>
+
+<body>
+
+  <a class="toTop hidden_"> </a>
+
+  <!-- ---------------- <header> 모듈 ------------------ -->
+  <header th:replace="html/fragments/headerFooter :: header"></header>
+  <!-- ---------------- <header> 모듈 ------------------ -->
+
+  <article class="c_article">
+    <div class="c_community_head">
+      <div class="c_community_contents">COMMUNITY</div>
+      <div class="c_page_catagory">
+        <ul>
+          <li><a href="#" class="c_notice">NOTICE</a></li>
+          <li><a href="/community/faq">FAQ</a></li>
+          <li><a href="/community/QnA">Q&A</a></li>
+          <li><a href="/community/review">REVIEW</a></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+  <main>
+    <!------------------------------------- 게시판 ---------------------------------------->
+    <aside>
+      <div class="c_board_list">
+
+        <table class="c_board_table">
+          <thead>
+            <tr>
+              <th scope="row" rowspan="3" class="c_disappear">글 번호</th>
+              <th>제목</th>
+              <th class="c_disappear2">작성자</th>
+              <th>작성일</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr th:each="list:${noticeList}">
+              <td class="c_disappear">
+                <p th:text="${list.getNotice_seq()}">1</p>
+              </td>
+              <td>
+                <a th:text="${list.getNotice_title()}" th:href="@{/community/noticeDetail(notice_seq=${list.getNotice_seq()})}" class="detail">
+                  산간 지역 배송 안내
+                </a>
+              </td>
+              <td class="c_disappear2">관리자</td>
+              <td th:text="${#temporals.format(list.getNotice_reg_date(), 'yyyy.MM.dd')}">2022.11.03</td>
+            </tr>
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a href="" class="detail">회원 등급별 혜택 안내</a>-->
+<!--              </td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.11.01</td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a href="" class="detail">-->
+<!--                  설 연휴 배송 안내-->
+<!--                </a>-->
+<!--              </td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.10.27</td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a href="" class="detail">-->
+<!--                  구매 리뷰 이벤트 안내-->
+<!--                </a>-->
+<!--              </td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.10.27</td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a href="" class="detail">-->
+<!--                  구매 리뷰 이벤트 안내-->
+<!--                </a>-->
+<!--              </td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.10.27</td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a href="" class="detail">-->
+<!--                  구매 리뷰 이벤트 안내-->
+<!--                </a>-->
+<!--              </td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.10.27</td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a href="" class="detail">-->
+<!--                  신규 가입자 사은품 이벤트-->
+<!--                </a>-->
+<!--              </td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.10.26</td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td><a href="" class="detail">개인정보 처리방침 개정 안내</a></td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.10.25</td>-->
+<!--            </tr>-->
+
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td><a href="" class="detail">홈페이지 오픈 기념 이벤트 안내</a></td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.10.24</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--              <td class="c_disappear">-->
+<!--                <p>공지</p>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a href="" class="detail">추석 연휴 배송 안내</a>-->
+<!--              </td>-->
+<!--              <td class="c_disappear2">관리자</td>-->
+<!--              <td>2022.09.10</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+
+          </tbody>
+
+        </table>
+        <div class="c_page">
+          <p>&lt;</p>
+          <a href=""><strong>1</strong></a>
+          <a href="">2</a>
+          <a href="">3</a>
+          <a href="">4</a>
+          <a href="">5</a>
+          <p>&gt;</p>
+        </div>
+      </div>
+      </div>
+    </aside>
+  </main>
+
+  <!--------------------- <footer> 모듈 --------------------->
+  <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+  <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+</html>

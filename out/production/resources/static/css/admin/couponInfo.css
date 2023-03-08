@@ -1,0 +1,144 @@
+/* 공통 스타일 */
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'IBMPlexSansKR-Regular';
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #6b6b6b;
+}
+
+/* ----------------------------------------------- */
+
+
+/* body */
+
+body {
+    display: flex;
+}
+
+/* ----------------------------------------------- */
+
+/* 타이틀 */
+
+.title h1 {
+    color: white;
+}
+
+/* ----------------------------------------------- */
+
+/* header */
+
+header {
+    background-color: #477A7B;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    gap: 50px;
+    padding-left: 20px;
+    min-height: 100vh;
+}
+
+.list>li {
+    margin-bottom: 20px;
+}
+
+
+
+.list li a {
+    color: white;
+    font-size: 20px;
+}
+
+.list>li ul {
+    display: none;
+}
+
+
+
+/* ----------------------------------------------- */
+
+
+/* contents  */
+
+#contents {
+    margin-bottom: 200px;
+    height: auto;
+    width: calc(100% - 250px);
+}
+
+/* topMenu */
+.topMenu {
+    padding: 25px 0 25px 20px;
+    background-color: #dfe9e8;
+    display: flex;
+}
+
+.topMenu li {
+    padding: 0 40px;
+}
+
+.topMenu li a {
+    display: block;
+    color: #477A7B;
+}
+
+
+/* 회원정보 table */
+
+table {
+    border-collapse: collapse;
+    /* overflow-x: scroll; */
+    display: block;
+    padding: 0 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+table tr {
+    border: 1px solid black;
+}
+
+table tr th,
+table tr td {
+    border: 1px solid black;
+    white-space: nowrap;
+    padding: 5px 10px;
+}
+
+table tr td a {
+    text-decoration: underline;
+    color: black;
+}
+
+
+
+.pageNation {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+
+.pageNation ul {
+    margin: 0 30px;
+}
+
+
+/* ----------------------------------------------- */

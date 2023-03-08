@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../common/css/header.css" />
+    <link rel="stylesheet" href="../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../css/user/userLike.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+    <script defer src="../../../js/user/userHeart.js"></script>
+    <script defer src="../../../js/index.js"></script>
+    <title>heart</title>
+</head>
+
+<body>
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+    <main>
+        <h1>Wishlist</h1>
+        <article class="shop_likelist">
+            <div class="allCheckBox">
+                <input type="checkbox" class="allCheck checkedCheck" id="allCheck" checked>
+                <label for="allCheck" id="allCheck">
+                    <span>전체 선택</span>
+                </label>
+            </div>
+            <hr>
+            <ul>
+                <li class="shop_likebox" th:each="heart, i : ${list}">
+                    <div class="shop_likeleft">
+                        <div class="agreeAll checkBox">
+                            <input type="checkbox" class="checkedCheck" name="agreeCheck" th:id="'agreeCheck' + ${i.index}"
+                                   th:value="${heart.item_id}" checked>
+                            <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
+                        </div>
+                        <a href="#" class="likelistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
+                            <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="likelistimg">
+                        </a>
+                        <a href="#" class="likelisttextbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
+                            <strong th:text="${heart.item_name}">상품명</strong>
+                            <input type="hidden" name="item_id" th:value="${heart.item_id}" id="item_id">
+                        </a>
+                    </div>
+                    <div class="shop_likeright">
+                        <img src="../../../img/icon/idelete.png" alt="삭제버튼" class="likedeleteIcon" th:onclick="'deleteHeart(' + ${i.index} + ')'">
+                    </div>
+                </li>
+                <li class="shop_likeboxnone" th:if="${#lists.isEmpty(list)}">
+                    <span>보관함이 비어 있습니다.</span>
+                </li>
+            </ul>
+        </article>
+        <article class="shop_likeBtnlist">
+            <div class="shop_likeBtnleft">
+                <a href="#none" class="likepayBtnw" th:onclick="'deleteHearts(event)'">선택삭제</a>
+                <a href="#none" class="likepayBtnw" th:onclick="'deleteAll(event)'">전체삭제</a>
+            </div>
+            <div class="shop_likeBtnright">
+                <a href="#" class="likepayBtnb" th:onclick="savetoCart()">장바구니 담기</a>
+            </div>
+        </article>
+    </main>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+</body>
+
+</html>
