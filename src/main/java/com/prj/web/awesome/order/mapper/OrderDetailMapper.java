@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 @Mapper
 public interface OrderDetailMapper {
-    @Select("SELECT od.order_detail_code, od.order_code, i.item_name, od.item_price, od.item_count " +
+    @Select("SELECT od.order_detail_code, od.order_code, i.item_id, i.item_name, od.item_price, od.item_count " +
             "FROM order_detail od " +
             "JOIN item i ON od.item_id = i.item_id " +
             "WHERE od.order_code=#{order_code}")

@@ -42,6 +42,19 @@ public class OrderDetailController {
         List<OrderDetailItemDTO> orderList = dService.findOrderList(orderCode); // 주문 상세 조회
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회
 
+        int price = 0;
+        for (OrderDetailItemDTO dto : orderList) {
+            price += dto.getItem_price() * dto.getItem_count();
+        }   // 주문 금액
+
+        if(price >= 50000) {
+            model.addAttribute("delivery", 0);
+        } else {
+            model.addAttribute("delivery", 3000);
+        }   // 배송비
+
+        log.info("orderList={}", orderList);
+        model.addAttribute("price", price);
         model.addAttribute("user", user);
         model.addAttribute("orderList", orderList);
 

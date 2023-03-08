@@ -33,14 +33,15 @@
         <ul class="shop_orderlistbox" th:each="list : ${orderList}">
             <li class="orderlist1">
                 <div class="detailname_box">
-                    <a href="../item/itemDetail.html" class="orderlistimgbox">
+                    <a href="../item/itemDetail.html" class="orderlistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">
                         <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="orderlistimg">
                     </a>
-                    <a href="./product_shopping_details.html" class="ordername1" th:text="${list.item_name}">상품명</a>
+                    <a href="./product_shopping_details.html" class="ordername1" th:text="${list.item_name}"
+                       th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">상품명</a>
                 </div>
                 <div class="detailnum_box">
-                    <span class="order_number" th:text="${list.item_count}">수량</span>
-                    <span th:text="${list.item_price}">가격</span>
+                    <span class="order_number" th:text="${list.item_count} + 개">수량</span>
+                    <span data-th-text="${#numbers.formatInteger(list.item_price, 3, 'COMMA') + '원'}">가격</span>
                 </div>
             </li>
         </ul>
@@ -52,21 +53,21 @@
         <div class="shop_ordername">
             <label>
                 <span class="inline_ortext">이름</span>
-                <span>유미현</span>
+                <span th:text="${user.user_name}">이름</span>
             </label>
         </div>
 
         <div class="shop_orderphone">
             <label>
                 <span class="inline_ortext">휴대폰</span>
-                <span>010-8282-5353</span>
+                <span th:text="${user.user_phone}">휴대폰</span>
             </label>
         </div>
 
         <div class="shop_ordermail">
             <label>
                 <span class="inline_ortext">이메일</span>
-                <span>greencomputer@naver.com</span>
+                <span th:text="${user.user_email}">이메일</span>
             </label>
         </div>
     </article>
@@ -195,11 +196,11 @@
                 <h2>결제 금액</h2>
                 <div class="order_allpay">
                     <div>총 주문 금액</div>
-                    <span>39,400원</span>
+                    <span data-th-text="${#numbers.formatInteger(price, 0, 'COMMA') + '원'}">39,400원</span>
                 </div>
                 <div class="order_deliverypay">
                     <div>배송비</div>
-                    <span>+ 3,000원</span>
+                    <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">+ 3,000원</span>
                 </div>
                 <div class="order_couponpay">
                     <div>쿠폰 사용</div>
@@ -209,7 +210,7 @@
 
                 <div class="order_totalpay">
                     <div>최종 결제 금액</div>
-                    <div><strong>42,400원</strong></div>
+                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">42,400원</strong></div>
                 </div>
                 <div class="order_pointbox">
                     <div class="order_colorbox">적립</div>
