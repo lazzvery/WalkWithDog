@@ -13,6 +13,9 @@ a {
     color: #6b6b6b;
 }
 
+body{
+    background: linear-gradient( to bottom,rgba(186,170,215,0.5) 0%, rgba(186,170,215,0.5) 30%,white 30%, white 100% );
+}
 
 
 .myPageHomeContainer {
@@ -27,7 +30,7 @@ a {
 .myPageHomeTop {
     text-align: center;
     border: 1px solid #dfe9e8;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: white;
 }
 
 .myPageHomeTop .myPageHomeTopBtn {

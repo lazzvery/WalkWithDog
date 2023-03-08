@@ -5,9 +5,7 @@ import com.prj.web.awesome.user.service.MyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -25,7 +23,7 @@ public class MyPageController {
 //    }
 
     @GetMapping("/addr")
-    public String addr(Model model){ return "html/user/myPage/userMyPageAddress"; }
+    public String addr(Model model){ return "orderAddress"; }
 
 
     @GetMapping("/addrList")
@@ -33,7 +31,6 @@ public class MyPageController {
 
 
         List<AddrDTO> loginID = service.addrList((String) request.getSession().getAttribute("loginID"));
-        System.out.println("loginID = " + loginID);
 
         model.addAttribute("addrList", loginID);
 
@@ -48,7 +45,7 @@ public class MyPageController {
     }
 
     @PostMapping("/addrInsert")
-    public String addrInsert( AddrDTO dto, HttpServletRequest request){
+    public String insertAddrUpdate( AddrDTO dto, HttpServletRequest request){
         dto.setUser_id((String)request.getSession().getAttribute("loginID"));
 
 
@@ -61,14 +58,38 @@ public class MyPageController {
         addrInfo.setAddr_addr2(dto.getAddr_addr2());
         addrInfo.setAddr_phone(dto.getAddr_phone());
         addrInfo.setAddr_default(dto.getAddr_default());
+        if( dto.getAddr_default() == 'y'){
+            service.insertAddrUpdate(dto);
+        }
 
         addrInfo.setUser_id(dto.getUser_id());
 
-
         service.addrInsert(addrInfo);
+
 
         return "redirect:/user/myPage/addrList";
     }
+
+
+
+
+
+    @ResponseBody
+    @PostMapping("/addrDelete")
+    public String addrDelete(@RequestBody List<Integer> items) {
+
+        for (int itemId : items) {
+            int itemIdInt = itemId;
+
+            System.out.println(itemIdInt);
+
+            if (items != null) {
+                service.addrDelete(itemIdInt);
+            }
+        }
+
+        return "redirect:/user/myPage/addrList";
+    } //delete
 
     @GetMapping("/register")
     public String register(Model model){ return "html/user/myPage/userMyPageRegister"; }

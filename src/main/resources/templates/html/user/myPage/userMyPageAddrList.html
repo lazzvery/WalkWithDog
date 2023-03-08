@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="../../../../common/css/footer.css" />
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css" />
     <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
-    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageList.css">
-    <script defer src="../../../../js/user/myPage/userMyPageList.js"></script>
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageAddrList.css">
+    <script defer src="../../../../js/user/myPage/userMyPageAddrList.js"></script>
     <script defer src="../../../../js/index.js"></script>
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
 
     <title>list</title>
 </head>
@@ -42,13 +43,13 @@
         <div class="myPageAddressContainer">
             <h2>배송 주소록 관리</h2>
 
-            <table>
+            <table id="addrList">
                 <thead>
                     <tr>
                         <td class="inputBox">
                             <div class="checkBoxAll checkBox">
                                 <input type="checkbox" name="checkBoxAll" id="checkBoxAll" />
-                                <label for="checkBoxAll" id="checkBoxAll"></label>
+                                <label for="checkBoxAll" class="checkBoxAll"></label>
                             </div>
                         </td>
                         <td>배송지명</td>
@@ -63,14 +64,14 @@
                     <tr th:each="addrList : ${addrList}">
                         <td class="inputBox">
                             <div class="checkBox">
-                                <input type="checkbox" name="checkbox" id="checkbox" />
-                                <label for="checkbox" id="checkbox"></label>
+                                <input type="checkbox" name="agreeCheck" th:value="${addrList.addr_seq}" th:id="checkbox+${addrListStat.count}" class="checkedCheck" />
+                                <label th:for="checkbox+${addrListStat.count}" class="checkedCheck"></label>
                             </div>
                         </td>
                         <td th:text="${addrList.addr_name}"></td>
                         <td th:text="${addrList.addr_reciver}"></td>
                         <td th:text="${addrList.addr_phone}"></td></td>
-                        <td th:text="${addrList.addr_postcode}+${addrList.addr_addr}+${addrList.addr_addr2}"></td>
+                        <td th:text="'(' + ${addrList.addr_postcode} + ') ' + ${addrList.addr_addr} + ' ' + ${addrList.addr_addr2}"></td>
                         <td><a href="../register/register.html">수정</a></td>
                     </tr>
                 </tbody>
@@ -84,7 +85,7 @@
             </div>
 
             <div class="choiceButton">
-                <button>선택 주소록 삭제</button>
+                <button th:onclick="'addrDelete()'">선택 주소록 삭제</button>
                 <a href="/user/myPage/addrInsert">배송지 추가</a>
             </div>
 

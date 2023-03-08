@@ -6,9 +6,9 @@
 		select * from addr where user_id=#{user_id};
 	</select>
 
-<!--	<select id="userSelectOne" resultType="com.prj.web.awesome.user.dto.UserDTO">-->
-<!--		select * from user where user_id=#{user_id};-->
-<!--	</select>-->
+	<select id="addrSelectOne" resultType="com.prj.web.awesome.user.dto.AddrDTO">
+		select * from user where user_id=#{user_id};
+	</select>
 
 
 	<insert id="addrInsert">
@@ -24,25 +24,15 @@
 			#{user_id} )
 	</insert>
 
-<!--	<update id="userUpdate">-->
-<!--		update user set-->
+	<update id="insertAddrUpdate">
+		update addr set
+		addr_default='N'
+		where user_id=#{user_id};
+	</update>
 
-<!--			user_password = CASE when '' THEN user_password ELSE #{user_password} END,-->
-<!--			user_phone=#{user_phone},-->
-<!--		    user_sns_check=#{user_sns_check},-->
-<!--		    user_email=#{user_email},-->
-<!--		    user_email_check=#{user_email_check},-->
-<!--		    user_gen=#{user_gen},-->
-<!--		    user_birthday=#{user_birthday},-->
-<!--		    user_rid=#{user_rid}-->
-
-<!--		    where user_id=#{user_id};-->
-
-<!--	</update>-->
-
-<!--	<delete id="userDelete">-->
-<!--		delete from user where user_id=#{user_id};-->
-<!--	</delete>-->
+	<delete id="addrDelete">
+		delete from addr where addr_seq=#{addr_seq};
+	</delete>
 
 
 

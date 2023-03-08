@@ -235,15 +235,22 @@ input[type=number] {
 }
 
 .agree .checkBox input[type="checkbox"]:checked+label:after {
-    content: '';
+    content: '✔';
     position: absolute;
-    left: 13px;
+    left: 11px;
     bottom: -5px;
-    width: 10px;
-    height: 10px;
+    width: 18px;
+    height: 18px;
     color: #fff;
     border-radius: 2px;
     box-shadow: none;
+    font-size: 13px;
+}
+
+.agree .checkBox input[type="checkbox"]:checked+.agreeAll:after{
+    left: 12px;
+    bottom: -2px;
+    font-size: 17px;
 }
 
 /* ----------------------------------------------- */
