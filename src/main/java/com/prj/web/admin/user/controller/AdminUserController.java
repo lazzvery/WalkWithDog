@@ -19,13 +19,6 @@ public class AdminUserController {
     @Autowired
     UserService service;
 
-    // 관리자 페이지 홈
-    @GetMapping("/home")
-    public String home(Model model) {
-
-        return "html/admin/admin";
-    } //ulist
-
     // 유저 리스트
     @GetMapping("/user/userInfo")
     public String ulist(Model model) {
@@ -57,8 +50,6 @@ public class AdminUserController {
         System.out.println(dto.getUser_id());
 
         mv.setViewName("html/admin/user/userDetail");
-
-
 
         return mv;
     } //detail

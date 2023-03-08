@@ -7,28 +7,6 @@ const active = document.querySelectorAll(".itemSub"),
 const urlParams = new URL(location.href).searchParams;
 let name = urlParams.get('ctgr_cd');
 
-function handleClick(event) {
-    event.preventDefault(); // 기본 이벤트 동작(페이지 이동)을 방지합니다.
-    // 인라인 스타일로 배경색을 변경합니다.
-    event.target.style.setProperty('background-color', '#8E83A9', 'important');
-    // 페이지를 이동합니다.
-    window.location.href = event.target.href;
-}
-
-// let code = [[${param.ctgr_cd}]];
-// if (code) {
-//     // 가져온 코드 값을 사용하는 자바스크립트 코드
-//    console.log(code);
-// }
-
-// function change() {}
-// items.forEach(category => {
-//     category.addEventListener('click', () => {
-//         items.forEach(c => c.classList.add('change'));
-//         category.classList.add('change');
-//     })
-// })
-
 
 
 // 카테고리 클릭시 카테고리 색깔 변경
@@ -48,20 +26,6 @@ function handleClick(event) {
 //         category.classList.add('selected');
 //     });
 // });
-
-// function change() {
-//     for (let i = 0; i < active.length; i++) {
-//         active[i].addEventListener('click', function (e) {
-//             e.target.style.backgroundColor = "#8E83A9";
-//             e.target.style.color = "#ffffff";
-//             tmp.style.backgroundColor = "#f3f3f3";
-//             tmp.style.color = "#BAAAD7";
-//
-//             tmp = e.target;
-//         });
-//     }
-// }
-
 
 $(function(){
 
@@ -103,29 +67,6 @@ $(function(){
     });
 });
 
-// -----------------------------------
-
-
-// $(function() {
-//
-//     $().ready(function() {
-//         let i=0;
-//         let tmp = $(".pageList a");
-//         console.log(tmp);
-//         let turnBC = new Array("#8E83A9");
-//         let turnFC = new Array("#ffffff");
-//         tmp.click(function() {
-//             let resultBC = turnBC[i];
-//             let resultFC = turnFC[i];
-//             $(this).css("background",resultBC);
-//             $(this).css("color",resultFC);
-//             i++;
-//         });
-//     });
-//
-//
-// });
-
 //-----------------------------------------------------------------
 
 // $(function() {
@@ -162,26 +103,34 @@ $(function(){
 // })
 
 window.addEventListener("load", (e) =>{
-
     if(name == "0005"){
-        itemSub[0].style.backgroundColor = "#000";
+        itemSub[0].style.backgroundColor = "#8E83A9";
+        itemSub[0].style.color = "white";
     }
 
     else if(name == "0006"){
-        itemSub[1].style.backgroundColor = "#000";
-
+        itemSub[1].style.backgroundColor = "#8E83A9";
+        itemSub[1].style.color = "white";
     }
 
     else if(name == "0007"){
-        itemSub[2].style.backgroundColor = "#000";
+        itemSub[2].style.backgroundColor = "#8E83A9";
+        itemSub[2].style.color = "white";
     }
 
     else if(name == "0008"){
-        itemSub[3].style.backgroundColor = "#000";
+        itemSub[3].style.backgroundColor = "#8E83A9";
+        itemSub[3].style.color = "white";
     }
 
     else if(name == "0009"){
-        itemSub[4].style.backgroundColor = "#000";
+        itemSub[4].style.backgroundColor = "#8E83A9";
+        itemSub[4].style.color = "white";
+    }
+
+    else if(name == "0010"){
+        itemSub[5].style.backgroundColor = "#8E83A9";
+        itemSub[5].style.color = "white";
     }
 
 });

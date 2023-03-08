@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../css/admin/itemList.css" />
+    <script defer src="../../javascript/index.js"></script>
+
+    <title>회원정보</title>
+</head>
+
+<body>
+
+<!-- ---------------- 버튼 ------------------ -->
+<a class="toTop hidden_" href="#"> </a>
+<!-- ---------------- 버튼 ------------------ -->
+<header id="headerTop">
+    <div class="title">
+        <h1>관리자페이지</h1>
+    </div>
+
+    <ul class="list">
+        <li class="dBoard">
+            <a href="../admin.html">대시보드</a>
+        </li>
+        <li class="userInfo">
+            <a href="/admin/user/userInfo">회원정보</a>
+            <ul>
+                <li>
+                    <a href="#">회원 정보 관리</a>
+                </li>
+                <li>
+                    <a href="#">메일,sns 수신 관리</a>
+                </li>
+            </ul>
+        </li>
+        <li class="productInfo">
+            <a href="/admin/itemList">상품관리</a>
+            <ul>
+                <li>
+                    <a href="#">상품관리</a>
+                </li>
+            </ul>
+        </li>
+        <li class="noticeInfo">
+            <a href="#">게시판관리</a>
+        </li>
+
+    </ul>
+</header>
+
+
+<div id="contents">
+<!--    <ul class="topMenu">-->
+<!--        <li>-->
+<!--            <a href="/admin/user/userInfo">회원관리</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="./addressInfo.html">배송지관리</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="./couponInfo.html">쿠폰관리</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+
+    <table class="userInfo">
+        <caption>상품 리스트</caption>
+
+        <tr>
+            <th>상품 코드</th>
+<!--            <th>상품 이미지</th>-->
+            <th>상품 카테고리</th>
+            <th>상품명</th>
+            <th>상품 가격</th>
+            <th>상품 재고</th>
+            <th>상품 등록 날짜</th>
+            <th>상품 데이터</th>
+            <th>인기 품목</th>
+        </tr>
+
+        <tr th:each="item : ${itemList}" >
+<!--            <td><a th:href="@{/admin/user/userDetail(user_id=${user.getUser_id()})}"><th:block th:text="${user.user_id}"></th:block></a></td>-->
+            <td><a th:href="@{/admin/item/}}"><th:block th:text="${user.user_id}"></th:block></a></td>
+                <td th:text="${item.item_id}"></td>
+<!--                <td th:text="${}"></td>-->
+                <td th:text="${item.ctgr_cd}"></td>
+                <td th:text="${item.item_name}"></td>
+                <td th:text="${item.item_price}"></td>
+                <td th:text="${item.item_amount}"></td>
+                <td th:text="${item.item_reg_date}"></td>
+                <td th:text="${item.item_data_del_yn}"></td>
+                <td th:text="${item.item_best}"></td>
+
+        </tr>
+
+    </table>
+
+
+    <div class="pageNation">
+        &lt;
+        <ul>
+            <li>
+                <a href="#">1</a>
+            </li>
+        </ul>
+        &gt;
+    </div>
+
+</div>
+
+</body>
+
+</html>
