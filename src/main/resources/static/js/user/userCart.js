@@ -65,11 +65,11 @@ function changeValue() {
         success: function (result) {
             let totalPay = result.price.toLocaleString();
             let totalDelivery = result.delivery.toLocaleString();
-            let html = '<div class="paydeliverybox"><div class="paybox"><strong>주문금액</strong><span>' + totalPay + '원</span></div>';
+            let html = '<div class="payBoxContainer"><div class="paydeliverybox"><div class="paybox"><strong>주문금액</strong><span>' + totalPay + '원</span></div>';
             html += '<div class="deliverybox"><strong>배송비</strong><span>' + totalDelivery + '원</span></div></div>';
-            html += '<div class="totalbox"><strong class="importantTotal">합계</strong><span>' + totalPay + '원</span></div>';
-            html += '<div class="tatalBtnall"><a href="#" class="totalpayBtnb">주문하기</a></div>';
-            $('.shoptotalpayBox').html(html);
+            html += '<div class="totalbox"><strong class="importantTotal">합계</strong><span>'
+                + (parseInt(result.price) + parseInt(result.delivery)).toLocaleString() + '원</span></div></div>';
+            $('.payBoxContainer').html(html);
         },
         error: function (xhr, status, error) {
             alert('조회에 실패하였습니다. 다시 시도해주세요.');
@@ -155,4 +155,44 @@ function deleteAllCart(event) {
             alert('삭제에 실패하였습니다. 다시 시도해주세요.');
         }
     });
+}
+
+//===============================================================
+// ajax 주문 페이지 추가
+
+function cartToOrder(event) {
+    event.preventDefault();
+
+    let items = [];
+    const checkboxes = document.querySelectorAll('input[name="agreeCheck"]:checked');
+    checkboxes.forEach((checkbox) => {
+        const item = {
+            item_id: checkbox.value,
+            item_amount: null
+        };
+
+        const amountInput = checkbox.closest('.shop_cartleft').nextElementSibling.querySelector('input#cartAmountValue');
+        item.item_amount = amountInput.value;
+        items.push(item);
+    });
+
+    console.log(items);
+
+    $.ajax({
+        type: "POST",
+        url: '/order/orderDetail',
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(items),
+        success: function(result) {
+            if(result.success) {
+                alert(result.message);
+                window.location.href = '/order/orderDetail?orderCode=' + result.orderCode;
+            }
+        },
+        error: function(xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
+
 }

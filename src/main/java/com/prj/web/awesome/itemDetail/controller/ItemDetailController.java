@@ -33,6 +33,8 @@ public class ItemDetailController {
                              @RequestParam(defaultValue = "1") int currPage,
                              Model model, HttpSession session){
 
+
+
         CriteriaQna criteriaQna = new CriteriaQna(5, currPage);
         PageNationQna pageNationQna = new PageNationQna(criteriaQna);
         criteriaQna.setTotalCount(qservice.criTotalCount(itemId));

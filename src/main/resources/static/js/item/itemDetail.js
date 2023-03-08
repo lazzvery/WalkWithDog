@@ -340,3 +340,16 @@ function saveCart() {
         }
     });
 }
+
+//===========================================================
+// 주문 관련 ajax
+
+function addOrder() {
+    let items = [];
+    const checkboxes = document.querySelectorAll('input[name="agreeCheck"]:checked');
+    checkboxes.forEach((checkbox) => {
+        items.push(checkbox.value);
+    });
+
+
+}

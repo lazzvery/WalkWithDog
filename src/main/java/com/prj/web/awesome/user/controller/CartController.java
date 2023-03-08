@@ -1,6 +1,5 @@
 package com.prj.web.awesome.user.controller;
 
-import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
 import com.prj.web.awesome.itemDetail.service.ItemDetailService;
 import com.prj.web.awesome.user.dto.CartDTO;
 import com.prj.web.awesome.user.dto.CartItemDTO;
@@ -12,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
