@@ -2,7 +2,8 @@ const myPageAddressContainer = document.querySelector(".myPageAddressContainer")
     tbody = myPageAddressContainer.querySelector("tbody"),
     tbodyTr = tbody.querySelectorAll("tr"),
     inputBox = myPageAddressContainer.querySelectorAll(".inputBox"),
-    inputBoxinput = myPageAddressContainer.querySelectorAll("input"),
+    checkBox = myPageAddressContainer.querySelector("table"),
+    checkList = myPageAddressContainer.querySelectorAll("input"),
     choiceButton = myPageAddressContainer.querySelector(".choiceButton button"),
     noAddress = myPageAddressContainer.querySelector(".noAddress");
 
@@ -24,26 +25,23 @@ window.onload = function () {
 
 
 
-inputBoxinput[0].addEventListener("click", function () {
-
-    for (let i = 0; i < inputBoxinput.length; i++) {
-        inputBoxinput[i].checked = this.checked;
-    }
-});
-
-for (let i = 0; i < inputBoxinput.length; i++) {
-    inputBoxinput[i].checked = this.checked;
-
-    inputBoxinput[i].addEventListener("click", function () {
-        if (this === inputBoxinput[0] && inputBoxinput[0].checked) {
-            inputBoxinput[i].checked = true;
-        } else if (this === inputBoxinput[0]) {
-            inputBoxinput[i].checked = false;
-        } else {
-            inputBoxinput[0].checked = false;
+checkBox.addEventListener('click', (e) => {
+    for (let i = 1; i <= checkList.length - 1; i++) {
+        if (e.target.tagName === 'INPUT') {
+            if (e.target === checkList[0] && checkList[0].checked) {
+                checkList[i].checked = true;
+            } else if (e.target === checkList[0]) {
+                checkList[i].checked = false;
+            } else {
+                checkList[0].checked = false;
+            }
         }
-    });
-}
+    }
+
+    if(document.querySelectorAll('.checkedCheck:checked').length == checkList.length - 1) {
+        checkList[0].checked = true;
+    }
+});      // 개인정보 약관 동의
 
 
 choiceButton.addEventListener('click', function () {
