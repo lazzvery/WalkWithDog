@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css">
+    <link rel="stylesheet" href="../../../../common/css/footer.css">
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCoupon.css">
+    <script defer src="../../../../js/index.js"></script>
+
+    <title>coupon</title>
+</head>
+
+<body>
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+    <div class="myPageContainer">
+        <div class="pageTopContainer">
+            <div class="pageTitle">
+                <h2>MY PAGE</h2>
+            </div>
+            <ul class="pageNav">
+                <li><a href="../home/home.html">홈</a></li>
+                <li><a href="../order/order.html">주문내역</a></li>
+                <li><a href="#">쿠폰</a></li>
+                <li><a href="../mileage/mileage.html">적립금</a></li>
+                <li><a href="../modify/modify.html">회원정보</a></li>
+            </ul>
+        </div>
+
+        <div class="myPageCouponContainer">
+            <h2>쿠폰</h2>
+
+
+            <form class="couponHistoryForm">
+                <ul>
+                    <li class="coupon">
+                        <input type="text" name="coupon">
+                        <button>쿠폰번호 인증</button>
+                    </li>
+                    <li>
+                        <p>반드시 쇼핑몰에서 발행한 쿠폰번호만 입력해주세요.(10~35자 일련번호 "-" 제외)</p>
+                    </li>
+                </ul>
+            </form>
+
+
+            <table>
+                <caption>사용가능한 쿠폰: 1장</caption>
+                <thead>
+                    <tr>
+                        <td>번호</td>
+                        <td>쿠폰명</td>
+                        <td>구매금액</td>
+                        <td>쿠폰혜택</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>회원 가입 축하 2천원 할인 쿠폰</td>
+                        <td>제한없음</td>
+                        <td>할인 2,000원</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <div class="noOrder">
+                <p>
+                    쿠폰이 없네요 ㅠㅠ..
+                </p>
+            </div>
+
+            <div class="pageNation">
+                &lt;
+                <ul>
+                    <li>
+                        <a href="#">1</a>
+                    </li>
+                </ul>
+                &gt;
+            </div>
+
+        </div>
+    </div>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+
+</html>

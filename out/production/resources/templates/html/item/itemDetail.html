@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css"/>
+    <link rel="stylesheet" href="../../../../common/css/footer.css"/>
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../../css/item/itemDetail.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+    <script defer src="../../../../js/item/itemDetail.js"></script>
+    <script defer src="../../../../js/index.js"></script>
+    <title>detail</title>
+<body>
+<!-- ---------------- 버튼 ------------------ -->
+<a class="toTop hidden_" href="#"> </a>
+<!-- ---------------- 버튼 ------------------ -->
+
+<!-- ---------------- <header> 모듈 ------------------ -->
+<header th:replace="html/fragments/headerFooter :: header"></header>
+<!-- ---------------- <header> 모듈 ------------------ -->
+<main>
+    <div class="big_container" id="main">
+        <div class="img_container">
+            <div class="mainImage_container">
+                <div class="mainImgbox">
+                    <img src="../../../img/item/item1.jpg" alt="상품1 메인이미지" class="main_image main1">
+                    <img src="../../../img/item/item1.jpg" alt="상품1 메인이미지" class="main_image main2 img_hidden">
+                </div>
+            </div>
+
+            <div class="subImage_container">
+                <img src="../../../img/item/item2.jpg" alt="상품1 서브이미지_1" class="sub_image">
+                <img src="../../../img/item/item1.jpg" alt="상품1 서브이미지_2" class="sub_image">
+                <img src="../../../img/item/item2.jpg" alt="상품1 서브이미지_3" class="sub_image">
+                <img src="../../../img/item/item1.jpg" alt="상품1 서브이미지_4" class="sub_image">
+                <img src="../../../img/item/item2.jpg" alt="상품1 서브이미지_5" class="sub_image">
+            </div>
+        </div>
+
+        <div class="shopInfo_container">
+            <div class="product_summary">
+                <span class="bestBtn">BEST</span>
+                <img src="../../../img/icon/iheartfill.png" alt="좋아요" class="heartbBtn"
+                     th:onclick="deleteHeart()" th:if="${checkHeart}">
+                <img src="../../../img/icon/iheart.png" alt="좋아요" class="heartbBtn"
+                     th:onclick="saveHeart()" th:if="${!checkHeart}">
+                <img src="../../../img/icon/ishare.png" alt="공유하기" class="sharebBtn">
+                <h2 th:text="${item.item_name}">아르르 꿀잠 이불</h2>
+                <strong class="salePrice" data-th-text="${#numbers.formatInteger(item.item_price, 3, 'COMMA') + '원'}">상품 가격</strong>
+            </div>
+
+            <div class="shareProduct">
+                <img src="../../../img/icon/ilink.png" alt="공유하기" class="urlCopy">
+                <img src="../../../img/icon/ikakao.png" alt="카카오">
+                <img src="../../../img/icon/iinsta.png" alt="인스타">
+            </div>
+
+            <div class="product_delivery">
+                    <span>
+                        <strong class="deliverypadding">배송비</strong>
+                        <span>3,000원 (50,000원 이상 구매 시 무료배송)</span>
+                    </span>
+                <span>
+                        <strong>배송 정보</strong>
+                        <span>결제완료 후 평균 3일 이내 출고(공휴일 제외)</span>
+                    </span>
+            </div>
+
+            <div class="selling_option">
+                <span th:text="${item.item_name}">선택창</span>
+                <select class="form-control" th:onchange="addPrice()">
+                    <option selected="" value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10+</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <div class="product_totalPay">
+                <span>주문 금액</span>
+                <strong class="totalPay" data-th-text="${#numbers.formatInteger(item.item_price, 3, 'COMMA') + '원'}">상품 가격</strong>
+            </div>
+
+            <div class="btn_pay">
+                <a href="#none" class="btn_cart" th:onclick="saveCart()">ADD TO CART</a>
+                <a href="#none" class="btn_buy">BUY NOW</a>
+            </div>
+        </div>
+    </div>
+    <hr>
+</main>
+
+
+<nav>
+    <div class="productCategory_box">
+        <div class="product_category">
+            <ul class="productCategory_list">
+                <li><a href="#detailInfo" class="productCategory_1 focusbtn">상세 정보</a></li>
+                <li><a href="#deliveryInfo" class="productCategory_2">배송/교환</a></li>
+                <li><a href="#reviewInfo" class="productCategory_3">REVIEW</a></li>
+                <li><a href="#qnaInfo" class="productCategory_4">Q&A</a></li>
+            </ul>
+        </div>
+
+        <div class="product_detailInfo" id="detailInfo">
+            <img src="../../../img/order/detail_1.jpg" alt="상세정보1">
+            <img src="../../../img/order/detail_2.jpg" alt="상세정보1">
+            <img src="../../../img/order/detail_3.jpg" alt="상세정보1">
+            <img src="../../../img/order/detail_4.png" alt="상세정보1">
+        </div>
+    </div>
+
+    <div class="delivery_info" id="deliveryInfo">
+        <div class="deliverynameBox">
+            <h3>배송/교환</h3>
+        </div>
+        <div class="delivery_detail">
+            <table class="deliverytable">
+                <tr>
+                    <th>배송</th>
+                    <td>일반택배</td>
+                </tr>
+                <tr>
+                    <th>배송비</th>
+                    <td>50,000원 이상 무료배송</td>
+                </tr>
+                <tr>
+                    <th>도서산간 추가 배송비</th>
+                    <td>5,000원</td>
+                </tr>
+                <tr>
+                    <th>배송불가 지역</th>
+                    <td>배송불가 지역이 없습니다.</td>
+                </tr>
+                <tr>
+                    <th>비례 배송비</th>
+                    <td>주문 상품 개수에 비례하여 배송비 부과</td>
+                </tr>
+            </table>
+
+            <table class="exchangetable">
+                <tr>
+                    <th>반품배송비</th>
+                    <td>10,000원 (최초 배송비가 무료인 경우 20,000원 부과</td>
+                </tr>
+                <tr>
+                    <th>교환배송비</th>
+                    <td>20,000원</td>
+                </tr>
+                <tr>
+                    <th>보내실 곳</th>
+                    <td>미금역 5번 출구 그린컴퓨터학원</td>
+                </tr>
+            </table>
+
+            <ul class="delivery_info_list">
+                <li>배송기간은 주문일(무통장입금은 결제완료일)로부터 1일(24시간) ~ 5일정도 걸립니다.</li>
+                <li>교환/반품 신청은 배송완료 후 7일 이내 가능합니다.</li>
+                <li>변심 반품의 경우 왕복배송비를 차감한 금액이 환불되며, 제품 및 포장 상태가 재판매 가능하여야 합니다.</li>
+                <li>상품 불량인 경우는 배송비를 포함한 전액이 환불됩니다.</li>
+                <li>출고 이후 환불요청 시 상품 회수 후 처리됩니다.</li>
+                <li>완제품으로 수입된 상품의 경우 A/S가 불가합니다.</li>
+                <li>상품페이지에 교환/환불/AS에 대한 브랜드 개별기준이 있는 경우에는 해당 내용이 우선 적용 됩니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="productCategory_review" id="reviewInfo">
+        <h3>REVIEW</h3>
+        <hr>
+        <ul class="review_category">
+            <li class="reviewtitle focustitle">추천순</li>
+            <li class="reviewtitle">최신순</li>
+            <li class="reviewtitle">별점순</li>
+        </ul>
+        <div class="review_starbox">
+            <span>리뷰가 없습니다.</span>
+            <strong>리뷰를 작성해 보세요!</strong>
+            <button>상품 리뷰 작성하기</button>
+        </div>
+    </div>
+
+    <div class="productCategory_qna" id="qnaInfo">
+        <div class="qna_span">
+            <h3>Q&A</h3>
+            <div>
+                <span class="writebtn" th:onclick="|openForm(${loginID != null})|">Write</span>
+                <span th:onclick="|location.href='@{/community/QnA}'|">All</span>
+            </div>
+        </div>
+        <hr>
+
+        <div class="qna_box">
+            <div th:each="qna_list, i : ${qna}">
+                <ul>
+                    <li class="qna_list"
+                        th:if="${qna_list.item_qna_reply == 'N'}"
+                        th:onclick="|checkId(${qna_list.user_id == loginID}, ${qna_list.item_qna_password == 1}, ${i.index})|">
+                        <div>
+                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">seq</span>
+                            <img src="../../../img/icon/ilock.png" th:if="${qna_list.item_qna_password == 1}">
+                            <span th:text="${qna_list.item_qna_title}" class="title">타이틀</span>
+                        </div>
+                        <div>
+                            <span class="qna_user" th:text="${qna_list.user_id}">작성자</span>
+                            <span th:text="${qna_list.item_qna_reg_date}">작성일</span>
+                        </div>
+                    </li>
+                    <li class="qna_list qna_reply"
+                        th:if="${qna_list.item_qna_reply == 'Y'}"
+                        th:onclick="|checkId(${qna_list.user_id == loginID}, ${qna_list.item_qna_password == 1}, ${i.index})|">
+                        <div>
+                            <span class="qna_seq" th:text="${qna_list.item_qna_seq}">seq</span>
+                            <img src="../../../img/icon/ireply.png" class="qna_reply_img">
+                            <img src="../../../img/icon/ilock.png" th:if="${qna_list.item_qna_password == 1}">
+                            <span th:text="${qna_list.item_qna_title}" class="title">타이틀</span>
+                        </div>
+                        <div>
+                            <span class="qna_user">관리자</span>
+                            <span th:text="${qna_list.item_qna_reg_date}">작성일</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="qna_list qna_content" th:id="'content' + ${i.index}">
+                    <div th:text="${qna_list.item_qna_content}" class="content" th:if="|${qna_list.user_id == loginID || qna_list.item_qna_password == 0}|"></div>
+                    <div class="qna_content_icon" th:if="${qna_list.item_qna_reply == 'N' and qna_list.user_id == loginID}">
+                        <span class="updatebtn"
+                              style="cursor: pointer"
+                              th:itemQnaTitle="${qna_list.item_qna_title}"
+                              th:itemQnaContent="${qna_list.item_qna_content}"
+                              th:itemQnaSeq="${qna_list.item_qna_seq}"
+                              th:itemQnaPassword="${qna_list.item_qna_password}"
+                              th:onclick="updateForm(this.getAttribute('itemQnaTitle'),
+                               this.getAttribute('itemQnaContent'),
+                               this.getAttribute('itemQnaSeq'),
+                               this.getAttribute('itemQnaPassword'))">수정</span>
+                        <span th:itemQnaSeq="${qna_list.item_qna_seq}"
+                              th:onclick="deleteQna(this.getAttribute('itemQnaSeq'))" style="cursor: pointer">삭제</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div th:if="${#lists.isEmpty(qna)}" class="qna_empty">게시물이 없습니다</div>
+            </div>
+
+            <div class="q_page" th:if="${cri.totalCount > 0}">
+                <a href="#none" th:if="${page.prev}" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id},currPage=1)}" th:onclick="saveScrollPosition()"> &lt;&lt; </a>
+                <a href="#none" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id},currPage=${pageNumber})}"
+                   th:each="pageNumber : ${#numbers.sequence(1, page.pageViewCount)}"
+                   th:text="${pageNumber}" th:onclick="saveScrollPosition()">번호</a>
+                <a href="#none" th:if="${page.next}" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id},currPage=${cri.edPage})}" th:onclick="saveScrollPosition()"> &gt;&gt; </a>
+            </div>
+
+        </div>
+    </div>
+</nav>
+<div class="subcateProduct">
+    <ul class="categoryProduct">
+        <li><a href="#detailInfo">상세 정보</a></li>
+        <li><a href="#deliveryInfo">배송 / 교환</a></li>
+        <li><a href="#reviewInfo">REVIEW</a></li>
+        <li><a href="#qnaInfo">Q & A</a></li>
+        <li><a href="#" th:href="@{/user/heart}">좋아요</a></li>
+    </ul>
+</div>
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
+
+<div class="itemQnaPopUp">
+    <div class="popContainer">
+        <div class="popBox">
+            <h2>상품 문의하기
+                <img src="../../../img/icon/iclose.png" style="cursor: pointer" th:onclick="closeForm()"/>
+            </h2>
+            <hr>
+            <form id="insert-form" method="post" onsubmit="return insertQna(event);">
+                <input type="hidden" name="item_id" th:value="${item.item_id}" id="item_id">
+                <ul>
+                    <li class="title">
+                        <div class="imgbox">
+                            <img src="../../../img/item/item1.jpg"/>
+                        </div>
+                        <strong th:text="${item.item_name}">상품 이름</strong>
+                    </li>
+                    <hr>
+                    <li>
+                        <label>제목</label>
+                        <input type="text" name="item_qna_title" id="item_qna_title" placeholder="제목을 입력해 주세요." maxlength="20">
+                    </li>
+                    <li>
+                        <label>내용</label>
+                        <textarea name="item_qna_content" id="item_qna_content" placeholder="상품 문의를 입력해 주세요." maxlength="500"></textarea>
+                    </li>
+                    <li class="margin">
+                        <ul class="checkBox">
+                            <li>
+                                <div>
+                                    <input type="checkbox" name="item_qna_password" id="item_qna_password" value="1"/>
+                                    <label for="item_qna_password" id="item_qna_password"></label>
+                                    <label for="item_qna_password">비밀글로 문의하기</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="buttonBox">
+                        <button type="button" style="cursor: pointer" th:onclick="closeForm()">취소</button>
+                        <input type="submit" value="등록" style="cursor: pointer">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--------------------- 수정 form --------------------->
+
+<div class="itemQnaPopUp updateQnaPopUp">
+    <div class="popContainer">
+        <div class="popBox">
+            <h2>상품 문의하기
+                <img src="../../../img/icon/iclose.png" style="cursor: pointer" th:onclick="closeForm()"/>
+            </h2>
+            <hr>
+            <form id="update-form" th:action method="post" onsubmit="return updateQna(event);">
+                <input type="hidden" name="item_qna_seq" id="item_qna_seq">
+                <ul>
+                    <li class="title">
+                        <div class="imgbox">
+                            <img src="../../../img/item/item1.jpg"/>
+                        </div>
+                        <strong th:text="${item.item_name}">상품 이름</strong>
+                    </li>
+                    <hr>
+                    <li>
+                        <label>제목</label>
+                        <input type="text" name="item_qna_title" id="uitem_qna_title">
+                    </li>
+                    <li>
+                        <label>내용</label>
+                        <textarea name="item_qna_content" id="uitem_qna_content"></textarea>
+                    </li>
+                    <li class="margin">
+                        <ul class="checkBox">
+                            <li>
+                                <div>
+                                    <input type="checkbox" name="btCheck" id="ubtCheck" readonly/>
+                                    <label for="btCheck" id="ubtCheck"></label>
+                                    <label for="btCheck">비밀글로 문의하기</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="buttonBox">
+                        <button type="button" style="cursor: pointer" th:onclick="closeForm()">취소</button>
+                        <input type="submit" value="수정" style="cursor: pointer">
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

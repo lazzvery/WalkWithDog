@@ -1,0 +1,42 @@
+.pageTopContainer {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.pageTopContainer .pageTitle h2 {
+    color: #BAAAD7;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+
+.pageTopContainer .pageNav {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pageTopContainer .pageNav li a {
+    display: block;
+    background-color: #f3f3f3;
+    padding: 5px 15px;
+    border-radius: 25px;
+    color: #BAAAD7;
+}
+
+
+.pageTopContainer .pageNav li a[href="#"] {
+    background-color: #BAAAD7;
+    color: #fff;
+}
+
+.pageTopContainer .pageNav li a:hover {
+    background-color: #BAAAD7;
+    color: #fff;
+}
+
+
+.myPageContainer,
+.myPageOrderContainer {
+    margin-bottom: 200px;
+}

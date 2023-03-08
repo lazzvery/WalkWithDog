@@ -1,0 +1,499 @@
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #6b6b6b;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 인풋 넘버 위아래 버튼 지우는 속성 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 파이어폭스에서의 초기화 방법 */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 라디오 버튼 커스텀 */
+.checkBox {
+    position: relative;
+    display: flex;
+}
+
+.checkBox label {
+    display: inline-block;
+    font-size: 15px !important;
+    cursor: pointer;
+}
+
+.checkBox input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox input[type="radio"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkBox input[type="radio"]+label:before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    bottom: 0px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.checkBox input[type="radio"]:checked+label:before {
+    width: 18px;
+    height: 18px;
+    background: #BAAAD7;
+    border-color: #BAAAD7;
+}
+
+.checkBox input[type="radio"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    bottom: 5px;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+/* ----------------------------------------------- */
+
+
+/* 라디오 버튼 커스텀 */
+.checkBox {
+    position: relative;
+}
+
+.checkBox label {
+    display: inline-block;
+    font-size: 15px !important;
+    cursor: pointer;
+}
+
+.checkBox input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox input[type="radio"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkBox input[type="radio"]+label:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    background: #BAAAD7;
+    opacity: 0.4;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.checkBox input[type="radio"]:checked+label:before {
+    background: #fff;
+    border-color: #BAAAD7;
+}
+
+.checkBox input[type="radio"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 18px;
+    height: 18px;
+    background: #BAAAD7;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+
+
+.checkBox {
+    display: flex;
+}
+
+
+
+
+/* 체크박스 버튼 커스텀 */
+.agree .checkBox {
+    position: relative;
+    display: block;
+}
+
+.agree .checkBox li {
+    display: flex;
+    margin-top: 15px;
+}
+
+.agree .checkBox input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.agree .checkBox input[type="checkbox"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 40px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.agree .checkBox input[type="checkbox"]+label:before {
+    content: '✔';
+    position: absolute;
+    left: 8px;
+    bottom: -5px;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #d8d8d8;
+    color: #d8d8d8;
+    border-radius: 2px;
+    box-shadow: none;
+    font-size: 13px;
+}
+
+.agree .checkBox input[type="checkbox"]:checked+label:before {
+    width: 18px;
+    height: 18px;
+    background: #BAAAD7;
+    border: 0;
+}
+
+.agree .checkBox input[type="checkbox"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    bottom: -5px;
+    width: 10px;
+    height: 10px;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 회원가입 전체 박스 마진 */
+#contents {
+    margin: 200px 0;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 상단 타이틀  */
+.title {
+    text-align: center;
+    color: #BAAAD7;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 회원가입 폼 */
+.joinForm {
+    width: 335px;
+    margin: 0 auto;
+}
+
+.joinForm .joinTitle {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.joinForm fieldset {
+    border: 0;
+}
+
+.joinForm .ulContainer li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.joinForm .ulContainer li input {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #d8d8d8;
+    padding-left: 10px;
+    outline: 0;
+    font-size: 13px;
+    color: #BAAAD7;
+    box-sizing: border-box;
+}
+
+.joinForm .ulContainer li input::placeholder {
+    color: #b4b4b4
+}
+
+.joinForm .ulContainer > li > label {
+    width:35%;
+    font-size: 12px;
+    color: #222;
+}
+
+.joinForm .ulContainer li>div {
+    width: 65%;
+}
+
+/* 비밀번호 입력 */
+.joinForm .ulContainer li.password {
+    flex-wrap: wrap;
+}
+
+.joinForm .ulContainer li p {
+    font-size: 10px;
+    color: #b4b4b4;
+    display: flex;
+    gap: 5px;
+    color: crimson;
+    display: none;
+}
+
+/* 본인인증 */
+.joinForm .ulContainer li.authMember {
+    position: relative;
+}
+
+.joinForm .ulContainer li.authMember button {
+    width: 245px;
+    border: 0;
+    background-color: #BAAAD7;
+    color: #fff;
+    border-radius: 5px;
+    line-height: 35px;
+}
+
+.joinForm .ulContainer li.authMember p {
+    color: #6b6b6b;
+}
+
+/* 핸드폰 번호 입력 */
+.joinForm .ulContainer li.phone .phoneBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.joinForm .ulContainer li.phone .phoneBox .inputBox {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+}
+
+.joinForm .ulContainer li.phone input {
+    width: 100%;
+    display: inline-block;
+}
+
+.joinForm .ulContainer li.sms,
+.joinForm .ulContainer li.emailCheck,
+.joinForm .ulContainer li.gender{
+    justify-content: flex-start;
+}
+
+.joinForm .ulContainer li ul li{
+    margin-bottom: 0;
+}
+
+/* 반려동물 생일 */
+.joinForm .ulContainer li.birth .birthBox {
+    width: 65%;
+    display: flex;
+}
+
+.joinForm .ulContainer li.birth .birthBox li input {
+    width: 100%;
+}
+
+
+/* 반려동물 추가정보 */
+.joinForm .moreInformation li>div {
+    width: 245px;
+    display: flex;
+}
+
+.joinForm .moreInformation li select {
+    width: 245px;
+    display: block;
+}
+
+
+
+
+
+/* 반려동물 이미지 등록 */
+.joinForm .moreInformation li.petImg input {
+    border: 0;
+    align-self: center;
+}
+
+/* 반려동물 정보 */
+.joinForm .moreInformation li.petInfo .petInfoCover {
+    flex-direction: column;
+}
+
+.joinForm .moreInformation li.petInfo .petInfoCover .petInfoBox li {
+    margin-bottom: 0;
+}
+
+.joinForm .moreInformation li.petInfo .petInfoCover select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #d8d8d8;
+    padding-left: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+.joinForm .moreInformation li.petInfo .petInfoCover .dogSelect,
+.joinForm .moreInformation li.petInfo .petInfoCover .catSelect {
+    display: none;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 약관동의 박스 */
+.joinForm .agree {
+    padding-top: 40px;
+    margin-top: 50px;
+    border-top: 1px solid #d8d8d8;
+}
+
+/* 전체동의 체크박스 */
+.joinForm .agree .agreeAll label {
+    line-height: 25px;
+}
+
+.joinForm .agree .agreeAll input[type="checkbox"]+label:before {
+    width: 23px;
+    height: 23px;
+    line-height: 23px;
+    font-size: 16px;
+    bottom: -8px;
+}
+
+.joinForm .agree .agreeAll .checkBox input[type="checkbox"]:checked+label:after {
+    bottom: 8px;
+}
+
+.joinForm .agree .checkBox li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.joinForm .agree .checkBox li button {
+    border: 0;
+    color: #BAAAD7;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+/* 회원가입 버튼 */
+.joinForm .joinSubmit button {
+    width: 100%;
+    padding: 16px 0;
+    color: white;
+    background-color: #BAAAD7;
+    border: 0;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+/* ----------------------------------------------- */

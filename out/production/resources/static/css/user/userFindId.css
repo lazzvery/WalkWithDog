@@ -1,0 +1,269 @@
+/* 공통 스타일 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #6b6b6b;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 라디오 버튼 커스텀 */
+.checkBox {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checkBox label {
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.checkBox input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.checkBox input[type="radio"]+label {
+    display: inline-block;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.checkBox input[type="radio"]+label:before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    bottom: -3px;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    background: #BAAAD7;
+opacity: 0.4;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+.checkBox input[type="radio"]:checked+label:before {
+    background: #fff;
+    border-color: #BAAAD7;
+}
+
+.checkBox input[type="radio"]:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 8px;
+    bottom: -3px;
+    width: 14px;
+    height: 14px;
+    background: #BAAAD7;
+    border-radius: 100%;
+    box-shadow: none;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 아이디찾기 전체 박스 마진 */
+#contents {
+    margin: 200px 0;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 상단 타이틀  */
+.title {
+    text-align: center;
+    color: #BAAAD7;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 아이디,비밀번호 찾기 탭, 아이디 찾기 폼  */
+.pageSelect,
+.findIdForm {
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 아이디,비밀번호 찾기 탭 */
+.pageSelect {
+    margin: 25px auto;
+    text-align: center;
+}
+
+.pageSelect a {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    font-size: 13px;
+    color: #BAAAD7;
+    border-bottom: 1px solid transparent;
+    padding: 0 5px;
+    margin: 0 5px;
+}
+
+.pageSelect a.selected {
+    border-bottom: 1px solid #BAAAD7;
+}
+
+.pageSelect a:hover {
+    border-bottom: 1px solid #BAAAD7;
+    transition: all 1s;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 아이디찾기 폼  */
+.findIdForm fieldset {
+    border: 0;
+}
+
+
+
+.findIdForm .findIdContainer li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.findIdForm .findIdContainer li input {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(186,170,216,0.2);
+    box-sizing: border-box;
+    color: #BAAAD7;
+}
+
+.findIdForm .findIdContainer li label {
+    font-size: 11px;
+    line-height: 30px;
+    color: #222;
+}
+
+/* 핸드폰 번호로 찾기 input */
+.findIdForm .findIdContainer li.phone {
+    display: none;
+}
+
+.findIdForm .findIdContainer li.phone .phoneBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.findIdForm .findIdContainer li.phone .phoneBox span {
+    line-height: 40px;
+}
+
+.findIdForm .findIdContainer li.phone input {
+    width: 30%;
+    display: inline-block;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 인풋 넘버 위아래 버튼 지우는 속성 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 파이어폭스에서의 초기화 방법 */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+/* 아이디 찾기 버튼 */
+.findIdForm .findIdButton {
+    margin-top: 50px;
+}
+
+.findIdForm .findIdButton button {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border: 0;
+    color: white;
+    background-color: #BAAAD7;
+    letter-spacing: -1px;
+    font-size: 13px;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+
+
+
+/* 뭔지 모르겠음 */
+.findIdForm .loginUtil {
+    display: flex;
+    justify-content: space-between;
+}
+
+.findIdForm .loginUtil a {
+    font-size: 13px;
+    text-decoration: underline;
+    letter-spacing: -1px;
+}

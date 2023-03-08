@@ -1,0 +1,211 @@
+/* 공통 스타일 */
+
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'IBMPlexSansKR-Regular';
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #6b6b6b;
+}
+
+/* ----------------------------------------------- */
+
+
+/* body */
+
+body {
+    display: flex;
+}
+
+/* ----------------------------------------------- */
+
+/* 타이틀 */
+
+.title h1 {
+    color: white;
+}
+
+/* ----------------------------------------------- */
+
+/* header */
+
+header {
+    background-color: #477A7B;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    gap: 50px;
+    padding-left: 20px;
+    min-height: 100vh;
+}
+
+.list>li {
+    margin-bottom: 20px;
+}
+
+
+
+.list li a {
+    color: white;
+    font-size: 20px;
+}
+
+.list>li ul {
+    display: none;
+}
+
+
+
+/* ----------------------------------------------- */
+
+
+/* contents  */
+
+#contents {
+    margin-bottom: 200px;
+    height: auto;
+    width: calc(100% - 250px);
+}
+
+/* topMenu */
+.topMenu {
+    padding: 25px 0 25px 20px;
+    background-color: #dfe9e8;
+    display: flex;
+}
+
+.topMenu li {
+    padding: 0 40px;
+}
+
+.topMenu li a {
+    display: block;
+    color: #477A7B;
+}
+
+
+
+/* 인풋 넘버 위아래 버튼 지우는 속성 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 파이어폭스에서의 초기화 방법 */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* ----------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+/* 상단 타이틀  */
+
+.itemTitle {
+    text-align: center;
+    color: #BAAAD7;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    margin-top: 100px;
+}
+
+/* ----------------------------------------------- */
+
+
+
+/* 상품등록 폼 */
+
+.itemInsertForm {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.itemInsertForm .joinTitle {
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.itemInsertForm fieldset {
+    border: 0;
+}
+
+.itemInsertForm .ulContainer li {
+    display: flex;
+    justify-content: space-between;
+    line-height: 35px;
+    margin-bottom: 25px;
+}
+
+.itemInsertForm .ulContainer li input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    outline: 0;
+    border: 0;
+    background-color: rgba(186, 170, 216, 0.2);
+    box-sizing: border-box;
+    color: #BAAAD7;
+    outline: 0;
+}
+
+
+.itemInsertForm .ulContainer li label {
+    width: 30%;
+    font-size: 15px;
+    color: #222;
+}
+
+.itemInsertForm .ulContainer li .cover,
+.itemInsertForm .ulContainer li>.inputBox {
+    width: 70%;
+}
+
+.itemInsertForm .ulContainer li .inputBox input {
+    width: 100%;
+}
+
+
+
+
+
+
+.itemInsertForm .itemSubmit button {
+    width: 100%;
+    padding: 16px 0;
+    font-size: 17px;
+    display: block;
+    background-color: #fff;
+    color: #BAAAD7;
+    border: 1px solid #BAAAD7;
+    box-sizing: border-box;
+    text-align: center;
+}

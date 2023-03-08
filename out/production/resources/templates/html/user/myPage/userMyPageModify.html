@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css">
+    <link rel="stylesheet" href="../../../../common/css/footer.css">
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageModify.css">
+    <script defer src="../../../../js/user/myPage/userMyPageModify.js"></script>
+    <script defer src="../../../../js/index.js"></script>
+
+    <title>modify</title>
+</head>
+
+<body>
+<!-- ---------------- 버튼 ------------------ -->
+<a class="toTop hidden_" href="#"> </a>
+<!-- ---------------- 버튼 ------------------ -->
+
+<!-- ---------------- <header> 모듈 ------------------ -->
+<header th:replace="html/fragments/headerFooter :: header"></header>
+<!-- ---------------- <header> 모듈 ------------------ -->
+
+
+<div class="myPageContainer">
+    <div class="pageTopContainer">
+        <div class="pageTitle">
+            <h2>MY PAGE</h2>
+        </div>
+        <ul class="pageNav">
+            <li><a href="../home/home.html">홈</a></li>
+            <li><a href="../order/order.html">주문내역</a></li>
+            <li><a href="../coupon/coupon.html">쿠폰</a></li>
+            <li><a href="../mileage/mileage.html">적립금</a></li>
+            <li><a href="#">회원정보</a></li>
+        </ul>
+    </div>
+
+    <div class="myPageModifyContainer">
+        <h2>회원정보</h2>
+
+        <form class="modifyForm" action="modify" method="post">
+            <fieldset>
+                <ul class="ulContainer joinContainer">
+                    <li class="authMember">
+                        <label>회원 인증 *</label>
+                        <div class="cover">
+                            <span>고객님은 현재 미인증 상태입니다. 본인 인증을 진행해주세요.</span>
+                            <button>휴대폰 본인 인증</button>
+                            <p>
+                                <span>본인 명의의 휴대폰으로 본인인증을 진행합니다.</span><br/>
+                                정보통신망법에 따라 고객의 주민등록번호를 수집하지 않습니다.<br/>
+                                안전한 전자상거래를 위하여 아래 수단으로 본인인증을 완료하여 주시기 바랍니다.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="id">
+                        <label>아이디 *</label>
+                        <input type="text" name="user_id" th:value="${session.loginID}" readonly>
+                    </li>
+                    <li class="password">
+                        <label>비밀번호 *</label>
+                        <div class="inputBox">
+
+                            <input type="password" name="user_password" id="user_password" >
+                            <p>
+                                <span>*</span>
+                                <span>영문대소문자/숫자/특수문자 중 2가지 이상 조합</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="passwordConfirm">
+                        <label>비밀번호 확인 *</label>
+                        <div class="inputBox">
+                            <input type="password" id="user_password2">
+                            <p>
+                                <span>*</span>
+                                <span>비밀번호가 일치하지 않습니다.</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="name">
+                        <label>이름 *</label>
+                        <input type="text" name="user_name" id="user_name" th:value="${session.loginName}" readonly>
+                    </li>
+                    <li class="address">
+                        <label>주소</label>
+                        <div class="addressBox">
+                            <div class="postBox">
+                                <input type="text" namd="" id="sample6_postcode" placeholder="우편번호" readonly>
+                                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+                            </div>
+                            <input type="text" namd="" id="sample6_address" placeholder="주소" readonly>
+                            <input type="text" namd="" id="sample6_detailAddress" placeholder="상세주소">
+                            <input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
+                        </div>
+
+                        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                        <script>
+                            function sample6_execDaumPostcode() {
+                                new daum.Postcode({
+                                    oncomplete: function (data) {
+                                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                        var addr = ''; // 주소 변수
+                                        var extraAddr = ''; // 참고항목 변수
+
+                                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                                        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                                            addr = data.roadAddress;
+                                        } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                                            addr = data.jibunAddress;
+                                        }
+
+                                        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                                        if (data.userSelectedType === 'R') {
+                                            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                                            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                                            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                                                extraAddr += data.bname;
+                                            }
+                                            // 건물명이 있고, 공동주택일 경우 추가한다.
+                                            if (data.buildingName !== '' && data.apartment === 'Y') {
+                                                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                                            }
+                                            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                                            if (extraAddr !== '') {
+                                                extraAddr = ' (' + extraAddr + ')';
+                                            }
+                                            // 조합된 참고항목을 해당 필드에 넣는다.
+                                            document.getElementById("sample6_extraAddress").value = extraAddr;
+
+                                        } else {
+                                            document.getElementById("sample6_extraAddress").value = '';
+                                        }
+
+                                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                                        document.getElementById('sample6_postcode').value = data.zonecode;
+                                        document.getElementById("sample6_address").value = addr;
+                                        // 커서를 상세주소 필드로 이동한다.
+                                        document.getElementById("sample6_detailAddress").focus();
+                                    }
+                                }).open();
+                            }
+                        </script>
+                    </li>
+                    <li class="phone">
+                        <label>휴대전화 *</label>
+                        <div class="phoneBox">
+                            <div class="inputBox">
+                                <input name="user_phone" id="user_phone" th:value="${userinfo.user_phone}" >
+                            </div>
+                            <p class="phoneText">* 유효한 전화번호를 입력해주세요</p>
+                        </div>
+                    </li>
+                    <li class="sms">
+                        <label>SMS 수신여부 *</label>
+                        <ul class="checkBox cover">
+                            <li>
+                                <input type="radio" name="user_sns_check" id="y" value="y" th:checked="${userinfo.user_sns_check} == 'y' ? true : false " />
+                                <label for="y" id="y"></label>
+                                <label for="y">수신함</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="user_sns_check" id="n" value="n" th:checked="${userinfo.user_sns_check} == 'n' ? true : false " />
+                                <label for="n" id="n"></label>
+                                <label for="n">수신안함</label>
+                            </li>
+                        </ul>
+                        <p class="tip">쇼핑몰에서 제공하는 유익한 이벤트 소식을 SMS로 받으실 수 있습니다.</p>
+                    </li>
+                    <li class="email">
+                        <label>이메일 *</label>
+                        <div class="inputBox">
+                            <input type="email" name="user_email">
+                            <p>
+                                <span>*</span>
+                                <span>유효한 이메일을 입력해주세요</span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="emailCheck">
+                        <label>email 수신여부 *</label>
+                        <ul class="checkBox cover">
+                            <li>
+                                <input type="radio" name="user_email_check" id="Y" value="y" th:checked="${userinfo.user_email_check} == 'y' ? true : false " />
+                                <label for="Y" id="Y"></label>
+                                <label for="Y">수신함</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="user_email_check" id="N" value="n" th:checked="${userinfo.user_email_check} == 'n' ? true : false "  />
+                                <label for="N" id="N"></label>
+                                <label for="N">수신안함</label>
+                            </li>
+                        </ul>
+                        <p class="tip">쇼핑몰에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</p>
+                    </li>
+                    <li class="gender">
+                        <label>성별</label>
+                        <ul class="checkBox">
+                            <li>
+                                <input type="radio" name="user_gen" id="w" value="woman" th:checked="${userinfo.user_gen} == 'woman' ? true : false " />
+                                <label for="w" id="w"></label>
+                                <label for="w">여</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="user_gen" id="m" value="men" th:checked="${userinfo.user_gen} == 'men' ? true : false " />
+                                <label for="m" id="m"></label>
+                                <label for="m">남</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="birth">
+                        <label>생년월일</label>
+                        <ul class="birthBox">
+                            <input type="hidden" name="user_birthday" id="birthday" th:value="${userinfo.user_birthday}" >
+                            <li class="petYear">
+                                <input type="text" name="year" id="year" />
+                                <span>년</span>
+                            </li>
+                            <li class="petMonth">
+                                <input type="text" name="month" id="month" />
+                                <span>월</span>
+                            </li>
+                            <li class="petDay">
+                                <input type="text" name="day" id="day" />
+                                <span>일</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="recommender">
+                        <label>추천인 아이디</label>
+                        <input type="text" name="recommender">
+                    </li>
+                </ul>
+
+
+                <!--
+                <ul class="ulContainer moreInformation">
+                    <li class="petName">
+                        <label>반려동물 이름</label>
+                        <input type="text" name="petName">
+                    </li>
+                    <li class="petgender">
+                        <label>반려동물 성별</label>
+                        <ul class="checkBox cover">
+                            <li>
+                                <input type="radio" name="petgender" id="patW" />
+                                <label for="patW" id="patW"></label>
+                                <label for="patW">여</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="petgender" id="patM" />
+                                <label for="patM" id="patM"></label>
+                                <label for="patM">남</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="petBirth">
+                        <label>반려동물 생일</label>
+                        <ul class="birthBox cover">
+                            <li class="petYear">
+                                <input type="number" name="petYear" />
+                                <span>년</span>
+                            </li>
+                            <li class="petMonth">
+                                <input type="number" name="petMonth" />
+                                <span>월</span>
+                            </li>
+                            <li class="petDay">
+                                <input type="number" name="petDay" />
+                                <span>일</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="petImg">
+                        <label>반려동물 사진</label>
+                        <input type="file" name="petImg">
+                    </li>
+                    <li class="petInfo">
+                        <label>반려동물 정보</label>
+                        <div class="petInfoCover">
+                            <ul class="checkBox petInfoBox cover">
+                                <li class="dog">
+                                    <input type="radio" name="petInfo" id="dog" />
+                                    <label for="dog" id="dog"></label>
+                                    <label for="dog">강아지</label>
+                                </li>
+                                <li class="cat">
+                                    <input type="radio" name="petInfo" id="cat" />
+                                    <label for="cat" id="cat"></label>
+                                    <label for="cat">고양이</label>
+                                </li>
+                            </ul>
+                            <select name="dogSelect">
+                                <option id="species_sub" value="" selected="">우리 아이는?</option>
+                                <option value="하이브리드견">하이브리드견</option>
+                                <option value="말티즈">말티즈</option>
+                                <option value="시츄">시츄</option>
+                                <option value="요크셔테리어">요크셔테리어</option>
+                                <option value="푸들">푸들</option>
+                                <option value="비숑">비숑</option>
+                                <option value="꼬똥드툴레아">꼬똥드툴레아</option>
+                                <option value="웰시코기">웰시코기</option>
+                                <option value="불독">불독</option>
+                                <option value="포메라니안">포메라니안</option>
+                                <option value="테리어">테리어</option>
+                                <option value="치와와">치와와</option>
+                                <option value="그 외">그 외</option>
+                            </select>
+
+                            <select name="catSelect">
+                                <option id="species_sub" value="" selected="">우리 아이는?</option>
+                                <option value="하이브리드묘">하이브리드묘</option>
+                                <option value="코리안숏헤어">코리안숏헤어</option>
+                                <option value="아메리카숏헤어">아메리카숏헤어</option>
+                                <option value="스코티시폴드">스코티시폴드</option>
+                                <option value="페르시아">페르시아</option>
+                                <option value="샴">샴</option>
+                                <option value="터키시앙고라">터키시앙고라</option>
+                                <option value="러시안블루">러시안블루</option>
+                                <option value="아비시니안">아비시니안</option>
+                                <option value="엑조틱">엑조틱</option>
+                                <option value="시베리안">시베리안</option>
+                                <option value="그 외">그 외</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="">
+                        <label>그 외</label>
+                        <input type="text" name="petInfo" />
+                    </li>
+                </ul>
+                -->
+
+                <div class="modifySubmit">
+                    <button type="submit" class="join">회원정보수정</button>
+                    <a href="/user/delete">회원탈퇴</a>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</div>
+
+<!--------------------- <footer> 모듈 --------------------->
+<footer th:replace="/html/fragments/headerFooter :: footer"></footer>
+<!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+
+</html>

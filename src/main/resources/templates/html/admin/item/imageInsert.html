@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../static/css/admin/item/imageInsert.css" />
+    <script defer src="../../javascript/index.js"></script>
+
+    <title>상품정보</title>
+</head>
+
+<body>
+
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+    <header id="headerTop">
+        <div class="title">
+            <h1>관리자페이지</h1>
+        </div>
+
+        <ul class="list">
+            <li class="dBoard">
+                <a href="../admin.html">대시보드</a>
+            </li>
+            <li class="userInfo">
+                <a href="../user/userInfo.html">회원정보</a>
+                <ul>
+                    <li>
+                        <a href="#">회원 정보 관리</a>
+                    </li>
+                    <li>
+                        <a href="#">메일,sns 수신 관리</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="productInfo">
+                <a href="../item/itemInfo.html">상품관리</a>
+                <ul>
+                    <li>
+                        <a href="#">상품관리</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="noticeInfo">
+                <a href="../community/notice.html">게시판관리</a>
+            </li>
+        </ul>
+    </header>
+
+
+    <div id="contents">
+        <ul class="topMenu">
+            <li>
+                <a href="./itemInfo.html">상품관리</a>
+            </li>
+            <li>
+                <a href="./itemInsert.html">상품등록</a>
+            </li>
+            <li>
+                <a href="./itemQna.html">상품 QnA관리</a>
+            </li>
+            <li>
+                <a href="./category.html">카테고리 관리</a>
+            </li>
+            <li>
+                <a href="./image.html">이미지 관리</a>
+            </li>
+            <li>
+                <a href="./imageInsert.html">이미지 관리</a>
+            </li>
+        </ul>
+
+
+        <form id="insert" class="itemInsertForm" action="join" method="post">
+            <div class="itemTitle">
+                <h3>이미지 등록</h3>
+            </div>
+            <fieldset>
+                <ul class="ulContainer itemContainer">
+                    <li class="itemId">
+                        <label>이미지 번호</label>
+                        <div class="inputBox">
+                            <input type="text" name="user_id" id="user_id" required>
+                        </div>
+                    </li>
+                    <li class="categoryCode">
+                        <label>상품 id</label>
+                        <div class="inputBox">
+                            <input type="text" name="user_password" id="user_password" required>
+                        </div>
+                    </li>
+                    <li class="itemName">
+                        <label>메인 이미지 용도 구분</label>
+                        <div class="inputBox">
+                            <input type="text" name="user_name" id="user_name" required>
+                        </div>
+                    </li>
+                    <li class="itemOption">
+                        <label>이미지 이름, 확장자</label>
+                        <div class="inputBox">
+                            <input type="text" name="user_phone" id="user_phone" placeholder="010" required>
+                        </div>
+                    </li>
+                    <li class="itemPrice">
+                        <label>이미지 등록날짜</label>
+                        <div class="inputBox">
+                            <input type="text" name="user_email" required>
+                        </div>
+                    </li>
+                    <li class="itemCount">
+                        <label>이미지 삭제 여부</label>
+                        <input type="number" name="user_rid">
+                    </li>
+                    <li class="itemDate">
+                        <label>이미지 순서</label>
+                        <input type="date" name="user_rid">
+                    </li>
+                </ul>
+
+
+
+                <div class="itemSubmit">
+                    <button type="submit" class="item">등록하기</button>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

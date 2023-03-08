@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제 완료</title>
+    <link rel="stylesheet" href="../../../item/css/itemPopup.css">
+</head>
+
+<body class="dimmed">
+    <div class="popup">
+        <div class="title">결제 완료</div>
+        <div class="content">
+            <p>상품을 구매해 주셔서 감사합니다!</p>
+        </div>
+        <div class="cmd">
+            <input type="button" onclick="closeTabClick()" name="btnclose" class="button" value="닫기">
+        </div>
+    </div>
+    <script>
+        function closeTabClick() {
+            window.open("../../index.html", '_self');
+        }
+    </script>
+</body>
+
+</html>

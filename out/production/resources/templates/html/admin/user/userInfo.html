@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../css/admin/userInfo.css" />
+    <script defer src="../../javascript/index.js"></script>
+
+    <title>회원정보</title>
+</head>
+
+<body>
+
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+    <header id="headerTop">
+        <div class="title">
+            <h1>관리자페이지</h1>
+        </div>
+
+        <ul class="list">
+            <li class="dBoard">
+                <a href="../admin.html">대시보드</a>
+            </li>
+            <li class="userInfo">
+                <a href="../userPage/userInfo.html">회원정보</a>
+                <ul>
+                    <li>
+                        <a href="#">회원 정보 관리</a>
+                    </li>
+                    <li>
+                        <a href="#">메일,sns 수신 관리</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="productInfo">
+                <a href="../item/itemInfo.html">상품관리</a>
+                <ul>
+                    <li>
+                        <a href="#">상품관리</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="noticeInfo">
+                <a href="#">게시판관리</a>
+            </li>
+
+        </ul>
+    </header>
+
+
+    <div id="contents">
+        <ul class="topMenu">
+            <li>
+                <a href="/admin/user/userInfo">회원관리</a>
+            </li>
+            <li>
+                <a href="./addressInfo.html">배송지관리</a>
+            </li>
+            <li>
+                <a href="./couponInfo.html">쿠폰관리</a>
+            </li>
+        </ul>
+
+        <table class="userInfo">
+            <caption>회원 정보</caption>
+
+            <tr>
+                <th>아이디</th>
+                <th>이름</th>
+                <th>e-mail</th>
+                <th>e-amil 수신여부</th>
+                <th>휴대전화</th>
+                <th>SNS 수신여부</th>
+                <th>성별</th>
+                <th>생일</th>
+                <th>추천인 아이디</th>
+            </tr>
+
+            <tr th:each="user : ${selectList}" >
+                <td><a th:href="@{/admin/user/userDetail(user_id=${user.getUser_id()})}"><th:block th:text="${user.user_id}"></th:block></a></td>
+                <td th:text="${user.user_name}"></td>
+                <td th:text="${user.user_email}"></td>
+                <td th:text="${user.user_email_check}"></td>
+                <td th:text="${user.user_phone}"></td>
+                <td th:text="${user.user_sns_check}"></td>
+                <td th:text="${user.user_gen}"></td>
+                <td th:text="${user.user_birthday}"></td>
+                <td th:text="${user.user_rid}"></td>
+            </tr>
+
+        </table>
+
+
+        <div class="pageNation">
+            &lt;
+            <ul>
+                <li>
+                    <a href="#">1</a>
+                </li>
+            </ul>
+            &gt;
+        </div>
+
+    </div>
+
+</body>
+
+</html>
