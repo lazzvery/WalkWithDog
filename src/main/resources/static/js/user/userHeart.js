@@ -90,7 +90,7 @@ function deleteAll(event) {
 
 //================================================================
 // 장바구니 ajax
-
+// 좋아요 -> 장바구니로 list 이동
 function savetoCart() {
 
     let items = [];

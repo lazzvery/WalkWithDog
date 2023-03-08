@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../../../common/css/footer.css" />
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../../css/order/orderDetail.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
     <script defer src="../../../../js/order/orderDetail.js"></script>
     <script defer src="../../../../js/index.js"></script>
     <title>order</title>
@@ -29,17 +30,17 @@
     <article class="shop_orderlist">
         <h2>주문 상품</h2>
         <hr>
-        <ul class="shop_orderlistbox">
+        <ul class="shop_orderlistbox" th:each="list : ${orderList}">
             <li class="orderlist1">
                 <div class="detailname_box">
                     <a href="../item/itemDetail.html" class="orderlistimgbox">
                         <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="orderlistimg">
                     </a>
-                    <a href="./product_shopping_details.html" class="ordername1">아르르 꿀잠 방석</a>
+                    <a href="./product_shopping_details.html" class="ordername1" th:text="${list.item_name}">상품명</a>
                 </div>
                 <div class="detailnum_box">
-                    <span class="order_number">1개</span>
-                    <span>29,900원</span>
+                    <span class="order_number" th:text="${list.item_count}">수량</span>
+                    <span th:text="${list.item_price}">가격</span>
                 </div>
             </li>
         </ul>
