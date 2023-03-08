@@ -41,7 +41,7 @@
                 </div>
                 <div class="detailnum_box">
                     <span class="order_number" th:text="${list.item_count} + 개">수량</span>
-                    <span data-th-text="${#numbers.formatInteger(list.item_price, 3, 'COMMA') + '원'}">가격</span>
+                    <span data-th-text="${#numbers.formatInteger(list.item_price * list.item_count, 3, 'COMMA') + '원'}">가격</span>
                 </div>
             </li>
         </ul>
