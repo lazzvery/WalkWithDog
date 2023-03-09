@@ -38,6 +38,11 @@ public class MyPageController {
         return "html/user/myPage/userMyPageAddrList";
     } //ulist
 
+    @GetMapping("/addrselect")
+    public String addrSerlect() {
+        return "/html/order/orderAddress";
+    }
+
     //  배송지추가
     @GetMapping("/addrInsert")
     public String addrInsertForm(){
