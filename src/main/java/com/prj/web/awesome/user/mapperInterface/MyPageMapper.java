@@ -3,7 +3,6 @@ package com.prj.web.awesome.user.mapperInterface;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -24,8 +23,11 @@ public interface MyPageMapper {
     // 3. insert
     int addrInsert(AddrDTO dto);
 
-    // 4. update
+    // 4. 주소 추가시 기본배송지 update
     int insertAddrUpdate(AddrDTO dto);
+
+    // update
+    int addrUpdate(AddrDTO dto);
 
     @Select("select * from addr where user_id=#{user_id} and addr_default='Y'")
     AddrDTO findAddr(String user_id);

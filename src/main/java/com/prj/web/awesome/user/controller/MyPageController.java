@@ -96,8 +96,8 @@ public class MyPageController {
         return "redirect:/user/myPage/addrList";
     } //delete
 
-    @GetMapping("/register")
-    public String register(Model model){ return "html/user/myPage/userMyPageRegister"; }
+    @GetMapping("/addrUpdate")
+    public String addrUpdate(Model model){ return "/html/user/myPage/userMyPageUpdate"; }
 
     @GetMapping("/coupon")
     public String coupon(Model model){ return "html/user/myPage/userMyPageCoupon"; }
