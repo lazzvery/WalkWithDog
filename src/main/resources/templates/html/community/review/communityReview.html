@@ -35,11 +35,6 @@
     }); //click
   });
 
-  // function test(){
-  //   self.location = '/community/review?currPage=1&rowsPerPage=9'
-  //           + '&searchType=' + $('#searchType').val()
-  //           + '&keyword=' + $('#keyword').val();
-  // }
 </script>
 
   <a class="toTop hidden_"> </a>
@@ -120,14 +115,14 @@
         <li th:each="list:${reviewList}">
           <div th:text="${list.getReview_seq()}" style="display: none"></div>
           <div class="c_img_container">
-            <img th:value="${list.getReview_attachment1()}" class="img" src="../../../../img/community/review/reviewpic.jpg" alt="">
+            <img th:value="${list.getAttachment_file_seq()}" class="img" src="../../../../img/community/review/reviewpic.jpg" alt="">
           </div>
           <div>
             <a th:text="${list.getReview_content()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">고객님의 소중한 후기입니다.</a>
             <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
           </div>
           <div class="c_review_target">
-            <img th:value="${list.getReview_attachment2()}" src="../../../../img/community/review/reviewpicsmall.jpg" alt="" class="c_review_targetimg">
+            <img th:value="${list.getAttachment_file_seq()}" src="../../../../img/community/review/reviewpicsmall.jpg" alt="" class="c_review_targetimg">
             <div>
               <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
               <div class="c_user_rank">
@@ -135,7 +130,7 @@
                   <strong >46</strong>
                 </span>
                 <span>평점</span>
-                <strong th:text="${list.review_rank}">9.4</strong>
+                <strong th:value="${list.getReview_rank()}">9.4</strong>
               </div>
             </div>
           </div>

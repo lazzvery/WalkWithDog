@@ -74,9 +74,7 @@ public String reviewInsertForm(Model model){
         reviewDTO.setReview_content(dto.getReview_content());
         reviewDTO.setReview_reg_date(dto.getReview_reg_date());
         reviewDTO.setReview_rank(dto.getReview_rank());
-        reviewDTO.setReview_attachment1(dto.getReview_attachment1());
-        reviewDTO.setReview_attachment2(dto.getReview_attachment2());
-        reviewDTO.setReview_attachment3(dto.getReview_attachment3());
+        reviewDTO.setAttachment_file_seq(dto.getAttachment_file_seq());
 
 //        String realPath = request.getRealPath("/");
 //        System.out.println(realPath);

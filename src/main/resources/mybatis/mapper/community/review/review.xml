@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prj.web.awesome.community.mapper.ReviewMapper">
-	<select id="reviewList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
-		select
-			review_seq,
-			user_id,
-			review_title,
-			review_content,
-			review_reg_date,
-			review_rank,
-			review_cnt
-	    from review
-	    order by review_seq desc;
-	</select>
+<!--	<select id="reviewList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">-->
+<!--		select-->
+<!--			review_seq,-->
+<!--			user_id,-->
+<!--			review_title,-->
+<!--			review_content,-->
+<!--			review_reg_date,-->
+<!--			review_rank,-->
+<!--			review_cnt-->
+<!--	    from review-->
+<!--	    order by review_seq desc;-->
+<!--	</select>-->
 
 	<select id="reviewDetail" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
 		select
@@ -24,9 +24,7 @@
 			review_reg_date,
 			review_seq,
 			review_reply,
-			review_attachmetn1,
-			review_attachmetn2,
-			review_attachmetn3
+			attachment_file_seq
 		from review
 		where review_seq = #{review_seq};
 	</select>
@@ -43,9 +41,7 @@
 		review_content,
 		review_reg_date,
 		review_rank,
-		review_attachmetn1,
-		review_attachmetn2,
-		review_attachmetn3
+		attachment_file_seq
 		)
 		values(
 		#{review_seq},
@@ -55,9 +51,7 @@
 		#{review_content},
 		now(),
 		#{review_rank},
-		#{review_attachment1},
-		#{review_attachment2},
-		#{review_attachment3}
+		"300"
 		);
 	</insert>
 
@@ -65,9 +59,7 @@
 		update review set
 					review_title = #{review_title},
 					review_content = #{review_content},
-					review_attachment1 = #{review_attachment1},
-					review_attachment2 = #{review_attachment2},
-					review_attachment3 = #{review_attachment3}
+					review_rank = #{review_rank}
 		where review_seq = #{review_seq};
 	</update>
 

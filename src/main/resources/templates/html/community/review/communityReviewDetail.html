@@ -43,13 +43,13 @@
         <div class="picture_section">
             <ul class="slides">
                 <li>
-                    <img th:text="${reviewDetail.getReview_attachment1()}" src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
+                    <img th:value="${reviewDetail.getAttachment_file_seq()}" src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
                 </li>
                 <li class="review_file1">
-                    <img th:text="${reviewDetail.getReview_attachment2()}" src="../../../../img/community/review/reviewpic.jpg" class="main_pic">
+                    <img th:value="${reviewDetail.getAttachment_file_seq()}" src="../../../../img/community/review/reviewpic.jpg" class="main_pic">
                 </li>
                 <li class="review_file2">
-                    <img th:text="${reviewDetail.getReview_attachment3()}" src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
+                    <img th:value="${reviewDetail.getAttachment_file_seq()}" src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
                 </li>
             </ul>
             <p class="controller">

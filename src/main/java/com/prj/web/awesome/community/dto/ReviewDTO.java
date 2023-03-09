@@ -18,7 +18,6 @@ public class ReviewDTO {
     private int review_reply;
     private int review_step;
     private int review_indent;
-    private String review_attachment1;
-    private String review_attachment2;
-    private String review_attachment3;
+    private int attachment_file_seq;
+
 }
