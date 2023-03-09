@@ -21,26 +21,27 @@
         <div class="myPageRegisterContainer">
             <h2>배송 주소록 관리</h2>
 
-            <form action="../list/list.html" class="registerForm">
+            <form action="addrUpdate" class="registerForm" method="post">
                 <fieldset>
                     <ul class="ulContainer registerContainer">
+                        <input type="hidden" name="addr_seq" th:value="${addrInfo.addr_seq}" />
                         <li class="id">
                             <label>배송지명 *</label>
-                            <input type="text" name="addr_name" >
+                            <input type="text" name="addr_name" th:value="${addrInfo.addr_name}">
                         </li>
                         <li class="name">
                             <label>이름 *</label>
-                            <input type="text" name="addr_reciver" >
+                            <input type="text" name="addr_reciver" th:value="${addrInfo.addr_reciver}" >
                         </li>
                         <li class="address">
                             <label>주소</label>
                             <div class="addressBox">
                                 <div class="postBox">
-                                    <input type="text" name="addr_postcode" id="sample6_postcode" placeholder="우편번호" readonly required>
+                                    <input type="text" name="addr_postcode" id="sample6_postcode" placeholder="우편번호" th:value="${addrInfo.addr_postcode}" readonly required>
                                     <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
                                 </div>
-                                <input type="text" name="addr_addr" id="sample6_address" placeholder="주소" readonly required>
-                                <input type="text" name="addr_addr2" id="sample6_detailAddress" placeholder="상세주소" required>
+                                <input type="text" name="addr_addr" id="sample6_address" th:value="${addrInfo.addr_addr}"  readonly required>
+                                <input type="text" name="addr_addr2" id="sample6_detailAddress" th:value="${addrInfo.addr_addr2}" required>
                                 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
                             </div>
 
@@ -99,7 +100,7 @@
                             <label>휴대전화 *</label>
                             <div class="phoneBox">
                                 <div class="inputBox">
-                                    <input name="addr_phone" id="user_phone" placeholder="010" required>
+                                    <input name="addr_phone" id="user_phone" th:value="${addrInfo.addr_phone}" required>
                                 </div>
                                 <!--                                <p class="phoneText">* 유효한 전화번호를 입력해주세요</p>-->
                             </div>
@@ -114,7 +115,7 @@
 
 
                     <div class="registerSubmit">
-                        <a href="../list/list.html">취소</a>
+                        <a href="/user/myPage/addrList">취소</a>
                         <button>수정</button>
                     </div>
                 </fieldset>

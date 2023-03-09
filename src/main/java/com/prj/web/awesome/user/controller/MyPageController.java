@@ -105,11 +105,11 @@ public class MyPageController {
         dto.setUser_id((String)request.getSession().getAttribute("loginID"));
 
         dto = service.addrSelectOne(dto);
-        mv.addAttribute("userinfo", dto);
+        mv.addAttribute("addrInfo", dto);
 
         System.out.println(dto);
 
-        return "html/user/myPage/userMyPageAddrList";
+        return "html/user/myPage/userMyPageUpdate";
     }
     @PostMapping("/addrUpdate")
     public ModelAndView addrUpdate(HttpServletRequest request, ModelAndView mv, AddrDTO dto) throws IOException{
@@ -121,11 +121,13 @@ public class MyPageController {
 
         // => Update 성공/실패 모두 출력시 필요하므로
 
-        mv.addObject("userInfo", dto);
+        List<AddrDTO> loginID = service.addrList((String) request.getSession().getAttribute("loginID"));
+        mv.addObject("addrList", loginID);
 
 
         if ( service.addrUpdate(dto)>0 ) {
             mv.addObject("message", "~~ 회원정보 수정 성공 ~~");
+
         }else {
             uri="html/user/myPage/userMyPageUpdate" ;
             mv.addObject("message", "~~ 회원정보 수정 실패, 다시 하세요 ~~");
