@@ -106,12 +106,12 @@ function checkId(check, password, index) {
 // Form 열고 닫기
 
 function openForm(login) {
-    if(!!login) {
+    if (!!login) {
         qna_write.style.display = "block";
         body.style.overflow = "hidden";
     } else {
         alert("로그인 후 이용해 주세요.");
-        location.href="/user/login";
+        location.href = "/user/login";
     }
 }
 
@@ -137,7 +137,7 @@ function saveScrollPosition() {
     localStorage.setItem("scrollPosition", window.pageYOffset);
 }
 
-window.onload = function() {
+window.onload = function () {
     let scrollPosition = localStorage.getItem("scrollPosition");
     if (scrollPosition !== null) {
         window.scrollTo(0, scrollPosition);
@@ -156,15 +156,45 @@ function addPrice() {
         data: {
             'selected': $('.form-control option:selected').val()
         },
-        success: function(result) {
+        success: function (result) {
             let totalPay = result.orderPrice.toLocaleString();
             let html = '<span>주문 금액</span><strong class="totalPay">' + totalPay + '원</strong>';
             $('.product_totalPay').html(html);
         },
-        error: function(xhr) {
+        error: function (xhr) {
             alert('저장에 실패하였습니다. 다시 시도해주세요.');
         }
     });
+}
+
+// 결제 버튼
+function itemToOrder(event) {
+    event.preventDefault();
+
+    let items = [
+        {
+            item_id: $('#item_id').val(),
+            item_amount: $('.form-control option:selected').val()
+        }
+    ];
+
+    $.ajax({
+        type: "POST",
+        url: '/order/orderDetail',
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(items),
+        success: function (result) {
+            if (result.success) {
+                alert(result.message);
+                window.location.href = '/order/orderDetail?orderCode=' + result.orderCode;
+            }
+        },
+        error: function (xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
+
 }
 
 //==========================================================
@@ -180,7 +210,7 @@ function insertQna(event) {
     if (!titleInput.value.trim()) {
         alert('문의글의 제목을 입력해주세요.');
         return false;
-    } else if(!contentTextarea.value.trim()) {
+    } else if (!contentTextarea.value.trim()) {
         alert('문의글의 내용을 입력해주세요.');
         return false;
     }
@@ -189,7 +219,7 @@ function insertQna(event) {
         type: 'POST',
         url: '/item/itemDetail/' + $('#item_id').val(),
         data: formData, // 폼 데이터
-        success: function(result) {
+        success: function (result) {
             $(".popBox").scrollTop(0);
             // 성공 시 처리할 내용
             if (result.success) {
@@ -205,7 +235,7 @@ function insertQna(event) {
                 window.location.href = '/user/login';
             }
         },
-        error: function(xhr) {
+        error: function (xhr) {
             // 실패 시 처리할 내용
             alert('등록에 실패하였습니다. 다시 시도해주세요.');
         }
@@ -223,7 +253,7 @@ function updateQna(event) {
         type: 'Patch',
         url: '/item/itemDetail/' + $('#item_id').val(),
         data: formData, // 폼 데이터
-        success: function(result) {
+        success: function (result) {
             $(".popBox").scrollTop(0);
             // 성공 시 처리할 내용
             if (result.success) {
@@ -238,7 +268,7 @@ function updateQna(event) {
                 alert(result.message);
             }
         },
-        error: function(xhr) {
+        error: function (xhr) {
             // 실패 시 처리할 내용
             alert('수정에 실패하였습니다. 다시 시도해주세요.');
         }
@@ -254,14 +284,14 @@ function deleteQna(itemQnaSeq) {
         data: {
             itemQnaSeq: itemQnaSeq
         },
-        success: function(result) {
+        success: function (result) {
             if (result.success) {
                 alert(result.message);
                 $('body').css('overflow', 'auto');  // body의 스크롤 다시 생기게
                 $('.qna_box').load('/item/itemDetail/' + $('#item_id').val() + ' .qna_box');    // 데이터 reload
             }
         },
-        error: function(xhr) {
+        error: function (xhr) {
             // 실패 시 처리할 내용
             alert('삭제에 실패하였습니다. 다시 시도해주세요.');
         }
@@ -284,7 +314,7 @@ function saveHeart() {
         type: "POST",
         url: '/user/heart/' + $('#item_id').val(),
         cache: false,
-        success: function(result) {
+        success: function (result) {
             if (result.success) {
                 alert(result.message);
                 updateHeart(true); // 세션에 저장된 상품인 경우
@@ -294,7 +324,7 @@ function saveHeart() {
                 window.location.href = '/user/login';
             }
         },
-        error: function(xhr) {
+        error: function (xhr) {
             alert('저장에 실패하였습니다. 다시 시도해주세요.');
         }
     });
@@ -305,12 +335,12 @@ function deleteHeart() {
         type: "DELETE",
         url: '/user/heart/' + $('#item_id').val(),
         cache: false,
-        success: function(result) {
+        success: function (result) {
             alert(result.message);
             updateHeart(false); // 세션에 저장되지 않은 상품인 경우
             $('.product_summary').load('/item/itemDetail/' + $('#item_id').val() + ' .product_summary');
         },
-        error: function(xhr) {
+        error: function (xhr) {
             alert('삭제에 실패하였습니다. 다시 시도해주세요.');
         }
     });
@@ -327,7 +357,7 @@ function saveCart() {
             'selected': $('.form-control option:selected').val()
         },
         cache: false,
-        success: function(result) {
+        success: function (result) {
             if (result.success) {
                 alert(result.message);
             } else {
@@ -335,7 +365,7 @@ function saveCart() {
                 window.location.href = '/user/login';
             }
         },
-        error: function(xhr) {
+        error: function (xhr) {
             alert('저장에 실패하였습니다. 다시 시도해주세요.');
         }
     });

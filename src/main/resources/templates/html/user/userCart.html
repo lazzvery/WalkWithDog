@@ -84,19 +84,21 @@
         </div>
     </article>
     <article class="shoptotalpayBox">
-        <div class="paydeliverybox">
-            <div class="paybox">
-                <strong>주문금액</strong>
-                <span data-th-text="${#numbers.formatInteger(price, 0, 'COMMA') + '원'}">주문 금액</span>
+        <div class="payBoxContainer">
+            <div class="paydeliverybox">
+                <div class="paybox">
+                    <strong>주문금액</strong>
+                    <span data-th-text="${#numbers.formatInteger(price, 0, 'COMMA') + '원'}">주문 금액</span>
+                </div>
+                <div class="deliverybox">
+                    <strong>배송비</strong>
+                    <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">배송비</span>
+                </div>
             </div>
-            <div class="deliverybox">
-                <strong>배송비</strong>
-                <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">배송비</span>
+            <div class="totalbox">
+                <strong class="importantTotal">합계</strong>
+                <span data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">42,400원</span>
             </div>
-        </div>
-        <div class="totalbox">
-            <strong class="importantTotal">합계</strong>
-            <span data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">42,400원</span>
         </div>
         <div class="tatalBtnall">
             <a href="#" class="totalpayBtnb" th:onclick="'cartToOrder(event)'">주문하기</a>
