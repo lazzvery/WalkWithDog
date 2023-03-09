@@ -80,7 +80,8 @@
                 <article class="shop_deliinfoBox">
                     <div class="shop_deliTitle">
                         <h2>배송 정보</h2>
-                        <a href="#" onclick="window.open('/user/myPage/addrselect', 'popup', 'width=600,height=611.200'); return false;">
+                        <a href="#"
+                           onclick="window.open('/user/myPage/addrselect', 'popup', 'width=600,height=611.200'); return false;">
                             <span>등록 / 변경</span>
                         </a>
                     </div>
@@ -90,8 +91,12 @@
                         <div style="display: flex">
                             <span class="inline_ortext">배송지</span>
                             <ul style="width: 490px">
-                                <li><strong th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong></li>
-                                <li class="delivery_infonav" th:text="${addr.addr_reciver} + ', ' + ${addr.addr_phone}">받는이, 핸드폰 번호</li>
+                                <li><strong
+                                        th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong>
+                                </li>
+                                <li class="delivery_infonav" th:text="${addr.addr_reciver} + ', ' + ${addr.addr_phone}">
+                                    받는이, 핸드폰 번호
+                                </li>
                                 <li>
                                     <select class="shop_deliveryplz">
                                         <option value="0">배송시 요청사항을 선택해주세요.</option>
@@ -103,7 +108,8 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
+                                    <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!"
+                                           maxlength="100">
                                 </li>
                             </ul>
                         </div>
@@ -199,8 +205,10 @@
                         <span class="inline_ortext">쿠폰 적용</span>
                         <select th:onchange="addCouponPrice()">
                             <option value="0">적용할 쿠폰을 선택해 주세요.</option>
-                            <option th:each="coupon : ${couponList}" th:value="${coupon.coupon_code}" th:attr="disabled=${price} &lt;= ${coupon.coupon_buy}">
-                                [[${coupon.coupon_name}]] - [[${coupon.coupon_benefits}]]원 할인 쿠폰 ([[${coupon.coupon_buy}]]원 이상 사용 가능)
+                            <option th:each="coupon : ${couponList}" th:value="${coupon.coupon_code}"
+                                    th:attr="disabled=${price} &lt;= ${coupon.coupon_buy}">
+                                [[${coupon.coupon_name}]] - [[${coupon.coupon_benefits}]]원 할인 쿠폰
+                                ([[${coupon.coupon_buy}]]원 이상 사용 가능)
                             </option>
                         </select>
                     </div>
@@ -217,17 +225,21 @@
                     <div>배송비</div>
                     <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">배송비</span>
                 </div>
-                <div class="order_couponpay">
-                    <div>쿠폰 사용</div>
-                    <span>0원</span>
-                </div>
-                <hr>
 
-                <div class="order_totalpay">
-                    <div>최종 결제 금액</div>
-                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제
-                        금액</strong></div>
+                <div class="ajaxCouponPrice">
+                    <div class="order_couponpay">
+                        <div>쿠폰 사용</div>
+                        <span>0원</span>
+                    </div>
+                    <hr>
+
+                    <div class="order_totalpay">
+                        <div>최종 결제 금액</div>
+                        <input type="hidden" name="orderPriceTotal" th:value="${price}">
+                        <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제 금액</strong></div>
+                    </div>
                 </div>
+
                 <div class="order_pointbox">
                     <div class="order_colorbox">적립</div>
                     <div>구매 시 300p</div>

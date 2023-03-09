@@ -92,11 +92,16 @@ function addCouponPrice() {
         url: '/order/orderDetail',
         data: {
             'selected': $('.order_coupon option:selected').val(),
+            'price': $('input[name="orderPriceTotal"]').val(),
         },
         success: function (result) {
-            // let totalPay = result.orderPrice.toLocaleString();
-            // let html = '<span>주문 금액</span><strong class="totalPay">' + totalPay + '원</strong>';
-            // $('.product_totalPay').html(html);
+            let benefits = result.benefits;
+            let price = result.price;
+
+            let html = '<div class="order_couponpay"><div>쿠폰 사용</div><span>' + benefits + '원</span></div><hr>';
+            html += '<div class="order_totalpay"><div>최종 결제 금액</div><div><strong>' + price + '원</strong></div></div>';
+
+            $('.ajaxCouponPrice').html(html);
         },
         error: function (xhr) {
             alert('저장에 실패하였습니다. 다시 시도해주세요.');

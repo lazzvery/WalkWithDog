@@ -102,11 +102,18 @@ public class OrderDetailController {
 
     @ResponseBody
     @PatchMapping
-    public Map<String, Object> addCouponPrice(String selected) {
+    public Map<String, Object> addCouponPrice(String selected, int price) {
+        CouponInfoDTO oneCoupon = mservice.findOneCoupon(selected);
         Map<String, Object> result = new HashMap<>();
-        log.info("selected={}", selected);
 
-        result.put("success", true);
+        if(oneCoupon != null) {
+            result.put("price", price);
+            result.put("benefits", oneCoupon.getCoupon_benefits());
+        } else {
+            result.put("price", price);
+            result.put("benefits", 0);
+        }
+
         return result;
     }
 
