@@ -186,8 +186,10 @@ function itemToOrder(event) {
         data: JSON.stringify(items),
         success: function (result) {
             if (result.success) {
-                alert(result.message);
-                window.location.href = '/order/orderDetail?orderCode=' + result.orderCode;
+                window.location.href = '/order/orderDetail';
+            } else {
+                alert("로그인 후 이용해 주세요!");
+                window.location.href = '/user/login';
             }
         },
         error: function (xhr) {
@@ -199,6 +201,7 @@ function itemToOrder(event) {
 
 //==========================================================
 // A-jax
+// 상품 큐앤에이 게시판
 
 function insertQna(event) {
     let titleInput = document.getElementById('item_qna_title');
@@ -369,17 +372,4 @@ function saveCart() {
             alert('저장에 실패하였습니다. 다시 시도해주세요.');
         }
     });
-}
-
-//===========================================================
-// 주문 관련 ajax
-
-function addOrder() {
-    let items = [];
-    const checkboxes = document.querySelectorAll('input[name="agreeCheck"]:checked');
-    checkboxes.forEach((checkbox) => {
-        items.push(checkbox.value);
-    });
-
-
 }

@@ -205,7 +205,7 @@ main input {
 }
 
 .shop_deliinfoBox .delivery_info {
-    padding: 20px 30px 30px 0;
+    padding: 20px 0 30px 0;
 }
 
 .shop_deliinfoBox .delivery_infonav {
@@ -229,6 +229,7 @@ main input {
     border-radius: 3px;
     padding: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .shop_deliinfoBox .shop_defaultAd input {
@@ -283,7 +284,7 @@ main input {
 /* 결제 수단 탭 */
 
 .paycontainer_Box {
-    margin-left: 20.8%;
+    margin-left: 20.5%;
 }
 
 /* 간편 결제 */
@@ -668,3 +669,18 @@ main input {
 }
 
 /* ----------------------------------------------- */
+
+.delivery_none_info {
+    display: flex;
+    align-items: center;
+}
+
+.delivery_none_info p {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 20px 0;
+}
+
+.shop_deliinfoBox .inline_ortext {
+    width: 19%;
+}

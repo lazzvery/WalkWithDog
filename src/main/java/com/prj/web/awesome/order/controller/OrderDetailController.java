@@ -2,11 +2,7 @@ package com.prj.web.awesome.order.controller;
 
 import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
 import com.prj.web.awesome.itemDetail.service.ItemDetailService;
-import com.prj.web.awesome.order.dto.ItemSendDTO;
-import com.prj.web.awesome.order.dto.OrderDetailDTO;
 import com.prj.web.awesome.order.dto.OrderDetailItemDTO;
-import com.prj.web.awesome.order.service.OrderDetailService;
-import com.prj.web.awesome.order.service.OrderListService;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
 import com.prj.web.awesome.user.service.MyPageService;
@@ -18,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,24 +25,24 @@ import java.util.Map;
 @Controller
 public class OrderDetailController {
 
-    private final OrderListService lservice;
-    private final OrderDetailService dService;
     private final ItemDetailService iservice;
     private final UserService uservice;
     private final MyPageService mservice;
 
     @GetMapping
-    public String orderDetail(Model model, int orderCode, HttpSession session, UserDTO userDTO) {
+    public String orderDetail(Model model, HttpSession session, UserDTO userDTO) {
         String userId = (String) session.getAttribute("loginID");
-        userDTO.setUser_id(userId);
+        List<OrderDetailItemDTO> itemList = (List<OrderDetailItemDTO>) session.getAttribute("itemList");
 
-        List<OrderDetailItemDTO> orderList = dService.findOrderList(orderCode); // 주문 상세 조회
+        userDTO.setUser_id(userId);
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회
+        AddrDTO addr = mservice.findAddr(userId);  // 배송지 조회
+        log.info("addr={}", addr);
 
         int price = 0;
-        for (OrderDetailItemDTO dto : orderList) {
-            price += dto.getItem_price() * dto.getItem_count();
-        }   // 주문 금액
+        for (OrderDetailItemDTO dto : itemList) {
+            price += dto.getItem_price() * dto.getItem_amount();
+        }   // 총 주문 금액
 
         if(price >= 50000) {
             model.addAttribute("delivery", 0);
@@ -53,37 +50,43 @@ public class OrderDetailController {
             model.addAttribute("delivery", 3000);
         }   // 배송비
 
-        log.info("orderList={}", orderList);
         model.addAttribute("price", price);
         model.addAttribute("user", user);
-        model.addAttribute("orderList", orderList);
+        model.addAttribute("itemList", itemList);
+        model.addAttribute("addr", addr);
 
         return "html/order/orderDetail";
     }
 
     @ResponseBody
     @PostMapping
-    public Map<String, Object> sendItems(@RequestBody List<ItemSendDTO> items, HttpSession session, OrderDetailDTO orderDetailDTO) {
+    public Map<String, Object> sendItems(@RequestBody List<OrderDetailItemDTO> items, HttpSession session) {
         Map<String, Object> result = new HashMap<>();
-        String userId = (String) session.getAttribute("loginID");
-
-        lservice.createOrderList(userId);
+        List<OrderDetailItemDTO> itemList = new ArrayList<>();
 
         if (items != null && items.size() > 0) {
-            for (ItemSendDTO item : items) {
+            for (OrderDetailItemDTO item : items) {
                 ItemDetailDto itemOne = iservice.findItem(item.getItem_id());
 
-                orderDetailDTO.setItem_id(item.getItem_id());
-                orderDetailDTO.setItem_count(item.getItem_amount());
-                orderDetailDTO.setItem_price(itemOne.getItem_price());
+                item.setItem_name(itemOne.getItem_name());
+                item.setItem_price(itemOne.getItem_price());
 
-                dService.saveCart(orderDetailDTO);
+                itemList.add(item);
             }
         }
 
-        result.put("orderCode", orderDetailDTO.getOrder_code());
-        result.put("success", true);
-        result.put("message", "저장됐다!!");
+        // 기존에 저장된 itemList 제거
+        session.removeAttribute("itemList");
+
+        // 새로운 itemList 저장
+        session.setAttribute("itemList", itemList);
+
+        // 로그인 하지 않은 경우 alert창 띄우기
+        if(session.getAttribute("loginID") == null) {
+            result.put("success", false);
+        } else {
+            result.put("success", true);
+        }
 
         return result;
     }

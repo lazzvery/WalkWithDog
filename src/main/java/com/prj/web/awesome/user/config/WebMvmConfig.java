@@ -14,7 +14,8 @@ public class WebMvmConfig implements WebMvcConfigurer {
                 // 여기다가 로그인 안하면 못들어가는 페이지 경로 쓰면 됩니다..
                 .addPathPatterns("/user/myPage/**")
                 .addPathPatterns("/user/cart")
-                .addPathPatterns("/user/heart");
+                .addPathPatterns("/user/heart")
+                .addPathPatterns("/order/orderDetail");
 
 
 

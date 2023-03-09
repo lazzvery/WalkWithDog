@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../common/css/header.css" />
-    <link rel="stylesheet" href="../../../../common/css/footer.css" />
+    <link rel="stylesheet" href="../../../../common/css/header.css"/>
+    <link rel="stylesheet" href="../../../../common/css/footer.css"/>
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../../css/order/orderDetail.css">
     <script src="/js/jquery/jquery-3.6.3.min.js"></script>
@@ -30,18 +30,19 @@
     <article class="shop_orderlist">
         <h2>주문 상품</h2>
         <hr>
-        <ul class="shop_orderlistbox" th:each="list : ${orderList}">
+        <ul class="shop_orderlistbox" th:each="list : ${itemList}">
             <li class="orderlist1">
                 <div class="detailname_box">
-                    <a href="../item/itemDetail.html" class="orderlistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">
+                    <a href="../item/itemDetail.html" class="orderlistimgbox"
+                       th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">
                         <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="orderlistimg">
                     </a>
                     <a href="./product_shopping_details.html" class="ordername1" th:text="${list.item_name}"
                        th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">상품명</a>
                 </div>
                 <div class="detailnum_box">
-                    <span class="order_number" th:text="${list.item_count} + 개">수량</span>
-                    <span data-th-text="${#numbers.formatInteger(list.item_price * list.item_count, 3, 'COMMA') + '원'}">가격</span>
+                    <span class="order_number" th:text="${list.item_amount} + 개">수량</span>
+                    <span data-th-text="${#numbers.formatInteger(list.item_price * list.item_amount, 3, 'COMMA') + '원'}">가격</span>
                 </div>
             </li>
         </ul>
@@ -80,29 +81,39 @@
                     <div class="shop_deliTitle">
                         <h2>배송 정보</h2>
                         <a href="../User/myPage/address/list/list.html">
-                            <span>변경</span>
+                            <span>등록 / 변경</span>
                         </a>
                     </div>
                     <hr>
 
-                    <div class="delivery_info">
-                        <ul>
-                            <li><strong>경기도 성남시 분당구 돌마로 46 <br> 5층 그린컴퓨터학원</strong></li>
-                            <li class="delivery_infonav">유미현, 010-8282-5353</li>
-                        </ul>
+                    <div class="delivery_info" th:if="${addr != null}">
+                        <div style="display: flex">
+                            <span class="inline_ortext">배송지</span>
+                            <ul style="width: 490px">
+                                <li><strong th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong></li>
+                                <li class="delivery_infonav" th:text="${addr.addr_reciver} + ', ' + ${addr.addr_phone}">받는이, 핸드폰 번호</li>
+                                <li>
+                                    <select class="shop_deliveryplz">
+                                        <option value="0">배송시 요청사항을 선택해주세요.</option>
+                                        <option value="1">부재시 문앞에 놓아주세요</option>
+                                        <option value="2">배송 전에 미리 연락주세요</option>
+                                        <option value="3">부재시 경비실에 맡겨주세요</option>
+                                        <option value="4">부재시 전화주시거나 문자 남겨주세요</option>
+                                        <option value="5" option="text">직접 입력</option>
+                                    </select>
+                                </li>
+                            </ul>
+
+                        </div>
+
+
+                        <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
                     </div>
 
-                    <label>
-                        <select class="shop_deliveryplz">
-                            <option value="0">배송시 요청사항을 선택해주세요.</option>
-                            <option value="1">부재시 문앞에 놓아주세요</option>
-                            <option value="2">배송 전에 미리 연락주세요</option>
-                            <option value="3">부재시 경비실에 맡겨주세요</option>
-                            <option value="4">부재시 전화주시거나 문자 남겨주세요</option>
-                            <option value="5" option="text">직접 입력</option>
-                        </select>
-                    </label>
-                    <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
+                    <div th:if="${addr == null}" class="delivery_none_info">
+                        <span class="inline_ortext">배송지</span>
+                        <p>기본 배송지를 등록해 주세요.</p>
+                    </div>
                 </article>
 
                 <article class="couponpaydiv">
@@ -210,7 +221,8 @@
 
                 <div class="order_totalpay">
                     <div>최종 결제 금액</div>
-                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제 금액</strong></div>
+                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제
+                        금액</strong></div>
                 </div>
                 <div class="order_pointbox">
                     <div class="order_colorbox">적립</div>
@@ -257,7 +269,9 @@
             </ul>
 
             <div class="orderbuttonpar">
-                <button class="totalorderbutton" style='cursor:pointer;' data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원 결제하기'}">결제 버튼</button>
+                <button class="totalorderbutton" style='cursor:pointer;'
+                        data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원 결제하기'}">결제 버튼
+                </button>
             </div>
         </article>
     </form>

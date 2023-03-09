@@ -34,9 +34,8 @@ public class MyPageService {
     // 4. 배송지 추가 했을때 기본배송지 설정시 기존 기본배송지 n으로 update
     public int insertAddrUpdate(AddrDTO dto) { return mapper.insertAddrUpdate(dto);}
 
-
-    public AddrDTO findAddr(int itemId, List<Integer> addrSeq) {
-        return mapper.findAddr(itemId, addrSeq);
+    public AddrDTO findAddr(String user_id) {
+        return mapper.findAddr(user_id);
     }
 
     // 5. delete
