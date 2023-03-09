@@ -7,7 +7,7 @@
 	</select>
 
 	<select id="addrSelectOne" resultType="com.prj.web.awesome.user.dto.AddrDTO">
-		select * from user where user_id=#{user_id};
+		select * from user where user_id=#{user_id} and addr_seq=#{addr_seq};
 	</select>
 
 

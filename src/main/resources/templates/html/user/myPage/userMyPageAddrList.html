@@ -72,7 +72,7 @@
                         <td th:text="${addrList.addr_reciver}"></td>
                         <td th:text="${addrList.addr_phone}"></td></td>
                         <td th:text="'(' + ${addrList.addr_postcode} + ') ' + ${addrList.addr_addr} + ' ' + ${addrList.addr_addr2}"></td>
-                        <td><a href="/user/myPage/addrUpdate">수정</a></td>
+                        <td><a th:href="@{/user/myPage/addrUpdate(addr_seq=${addrList.addr_seq})}">수정</a></td>
                     </tr>
                 </tbody>
 

@@ -26,21 +26,21 @@
                     <ul class="ulContainer registerContainer">
                         <li class="id">
                             <label>배송지명 *</label>
-                            <input type="text" name="id">
+                            <input type="text" name="addr_name" >
                         </li>
                         <li class="name">
                             <label>이름 *</label>
-                            <input type="text" name="name">
+                            <input type="text" name="addr_reciver" >
                         </li>
                         <li class="address">
                             <label>주소</label>
                             <div class="addressBox">
                                 <div class="postBox">
-                                    <input type="text" namd="" id="sample6_postcode" placeholder="우편번호" readonly required>
+                                    <input type="text" name="addr_postcode" id="sample6_postcode" placeholder="우편번호" readonly required>
                                     <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
                                 </div>
-                                <input type="text" namd="" id="sample6_address" placeholder="주소" readonly required>
-                                <input type="text" namd="" id="sample6_detailAddress" placeholder="상세주소" required>
+                                <input type="text" name="addr_addr" id="sample6_address" placeholder="주소" readonly required>
+                                <input type="text" name="addr_addr2" id="sample6_detailAddress" placeholder="상세주소" required>
                                 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
                             </div>
 
@@ -97,18 +97,17 @@
                         </li>
                         <li class="phone">
                             <label>휴대전화 *</label>
-                            <div class="phoneBox cover">
-                                <input type="number" name="phone1">
-                                <span>-</span>
-                                <input type="number" name="phone2">
-                                <span>-</span>
-                                <input type="number" name="phone3">
+                            <div class="phoneBox">
+                                <div class="inputBox">
+                                    <input name="addr_phone" id="user_phone" placeholder="010" required>
+                                </div>
+                                <!--                                <p class="phoneText">* 유효한 전화번호를 입력해주세요</p>-->
                             </div>
                         </li>
                     </ul>
 
                     <div class="checkBox">
-                        <input type="checkbox" name="agreeAll" id="agreeAll" value="Y" />
+                        <input type="checkbox" name="addr_default" id="agreeAll" value="Y" />
                         <label for="agreeAll" id="agree"></label>
                         <label for="agreeAll" style="font-size:13px">기본 배송지로 저장</label>
                     </div>

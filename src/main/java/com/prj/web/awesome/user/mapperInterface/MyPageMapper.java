@@ -2,7 +2,6 @@ package com.prj.web.awesome.user.mapperInterface;
 
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
-import com.prj.web.awesome.user.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -18,7 +17,7 @@ public interface MyPageMapper {
 //    AddrDTO addrList(AddrDTO dto);
 //
     // 2. selectOne : Detail
-    UserDTO addrSelectOne(AddrDTO dto);
+    AddrDTO addrSelectOne(AddrDTO dto);
 
     // 3. insert
     int addrInsert(AddrDTO dto);

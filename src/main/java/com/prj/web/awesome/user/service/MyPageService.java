@@ -2,7 +2,6 @@ package com.prj.web.awesome.user.service;
 
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
-import com.prj.web.awesome.user.dto.UserDTO;
 import com.prj.web.awesome.user.mapperInterface.MyPageMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,7 @@ public class MyPageService {
     }
 
     // selectOne : Detail
-    public UserDTO addrSelectOne(AddrDTO dto){
+    public AddrDTO addrSelectOne(AddrDTO dto){
         return mapper.addrSelectOne(dto);
     }
 

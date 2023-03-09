@@ -197,13 +197,16 @@ opacity: 0.4;
     align-items: center;
     justify-content: space-between;
 }
+.registerForm .ulContainer li.phone .phoneBox .inputBox{
+    width:100%;
+}
 
 .registerForm .ulContainer li.phone .phoneBox span {
     line-height: 40px;
 }
 
 .registerForm .ulContainer li.phone input {
-    width: 30%;
+    width: 100%;
     display: inline-block;
 }
 

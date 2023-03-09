@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 @RequestMapping(value = "/user/myPage")
@@ -96,8 +98,43 @@ public class MyPageController {
         return "redirect:/user/myPage/addrList";
     } //delete
 
+
+    // ** addr Update **
     @GetMapping("/addrUpdate")
-    public String addrUpdate(Model model){ return "/html/user/myPage/userMyPageUpdate"; }
+    public String addrUpdatef(Model mv , AddrDTO dto, HttpServletRequest request) throws IOException {
+        dto.setUser_id((String)request.getSession().getAttribute("loginID"));
+
+        dto = service.addrSelectOne(dto);
+        mv.addAttribute("userinfo", dto);
+
+        System.out.println(dto);
+
+        return "html/user/myPage/userMyPageAddrList";
+    }
+    @PostMapping("/addrUpdate")
+    public ModelAndView addrUpdate(HttpServletRequest request, ModelAndView mv, AddrDTO dto) throws IOException{
+
+        // 2) Service 실행
+        // => 성공 -> 내정보 표시, memberDetail
+        // => 실패 -> 친절하게 안내하고 재수정 유도, updateForm
+        String uri="html/user/myPage/userMyPageAddrList" ;
+
+        // => Update 성공/실패 모두 출력시 필요하므로
+
+        mv.addObject("userInfo", dto);
+
+
+        if ( service.addrUpdate(dto)>0 ) {
+            mv.addObject("message", "~~ 회원정보 수정 성공 ~~");
+        }else {
+            uri="html/user/myPage/userMyPageUpdate" ;
+            mv.addObject("message", "~~ 회원정보 수정 실패, 다시 하세요 ~~");
+        }
+        // 3) View 처리
+        mv.setViewName(uri);
+
+        return mv;
+    } //update
 
     @GetMapping("/coupon")
     public String coupon(Model model){ return "html/user/myPage/userMyPageCoupon"; }
