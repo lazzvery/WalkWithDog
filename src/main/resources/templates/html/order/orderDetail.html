@@ -80,7 +80,7 @@
                 <article class="shop_deliinfoBox">
                     <div class="shop_deliTitle">
                         <h2>배송 정보</h2>
-                        <a href="#" onclick="window.open('/user/myPage/addrselect', 'popup', 'width=660,height=650'); return false;">
+                        <a href="#" onclick="window.open('/user/myPage/addrselect', 'popup', 'width=600,height=611.200'); return false;">
                             <span>등록 / 변경</span>
                         </a>
                     </div>
@@ -102,12 +102,11 @@
                                         <option value="5" option="text">직접 입력</option>
                                     </select>
                                 </li>
+                                <li>
+                                    <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
+                                </li>
                             </ul>
-
                         </div>
-
-
-                        <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
                     </div>
 
                     <div th:if="${addr == null}" class="delivery_none_info">
@@ -198,7 +197,9 @@
                     <hr>
                     <div class="order_coupon">
                         <span class="inline_ortext">쿠폰 적용</span>
-                        <button type="button" class="couponnumber">사용가능 쿠폰 0장 / 전체 0장</button>
+                        <select>
+                            <option value="0">적용할 쿠폰을 선택해 주세요.</option>
+                        </select>
                     </div>
                 </article>
             </div>

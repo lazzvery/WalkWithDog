@@ -81,7 +81,7 @@ public class OrderDetailController {
         // 새로운 itemList 저장
         session.setAttribute("itemList", itemList);
 
-        // 로그인 하지 않은 경우 alert창 띄우기
+        // 로그인 하지 않은 경우 alert 창 띄우기
         if(session.getAttribute("loginID") == null) {
             result.put("success", false);
         } else {

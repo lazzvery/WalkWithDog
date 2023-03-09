@@ -1,6 +1,7 @@
 package com.prj.web.awesome.user.mapperInterface;
 
 import com.prj.web.awesome.user.dto.AddrDTO;
+import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -19,7 +20,6 @@ public interface MyPageMapper {
     // 2. selectOne : Detail
     UserDTO addrSelectOne(AddrDTO dto);
 
-
     // 3. insert
     int addrInsert(AddrDTO dto);
 
@@ -34,4 +34,8 @@ public interface MyPageMapper {
 
     // 5. delete
     int addrDelete(int addr_seq);
+
+    // coupon 조회
+    @Select("select * from coupon where user_id=#{user_id}")
+    List<CouponDTO> findCoupon(String user_id);
 }

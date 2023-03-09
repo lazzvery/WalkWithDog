@@ -1,6 +1,7 @@
 package com.prj.web.awesome.user.service;
 
 import com.prj.web.awesome.user.dto.AddrDTO;
+import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
 import com.prj.web.awesome.user.mapperInterface.MyPageMapper;
 import lombok.RequiredArgsConstructor;
@@ -45,5 +46,10 @@ public class MyPageService {
     public int addrDelete(int addr_seq){
         return mapper.addrDelete(addr_seq);
     };
+
+    // coupon 조회
+    public List<CouponDTO> findCoupon(String user_id) {
+        return mapper.findCoupon(user_id);
+    }
 
 }

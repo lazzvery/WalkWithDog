@@ -10,8 +10,7 @@ const img_container = document.querySelector('.img_container'),
     sideCategory = document.querySelector('.categoryProduct'),
     urlCopyBtn = document.querySelector('.urlCopy'),
     qna_write = document.querySelector('.itemQnaPopUp'),
-    qna_update = document.querySelector('.updateQnaPopUp'),
-    body = document.querySelector("body");
+    qna_update = document.querySelector('.updateQnaPopUp');
 
 //===========================================================
 // 이미지 슬라이드
