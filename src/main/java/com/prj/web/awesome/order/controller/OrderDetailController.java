@@ -56,6 +56,9 @@ public class OrderDetailController {
             model.addAttribute("delivery", 3000);
         }   // 배송비
 
+        session.removeAttribute("orderPrice");
+        session.setAttribute("orderPrice", price);
+
         model.addAttribute("price", price);
         model.addAttribute("user", user);
         model.addAttribute("itemList", itemList);
@@ -82,10 +85,7 @@ public class OrderDetailController {
             }
         }
 
-        // 기존에 저장된 itemList 제거
         session.removeAttribute("itemList");
-
-        // 새로운 itemList 저장
         session.setAttribute("itemList", itemList);
 
         // 로그인 하지 않은 경우 alert 창 띄우기
@@ -95,22 +95,21 @@ public class OrderDetailController {
             result.put("success", true);
         }
 
-        log.info("itemList={}", itemList);
-
         return result;
     }
 
     @ResponseBody
     @PatchMapping
-    public Map<String, Object> addCouponPrice(String selected, int price) {
+    public Map<String, Object> addCouponPrice(String selected, HttpSession session) {
         CouponInfoDTO oneCoupon = mservice.findOneCoupon(selected);
         Map<String, Object> result = new HashMap<>();
+        Object orderPrice = session.getAttribute("orderPrice");
 
         if(oneCoupon != null) {
-            result.put("price", price);
+            result.put("orderPrice", orderPrice);
             result.put("benefits", oneCoupon.getCoupon_benefits());
         } else {
-            result.put("price", price);
+            result.put("orderPrice", orderPrice);
             result.put("benefits", 0);
         }
 

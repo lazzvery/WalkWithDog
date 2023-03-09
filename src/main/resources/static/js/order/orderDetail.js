@@ -70,18 +70,16 @@ checkBox.addEventListener('click', (e) => {
     }
 });     // 개인정보 약관 동의
 
-totalBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (selfDelivery.value === '0' || (selfDelivery.value === '5' && !selfDeliverybox.value)) {
-        alert('배송 정보를 다시 확인해 주세요!');
-    } else if (cardSelect[0].value === '0') {
-        alert('결제 수단을 선택해 주세요!');
-    } else if (!checkList[0].checked && (!checkList[1].checked || !checkList[2].checked || !checkList[3].checked)) {
-        alert('개인 정보 수집 제공에 동의해 주세요!');
-    } else {
-        window.open('./product_popup.html', '_self');
-    }
-});     // 버튼 클릭시 유효성 검사
+// totalBtn.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     if (selfDelivery.value === '0' || (selfDelivery.value === '5' && !selfDeliverybox.value)) {
+//         alert('배송 정보를 다시 확인해 주세요!');
+//     } else if (cardSelect[0].value === '0') {
+//         alert('결제 수단을 선택해 주세요!');
+//     } else if (!checkList[0].checked && (!checkList[1].checked || !checkList[2].checked || !checkList[3].checked)) {
+//         alert('개인 정보 수집 제공에 동의해 주세요!');
+//     }
+// });     // 버튼 클릭시 유효성 검사
 
 //=============================================================
 // 쿠폰 합산 금액 ajax
@@ -91,20 +89,48 @@ function addCouponPrice() {
         type: "Patch",
         url: '/order/orderDetail',
         data: {
-            'selected': $('.order_coupon option:selected').val(),
-            'price': $('input[name="orderPriceTotal"]').val(),
+            'selected': $('.order_coupon option:selected').val()
         },
         success: function (result) {
             let benefits = result.benefits;
-            let price = result.price;
+            let totalPrice = parseInt(result.orderPrice) - parseInt(benefits);
 
-            let html = '<div class="order_couponpay"><div>쿠폰 사용</div><span>' + benefits + '원</span></div><hr>';
-            html += '<div class="order_totalpay"><div>최종 결제 금액</div><div><strong>' + price + '원</strong></div></div>';
+            let html = '<div class="order_couponpay"><div>쿠폰 사용</div><span> - ' + benefits + '원</span></div><hr>';
+            html += '<div class="order_totalpay"><div>최종 결제 금액</div><div><strong>' + totalPrice.toLocaleString() + '원</strong></div></div>';
 
             $('.ajaxCouponPrice').html(html);
         },
         error: function (xhr) {
             alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
+}
+
+//=============================================================
+// 결제 api
+
+function requestPay() {
+    var IMP = window.IMP;
+    IMP.init("imp27570134");
+
+    IMP.request_pay({
+        pg: "html5_inicis",
+        pay_method: "card",
+        merchant_uid: "ORD20180131-0000011",   // 주문번호
+        name: "노르웨이 회전 의자",
+        amount: 64900,                         // 숫자 타입
+        buyer_email: "gildong@gmail.com",
+        buyer_name: "홍길동",
+        buyer_tel: "010-4242-4242",
+        buyer_addr: "서울특별시 강남구 신사동",
+        buyer_postcode: "01181"
+    }, function (rsp) { // callback
+        if (rsp.success) {
+            // 결제 성공 시 로직
+            console.log(rsp);
+        } else {
+            // 결제 실패 시 로직
+            console.log(rsp);
         }
     });
 }
