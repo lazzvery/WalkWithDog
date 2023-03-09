@@ -82,3 +82,24 @@ totalBtn.addEventListener('click', (e) => {
         window.open('./product_popup.html', '_self');
     }
 });     // 버튼 클릭시 유효성 검사
+
+//=============================================================
+// 쿠폰 합산 금액 ajax
+
+function addCouponPrice() {
+    $.ajax({
+        type: "Patch",
+        url: '/order/orderDetail',
+        data: {
+            'selected': $('.order_coupon option:selected').val(),
+        },
+        success: function (result) {
+            // let totalPay = result.orderPrice.toLocaleString();
+            // let html = '<span>주문 금액</span><strong class="totalPay">' + totalPay + '원</strong>';
+            // $('.product_totalPay').html(html);
+        },
+        error: function (xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
+}

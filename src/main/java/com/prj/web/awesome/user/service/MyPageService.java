@@ -51,4 +51,9 @@ public class MyPageService {
         return mapper.findCoupon(user_id);
     }
 
+    // coupon info 조회
+    public CouponDTO findOneCoupon(int coupon_seq) {
+        return mapper.findOneCoupon(coupon_seq);
+    }
+
 }

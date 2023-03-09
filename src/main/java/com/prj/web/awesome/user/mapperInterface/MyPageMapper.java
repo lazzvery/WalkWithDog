@@ -37,4 +37,7 @@ public interface MyPageMapper {
     // coupon 조회
     @Select("select * from coupon where user_id=#{user_id}")
     List<CouponDTO> findCoupon(String user_id);
+
+    // coupon info 조회
+    CouponDTO findOneCoupon(int coupon_seq);
 }

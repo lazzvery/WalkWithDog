@@ -2,8 +2,11 @@ package com.prj.web.awesome.order.controller;
 
 import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
 import com.prj.web.awesome.itemDetail.service.ItemDetailService;
+import com.prj.web.awesome.order.dto.CouponJoinInfoDTO;
 import com.prj.web.awesome.order.dto.OrderDetailItemDTO;
+import com.prj.web.awesome.order.service.OrderDetailService;
 import com.prj.web.awesome.user.dto.AddrDTO;
+import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
 import com.prj.web.awesome.user.service.MyPageService;
 import com.prj.web.awesome.user.service.UserService;
@@ -28,6 +31,7 @@ public class OrderDetailController {
     private final ItemDetailService iservice;
     private final UserService uservice;
     private final MyPageService mservice;
+    private final OrderDetailService dservice;
 
     @GetMapping
     public String orderDetail(Model model, HttpSession session, UserDTO userDTO) {
@@ -37,7 +41,7 @@ public class OrderDetailController {
         userDTO.setUser_id(userId);
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회
         AddrDTO addr = mservice.findAddr(userId);  // 배송지 조회
-        log.info("addr={}", addr);
+        List<CouponJoinInfoDTO> couponList = dservice.findCouponList(userId);  // 쿠폰 조회
 
         int price = 0;
         for (OrderDetailItemDTO dto : itemList) {
@@ -54,6 +58,8 @@ public class OrderDetailController {
         model.addAttribute("user", user);
         model.addAttribute("itemList", itemList);
         model.addAttribute("addr", addr);
+        model.addAttribute("couponList", couponList);
+        log.info("couponList={}", couponList);
 
         return "html/order/orderDetail";
     }
@@ -89,6 +95,19 @@ public class OrderDetailController {
         }
 
         return result;
+    }
+
+    @ResponseBody
+    @PatchMapping
+    public Map<String, Object> addCouponPrice(int selected) {
+        Map<String, Object> result = new HashMap<>();
+
+        CouponDTO oneCoupon = mservice.findOneCoupon(selected);
+
+        result.put("success", true);
+
+        return result;
+
     }
 
 }

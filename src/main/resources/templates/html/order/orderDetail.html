@@ -197,8 +197,11 @@
                     <hr>
                     <div class="order_coupon">
                         <span class="inline_ortext">쿠폰 적용</span>
-                        <select>
+                        <select th:onchange="addCouponPrice()">
                             <option value="0">적용할 쿠폰을 선택해 주세요.</option>
+                            <option th:each="coupon : ${couponList}" th:value="${coupon.coupon_seq}">
+                                [[${coupon.coupon_name}]] - [[${coupon.coupon_benefits}]]원 할인 쿠폰 ([[${coupon.coupon_buy}]]원 이상 사용 가능)
+                            </option>
                         </select>
                     </div>
                 </article>
