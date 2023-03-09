@@ -2,6 +2,7 @@ package com.prj.web.awesome.user.service;
 
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
+import com.prj.web.awesome.user.dto.CouponInfoDTO;
 import com.prj.web.awesome.user.mapperInterface.MyPageMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +53,8 @@ public class MyPageService {
     }
 
     // coupon info 조회
-    public CouponDTO findOneCoupon(int coupon_seq) {
-        return mapper.findOneCoupon(coupon_seq);
+    public CouponInfoDTO findOneCoupon(String coupon_code) {
+        return mapper.findOneCoupon(coupon_code);
     }
 
 }

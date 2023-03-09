@@ -7,6 +7,7 @@ import com.prj.web.awesome.order.dto.OrderDetailItemDTO;
 import com.prj.web.awesome.order.service.OrderDetailService;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
+import com.prj.web.awesome.user.dto.CouponInfoDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
 import com.prj.web.awesome.user.service.MyPageService;
 import com.prj.web.awesome.user.service.UserService;
@@ -37,6 +38,7 @@ public class OrderDetailController {
     public String orderDetail(Model model, HttpSession session, UserDTO userDTO) {
         String userId = (String) session.getAttribute("loginID");
         List<OrderDetailItemDTO> itemList = (List<OrderDetailItemDTO>) session.getAttribute("itemList");
+        log.info("itemList={}", itemList);
 
         userDTO.setUser_id(userId);
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회
@@ -59,7 +61,6 @@ public class OrderDetailController {
         model.addAttribute("itemList", itemList);
         model.addAttribute("addr", addr);
         model.addAttribute("couponList", couponList);
-        log.info("couponList={}", couponList);
 
         return "html/order/orderDetail";
     }
@@ -94,20 +95,19 @@ public class OrderDetailController {
             result.put("success", true);
         }
 
+        log.info("itemList={}", itemList);
+
         return result;
     }
 
     @ResponseBody
     @PatchMapping
-    public Map<String, Object> addCouponPrice(int selected) {
+    public Map<String, Object> addCouponPrice(String selected) {
         Map<String, Object> result = new HashMap<>();
-
-        CouponDTO oneCoupon = mservice.findOneCoupon(selected);
+        log.info("selected={}", selected);
 
         result.put("success", true);
-
         return result;
-
     }
 
 }

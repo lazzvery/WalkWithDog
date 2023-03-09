@@ -2,6 +2,7 @@ package com.prj.web.awesome.user.mapperInterface;
 
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
+import com.prj.web.awesome.user.dto.CouponInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -39,5 +40,6 @@ public interface MyPageMapper {
     List<CouponDTO> findCoupon(String user_id);
 
     // coupon info 조회
-    CouponDTO findOneCoupon(int coupon_seq);
+    @Select("select * from coupon_info where coupon_code=#{coupon_code}")
+    CouponInfoDTO findOneCoupon(String coupon_code);
 }
