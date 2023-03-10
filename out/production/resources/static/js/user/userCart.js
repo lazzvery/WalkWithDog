@@ -186,8 +186,45 @@ function cartToOrder(event) {
         data: JSON.stringify(items),
         success: function(result) {
             if(result.success) {
-                alert(result.message);
-                window.location.href = '/order/orderDetail?orderCode=' + result.orderCode;
+                window.location.href = '/order/orderDetail';
+            }
+        },
+        error: function(xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
+
+}
+
+// 전체 상품 주문
+
+function cartToOrderAll(event) {
+    event.preventDefault();
+
+    let items = [];
+    const checkboxes = document.querySelectorAll('input[name="agreeCheck"]');
+    checkboxes.forEach((checkbox) => {
+        const item = {
+            item_id: checkbox.value,
+            item_amount: null
+        };
+
+        const amountInput = checkbox.closest('.shop_cartleft').nextElementSibling.querySelector('input#cartAmountValue');
+        item.item_amount = amountInput.value;
+        items.push(item);
+    });
+
+    console.log(items);
+
+    $.ajax({
+        type: "POST",
+        url: '/order/orderDetail',
+        cache: false,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(items),
+        success: function(result) {
+            if(result.success) {
+                window.location.href = '/order/orderDetail';
             }
         },
         error: function(xhr) {

@@ -7,7 +7,7 @@
 	</select>
 
 	<select id="addrSelectOne" resultType="com.prj.web.awesome.user.dto.AddrDTO">
-		select * from user where user_id=#{user_id} and addr_seq=#{addr_seq};
+		select * from addr where addr_seq=#{addr_seq};
 	</select>
 
 
@@ -39,7 +39,7 @@
 			addr_addr=#{addr_addr},
 			addr_addr2=#{addr_addr2},
 			addr_phone=#{addr_phone},
-			addr_default=#{addr_default}
+			addr_default = CASE when #{addr_default} = 'Y' THEN 'Y' ELSE 'N' END
 
 			where addr_seq=#{addr_seq};
 	</update>

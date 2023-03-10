@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prj.web.awesome.community.mapper.ReviewMapper">
-	<select id="reviewList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
-		select
-			review_seq,
-			user_id,
-			review_title,
-			review_content,
-			review_reg_date,
-			review_rank,
-			review_cnt
-	    from review
-	    order by review_seq desc;
-	</select>
+<!--	<select id="reviewList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">-->
+<!--		select-->
+<!--			review_seq,-->
+<!--			user_id,-->
+<!--			review_title,-->
+<!--			review_content,-->
+<!--			review_reg_date,-->
+<!--			review_rank,-->
+<!--			review_cnt-->
+<!--	    from review-->
+<!--	    order by review_seq desc;-->
+<!--	</select>-->
 
 	<select id="reviewDetail" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
 		select
-			attachment_file_seq,
 		    user_id,
 			review_title,
 			review_content,
 			review_rank,
 			review_reg_date,
 			review_seq,
-			review_reply
+			review_reply,
+			attachment_file_seq
 		from review
 		where review_seq = #{review_seq};
 	</select>
@@ -35,36 +35,41 @@
 		</selectKey>
 		insert into review
 		(review_seq,
-		attachment_file_seq,
 		user_id,
 		item_id,
 		review_title,
 		review_content,
 		review_reg_date,
-		review_rank
+		review_rank,
+		attachment_file_seq
 		)
 		values(
 		#{review_seq},
-		"300",
 		#{user_id},
 		"10000016",
 		#{review_title},
 		#{review_content},
 		now(),
-		#{review_rank}
+		#{review_rank},
+		"300"
 		);
 	</insert>
 
-	<update id="qnaUpdate">
+	<update id="reviewUpdate">
 		update review set
 					review_title = #{review_title},
-					review_content = #{review_content}
+					review_content = #{review_content},
+					review_rank = #{review_rank}
 		where review_seq = #{review_seq};
 	</update>
 
-	<delete id="qnaDelete">
+	<delete id="reviewDelete">
 		delete
 		from review
+		<if test="review_seq==review_root">where review_root=#{review_seq}</if>
+		<!-- 원글 삭제 : 동일 root 는 모두 삭제 -->
+		<if test="review_seq!=review_root">where review_seq=#{review_seq}</if>
+		<!-- 답글만 삭제 -->
 	</delete>
 
 	<sql id="search">

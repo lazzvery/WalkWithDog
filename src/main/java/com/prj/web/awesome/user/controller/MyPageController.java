@@ -65,7 +65,7 @@ public class MyPageController {
         addrInfo.setAddr_addr2(dto.getAddr_addr2());
         addrInfo.setAddr_phone(dto.getAddr_phone());
         addrInfo.setAddr_default(dto.getAddr_default());
-        if( dto.getAddr_default() == 'y'){
+        if( dto.getAddr_default() == 'Y'){
             service.insertAddrUpdate(dto);
         }
 
@@ -113,6 +113,7 @@ public class MyPageController {
     }
     @PostMapping("/addrUpdate")
     public ModelAndView addrUpdate(HttpServletRequest request, ModelAndView mv, AddrDTO dto) throws IOException{
+        dto.setUser_id((String)request.getSession().getAttribute("loginID"));
 
         // 2) Service 실행
         // => 성공 -> 내정보 표시, memberDetail
@@ -120,21 +121,24 @@ public class MyPageController {
         String uri="html/user/myPage/userMyPageAddrList" ;
 
         // => Update 성공/실패 모두 출력시 필요하므로
-
         List<AddrDTO> loginID = service.addrList((String) request.getSession().getAttribute("loginID"));
         mv.addObject("addrList", loginID);
 
 
+        if( dto.getAddr_default() == 'Y'){
+            System.out.println( service.insertAddrUpdate(dto));
+        }
         if ( service.addrUpdate(dto)>0 ) {
+
             mv.addObject("message", "~~ 회원정보 수정 성공 ~~");
 
-        }else {
+        } else {
             uri="html/user/myPage/userMyPageUpdate" ;
             mv.addObject("message", "~~ 회원정보 수정 실패, 다시 하세요 ~~");
         }
+
         // 3) View 처리
         mv.setViewName(uri);
-
         return mv;
     } //update
 

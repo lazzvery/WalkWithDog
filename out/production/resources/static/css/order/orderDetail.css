@@ -25,12 +25,6 @@ main {
     color: #353535;
 }
 
-main .shop_orderlist hr {
-    border: 0px;
-    height: 1px;
-    background-color: #555555;
-}
-
 main h1 {
     font-size: 1.4em;
     text-align: center;
@@ -96,7 +90,8 @@ main input {
 }
 
 .shop_orderlist span {
-    margin-left: 50px;
+    margin-left: 30px;
+    margin-right: 20px;
 }
 
 /* 이미지 박스 */
@@ -182,6 +177,7 @@ main input {
 .shop_deliinfoBox .shop_deliTitle {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .delivery_info li strong {
@@ -204,7 +200,7 @@ main input {
 }
 
 .shop_deliinfoBox .delivery_info {
-    padding: 20px 30px 30px 0;
+    padding: 20px 0 30px 0;
 }
 
 .shop_deliinfoBox .delivery_infonav {
@@ -228,6 +224,7 @@ main input {
     border-radius: 3px;
     padding: 5px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .shop_deliinfoBox .shop_defaultAd input {
@@ -261,7 +258,7 @@ main input {
 }
 
 .paycontainer {
-    width: 80%;
+    width: 85%;
 }
 
 .order_select button {
@@ -282,7 +279,7 @@ main input {
 /* 결제 수단 탭 */
 
 .paycontainer_Box {
-    margin-left: 20.8%;
+    margin-left: 19.7%;
 }
 
 /* 간편 결제 */
@@ -316,7 +313,7 @@ main input {
 
 /* 쿠폰 */
 .shop_ordercoupon span {
-    width: 17%;
+    width: 19%;
 }
 
 .shop_ordercoupon .order_coupon {
@@ -590,7 +587,7 @@ main input {
 
 .selfDeliverybox {
     font-family: 'IBMPlexSansKR-Regular';
-    width: 97.3%;
+    width: 96.8%;
     height: 40px;
     border: 1px solid rgb(182, 182, 182);
     border-radius: 3px;
@@ -667,3 +664,28 @@ main input {
 }
 
 /* ----------------------------------------------- */
+
+.delivery_none_info {
+    display: flex;
+    align-items: center;
+}
+
+.delivery_none_info p {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 20px 0;
+}
+
+.shop_deliinfoBox .inline_ortext {
+    width: 19%;
+}
+
+.order_coupon select {
+    font-family: 'IBMPlexSansKR-Regular';
+    width: 79%;
+    height: 40px;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}

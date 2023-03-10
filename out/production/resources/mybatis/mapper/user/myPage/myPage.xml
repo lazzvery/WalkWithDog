@@ -7,7 +7,7 @@
 	</select>
 
 	<select id="addrSelectOne" resultType="com.prj.web.awesome.user.dto.AddrDTO">
-		select * from user where user_id=#{user_id};
+		select * from addr where addr_seq=#{addr_seq};
 	</select>
 
 
@@ -26,8 +26,22 @@
 
 	<update id="insertAddrUpdate">
 		update addr set
-		addr_default='N'
+			addr_default='N'
 		where user_id=#{user_id};
+	</update>
+
+	<update id="addrUpdate">
+		update addr set
+
+			addr_name=#{addr_name},
+			addr_reciver=#{addr_reciver},
+			addr_postcode=#{addr_postcode},
+			addr_addr=#{addr_addr},
+			addr_addr2=#{addr_addr2},
+			addr_phone=#{addr_phone},
+			addr_default = CASE when null THEN addr_default ELSE #{addr_default} END,
+
+			where addr_seq=#{addr_seq};
 	</update>
 
 	<delete id="addrDelete">
