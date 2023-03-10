@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="../../../../common/css/footer.css"/>
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../../css/order/orderDetail.css">
-    <script defer src="../../../../js/order/orderDetail.js"></script>
-    <script defer src="../../../../js/index.js"></script>
-<!--    <script type="text/javascript" src="/js/jquery/jquery-3.6.3.min.js"></script>-->
+    <!--    <script type="text/javascript" src="/js/jquery/jquery-3.6.3.min.js"></script>-->
     <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!-- iamport.payment.js -->
     <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <script defer src="../../../../js/order/orderDetail.js"></script>
+    <script defer src="../../../../js/index.js"></script>
     <title>order</title>
 </head>
 
@@ -238,9 +238,9 @@
 
                 <div class="order_totalpay">
                     <div>최종 결제 금액</div>
-                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제
-                        금액</strong></div>
+                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제 금액</strong></div>
                 </div>
+                <input type="hidden" id="totalPriceId" th:value="${price}">
             </div>
 
             <div class="order_pointbox">
@@ -288,7 +288,7 @@
         </ul>
 
         <div class="orderbuttonpar">
-            <button class="totalorderbutton" style='cursor:pointer;' onclick="requestPay()">결제하기</button>
+            <button class="totalorderbutton" style='cursor:pointer;' onclick="proceedPay()">결제하기</button>
         </div>
     </article>
 </main>

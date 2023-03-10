@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface OrderListMapper {
-    @Select("select * from order_list where order_code=#{order_code}")
-    OrderListDTO findById(int order_code);
+    @Select("select * from order_list ORDER BY order_code DESC LIMIT 1")
+    OrderListDTO findById();
 
-    @Insert("insert into order_list (order_date, order_status, user_id) " +
-            "values (NOW(), 'R', #{user_id})")
-    void createOrderList(String user_id);
+    @Insert("insert into order_list (order_date, order_price, order_payment, order_status, user_id, coupon_code, addr_seq) " +
+            "values (NOW(), #{order_price}, #{order_payment}, 'R', #{user_id}, #{coupon_code}, #{addr_seq})")
+    void createOrderList(OrderListDTO orderListDTO);
 }

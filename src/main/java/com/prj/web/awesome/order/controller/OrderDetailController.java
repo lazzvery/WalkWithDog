@@ -38,7 +38,6 @@ public class OrderDetailController {
     public String orderDetail(Model model, HttpSession session, UserDTO userDTO) {
         String userId = (String) session.getAttribute("loginID");
         List<OrderDetailItemDTO> itemList = (List<OrderDetailItemDTO>) session.getAttribute("itemList");
-        log.info("itemList={}", itemList);
 
         userDTO.setUser_id(userId);
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회

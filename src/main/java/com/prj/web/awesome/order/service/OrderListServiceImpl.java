@@ -12,12 +12,12 @@ public class OrderListServiceImpl implements OrderListService {
     private final OrderListMapper orderListMapper;
 
     @Override
-    public OrderListDTO findById(int order_code) {
-        return orderListMapper.findById(order_code);
+    public OrderListDTO findById() {
+        return orderListMapper.findById();
     }
 
     @Override
-    public void createOrderList(String user_id) {
-        orderListMapper.createOrderList(user_id);
+    public void createOrderList(OrderListDTO orderListDTO) {
+       orderListMapper.createOrderList(orderListDTO);
     }
 }
