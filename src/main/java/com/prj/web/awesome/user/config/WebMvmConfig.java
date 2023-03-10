@@ -20,13 +20,13 @@ public class WebMvmConfig implements WebMvcConfigurer {
                 .addPathPatterns("/order/orderDetail");
     }
 
-    // ADD START
-    @Bean
-    public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
-        commonsMultipartResolver.setDefaultEncoding("UTF-8");
-        commonsMultipartResolver.setMaxUploadSizePerFile(5 * 1024 * 1024);
-        return commonsMultipartResolver;
-    }
-    // ADD END
+//    // ADD START
+//    @Bean
+//    public CommonsMultipartResolver multipartResolver() {
+//        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+//        commonsMultipartResolver.setDefaultEncoding("UTF-8");
+//        commonsMultipartResolver.setMaxUploadSizePerFile(5 * 1024 * 1024);
+//        return commonsMultipartResolver;
+//    }
+//    // ADD END
 }
