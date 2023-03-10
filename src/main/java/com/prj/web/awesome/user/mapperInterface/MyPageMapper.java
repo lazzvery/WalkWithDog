@@ -3,8 +3,10 @@ package com.prj.web.awesome.user.mapperInterface;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.CouponInfoDTO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -42,4 +44,8 @@ public interface MyPageMapper {
     // coupon info 조회
     @Select("select * from coupon_info where coupon_code=#{coupon_code}")
     CouponInfoDTO findOneCoupon(String coupon_code);
+
+    // 쿠폰 수량 업데이트
+    @Update("update coupon set coupon_quantity = coupon_quantity - 1 where coupon_code=#{coupon_code}")
+    void updateCouponQuantity(String coupon_code);
 }

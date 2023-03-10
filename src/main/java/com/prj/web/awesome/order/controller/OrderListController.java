@@ -61,9 +61,7 @@ public class OrderListController {
         List<OrderDetailItemDTO> itemList = (List<OrderDetailItemDTO>) session.getAttribute("itemList");
         Map<String, Object> result = new HashMap<>();
 
-        log.info("itemList={}", itemList);
-
-        OrderListDTO orderList = dservice.findOrderList(Integer.parseInt(merchant_uid));// 주문 리스트 조회
+        OrderListDTO orderList = dservice.findOrderList(Integer.parseInt(merchant_uid));  // 주문 리스트 조회
         lservice.updateStatus(Integer.parseInt(merchant_uid));  // 주문 상태 업데이트
 
         for (OrderDetailItemDTO dto : itemList) {
@@ -72,8 +70,8 @@ public class OrderListController {
 
         String couponCode = orderList.getCoupon_code();
         if(couponCode != null) {
-
-        }   // 쿠폰 삭제
+            mservice.updateCouponQuantity(couponCode);
+        }   // 쿠폰 수량 -1
 
         session.removeAttribute("itemList"); // 임시 주문 목록 삭제
 

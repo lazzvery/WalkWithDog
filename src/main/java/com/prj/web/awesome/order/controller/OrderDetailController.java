@@ -84,7 +84,6 @@ public class OrderDetailController {
             }
         }
 
-        session.removeAttribute("itemList");
         session.setAttribute("itemList", itemList);
 
         // 로그인 하지 않은 경우 alert 창 띄우기

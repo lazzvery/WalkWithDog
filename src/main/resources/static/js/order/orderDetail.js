@@ -70,18 +70,18 @@ checkBox.addEventListener('click', (e) => {
     }
 });     // 개인정보 약관 동의
 
-// totalBtn.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     if (selfDelivery.value === '0' || (selfDelivery.value === '5' && !selfDeliverybox.value)) {
-//         alert('배송 정보를 다시 확인해 주세요!');
-//     } else if (cardSelect[0].value === '0') {
-//         alert('결제 수단을 선택해 주세요!');
-//     } else if (!checkList[0].checked && (!checkList[1].checked || !checkList[2].checked || !checkList[3].checked)) {
-//         alert('개인 정보 수집 제공에 동의해 주세요!');
-//     } else {
-//         requestPay();
-//     }
-// });     // 버튼 클릭시 유효성 검사
+totalBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (selfDelivery.value === '0' || (selfDelivery.value === '5' && !selfDeliverybox.value)) {
+        alert('배송 정보를 다시 확인해 주세요!');
+    } else if (cardSelect[0].value === '0') {
+        alert('결제 수단을 선택해 주세요!');
+    } else if (!checkList[0].checked && (!checkList[1].checked || !checkList[2].checked || !checkList[3].checked)) {
+        alert('개인 정보 수집 제공에 동의해 주세요!');
+    } else {
+        proceedPay();
+    }
+});     // 버튼 클릭시 유효성 검사
 
 //=============================================================
 // 쿠폰 합산 금액 ajax
@@ -95,7 +95,12 @@ function addCouponPrice() {
         },
         success: function (result) {
             let benefits = result.benefits;
-            let totalPrice = parseInt(result.orderPrice) - parseInt(benefits);
+            let totalPrice = 0;
+            if(parseInt(result.orderPrice) < 50000) {
+                totalPrice = parseInt(result.orderPrice) - parseInt(benefits) + 3000;
+            } else {
+                totalPrice = parseInt(result.orderPrice) - parseInt(benefits);
+            }
 
             let html = '<div class="order_couponpay"><div>쿠폰 사용</div><span> - ' + benefits + '원</span></div><hr>';
             html += '<div class="order_totalpay"><div>최종 결제 금액</div><div><strong>' + totalPrice.toLocaleString() + '원</strong></div></div>';

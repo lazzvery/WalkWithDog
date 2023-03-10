@@ -51,8 +51,6 @@ public class CartController {
     public Map<String, Object> calcPrice(@RequestBody List<Map<String, Object>> items) {
         Map<String, Object> result = new HashMap<>();
 
-        log.info("items={}", items);
-
         int price = 0;
         for (Map<String, Object> item : items) {
             int itemId = Integer.parseInt((String) item.get("item_id"));
