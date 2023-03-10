@@ -240,7 +240,7 @@
                     <div>최종 결제 금액</div>
                     <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제 금액</strong></div>
                 </div>
-                <input type="hidden" id="totalPriceId" th:value="${price}">
+                <input type="hidden" id="totalPriceId" th:value="${price} + ${delivery}">
             </div>
 
             <div class="order_pointbox">
@@ -288,7 +288,7 @@
         </ul>
 
         <div class="orderbuttonpar">
-            <button class="totalorderbutton" style='cursor:pointer;' onclick="proceedPay()">결제하기</button>
+            <button class="totalorderbutton" style='cursor:pointer;'>결제하기</button>
         </div>
     </article>
 </main>

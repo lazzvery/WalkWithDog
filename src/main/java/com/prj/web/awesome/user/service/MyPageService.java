@@ -57,4 +57,8 @@ public class MyPageService {
         return mapper.findOneCoupon(coupon_code);
     }
 
+    // 쿠폰 수량 업데이트
+    public void updateCouponQuantity(String coupon_code) {
+        mapper.updateCouponQuantity(coupon_code);
+    }
 }
