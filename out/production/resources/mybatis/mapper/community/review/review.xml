@@ -91,9 +91,10 @@
 	</sql>
 
 	<select id="searchList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
-		select review_seq, user_id, review_title, review_reg_date
+		select review_seq, user_id, review_title, review_reg_date, review_rank
 		from review
 		where ( review_seq>0 <include refid="search"></include>
+		order by review_seq desc
 		limit #{sno}, #{rowsPerPage}
 	</select>
 

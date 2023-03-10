@@ -70,18 +70,18 @@ checkBox.addEventListener('click', (e) => {
     }
 });     // 개인정보 약관 동의
 
-totalBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (selfDelivery.value === '0' || (selfDelivery.value === '5' && !selfDeliverybox.value)) {
-        alert('배송 정보를 다시 확인해 주세요!');
-    } else if (cardSelect[0].value === '0') {
-        alert('결제 수단을 선택해 주세요!');
-    } else if (!checkList[0].checked && (!checkList[1].checked || !checkList[2].checked || !checkList[3].checked)) {
-        alert('개인 정보 수집 제공에 동의해 주세요!');
-    } else {
-        window.open('./product_popup.html', '_self');
-    }
-});     // 버튼 클릭시 유효성 검사
+// totalBtn.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     if (selfDelivery.value === '0' || (selfDelivery.value === '5' && !selfDeliverybox.value)) {
+//         alert('배송 정보를 다시 확인해 주세요!');
+//     } else if (cardSelect[0].value === '0') {
+//         alert('결제 수단을 선택해 주세요!');
+//     } else if (!checkList[0].checked && (!checkList[1].checked || !checkList[2].checked || !checkList[3].checked)) {
+//         alert('개인 정보 수집 제공에 동의해 주세요!');
+//     } else {
+//         requestPay();
+//     }
+// });     // 버튼 클릭시 유효성 검사
 
 //=============================================================
 // 쿠폰 합산 금액 ajax
@@ -91,15 +91,79 @@ function addCouponPrice() {
         type: "Patch",
         url: '/order/orderDetail',
         data: {
-            'selected': $('.order_coupon option:selected').val(),
+            'selected': $('.order_coupon option:selected').val()
         },
         success: function (result) {
-            // let totalPay = result.orderPrice.toLocaleString();
-            // let html = '<span>주문 금액</span><strong class="totalPay">' + totalPay + '원</strong>';
-            // $('.product_totalPay').html(html);
+            let benefits = result.benefits;
+            let totalPrice = parseInt(result.orderPrice) - parseInt(benefits);
+
+            let html = '<div class="order_couponpay"><div>쿠폰 사용</div><span> - ' + benefits + '원</span></div><hr>';
+            html += '<div class="order_totalpay"><div>최종 결제 금액</div><div><strong>' + totalPrice.toLocaleString() + '원</strong></div></div>';
+            html += '<input type="hidden" id="totalPriceId" value="' + totalPrice +'">';
+
+            $('.ajaxCouponPrice').html(html);
         },
         error: function (xhr) {
             alert('저장에 실패하였습니다. 다시 시도해주세요.');
         }
     });
 }
+
+//=============================================================
+// 결제 api
+
+function proceedPay() {
+    $.ajax({
+        url : '/payment/proceed',
+        type : 'POST',
+        data : {
+            'coupon': $('.order_coupon option:selected').val(),
+            'price': $('#totalPriceId').val(),
+        },
+        success : function (result) {
+            requestPay(result);
+        },
+        error: function (xhr) {
+            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        }
+    });
+}
+
+function requestPay(result) {
+    var IMP = window.IMP;
+    IMP.init("imp82561317");
+
+    IMP.request_pay({
+        pg : 'html5_inicis',
+        pay_method : 'card',
+        merchant_uid: result.orderCode,
+        name : '결제테스트',
+        amount : result.price,
+        buyer_email : result.userDTO.user_email,
+        buyer_name : result.userDTO.user_name,
+        buyer_tel : result.userDTO.user_phone,
+        buyer_addr : result.addrDTO.addr_addr + result.addrDTO.addr_addr2,
+        buyer_postcode : result.addrDTO.addr_postcode,
+    }, function (rsp) { // callback
+        if (rsp.success) {
+            // 결제 성공
+            jQuery.ajax({
+                url: "{서버의 결제 정보를 받는 가맹점 endpoint}",
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                data: {
+                    imp_uid: rsp.imp_uid,            // 결제 고유번호
+                    merchant_uid: rsp.merchant_uid   // 주문번호
+                }
+            }).done(function (data) {
+                // 가맹점 서버 결제 API 성공시 로직
+            })
+        } else {
+            // 결제 실패
+            var msg = '결제에 실패하였습니다.';
+            msg += '에러내용 : ' + rsp.error_msg;
+            alert(msg);
+        }
+    });
+}
+

@@ -39,7 +39,7 @@
 			addr_addr=#{addr_addr},
 			addr_addr2=#{addr_addr2},
 			addr_phone=#{addr_phone},
-			addr_default = CASE when null THEN addr_default ELSE #{addr_default} END,
+			addr_default = CASE when #{addr_default} = 'Y' THEN 'Y' ELSE 'N' END
 
 			where addr_seq=#{addr_seq};
 	</update>

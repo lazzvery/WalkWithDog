@@ -3,6 +3,7 @@ package com.prj.web.awesome.user.controller;
 import com.prj.web.awesome.user.dto.UserDTO;
 import com.prj.web.awesome.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +23,8 @@ public class UserController {
 
     @Autowired
     UserService service;
-//    PasswordEncoder passwordEncoder;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     // 유저 리스트
     @GetMapping("/userList")
@@ -82,10 +84,7 @@ public class UserController {
 
         if ( dto!=null ) {
             // -> Password 확인 : 암호화 이후
-//            if ( passwordEncoder.matches(password, dto.getPassword()) ) {
-
-            // ** id 일치 -> Password 확인 : 암호화 이전
-            if (dto.getUser_password().equals(password)) {
+            if ( passwordEncoder.matches(password, dto.getUser_password()) ) {
                 // 로그인 성공 -> session 에 로그인정보 보관
                 request.getSession().setAttribute("loginID", dto.getUser_id());
                 request.getSession().setAttribute("loginName", dto.getUser_name());
@@ -133,7 +132,9 @@ public class UserController {
 
         UserDTO userInfo = new UserDTO();
         userInfo.setUser_id(dto.getUser_id());
-        userInfo.setUser_password(dto.getUser_password());
+        System.out.println("dto = " + dto);
+        System.out.println(passwordEncoder);
+        userInfo.setUser_password(passwordEncoder.encode(dto.getUser_password()));
         userInfo.setUser_name(dto.getUser_name());
         userInfo.setUser_email(dto.getUser_email());
         userInfo.setUser_email_check(dto.getUser_email_check());
@@ -141,6 +142,7 @@ public class UserController {
         userInfo.setUser_sns_check(dto.getUser_sns_check());
         userInfo.setUser_birthday(dto.getUser_birthday());
         userInfo.setUser_gen(dto.getUser_gen());
+
 
 
         service.userInsert(userInfo);

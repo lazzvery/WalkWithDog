@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="../../../../common/css/footer.css"/>
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../../css/order/orderDetail.css">
-    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+    <!--    <script type="text/javascript" src="/js/jquery/jquery-3.6.3.min.js"></script>-->
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <script defer src="../../../../js/order/orderDetail.js"></script>
     <script defer src="../../../../js/index.js"></script>
     <title>order</title>
@@ -74,149 +78,158 @@
     </article>
     <a href="../item/itemDetail.html"></a>
 
-    <form>
-        <div class="orderalldiv">
-            <div class="paycouponbox">
-                <article class="shop_deliinfoBox">
-                    <div class="shop_deliTitle">
-                        <h2>배송 정보</h2>
-                        <a href="#" onclick="window.open('/user/myPage/addrselect', 'popup', 'width=600,height=611.200'); return false;">
-                            <span>등록 / 변경</span>
-                        </a>
-                    </div>
-                    <hr>
+    <div class="orderalldiv">
+        <div class="paycouponbox">
+            <article class="shop_deliinfoBox">
+                <div class="shop_deliTitle">
+                    <h2>배송 정보</h2>
+                    <a href="#"
+                       onclick="window.open('/user/myPage/addrselect', 'popup', 'width=600,height=611.200'); return false;">
+                        <span>등록 / 변경</span>
+                    </a>
+                </div>
+                <hr>
 
-                    <div class="delivery_info" th:if="${addr != null}">
-                        <div style="display: flex">
-                            <span class="inline_ortext">배송지</span>
-                            <ul style="width: 490px">
-                                <li><strong th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong></li>
-                                <li class="delivery_infonav" th:text="${addr.addr_reciver} + ', ' + ${addr.addr_phone}">받는이, 핸드폰 번호</li>
-                                <li>
-                                    <select class="shop_deliveryplz">
-                                        <option value="0">배송시 요청사항을 선택해주세요.</option>
-                                        <option value="1">부재시 문앞에 놓아주세요</option>
-                                        <option value="2">배송 전에 미리 연락주세요</option>
-                                        <option value="3">부재시 경비실에 맡겨주세요</option>
-                                        <option value="4">부재시 전화주시거나 문자 남겨주세요</option>
-                                        <option value="5" option="text">직접 입력</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div th:if="${addr == null}" class="delivery_none_info">
+                <div class="delivery_info" th:if="${addr != null}">
+                    <div style="display: flex">
                         <span class="inline_ortext">배송지</span>
-                        <p>기본 배송지를 등록해 주세요.</p>
-                    </div>
-                </article>
-
-                <article class="couponpaydiv">
-                    <div class="shop_orderway">
-                        <h2>결제 수단</h2>
-                        <hr>
-                        <div class="order_select">
-                            <span class="inline_ortext">결제수단 선택</span>
-                            <div class="paycontainer">
-                                <button style='cursor:pointer' class="cardTab bordButton">신용카드</button>
-                                <button style='cursor:pointer' class="easyTab">간편 결제</button>
-                                <button style='cursor:pointer' class="phoneTab">휴대폰</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="paycontainer_Box checkBox2">
-                        <ul class="paycontainer_easy">
-                            <li>
-                                <input type="radio" name="pay" id="pay1" checked>
-                                <label for="pay1" id="pay1"></label>
-                                <label for="pay1"><span>카카오페이</span></label>
+                        <ul style="width: 490px">
+                            <li><strong
+                                    th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong>
+                            </li>
+                            <li class="delivery_infonav" th:text="${addr.addr_reciver} + ', ' + ${addr.addr_phone}">
+                                받는이, 핸드폰 번호
                             </li>
                             <li>
-                                <input type="radio" name="pay" id="pay2">
-                                <label for="pay2" id="pay2"></label>
-                                <label for="pay2"><span>네이버페이</span></label>
+                                <select class="shop_deliveryplz">
+                                    <option value="0">배송시 요청사항을 선택해주세요.</option>
+                                    <option value="1">부재시 문앞에 놓아주세요</option>
+                                    <option value="2">배송 전에 미리 연락주세요</option>
+                                    <option value="3">부재시 경비실에 맡겨주세요</option>
+                                    <option value="4">부재시 전화주시거나 문자 남겨주세요</option>
+                                    <option value="5" option="text">직접 입력</option>
+                                </select>
                             </li>
                             <li>
-                                <input type="radio" name="pay" id="pay3">
-                                <label for="pay3" id="pay3"></label>
-                                <label for="pay3"><span>토스</span></label>
-                            </li>
-                            <li>
-                                <input type="radio" name="pay" id="pay4">
-                                <label for="pay4" id="pay4"></label>
-                                <label for="pay4"><span>페이코</span></label>
-                            </li>
-                            <li>
-                                <input type="radio" name="pay" id="pay5">
-                                <label for="pay5" id="pay5"></label>
-                                <label for="pay5"><span>스마일페이</span></label>
+                                <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!"
+                                       maxlength="100">
                             </li>
                         </ul>
+                    </div>
+                </div>
 
-                        <div class="paycontainer_card">
-                            <select class="cardSelect">
-                                <option value="0">카드를 선택해 주세요</option>
-                                <option value="1">삼성카드</option>
-                                <option value="2">우리카드</option>
-                                <option value="3">신한카드</option>
-                                <option value="4">현대카드</option>
-                                <option value="5">KB국민카드</option>
-                                <option value="6">롯데카드</option>
-                                <option value="7">NH농협카드</option>
-                                <option value="8">비씨카드</option>
-                                <option value="9">하나카드</option>
-                                <option value="10">씨티카드</option>
-                                <option value="11">카카오뱅크카드</option>
-                            </select>
+                <div th:if="${addr == null}" class="delivery_none_info">
+                    <span class="inline_ortext">배송지</span>
+                    <p>기본 배송지를 등록해 주세요.</p>
+                </div>
+            </article>
 
-                            <select class="monthSelect" disabled>
-                                <option value="0">일시불</option>
-                                <option value="1">2개월 (무이자)</option>
-                                <option value="2">3개월 (무이자)</option>
-                                <option value="3">4개월</option>
-                                <option value="4">5개월</option>
-                                <option value="5">6개월</option>
-                                <option value="6">7개월</option>
-                                <option value="7">8개월</option>
-                                <option value="8">9개월</option>
-                                <option value="9">10개월</option>
-                                <option value="10">11개월</option>
-                                <option value="11">12개월</option>
-                            </select>
+            <article class="couponpaydiv">
+                <div class="shop_orderway">
+                    <h2>결제 수단</h2>
+                    <hr>
+                    <div class="order_select">
+                        <span class="inline_ortext">결제수단 선택</span>
+                        <div class="paycontainer">
+                            <button style='cursor:pointer' class="cardTab bordButton">신용카드</button>
+                            <button style='cursor:pointer' class="easyTab">간편 결제</button>
+                            <button style='cursor:pointer' class="phoneTab">휴대폰</button>
                         </div>
                     </div>
-                </article>
+                </div>
 
-                <article class="shop_ordercoupon">
-                    <h2>쿠폰</h2>
-                    <hr>
-                    <div class="order_coupon">
-                        <span class="inline_ortext">쿠폰 적용</span>
-                        <select th:onchange="addCouponPrice()">
-                            <option value="0">적용할 쿠폰을 선택해 주세요.</option>
-                            <option th:each="coupon : ${couponList}" th:value="${coupon.coupon_code}" th:attr="disabled=${price} &lt;= ${coupon.coupon_buy}">
-                                [[${coupon.coupon_name}]] - [[${coupon.coupon_benefits}]]원 할인 쿠폰 ([[${coupon.coupon_buy}]]원 이상 사용 가능)
-                            </option>
+                <div class="paycontainer_Box checkBox2">
+                    <ul class="paycontainer_easy">
+                        <li>
+                            <input type="radio" name="pay" id="pay1" checked>
+                            <label for="pay1" id="pay1"></label>
+                            <label for="pay1"><span>카카오페이</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="pay" id="pay2">
+                            <label for="pay2" id="pay2"></label>
+                            <label for="pay2"><span>네이버페이</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="pay" id="pay3">
+                            <label for="pay3" id="pay3"></label>
+                            <label for="pay3"><span>토스</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="pay" id="pay4">
+                            <label for="pay4" id="pay4"></label>
+                            <label for="pay4"><span>페이코</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="pay" id="pay5">
+                            <label for="pay5" id="pay5"></label>
+                            <label for="pay5"><span>스마일페이</span></label>
+                        </li>
+                    </ul>
+
+                    <div class="paycontainer_card">
+                        <select class="cardSelect">
+                            <option value="0">카드를 선택해 주세요</option>
+                            <option value="1">삼성카드</option>
+                            <option value="2">우리카드</option>
+                            <option value="3">신한카드</option>
+                            <option value="4">현대카드</option>
+                            <option value="5">KB국민카드</option>
+                            <option value="6">롯데카드</option>
+                            <option value="7">NH농협카드</option>
+                            <option value="8">비씨카드</option>
+                            <option value="9">하나카드</option>
+                            <option value="10">씨티카드</option>
+                            <option value="11">카카오뱅크카드</option>
+                        </select>
+
+                        <select class="monthSelect" disabled>
+                            <option value="0">일시불</option>
+                            <option value="1">2개월 (무이자)</option>
+                            <option value="2">3개월 (무이자)</option>
+                            <option value="3">4개월</option>
+                            <option value="4">5개월</option>
+                            <option value="5">6개월</option>
+                            <option value="6">7개월</option>
+                            <option value="7">8개월</option>
+                            <option value="8">9개월</option>
+                            <option value="9">10개월</option>
+                            <option value="10">11개월</option>
+                            <option value="11">12개월</option>
                         </select>
                     </div>
-                </article>
+                </div>
+            </article>
+
+            <article class="shop_ordercoupon">
+                <h2>쿠폰</h2>
+                <hr>
+                <div class="order_coupon">
+                    <span class="inline_ortext">쿠폰 적용</span>
+                    <select th:onchange="addCouponPrice()">
+                        <option value="0">적용할 쿠폰을 선택해 주세요.</option>
+                        <option th:each="coupon : ${couponList}" th:value="${coupon.coupon_code}"
+                                th:attr="disabled=${price} &lt;= ${coupon.coupon_buy}">
+                            [[${coupon.coupon_name}]] - [[${coupon.coupon_benefits}]]원 할인 쿠폰
+                            ([[${coupon.coupon_buy}]]원 이상 사용 가능)
+                        </option>
+                    </select>
+                </div>
+            </article>
+        </div>
+
+        <article class="shop_orderpay">
+            <h2>결제 금액</h2>
+            <div class="order_allpay">
+                <div>총 주문 금액</div>
+                <span data-th-text="${#numbers.formatInteger(price, 0, 'COMMA') + '원'}">총 주문 금액</span>
+            </div>
+            <div class="order_deliverypay">
+                <div>배송비</div>
+                <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">배송비</span>
             </div>
 
-            <article class="shop_orderpay">
-                <h2>결제 금액</h2>
-                <div class="order_allpay">
-                    <div>총 주문 금액</div>
-                    <span data-th-text="${#numbers.formatInteger(price, 0, 'COMMA') + '원'}">총 주문 금액</span>
-                </div>
-                <div class="order_deliverypay">
-                    <div>배송비</div>
-                    <span data-th-text="${#numbers.formatInteger(delivery, 0, 'COMMA') + '원'}">배송비</span>
-                </div>
+            <div class="ajaxCouponPrice">
                 <div class="order_couponpay">
                     <div>쿠폰 사용</div>
                     <span>0원</span>
@@ -225,60 +238,59 @@
 
                 <div class="order_totalpay">
                     <div>최종 결제 금액</div>
-                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제
-                        금액</strong></div>
+                    <div><strong data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원'}">최종 결제 금액</strong></div>
                 </div>
-                <div class="order_pointbox">
-                    <div class="order_colorbox">적립</div>
-                    <div>구매 시 300p</div>
-                </div>
-            </article>
-        </div>
+                <input type="hidden" id="totalPriceId" th:value="${price}">
+            </div>
 
-        <article class="shop_orderprivacy">
-            <h2>개인정보 수집 제공</h2>
-            <hr>
-            <ul class="orderprivacybox checkBox">
-                <li>
-                    <div class="agreeAll checkBox">
-                        <input type="checkbox" name="agreeAll" id="agreeAll"/>
-                        <label for="agreeAll" id="agreeAll"></label>
-                        <label for="agreeAll"><span>결제 진행 필수 전체 동의</span></label>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="agreeCheck checkBox">
-                        <input type="checkbox" name="agreeCheck1" id="agreeCheck1"/>
-                        <label for="agreeCheck1" id="agreeCheck1"></label>
-                        <label for="agreeCheck1"><span>(필수) 개인정보 수집/이용 및 처리 동의</span></label>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="agreeCheck checkBox">
-                        <input type="checkbox" name="agreeCheck2" id="agreeCheck2"/>
-                        <label for="agreeCheck2" id="agreeCheck2"></label>
-                        <label for="agreeCheck2"><span>(필수) 개인정보 제3자 제공 동의</span></label>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="agreeCheck checkBox">
-                        <input type="checkbox" name="agreeCheck3" id="agreeCheck3"/>
-                        <label for="agreeCheck3" id="agreeCheck3"></label>
-                        <label for="agreeCheck3"><span>(필수) 전자지급 결제대행 서비스 이용약관 동의</span></label>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="orderbuttonpar">
-                <button class="totalorderbutton" style='cursor:pointer;'
-                        data-th-text="${#numbers.formatInteger(price + delivery, 0, 'COMMA') + '원 결제하기'}">결제 버튼
-                </button>
+            <div class="order_pointbox">
+                <div class="order_colorbox">적립</div>
+                <div>구매 시 3%</div>
             </div>
         </article>
-    </form>
+    </div>
+
+    <article class="shop_orderprivacy">
+        <h2>개인정보 수집 제공</h2>
+        <hr>
+        <ul class="orderprivacybox checkBox">
+            <li>
+                <div class="agreeAll checkBox">
+                    <input type="checkbox" name="agreeAll" id="agreeAll"/>
+                    <label for="agreeAll" id="agreeAll"></label>
+                    <label for="agreeAll"><span>결제 진행 필수 전체 동의</span></label>
+                </div>
+            </li>
+
+            <li>
+                <div class="agreeCheck checkBox">
+                    <input type="checkbox" name="agreeCheck1" id="agreeCheck1"/>
+                    <label for="agreeCheck1" id="agreeCheck1"></label>
+                    <label for="agreeCheck1"><span>(필수) 개인정보 수집/이용 및 처리 동의</span></label>
+                </div>
+            </li>
+
+            <li>
+                <div class="agreeCheck checkBox">
+                    <input type="checkbox" name="agreeCheck2" id="agreeCheck2"/>
+                    <label for="agreeCheck2" id="agreeCheck2"></label>
+                    <label for="agreeCheck2"><span>(필수) 개인정보 제3자 제공 동의</span></label>
+                </div>
+            </li>
+
+            <li>
+                <div class="agreeCheck checkBox">
+                    <input type="checkbox" name="agreeCheck3" id="agreeCheck3"/>
+                    <label for="agreeCheck3" id="agreeCheck3"></label>
+                    <label for="agreeCheck3"><span>(필수) 전자지급 결제대행 서비스 이용약관 동의</span></label>
+                </div>
+            </li>
+        </ul>
+
+        <div class="orderbuttonpar">
+            <button class="totalorderbutton" style='cursor:pointer;' onclick="proceedPay()">결제하기</button>
+        </div>
+    </article>
 </main>
 
 <!--------------------- <footer> 모듈 --------------------->
