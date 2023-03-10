@@ -20,4 +20,9 @@ public class OrderListServiceImpl implements OrderListService {
     public void createOrderList(OrderListDTO orderListDTO) {
        orderListMapper.createOrderList(orderListDTO);
     }
+
+    @Override
+    public void updateStatus(int order_code) {
+        orderListMapper.updateStatus(order_code);
+    }
 }

@@ -4,6 +4,7 @@ import com.prj.web.awesome.order.dto.OrderListDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,4 +16,7 @@ public interface OrderListMapper {
     @Insert("insert into order_list (order_date, order_price, order_payment, order_status, user_id, coupon_code, addr_seq) " +
             "values (NOW(), #{order_price}, #{order_payment}, 'R', #{user_id}, #{coupon_code}, #{addr_seq})")
     void createOrderList(OrderListDTO orderListDTO);
+
+    @Update("UPDATE order_list SET order_status='D' WHERE order_code=#{order_code}")
+    void updateStatus(int order_code);
 }

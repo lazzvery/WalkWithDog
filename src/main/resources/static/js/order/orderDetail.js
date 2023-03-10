@@ -99,7 +99,7 @@ function addCouponPrice() {
 
             let html = '<div class="order_couponpay"><div>쿠폰 사용</div><span> - ' + benefits + '원</span></div><hr>';
             html += '<div class="order_totalpay"><div>최종 결제 금액</div><div><strong>' + totalPrice.toLocaleString() + '원</strong></div></div>';
-            html += '<input type="hidden" id="totalPriceId" value="' + totalPrice +'">';
+            html += '<input type="hidden" id="totalPriceId" value="' + totalPrice + '">';
 
             $('.ajaxCouponPrice').html(html);
         },
@@ -114,13 +114,13 @@ function addCouponPrice() {
 
 function proceedPay() {
     $.ajax({
-        url : '/payment/proceed',
-        type : 'POST',
-        data : {
+        url: '/payment/proceed',
+        type: 'POST',
+        data: {
             'coupon': $('.order_coupon option:selected').val(),
             'price': $('#totalPriceId').val(),
         },
-        success : function (result) {
+        success: function (result) {
             requestPay(result);
         },
         error: function (xhr) {
@@ -134,30 +134,31 @@ function requestPay(result) {
     IMP.init("imp82561317");
 
     IMP.request_pay({
-        pg : 'html5_inicis',
-        pay_method : 'card',
+        pg: 'html5_inicis',
+        pay_method: 'card',
         merchant_uid: result.orderCode,
-        name : '결제테스트',
-        amount : result.price,
-        buyer_email : result.userDTO.user_email,
-        buyer_name : result.userDTO.user_name,
-        buyer_tel : result.userDTO.user_phone,
-        buyer_addr : result.addrDTO.addr_addr + result.addrDTO.addr_addr2,
-        buyer_postcode : result.addrDTO.addr_postcode,
+        name: '결제테스트',
+        amount: result.price,
+        buyer_email: result.userDTO.user_email,
+        buyer_name: result.userDTO.user_name,
+        buyer_tel: result.userDTO.user_phone,
+        buyer_addr: result.addrDTO.addr_addr + result.addrDTO.addr_addr2,
+        buyer_postcode: result.addrDTO.addr_postcode,
     }, function (rsp) { // callback
         if (rsp.success) {
             // 결제 성공
             jQuery.ajax({
-                url: "{서버의 결제 정보를 받는 가맹점 endpoint}",
+                url: "/payment/succeed",
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
                 data: {
                     imp_uid: rsp.imp_uid,            // 결제 고유번호
                     merchant_uid: rsp.merchant_uid   // 주문번호
-                }
+                },
             }).done(function (data) {
                 // 가맹점 서버 결제 API 성공시 로직
-            })
+                alert("결제 성공!!");
+                window.location.href = '/home';
+            });
         } else {
             // 결제 실패
             var msg = '결제에 실패하였습니다.';
