@@ -1,7 +1,9 @@
 package com.prj.web.awesome.user.config;
 
 import com.prj.web.awesome.user.interceptor.LoginInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -16,8 +18,15 @@ public class WebMvmConfig implements WebMvcConfigurer {
                 .addPathPatterns("/user/cart")
                 .addPathPatterns("/user/heart")
                 .addPathPatterns("/order/orderDetail");
-
-
-
     }
+
+    // ADD START
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setDefaultEncoding("UTF-8");
+        commonsMultipartResolver.setMaxUploadSizePerFile(5 * 1024 * 1024);
+        return commonsMultipartResolver;
+    }
+    // ADD END
 }

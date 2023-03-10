@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.lang.model.SourceVersion;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.net.URI;
@@ -34,6 +35,8 @@ public class ReviewController {
         cri.setSnoEno();
 
         mv.addObject("reviewList", reviewService.searchList(cri));
+        System.out.println("reviewService.searchList(cri) = " + reviewService.searchList(cri));
+
 
         pageNation.setCriteria(cri);
         pageNation.setTotalRowsCount(reviewService.searchTotalCount(cri));

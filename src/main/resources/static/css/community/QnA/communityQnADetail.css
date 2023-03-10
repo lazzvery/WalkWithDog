@@ -21,6 +21,7 @@ main {
 
 body {
   font-family: 'IBMPlexSansKR-Regular';
+  background: linear-gradient( to bottom,rgba(186,170,215,0.5) -1px, rgba(186,170,215,0.5) 350px,white 350px, white 100% );
 }
 
 .c_community_head {
@@ -135,6 +136,7 @@ main .c_detail {
   padding: 10px 0;
   width: 85%;
   text-align: right;
+  margin-bottom: 20px;
 }
 
 .c_button a {

@@ -11,4 +11,8 @@ import java.util.List;
 public interface AttachmentMapper {
 
     List<AttachmentDTO> attachmentList() throws Exception;
+
+    void attachmentInsert(AttachmentDTO dto);
+
+
 }

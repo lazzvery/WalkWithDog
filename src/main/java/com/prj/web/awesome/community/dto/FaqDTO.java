@@ -8,4 +8,5 @@ public class FaqDTO {
     private String ctgr_cd;
     private String faq_title;
     private String faq_content;
+    private String faq_datafilter;
 }
