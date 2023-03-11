@@ -25,7 +25,7 @@ public class ItemApi {
         ModelAndView mv = new ModelAndView();
 
 
-        log.info("ctgr_cd {}", ctgr_cd);
+//        log.info("ctgr_cd {}", ctgr_cd);
 
         mv.addObject("ctgr_cd", ctgr_cd);
 
@@ -43,7 +43,7 @@ public class ItemApi {
     @PostMapping("/list")
     public ItemOutPayload getItemList(@RequestBody ItemInPayload inDs) {
 
-        log.info("=================== inDs.getItemInDto().getCtgr_cd() : {}", inDs.getItemInDto().getCtgr_cd());
+//        log.info("=================== inDs.getItemInDto().getCtgr_cd() : {}", inDs.getItemInDto().getCtgr_cd());
 
 
         ItemOutPayload itemOutPayload = new ItemOutPayload();

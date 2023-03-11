@@ -2,6 +2,7 @@ package com.prj.web.awesome.item.controller;
 
 import com.prj.web.awesome.category.dto.CategoryDTO;
 import com.prj.web.awesome.category.service.CategoryService;
+import com.prj.web.awesome.community.dto.NoticeDTO;
 import com.prj.web.awesome.item.dto.ItemDto;
 import com.prj.web.awesome.item.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,71 +35,17 @@ public class ItemTypeController {
 
         return "html/itemList/itemList";
     }
-//    @GetMapping("/new")
-//    public String newList (Model model, ItemDto itemDto){
-//
-//        List<ItemDto> newList = itemService.itemList(itemDto.getCtgr_cd());
-//
-//        model.addAttribute("newList", newList);
-//
-//        return "html/itemList/new";
-//    }
-//
-//
-//    @GetMapping("/living")
-//    public String living(Model model, ItemDto itemDto){
-//
-//        List<ItemDto> living = itemService.itemList(itemDto.getCtgr_cd());
-//
-//        model.addAttribute("living", living);
-//
-//        return "html/itemList/living";
-//    }
-//
-//
-//    @GetMapping("/working")
-//    public String working(Model model, ItemDto itemDto){
-//
-//        List<ItemDto> working = itemService.itemList(itemDto.getCtgr_cd());
-//
-//        model.addAttribute("working", working);
-//
-//        return "html/itemList/working";
-//    }
-//
-//
-//    @GetMapping("/food")
-//    public String food(Model model, ItemDto itemDto){
-//
-//        List<ItemDto> food = itemService.itemList(itemDto.getCtgr_cd());
-//
-//        model.addAttribute("food", food);
-//
-//        return "html/itemList/food";
-//    }
-//
-//
-//    @GetMapping("/clean")
-//    public String clean(Model model, ItemDto itemDto){
-//
-//        List<ItemDto> clean = itemService.itemList(itemDto.getCtgr_cd());
-//
-//        model.addAttribute("clean", clean);
-//
-//        return "html/itemList/clean";
-//    }
-//
-//
-//    @GetMapping("/forcat")
-//    public String forcat(Model model, ItemDto itemDto){
-//
-//        List<ItemDto> forcat = itemService.itemList(itemDto.getCtgr_cd());
-//
-//        model.addAttribute("forcat", forcat);
-//
-//        return "html/itemList/forcat";
-//    }
 
 
 
+    @GetMapping("/itemBest")
+    public String itemBest(String item_best, Model model){
+
+        List<ItemDto> itemDto = itemService.itemList(item_best);
+
+        model.addAttribute("itemDto", itemDto);
+
+        return "html/itemList/itemBest";
+
+    }
 }

@@ -48,19 +48,18 @@
                     <div class="pageTitleWrap white">
                         <!--큰 제목 감싸는 박스-->
 
-                        <div class="pageTitle">SHOP</div>
+                        <div class="pageTitle">BEST</div>
 
                         <!--큰 제목-->
                         <div class="pageNav">
                             <!--제목 아래 세부 카테고리-->
                             <ul class="pageList">
                                 <!-- 작은 카테고리-->
-                                <li class="active" th:each="category : ${categoryDto}">
-                                    <a class="itemSub" th:href="@{/item/list2(ctgr_cd=${category.ctgr_cd})}"
-                                       th:text="${category.ctgr_nm}">
-                                    </a>
-
-                                </li>
+<!--                                <li class="active" th:each="item : ${itemDto}">-->
+<!--                                    <a class="itemSub" th:if="${item.item_best == 'Y'}"-->
+<!--                                       th:text="${item.item_name}">출력-->
+<!--                                    </a>-->
+<!--                                </li>-->
                             </ul>
                         </div>
 
@@ -84,10 +83,10 @@
 
                     <!-- --------------------- 상품 소개---------------------- -->
                     <section class="productContainer">
-                        <div class="product" th:each="item:${itemDto}">
+                        <div class="product" th:each="item:${item}" th:if="${item.item_best == 'Y'}">
                             <div class="productImgList">
                                 <div class="productImg productImg1">
-                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
+                                    <a href="/item/itemDetail?item_id=10000000" class="img1"><img
                                             src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
 <!--                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img-->
 <!--                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>-->
