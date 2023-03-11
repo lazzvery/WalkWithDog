@@ -15,6 +15,8 @@ server:
     remote:
       restart:
         enabled: true
+file:
+  dir: ${user.dir}/src/main/resources/static/upload/
 
 springdoc:
   # 기본값: application/json

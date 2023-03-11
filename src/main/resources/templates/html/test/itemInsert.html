@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../css/admin/item/itemInsert.css"/>
+    <script defer src="../../javascript/index.js"></script>
+
+    <title>상품정보</title>
+</head>
+
+<body>
+<form id="insert" class="itemInsertForm" th:action method="post" enctype="multipart/form-data">
+    <div class="itemTitle">
+        <h3>상품 등록</h3>
+    </div>
+    <fieldset>
+        <ul class="ulContainer itemContainer">
+            <li class="categoryCode">
+                <label>카테고리</label>
+                <div class="inputBox">
+                    <select name="ctgr_cd">
+                        <option th:each="cate : ${category}" th:value="${cate.ctgr_cd}" th:text="${cate.ctgr_nm}">카테고리</option>
+                    </select>
+                </div>
+            </li>
+            <li class="itemName">
+                <label>상품명</label>
+                <div class="inputBox">
+                    <input type="text" name="item_name" id="user_name" required>
+                </div>
+            </li>
+            <li class="itemPrice">
+                <label>상품 가격</label>
+                <div class="inputBox">
+                    <input type="text" name="item_price" required>
+                </div>
+            </li>
+            <li class="itemCount">
+                <label>상품 재고</label>
+                <input type="number" name="item_amount">
+            </li>
+            <li>
+                <label>메인 이미지</label>
+                <input type="file" name="mainImage">
+            </li>
+            <li>
+                <label>서브 이미지</label>
+                <input type="file" multiple="multiple" name="subImages">
+            </li>
+        </ul>
+
+
+        <div class="itemSubmit">
+            <button type="submit" class="item">등록하기</button>
+        </div>
+    </fieldset>
+</form>
+
+</body>
+
+</html>

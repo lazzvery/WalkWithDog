@@ -1,5 +1,6 @@
 package com.prj.web.awesome.order.controller;
 
+import com.prj.web.awesome.order.dto.OrderDetailDTO;
 import com.prj.web.awesome.order.dto.OrderDetailItemDTO;
 import com.prj.web.awesome.order.dto.OrderListDTO;
 import com.prj.web.awesome.order.service.OrderDetailService;
@@ -46,7 +47,7 @@ public class OrderListController {
         if(!coupon.equals("0")) orderListDTO.setCoupon_code(coupon);
         orderListDTO.setAddr_seq(addr.getAddr_seq());
 
-        OrderListDTO orderList = findOrder(orderListDTO);   // 주문 테이블 seq
+        OrderListDTO orderList = findOrder(orderListDTO);
 
         result.put("userDTO", user);
         result.put("addrDTO", addr);
@@ -57,7 +58,7 @@ public class OrderListController {
     }
 
     @PostMapping("/payment/succeed")
-    public Map<String, Object> successOrder(String imp_uid, String merchant_uid, HttpSession session) {
+    public Map<String, Object> successOrder(String merchant_uid, HttpSession session, OrderDetailDTO orderDetailDTO) {
         List<OrderDetailItemDTO> itemList = (List<OrderDetailItemDTO>) session.getAttribute("itemList");
         Map<String, Object> result = new HashMap<>();
 
@@ -65,8 +66,14 @@ public class OrderListController {
         lservice.updateStatus(Integer.parseInt(merchant_uid));  // 주문 상태 업데이트
 
         for (OrderDetailItemDTO dto : itemList) {
-            cservice.deleteCart(dto.getItem_id());
-        }   // 장바구니 삭제
+            cservice.deleteCart(dto.getItem_id());  // 장바구니 삭제
+
+            orderDetailDTO.setOrder_code(Integer.parseInt(merchant_uid));
+            orderDetailDTO.setItem_id(dto.getItem_id());
+            orderDetailDTO.setItem_price(dto.getItem_price());
+            orderDetailDTO.setItem_count(dto.getItem_amount());
+            dservice.saveCart(orderDetailDTO);  // 주문 상세 테이블 생성
+        }
 
         String couponCode = orderList.getCoupon_code();
         if(couponCode != null) {
@@ -80,9 +87,9 @@ public class OrderListController {
 
     @Transactional
     public OrderListDTO findOrder(OrderListDTO orderListDTO) {
-        lservice.createOrderList(orderListDTO);
+        lservice.createOrderList(orderListDTO); // 주문 테이블 생성
         OrderListDTO byDTO = lservice.findById();
         return byDTO;
-    }   // 주문 테이블 생성, 조회
+    }   // method
 
 }
