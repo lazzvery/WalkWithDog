@@ -93,4 +93,5 @@ joinInput.addEventListener("click", () =>{
     if(joinInput.type === "button"){
         alert("정확히 입력해주세요");
     }
+
 });

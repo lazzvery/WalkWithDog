@@ -31,9 +31,9 @@
             </div>
             <ul class="pageNav">
                 <li><a href="#">홈</a></li>
-                <li><a href="../order/order.html">주문내역</a></li>
-                <li><a href="../coupon/coupon.html">쿠폰</a></li>
-                <li><a href="../mileage/mileage.html">적립금</a></li>
+                <li><a href="/user/myPage/order">주문내역</a></li>
+                <li><a href="/user/myPage/coupon">쿠폰</a></li>
+                <li><a href="/user/heart">좋아요</a></li>
                 <li><a href="/user/myPage/modify">회원정보</a></li>
             </ul>
         </div>
@@ -47,8 +47,8 @@
                 </div>
                 <ul class="myPageHomeTopInfo">
                     <li class="img">
-                        <a href="../modify/modify.html">
-                            <img src="../../../../image/myPageHomeImg.png" alt="" />
+                        <a href="/user/myPage/modify">
+                            <img src="../../../../img/icon/myPageHomeImg.png" alt="myPageProfile" />
                         </a>
                     </li>
                     <li class="infoText">
@@ -56,12 +56,8 @@
                     </li>
                     <li>
                         <p>
-                            김민성님, 더 자세한 <br />
-                            반려동물 정보를 입력해주세요.
+                            <th:block th:text="${userInfo.user_name}"></th:block>님, ㅎㅇㅎㅇ
                         </p>
-                    </li>
-                    <li>
-                        <a href="../modify/modify.html">더 입력하기</a>
                     </li>
                 </ul>
             </div>
@@ -69,22 +65,28 @@
             <div class="myPageHomeBottom">
                 <div class="leftTop">
                     <div class="coupon">
-                        <a href="../coupon/coupon.html">
+                        <a href="/user/myPage/coupon">
                             <span>사용가능한쿠폰</span>
                             <h3>1장</h3>
                         </a>
                     </div>
+                    <!--
                     <div class="mileage">
                         <a href="../mileage/mileage.html">
                             <span>적립금</span>
                             <h3>0원</h3>
                         </a>
                     </div>
+                    -->
                     <div class="order">
                         <h3>
                             주문배송조회
+                            <div>
                             <span>최근 3개월기준</span>
-                            <a href="../order/order.html">&gt</a>
+                            <a href="/user/myPage/order">
+                                <img class="rightImg" src="../../../../img/icon/iright_arrow.png" alt="">
+                            </a>
+                            </div>
                         </h3>
                         <ul>
                             <li>
@@ -119,21 +121,23 @@
 
                 <div class="leftBottom">
                     <h3>취소/ 교환/ 반품내역
-                        <a href="../order/order.html">&gt</a>
+                        <a href="/user/myPage/order">
+                            <img class="rightImg" src="../../../../img/icon/iright_arrow.png" alt="">
+                        </a>
                     </h3>
                     <ul class="orderList">
                         <li>
-                            <a href="#">
+                            <a href="/user/myPage/order">
                                 취소<strong>0</strong>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/user/myPage/order">
                                 교환<strong>0</strong>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/user/myPage/order">
                                 반품<strong>0</strong>
                             </a>
                         </li>
@@ -143,11 +147,15 @@
                 <div class="rightBottom">
                     <h3 class="notice">
                         공지사항
-                        <a href="../../../Community/community_notice.html">&gt</a>
+                        <a href="/community/notice">
+                            <img class="rightImg" src="../../../../img/icon/iright_arrow.png" alt="">
+                        </a>
                     </h3>
                     <h3 class="faq">
                         자주 묻는 질문
-                        <a href="../../../Community/communtiy_faq.html">&gt</a>
+                        <a href="/community/faq">
+                            <img class="rightImg" src="../../../../img/icon/iright_arrow.png" alt="">
+                        </a>
                     </h3>
                 </div>
 

@@ -402,9 +402,10 @@ main input {
     justify-content: right;
     align-items: center;
 }
-
-.shop_orderpay div {
+.shop_orderpay > div{
     font-size: 0.9em;
+}
+.shop_orderpay div {
     padding: 3px 3px 3px 0;
 }
 

@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body{
+    background: linear-gradient( to bottom,rgba(186,170,215,0.5) 0%, rgba(186,170,215,0.5) 35%,white 35%, white 100% );
+}
+
 ul,
 li {
     list-style: none;
@@ -13,10 +17,11 @@ a {
     color: #6b6b6b;
 }
 
-body{
-    background: linear-gradient( to bottom,rgba(186,170,215,0.5) 0%, rgba(186,170,215,0.5) 30%,white 30%, white 100% );
+.rightImg{
+    display:block;
+    width:15px;
+    height:15px;
 }
-
 
 .myPageHomeContainer {
     max-width: 1000px;
@@ -111,8 +116,8 @@ body{
 }
 
 .myPageHomeBottom .leftTop>div {
-    width: 50%;
-    padding: 10px;
+    width: 100%;
+    padding: 10px 20px 10px 10px;
 }
 
 .myPageHomeBottom .leftTop>div:last-child {
@@ -121,9 +126,11 @@ body{
     border-bottom: 1px solid #dfe9e8;
 }
 
+/*
 .myPageHomeBottom .leftTop div.coupon {
     border-right: 1px solid #dfe9e8;
 }
+*/
 
 .myPageHomeBottom .leftTop div.coupon a,
 .myPageHomeBottom .leftTop div.mileage a {
@@ -137,7 +144,16 @@ body{
     font-size: 25px;
 }
 
-
+.myPageHomeBottom .leftTop .order h3{
+    display:flex;
+}
+.myPageHomeBottom .leftTop .order h3 div{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5px;
+}
 .myPageHomeBottom .leftTop .order h3 span {
     display: inline-block;
     color: #4c4c4c;
@@ -164,12 +180,15 @@ body{
 }
 
 .myPageHomeBottom .leftTop .order ul li::after {
-    content: ">";
+    content: "";
     display: block;
+    width:20px;
+    height:20px;
     position: absolute;
     top: 20%;
-    left: 140%;
-    font-size: 20px;
+    left: 130%;
+    background: url("../../../img/icon/iright_arrow.png") no-repeat center/cover;
+
 }
 
 .myPageHomeBottom .leftTop .order ul li:last-child:after {
@@ -224,16 +243,15 @@ body{
     color: #BAAAD7;
 }
 
-
-
-
 .myPageHomeBottom .leftBottom {
     border-right: 1px solid #dfe9e8;
+    padding:10px 20px 0 10px;
 }
 
 .myPageHomeBottom .leftBottom h3 {
-    margin-top: 20px;
-    padding: 0 10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .myPageHomeBottom .leftBottom h3 a {
@@ -273,5 +291,5 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px;
+    padding: 0 20px 0 10px;
 }
