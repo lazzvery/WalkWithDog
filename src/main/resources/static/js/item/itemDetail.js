@@ -145,6 +145,41 @@ window.onload = function () {
 }
 
 //==========================================================
+// 카카오톡 공유하기 api
+
+function shareMessage() {
+    Kakao.Share.sendDefault({
+        objectType: 'feed',
+        content: {
+            title: $("div.product_summary h2").text(),
+            description: '강아지가 좋아하는 Best 잇템! 당장 클릭하세요!',
+            imageUrl:
+                'https://arrr.kr/web/product/extra/small/202208/05818021fea29fe97ca17f11e3413b9e.png',
+            link: {
+                mobileWebUrl: 'http://localhost:8090/item/itemDetail/' + $('#item_id').val(),
+                webUrl: 'http://localhost:8090/item/itemDetail/' + $('#item_id').val(),
+            },
+        },
+        buttons: [
+            {
+                title: '웹으로 보기',
+                link: {
+                    mobileWebUrl: 'http://localhost:8090/item/itemDetail/' + $('#item_id').val(),
+                    webUrl: 'http://localhost:8090/item/itemDetail/' + $('#item_id').val(),
+                },
+            },
+            {
+                title: '앱으로 보기',
+                link: {
+                    mobileWebUrl: 'http://localhost:8090/item/itemDetail/' + $('#item_id').val(),
+                    webUrl: 'http://localhost:8090/item/itemDetail/' + $('#item_id').val(),
+                },
+            },
+        ],
+    });
+}
+
+//==========================================================
 // 결제 금액
 // A-jax
 

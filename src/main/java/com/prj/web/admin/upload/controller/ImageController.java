@@ -58,7 +58,7 @@ public class ImageController {
         ImageDTO imageDTO = new ImageDTO();
         imageDTO.setImg_div_flag(flag);
         imageDTO.setImg_name(name);
-        imageDTO.setItem_id(item_id);  // 임시 아이템 코드
+        imageDTO.setItem_id(item_id);
         imageService.saveFile(imageDTO);
     }
 

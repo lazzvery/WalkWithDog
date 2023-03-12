@@ -6,6 +6,8 @@ import com.prj.web.awesome.item.dto.ItemDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
@@ -25,5 +27,15 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public int selectLastInsertId() {
         return mapper.selectLastInsertId();
+    }
+
+    @Override
+    public String findMainImg(int item_id) {
+        return mapper.findMainImg(item_id);
+    }
+
+    @Override
+    public List<String> findSubImg(int item_id) {
+        return mapper.findSubImg(item_id);
     }
 }

@@ -11,7 +11,7 @@ public class AddrDTO {
     private int addr_postcode;
     private String addr_addr;
     private String addr_addr2;
-    private int addr_phone;
+    private String addr_phone;
     private char addr_default;
     private String user_id;
 

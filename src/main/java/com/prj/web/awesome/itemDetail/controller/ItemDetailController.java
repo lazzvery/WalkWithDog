@@ -1,5 +1,6 @@
 package com.prj.web.awesome.itemDetail.controller;
 
+import com.prj.web.admin.upload.service.ImageService;
 import com.prj.web.awesome.item.cri.CriteriaQna;
 import com.prj.web.awesome.item.cri.PageNationQna;
 import com.prj.web.awesome.item.dto.ItemQnaDTO;
@@ -27,13 +28,14 @@ public class ItemDetailController {
     private final ItemDetailService dservice;
     private final ItemQnaService qservice;
     private final HeartService hservice;
+    private final ImageService iservice;
 
     @GetMapping("/{itemId}")
-    public String searchItem(@PathVariable("itemId") int itemId,
-                             @RequestParam(defaultValue = "1") int currPage,
+    public String searchItem(@PathVariable("itemId") int itemId, @RequestParam(defaultValue = "1") int currPage,
                              Model model, HttpSession session){
 
-
+        String mainImg = iservice.findMainImg(itemId);
+        List<String> subImg = iservice.findSubImg(itemId);  // 이미지 src
 
         CriteriaQna criteriaQna = new CriteriaQna(5, currPage);
         PageNationQna pageNationQna = new PageNationQna(criteriaQna);
@@ -41,7 +43,7 @@ public class ItemDetailController {
         criteriaQna.setItem_id(itemId);
         pageNationQna.calc();   // 게시판 페이징
 
-        ItemDetailDto item = dservice.findItem(itemId); // 아이템 조회
+        ItemDetailDto item = dservice.findItem(itemId);     // 아이템 조회
         List<ItemQnaDTO> qna = qservice.criList(criteriaQna);   // 게시판 조회
 
         String userId = (String) session.getAttribute("loginID");
@@ -56,6 +58,8 @@ public class ItemDetailController {
         model.addAttribute("qna", qna);
         model.addAttribute("page", pageNationQna);
         model.addAttribute("cri", criteriaQna);
+        model.addAttribute("mainImg", mainImg);
+        model.addAttribute("subImg", subImg);
 
         return "html/item/itemDetail";
 
