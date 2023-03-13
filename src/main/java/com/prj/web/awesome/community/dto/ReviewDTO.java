@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class ReviewDTO {
@@ -19,5 +20,6 @@ public class ReviewDTO {
     private int review_step;
     private int review_indent;
     private int attachment_file_seq;
+    private List<CommentDTO> com_content;
 
 }

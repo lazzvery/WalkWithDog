@@ -56,3 +56,24 @@ next.addEventListener('click', function () {
     }
 });
 
+
+function getCommentList(event) {
+    let formData = $('#comment-form').serialize(); // 폼 데이터 직렬화
+
+    console.log(formData);
+    event.preventDefault(); // 원래 submit 버튼 동작 안 하게
+
+    $.ajax({
+        type: 'POST',
+        url: '/commentInsert',
+        data: formData, // 폼 데이터
+        success: function (result) {
+
+        },
+        error: function (xhr) {
+
+        }
+    });
+
+    return false;
+}
