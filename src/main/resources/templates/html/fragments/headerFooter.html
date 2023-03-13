@@ -11,9 +11,10 @@
       <div class="headerLogo">
         <a></a>
         <a href="/home">
-          <img id="logoImg" src="/img/logo_1.png">
+          <img id="logoImg" src="/img/1.png">
         </a>
       </div>
+
       <!--subContainer-->
       <ul class="category list1">
         <div class="subList">
@@ -95,6 +96,7 @@
 
         </th:block>
           <li th:if="${session.loginID != null}"><a href="/user/logout" title="로그아웃">logout</a></li>
+          <li th:if="${session.loginID == 'admin'}"><a href="/admin/main" title="관리자">Admin</a></li>
           <li th:if="${session.loginID != null}"><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>
       </ul>
     </div>

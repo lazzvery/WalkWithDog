@@ -1,5 +1,6 @@
 package com.prj.web.awesome.order.controller;
 
+import com.prj.web.admin.upload.service.ImageService;
 import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
 import com.prj.web.awesome.itemDetail.service.ItemDetailService;
 import com.prj.web.awesome.order.dto.CouponJoinInfoDTO;
@@ -33,6 +34,7 @@ public class OrderDetailController {
     private final UserService uservice;
     private final MyPageService mservice;
     private final OrderDetailService dservice;
+    private final ImageService imgservice;
 
     @GetMapping
     public String orderDetail(Model model, HttpSession session, UserDTO userDTO) {
@@ -43,6 +45,7 @@ public class OrderDetailController {
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회
         AddrDTO addr = mservice.findAddr(userId);  // 배송지 조회
         List<CouponJoinInfoDTO> couponList = dservice.findCouponList(userId);  // 쿠폰 조회
+        String mainImg = imgservice.findMainImg(itemList.get(0).getItem_id());  // 이미지
 
         int price = 0;
         for (OrderDetailItemDTO dto : itemList) {
@@ -63,6 +66,7 @@ public class OrderDetailController {
         model.addAttribute("itemList", itemList);
         model.addAttribute("addr", addr);
         model.addAttribute("couponList", couponList);
+        model.addAttribute("mainImg", mainImg);
 
         return "html/order/orderDetail";
     }
