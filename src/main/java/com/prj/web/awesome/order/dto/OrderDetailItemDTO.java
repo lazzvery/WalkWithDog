@@ -8,4 +8,5 @@ public class OrderDetailItemDTO {
     private int item_amount;
     private int item_id;
     private String item_name;
+    private String img_name;
 }

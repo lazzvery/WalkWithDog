@@ -13,9 +13,11 @@ import java.util.List;
 @Mapper
 public interface CartMapper {
 
-    @Select("SELECT c.cart_code, c.cart_amount, c.user_id, i.item_name, i.item_price, i.item_id " +
-            "FROM cart c JOIN item i ON c.item_id = i.item_id " +
-            "WHERE c.user_id=#{user_id}")
+    @Select("SELECT c.cart_code, c.cart_amount, c.user_id, i.item_name, i.item_price, i.item_id, img.img_name " +
+            "FROM cart c " +
+            "JOIN item i ON c.item_id = i.item_id " +
+            "LEFT JOIN image img ON i.item_id = img.item_id " +
+            "WHERE c.user_id=#{user_id} AND img.img_div_flag = 'm'")
     List<CartItemDTO> findCartItem(String user_id);
 
     @Select("select * from cart where item_id=#{itemId} and user_id=#{userId}")

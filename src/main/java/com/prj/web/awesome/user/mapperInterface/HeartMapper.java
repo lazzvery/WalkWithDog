@@ -10,9 +10,10 @@ import java.util.List;
 @Repository
 @Mapper
 public interface HeartMapper {
-    @Select("SELECT h.heart_code, h.user_id, h.item_id, i.item_name " +
+    @Select("SELECT h.heart_code, h.user_id, i.item_id, i.item_name, img.img_name " +
             "FROM heart h JOIN item i ON h.item_id = i.item_id " +
-            "WHERE h.user_id = #{user_id}")
+            "LEFT JOIN image img ON i.item_id = img.item_id " +
+            "WHERE h.user_id = #{user_id} AND img.img_div_flag = 'm'")
     List<HeartItemDTO> findHeartItem(String user_id);
 
     @Select("select * from heart where item_id=#{itemId} and user_id=#{userId}")

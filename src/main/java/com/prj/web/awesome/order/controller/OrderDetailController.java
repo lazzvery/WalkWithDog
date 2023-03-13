@@ -45,7 +45,6 @@ public class OrderDetailController {
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회
         AddrDTO addr = mservice.findAddr(userId);  // 배송지 조회
         List<CouponJoinInfoDTO> couponList = dservice.findCouponList(userId);  // 쿠폰 조회
-        String mainImg = imgservice.findMainImg(itemList.get(0).getItem_id());  // 이미지
 
         int price = 0;
         for (OrderDetailItemDTO dto : itemList) {
@@ -66,7 +65,6 @@ public class OrderDetailController {
         model.addAttribute("itemList", itemList);
         model.addAttribute("addr", addr);
         model.addAttribute("couponList", couponList);
-        model.addAttribute("mainImg", mainImg);
 
         return "html/order/orderDetail";
     }
@@ -80,9 +78,11 @@ public class OrderDetailController {
         if (items != null && items.size() > 0) {
             for (OrderDetailItemDTO item : items) {
                 ItemDetailDto itemOne = iservice.findItem(item.getItem_id());
+                String mainImg = imgservice.findMainImg(item.getItem_id());
 
                 item.setItem_name(itemOne.getItem_name());
                 item.setItem_price(itemOne.getItem_price());
+                item.setImg_name(mainImg);
 
                 itemList.add(item);
             }

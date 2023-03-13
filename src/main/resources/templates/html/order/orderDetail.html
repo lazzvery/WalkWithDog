@@ -39,7 +39,7 @@
                 <div class="detailname_box">
                     <a href="../item/itemDetail.html" class="orderlistimgbox"
                        th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">
-                        <img th:src="'../../../upload/' + ${mainImg}" alt="아르르 꿀잠 방석" class="orderlistimg">
+                        <img th:src="'../../../upload/' + ${list.img_name}" alt="아르르 꿀잠 방석" class="orderlistimg">
                     </a>
                     <a href="./product_shopping_details.html" class="ordername1" th:text="${list.item_name}"
                        th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">상품명</a>

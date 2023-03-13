@@ -45,7 +45,7 @@
                     </div>
                     <a href="#" class="cartlistimgbox1"
                        th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">
-                        <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="cartlistimg">
+                        <img th:src="'../../../upload/' + ${cart.img_name}" alt="아르르 꿀잠 방석" class="cartlistimg">
                     </a>
                     <a href="#" class="cartlisttextbox1"
                        th:href="|@{/item/itemDetail/{itemId}(itemId=${cart.item_id})}|">

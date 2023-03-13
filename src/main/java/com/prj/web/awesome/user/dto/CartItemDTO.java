@@ -10,4 +10,5 @@ public class CartItemDTO {
     private int item_id;
     private String item_name;
     private int item_price;
+    private String img_name;
 }
