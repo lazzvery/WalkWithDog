@@ -48,7 +48,7 @@ public class ItemApi {
 
         ItemOutPayload itemOutPayload = new ItemOutPayload();
 
-        itemOutPayload.setItemOutArr(controller.itemList(inDs.getItemInDto()));
+//        itemOutPayload.setItemOutArr(controller.itemList(inDs.getItemInDto()));
 
         return itemOutPayload;
     }

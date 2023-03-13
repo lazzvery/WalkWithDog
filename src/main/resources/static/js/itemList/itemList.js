@@ -54,7 +54,6 @@ $(function(){
         },
         success: function (result) {
             //console.log(result.itemOutArr[0].item_name);
-            console.log('성공');
 
             $.each(result.itemOutArr, function(idx, item) {
                 console.log('item.item_name : ' + item.item_name);

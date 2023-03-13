@@ -14,7 +14,7 @@
     <script src="/js/jquery/jquery-3.6.3.min.js"></script>
 <!--    <script src="/js/header.js"></script>-->
     <script defer src="/js/itemList/itemList.js"></script>
-    <script defer src="/js/index.js"></script>
+<!--    <script defer src="/js/index.js"></script>-->
     <script defer src="/js/sub.js"></script>
     <!-- <script defer src="../javascript/main.js"></script> -->
 
@@ -22,6 +22,37 @@
 <!-- <body oncontextmenu="return false" onselectstart="return false"> -->
 
 <body>
+<script th:inline="javascript">
+    $(function() {
+        $('#listSort').change(function () {
+            alert('성공 => ' + $('#listSort').val());
+            $.ajax({
+                url: '/item/list2/'+$('#listSort').val(),
+                // url: '/item/list2/new',
+                type: 'GET',
+                data: {
+                    searchType: $('#searchType').val(),
+                    ctgr_cd: $('#hidden_ctgr_cd').val(),
+                    keyword: $('#keyTest').val()
+                },
+                success: function(response) {
+                    // 서버에서 받아온 응답(response)에 대한 처리
+                    // 예: 응답을 이용한 동적인 HTML 생성 및 페이지 업데이트
+                    console.log("성공이당");
+                    $('.productContainer').html(response);
+                    console.log(response);
+                    // $('.product').load('/item/list2?ctgr_cd=' + $('#hidden_ctgr_cd').val() +'.product');    // 데이터 reload
+                },
+                error: function(xhr, status, error) {
+                    // 요청 실패 시 처리
+                    console.log("실패"+error);
+                }
+            });
+        });
+    });
+
+
+</script>
 
     <input type="hidden" name="ctgr_cd" th:value="${ctgr_cd}" />
 
@@ -68,13 +99,15 @@
                             <!-- 상품정렬순 체크박스 -->
                             <div class="sortWrap">
                                 <!-- list wrap -->
-                                <form action=#>
+                                <form>
                                     <label>상품정렬 : </label>
-                                    <select name="listSort">
-                                        <option value="new">신상품</option>
-                                        <option value="best">인기상품</option>
-                                        <option value="high">낮은가격</option>
-                                        <option value="low">높은가격</option>
+                                    <select name="listSort" id="listSort">
+<!--                                        <option value="new" th:value="@{'/item/list2?ctgr_cd=' + ${itemList.ctgr_cd} + '(orderby=\'new\')'}">신상품</option>-->
+                                            <option value="new">신상품</option>
+                                            <option value="rank">인기상품</option>
+                                            <option value="low">낮은가격</option>
+                                            <option value="high">높은가격</option>
+
                                     </select>
                                 </form>
                             </div>
@@ -85,6 +118,7 @@
                     <!-- --------------------- 상품 소개---------------------- -->
                     <section class="productContainer">
                         <div class="product" th:each="item:${itemDto}">
+                            <input type="hidden" th:value="${ctgr_cd}" id="hidden_ctgr_cd">
                             <div class="productImgList">
                                 <div class="productImg productImg1">
                                     <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img

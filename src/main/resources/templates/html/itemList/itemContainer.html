@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>itemList New</title>
+    <link rel="stylesheet" href="/common/css/header.css">
+    <link rel="stylesheet" href="/common/css/footer.css">
+<!--    <link rel="stylesheet" href="/css/index.css">-->
+    <link rel="stylesheet" href="/css/itemList/itemList.css">
+    <link rel="stylesheet" href="/common/css/indexCommon.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
+<!--    <script src="/js/header.js"></script>-->
+<!--    <script defer src="/js/itemList/itemList.js"></script>-->
+<!--    <script defer src="/js/index.js"></script>-->
+<!--    <script defer src="/js/sub.js"></script>-->
+    <!-- <script defer src="../javascript/main.js"></script> -->
+
+</head>
+<!-- <body oncontextmenu="return false" onselectstart="return false"> -->
+
+<!--<body>-->
+<!--<script th:inline="javascript">-->
+<!--    $(function() {-->
+<!--        $('#listSort').change(function () {-->
+<!--            $.ajax({-->
+<!--                url: '/item/list2/'+$('#listSort').val(),-->
+<!--                // url: '/item/list2/new',-->
+<!--                type: 'GET',-->
+<!--                data: {-->
+<!--                    searchType: $('#searchType').val(),-->
+<!--                    keyword: $('#keyTest').val()-->
+<!--                },-->
+<!--                success: function(response) {-->
+<!--                    // 서버에서 받아온 응답(response)에 대한 처리-->
+<!--                    // 예: 응답을 이용한 동적인 HTML 생성 및 페이지 업데이트-->
+<!--                    console.log("성공"+response);-->
+<!--                    $('.productContainer').html(response);-->
+<!--                },-->
+<!--                error: function(xhr, status, error) {-->
+<!--                    // 요청 실패 시 처리-->
+<!--                    console.log("실패"+error);-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+
+
+<!--</script>-->
+
+<!--    <input type="hidden" name="ctgr_cd" th:value="${ctgr_cd}" />-->
+
+<!--    &lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; <header> 모듈 &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--    <header th:replace="html/fragments/headerFooter :: header"></header>-->
+<!--    &lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; <header> 모듈 &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+
+<!--    &lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 버튼 &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--    <a class="toTop hidden_" href="#"> </a>-->
+
+<!--    </header>-->
+
+<!--    &lt;!&ndash; &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 메인 &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; &ndash;&gt;-->
+<!--    <main>-->
+
+<!--        <div id="wrap">-->
+<!--            &lt;!&ndash;헤더 영역 포함 / Footer 제외 컨테이너&ndash;&gt;-->
+
+<!--            <div id="container">-->
+<!--                &lt;!&ndash; contents 감싸는 컨테이너 &ndash;&gt;-->
+<!--                <div class="contents">-->
+<!--                    &lt;!&ndash;헤더를 제외한 모든 내용을 포함한 박스&ndash;&gt;-->
+
+<!--                    <div class="pageTitleWrap white">-->
+<!--                        &lt;!&ndash;큰 제목 감싸는 박스&ndash;&gt;-->
+
+<!--                        <div class="pageTitle">SHOP</div>-->
+
+<!--                        &lt;!&ndash;큰 제목&ndash;&gt;-->
+<!--                        <div class="pageNav">-->
+<!--                            &lt;!&ndash;제목 아래 세부 카테고리&ndash;&gt;-->
+<!--                            <ul class="pageList">-->
+<!--                                &lt;!&ndash; 작은 카테고리&ndash;&gt;-->
+<!--                                <li class="active" th:each="category : ${categoryDto}">-->
+<!--                                    <a class="itemSub" th:href="@{/item/list2(ctgr_cd=${category.ctgr_cd})}"-->
+<!--                                       th:text="${category.ctgr_nm}">-->
+<!--                                    </a>-->
+
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+
+<!--                        <div class="sort">-->
+<!--                            &lt;!&ndash; 상품정렬순 체크박스 &ndash;&gt;-->
+<!--                            <div class="sortWrap">-->
+<!--                                &lt;!&ndash; list wrap &ndash;&gt;-->
+<!--                                <form>-->
+<!--                                    <label>상품정렬 : </label>-->
+<!--                                    <select name="listSort" id="listSort">-->
+<!--&lt;!&ndash;                                        <option value="new" th:value="@{'/item/list2?ctgr_cd=' + ${itemList.ctgr_cd} + '(orderby=\'new\')'}">신상품</option>&ndash;&gt;-->
+<!--                                            <option value="new">신상품</option>-->
+<!--                                            <option value="rank">인기상품</option>-->
+<!--                                            <option value="low">낮은가격</option>-->
+<!--                                            <option value="high">높은가격</option>-->
+
+<!--                                    </select>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+                    <!-- --------------------- 상품 소개---------------------- -->
+                    <section class="productContainer">
+                        <div class="product" th:each="item:${itemDto}">
+                            <input type="hidden" th:value="${ctgr_cd}" id="hidden_ctgr_cd">
+                            <div class="productImgList">
+                                <div class="productImg productImg1">
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
+                                            src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
+<!--                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img-->
+<!--                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>-->
+                                    <h1 class="name">
+                                        <span th:text="${item.item_name}">
+                                            헤어 방수 밴드
+                                        </span>
+                                        <p th:text="${item.item_price}">
+                                            15,900원
+                                        </p>
+                                    </h1>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </section>
+
+        </div>
+        </div>
+
+        </div>
+
+    </main>
+    <!--------------------- <main> 끝 --------------------->
+
+    <!--------------------- <footer> 모듈 --------------------->
+<!--    <footer th:replace="html/fragments/headerFooter :: footer"></footer>-->
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+</html>

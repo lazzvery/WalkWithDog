@@ -22,7 +22,7 @@ body {
 #wrap {
   position: relative;
   overflow: hidden;
-  width: 60%;
+  width: 100%;
   padding: 180px 0 0;
   margin: 0 auto;
 }
@@ -48,7 +48,7 @@ body {
 .productContainer {
   margin : 0 auto;
   display : flex;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .productContainer .product {
@@ -86,8 +86,9 @@ body {
   font-size: 30px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: -0.02em;
-  color: #BAAAD7;
+  letter-spacing: 0.02em;
+  color: #8E83A9;
+  background-color: rgba(186,170,216,0.2);
   margin: 0 0 30px;
   padding: 0 10px;
   line-height: 1.2em;

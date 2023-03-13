@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/common/css/header.css">
     <link rel="stylesheet" href="/common/css/footer.css">
 <!--    <link rel="stylesheet" href="/css/index.css">-->
-    <link rel="stylesheet" href="/css/itemList/itemList.css">
+    <link rel="stylesheet" href="/css/itemList/itemBest.css">
     <link rel="stylesheet" href="/common/css/indexCommon.css">
     <script src="/js/jquery/jquery-3.6.3.min.js"></script>
 <!--    <script src="/js/header.js"></script>-->
@@ -83,7 +83,7 @@
 
                     <!-- --------------------- 상품 소개---------------------- -->
                     <section class="productContainer">
-                        <div class="product" th:each="item:${item}" th:if="${item.item_best == 'Y'}">
+                        <div class="product" th:each="item:${itemDto}" th:if="${item.item_best == 'Y'}">
                             <div class="productImgList">
                                 <div class="productImg productImg1">
                                     <a href="/item/itemDetail?item_id=10000000" class="img1"><img
