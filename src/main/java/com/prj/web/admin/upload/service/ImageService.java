@@ -12,4 +12,5 @@ public interface ImageService {
     int selectLastInsertId();
     String findMainImg(int item_id);
     List<String> findSubImg(int item_id);
+    List<String> findInfoImg(int item_id);
 }

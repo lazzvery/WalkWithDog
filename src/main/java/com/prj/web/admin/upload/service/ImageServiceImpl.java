@@ -38,4 +38,9 @@ public class ImageServiceImpl implements ImageService {
     public List<String> findSubImg(int item_id) {
         return mapper.findSubImg(item_id);
     }
+
+    @Override
+    public List<String> findInfoImg(int item_id) {
+        return mapper.findInfoImg(item_id);
+    }
 }

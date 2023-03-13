@@ -30,4 +30,7 @@ public interface ImageMapper {
 
     @Select("select img_name from image where item_id=${item_id} and img_div_flag='s'")
     List<String> findSubImg(int item_id);
+
+    @Select("select img_name from image where item_id=${item_id} and img_div_flag='i'")
+    List<String> findInfoImg(int item_id);
 }

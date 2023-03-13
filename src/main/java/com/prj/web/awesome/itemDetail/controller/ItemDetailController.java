@@ -35,7 +35,8 @@ public class ItemDetailController {
                              Model model, HttpSession session){
 
         String mainImg = iservice.findMainImg(itemId);
-        List<String> subImg = iservice.findSubImg(itemId);  // 이미지 src
+        List<String> subImg = iservice.findSubImg(itemId);
+        List<String> infoImg = iservice.findInfoImg(itemId);    // 이미지 src
 
         CriteriaQna criteriaQna = new CriteriaQna(5, currPage);
         PageNationQna pageNationQna = new PageNationQna(criteriaQna);
@@ -60,6 +61,7 @@ public class ItemDetailController {
         model.addAttribute("cri", criteriaQna);
         model.addAttribute("mainImg", mainImg);
         model.addAttribute("subImg", subImg);
+        model.addAttribute("infoImg", infoImg);
 
         return "html/item/itemDetail";
 

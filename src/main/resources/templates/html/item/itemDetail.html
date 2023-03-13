@@ -118,10 +118,7 @@
         </div>
 
         <div class="product_detailInfo" id="detailInfo">
-            <img src="../../../img/order/detail_1.jpg" alt="상세정보1">
-            <img src="../../../img/order/detail_2.jpg" alt="상세정보1">
-            <img src="../../../img/order/detail_3.jpg" alt="상세정보1">
-            <img src="../../../img/order/detail_4.png" alt="상세정보1">
+            <img th:each="info : ${infoImg}" th:src="'../../../upload/' + ${info}" alt="상세정보1">
         </div>
     </div>
 

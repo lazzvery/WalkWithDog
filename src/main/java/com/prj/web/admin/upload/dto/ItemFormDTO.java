@@ -13,4 +13,5 @@ public class ItemFormDTO {
     private int item_amount;
     private MultipartFile mainImage;
     private List<MultipartFile> subImages;
+    private List<MultipartFile> infoImages;
 }

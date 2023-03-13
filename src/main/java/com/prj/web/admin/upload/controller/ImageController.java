@@ -41,6 +41,7 @@ public class ImageController {
     public String saveItem(ItemFormDTO itemFormDTO, ItemDto itemDto) throws IOException {
         String mainName = fileStore.storeFile(itemFormDTO.getMainImage());
         List<String> subName = fileStore.storeFiles(itemFormDTO.getSubImages());
+        List<String> infoName = fileStore.storeFiles(itemFormDTO.getInfoImages());
 
         imageService.saveItem(itemDto);
         int item_id = imageService.selectLastInsertId();
@@ -49,6 +50,9 @@ public class ImageController {
         saveImages(mainName, "m", item_id);   // 메인 저장
         for (String sub : subName) {      // 서브 저장
             saveImages(sub , "s", item_id);
+        }
+        for (String info : infoName) {
+            saveImages(info, "i", item_id);
         }
 
         return "html/admin/adminItem";
