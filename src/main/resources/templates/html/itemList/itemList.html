@@ -25,7 +25,7 @@
 <script th:inline="javascript">
     $(function() {
         $('#listSort').change(function () {
-            alert('성공 => ' + $('#listSort').val());
+            // alert('성공 => ' + $('#listSort').val());
             $.ajax({
                 url: '/item/list2/'+$('#listSort').val(),
                 // url: '/item/list2/new',
@@ -129,7 +129,10 @@
                                         <span th:text="${item.item_name}">
                                             헤어 방수 밴드
                                         </span>
-                                        <p th:text="${item.item_price}">
+<!--                                    #numbers.formatInteger(표시해야 할 값, 최소 자릿수, 구분자)-->
+<!--                                    <div data-th-text="${#numbers.formatInteger(result.totalPrice, 3, 'COMMA') + '원'}"></div>-->
+<!--                                        <p th:text="${item.item_price}+' 원'">-->
+                                        <p th:text="${#numbers.formatInteger(item.item_price, 3, 'COMMA')}+' 원'">
                                             15,900원
                                         </p>
                                     </h1>

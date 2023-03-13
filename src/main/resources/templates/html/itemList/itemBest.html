@@ -22,6 +22,35 @@
 <!-- <body oncontextmenu="return false" onselectstart="return false"> -->
 
 <body>
+<script th:inline="javascript">
+    $(function() {
+        $('#listSort').change(function () {
+            // alert('성공 => ' + $('#listSort').val());
+            $.ajax({
+                url: '/item/list2/'+$('#listSort').val(),
+                // url: '/item/list2/new',
+                type: 'GET',
+                data: {
+                    searchType: $('#searchType').val(),
+                    ctgr_cd: $('#hidden_ctgr_cd').val(),
+                    keyword: $('#keyTest').val()
+                },
+                success: function(response) {
+                    // 서버에서 받아온 응답(response)에 대한 처리
+                    // 예: 응답을 이용한 동적인 HTML 생성 및 페이지 업데이트
+                    console.log("성공이당");
+                    $('.productContainer').html(response);
+                    console.log(response);
+                    // $('.product').load('/item/list2?ctgr_cd=' + $('#hidden_ctgr_cd').val() +'.product');    // 데이터 reload
+                },
+                error: function(xhr, status, error) {
+                    // 요청 실패 시 처리
+                    console.log("실패"+error);
+                }
+            });
+        });
+    });
+</script>
 
     <input type="hidden" name="ctgr_cd" th:value="${ctgr_cd}" />
 
@@ -83,9 +112,9 @@
 
                     <!-- --------------------- 상품 소개---------------------- -->
                     <section class="productContainer">
-                        <div class="product" th:each="item:${itemDto}" th:if="${item.item_best == 'Y'}">
+                        <div class="product" th:each="item:${itemDto}">
+                            <input type="hidden" th:value="${ctgr_cd}" id="hidden_ctgr_cd">
                             <div class="productImgList">
-                                <div class="productImg productImg1">
                                     <a href="/item/itemDetail?item_id=10000000" class="img1"><img
                                             src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
 <!--                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img-->
@@ -94,7 +123,7 @@
                                         <span th:text="${item.item_name}">
                                             헤어 방수 밴드
                                         </span>
-                                        <p th:text="${item.item_price}">
+                                        <p th:text="${#numbers.formatInteger(item.item_price, 3, 'COMMA')}+' 원'">
                                             15,900원
                                         </p>
                                     </h1>

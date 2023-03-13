@@ -99,7 +99,7 @@ public class ItemController {
         return "html/itemList/itemBest";
     }
 
-    // 정렬
+    // 상품 정렬 컨트롤러
     @GetMapping("/item/list2/{category_name}")
     public String itemList(Model model, @PathVariable String category_name, String ctgr_cd) {
         System.out.println("ctgr_cd = " + ctgr_cd);

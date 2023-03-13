@@ -59,6 +59,11 @@ body {
   font-size: 1.2rem;
 }
 
+.productContainer h1 p {
+  color: #4c4c4c;
+  font-size: 1.1rem;
+}
+
 .prdImg1 {
   width: 350px;
 }
