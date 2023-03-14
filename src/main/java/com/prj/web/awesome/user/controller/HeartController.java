@@ -44,6 +44,14 @@ public class HeartController {
         heartDTO.setItem_id(itemId);
         heartDTO.setUser_id(userId);
 
+        List<HeartItemDTO> heartItem = hservice.findHeartItem(userId);
+
+        if(heartItem.size() >= 10) {
+            result.put("success", true);
+            result.put("message", "위시리스트는 10개까지 등록 가능합니다.");
+            return result;
+        }
+
         if(userId != null) {
             if (hservice.findHeart(itemId, userId) == null) {
                 hservice.save(heartDTO);
