@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -211,10 +209,21 @@ public class UserController {
     } //delete
 
 
-    @GetMapping("/findid")
-    public String findId(Model model){
-        return "html/user/userFindId";
-    }
+//    @GetMapping("/findid")
+//    @ResponseBody
+//    public String findId(Model model, UserDTO dto, @RequestParam("userName") String user_name, @RequestParam("userEmail") String user_email , @RequestParam("userPhone") String user_phone){
+//
+//
+//        if(dto.getUser_name() == "username" && dto.getUser_email() == "userEmail" || dto.getUser_phone() == "userPhone"){
+//            dto=service.userSelectOne(dto);
+//            model.addAttribute("userInfo", dto);
+//        }
+//
+//        System.out.println("dto = " + dto);
+//
+//
+//        return "html/user/userFindId";
+//    }
 
     @GetMapping("/findpw")
     public String findpw(Model model){

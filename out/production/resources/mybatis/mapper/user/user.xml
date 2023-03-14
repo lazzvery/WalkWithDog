@@ -46,6 +46,10 @@
 		delete from user where user_id=#{user_id};
 	</delete>
 
+	<select id="findId" resultType="com.prj.web.awesome.user.dto.UserDTO">
+		select user_id from user where user_email=#{user_email} or user_phone=#{user_phone};
+	</select>
+
 
 
 

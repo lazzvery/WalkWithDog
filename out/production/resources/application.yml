@@ -9,12 +9,18 @@ spring:
     password: '@Jsz0426'
   thymeleaf:
     suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 10GB
+      max-request-size: 10GB
 server:
   port: '8090'
   devtools:
     remote:
       restart:
         enabled: true
+file:
+  dir: ${user.dir}/src/main/resources/static/upload/
 
 springdoc:
   # 기본값: application/json

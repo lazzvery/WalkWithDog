@@ -8,4 +8,6 @@ public class SearchCriteria extends Criteria{
     private String keyword;
     private String[] check;
 
+    private String user_id;
+
 }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../css/user/myPage/userMyPageCommon.css">
     <link rel="stylesheet" href="../../../css/user/userFindId.css">
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
     <script defer src="../../../js/user/userFindId.js"></script>
     <script defer src="../../../js/index.js"></script>
     <title>findId</title>
@@ -32,7 +33,7 @@
 
         <div class="pageSelect">
             <a href="#" class="findId selected">아이디 찾기</a>
-            <a href="../findPassword/findPassword.html" class="findPassword">비밀번호 찾기</a>
+            <a href="/user/myPage/findpw" class="findPassword">비밀번호 찾기</a>
         </div>
 
         <form class="findIdForm">
@@ -40,20 +41,16 @@
                 <ul class="findIdContainer">
                     <li class="name">
                         <label>이름</label>
-                        <input type="text" name="name">
+                        <input type="text" name="user_name" id="user_name">
                     </li>
                     <li class="email">
                         <label>이메일로 찾기</label>
-                        <input type="email" name="email">
+                        <input type="email" name="user_email" id="user_email">
                     </li>
                     <li class="phone">
                         <label>휴대폰 번호로 찾기</label>
                         <div class="phoneBox">
-                            <input type="number" name="phone1">
-                            <span>-</span>
-                            <input type="number" name="phone2">
-                            <span>-</span>
-                            <input type="number" name="phone3">
+                            <input name="user_phone" id="user_phone" placeholder="- 포함해서 입력해주세요" required>
                         </div>
                     </li>
                 </ul>
@@ -70,7 +67,7 @@
                     </li>
                 </ul>
                 <div class="findIdButton">
-                    <button>아이디 찾기</button>
+                    <button th:onclick="'idButton(event)'">아이디 찾기</button>
                 </div>
             </fieldset>
         </form>

@@ -1,9 +1,11 @@
 package com.prj.web.awesome.user.mapperInterface;
 
+import com.prj.web.awesome.community.criTest.Criteria;
+import com.prj.web.awesome.community.criTest.SearchCriteria;
+import com.prj.web.awesome.order.dto.OrderListDTO;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.CouponInfoDTO;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -15,26 +17,25 @@ import java.util.List;
 @Mapper
 public interface MyPageMapper {
 
-    // 1. addrList
+    // addrList
     List<AddrDTO> addrList(String user_id);
-//    AddrDTO addrList(AddrDTO dto);
-//
-    // 2. selectOne : Detail
+
+    // addrSelectOne : Detail
     AddrDTO addrSelectOne(AddrDTO dto);
 
-    // 3. insert
+    // addrInsert
     int addrInsert(AddrDTO dto);
 
-    // 4. 주소 추가시 기본배송지 update
+    // 주소 추가시 기본배송지 update
     int insertAddrUpdate(AddrDTO dto);
 
     // update
     int addrUpdate(AddrDTO dto);
 
-    @Select("select * from addr where user_id=#{user_id} and addr_default='Y'")
+    @Select("select * from addr where user_id=#{user_id} and addr_default='N'")
     AddrDTO findAddr(String user_id);
 
-    // 5. delete
+    // addrDelete
     int addrDelete(int addr_seq);
 
     // coupon 조회
@@ -48,4 +49,22 @@ public interface MyPageMapper {
     // 쿠폰 수량 업데이트
     @Update("update coupon set coupon_quantity = coupon_quantity - 1 where coupon_code=#{coupon_code}")
     void updateCouponQuantity(String coupon_code);
+
+//    @Select("select * from order_list where user_id=#{user_id}")
+    @Select("SELECT o.order_date, i.item_name, o.order_price, o.order_payment, o.order_status, o.order_claim " +
+            "FROM order_list o JOIN order_detail d ON o.order_code = d.order_code " +
+            "JOIN item i ON d.item_id = i.item_id"
+    )
+    List<OrderListDTO> orderList(String user_id);
+
+
+    List<OrderListDTO> searchList(SearchCriteria cri);
+    int searchTotalCount(SearchCriteria cri);
+
+    // ** Criteria PageList
+    List<OrderListDTO> criList(Criteria cri);
+    int criTotalCount();
+
+
+
 }

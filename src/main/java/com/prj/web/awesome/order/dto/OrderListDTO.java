@@ -19,4 +19,6 @@ public class OrderListDTO {
     private String coupon_code;
     private int addr_seq;
 
+    private int order_count;
+
 }

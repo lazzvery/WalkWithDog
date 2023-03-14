@@ -17,16 +17,19 @@
 
 	<select id="reviewDetail" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
 		select
-		    user_id,
-			review_title,
-			review_content,
-			review_rank,
-			review_reg_date,
-			review_seq,
-			review_reply,
-			attachment_file_seq
-		from review
-		where review_seq = #{review_seq};
+		    r.user_id,
+			r.review_title,
+			r.review_content,
+			r.review_rank,
+			r.review_reg_date,
+			r.review_seq,
+			c.com_content,
+			r.attachment_file_seq,
+			c.com_seq
+		from review r
+		left outer join comment c on r.review_seq = c.review_seq
+		where r.review_seq = #{review_seq}
+		order by c.com_seq asc;
 	</select>
 
 	<insert id="reviewInsert">

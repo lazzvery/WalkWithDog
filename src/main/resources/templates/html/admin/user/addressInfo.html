@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../static/css/admin/addressInfo.css" />
+    <link rel="stylesheet" href="../../../../css/admin/addressInfo.css" />
     <script defer src="../../javascript/index.js"></script>
 
     <title>배송지관리</title>
@@ -55,13 +55,13 @@
     <div id="contents">
         <ul class="topMenu">
             <li>
-                <a href="./userInfo.html">회원관리</a>
+                <a href="/admin/user/userInfo">회원관리</a>
             </li>
             <li>
-                <a href="./addressInfo.html">배송지관리</a>
+                <a href="/admin/user/addrList">배송지관리</a>
             </li>
             <li>
-                <a href="./couponInfo.html">쿠폰관리</a>
+                <a href="/admin/user/couponList">쿠폰관리</a>
             </li>
         </ul>
 
@@ -78,35 +78,17 @@
                 <th>기본 배송지</th>
             </tr>
 
-            <tr>
-                <td>1</td>
-                <td><a href="#">awesome</a></td>
-                <td>괜히 </td>
-                <td>파이</td>
-                <td>경기 광주시 능평동 오포읍 423 (금강빌라?)</td>
-                <td>010-8900-2824</td>
-                <td>N</td>
+            <tr th:each="addrList : ${addrList}">
+                <td th:text="${addrList.addr_seq}"></td>
+                <td th:text="${addrList.user_id}"><a href="#"></a></td>
+                <td th:text="${addrList.addr_name}"> </td>
+                <td th:text="${addrList.addr_reciver}"></td>
+                <td th:text="'(' + ${addrList.addr_postcode} + ') ' + ${addrList.addr_addr} + ' ' + ${addrList.addr_addr2}"></td>
+                <td th:text="${addrList.addr_phone}"></td>
+                <td th:text="${addrList.addr_default}"></td>
             </tr>
 
-            <tr>
-                <td>2</td>
-                <td><a href="#">CBH</a></td>
-                <td>한다</td>
-                <td>모코코</td>
-                <td>경기 용인시 수지구?</td>
-                <td>010-5339-2807</td>
-                <td>N</td>
-            </tr>
 
-            <tr>
-                <td>3</td>
-                <td><a href="#">jjang</a></td>
-                <td>했나? </td>
-                <td>보리</td>
-                <td>경기 광주시 태전동 성원아파트? 402동 1401호?</td>
-                <td>010-4731-4579</td>
-                <td>Y</td>
-            </tr>
 
         </table>
 

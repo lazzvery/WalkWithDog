@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../static/css/admin/community/notice.css" />
+    <link rel="stylesheet" href="../../../../css/admin/community/notice.css" />
     <script defer src="../../javascript/index.js"></script>
 
     <title>상품정보</title>
@@ -54,16 +54,16 @@
     <div id="contents">
         <ul class="topMenu">
             <li>
-                <a href="./notice.html">공지사항</a>
+                <a href="/admin/community/notice">공지사항</a>
             </li>
             <li>
-                <a href="./faq.html">FAQ</a>
+                <a href="/admin/community/faq">FAQ</a>
             </li>
             <li>
-                <a href="./qna.html">Q&A</a>
+                <a href="/admin/community/qna">Q&A</a>
             </li>
             <li>
-                <a href="./review.html">리뷰</a>
+                <a href="/admin/community/review">리뷰</a>
             </li>
         </ul>
 
@@ -77,20 +77,12 @@
                 <th>작성일</th>
             </tr>
 
-            <tr>
-                <td>글번호</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>작성일</td>
+            <tr th:each="noticeList : ${noticeList}">
+                <td th:text="${noticeList.notice_seq}"></td>
+                <td th:text="${noticeList.notice_title}"></td>
+                <td>admin</td>
+                <td th:text="${noticeList.notice_reg_date}"></td>
             </tr>
-
-            <tr>
-                <td>글번호</td>
-                <td>제목</td>
-                <td>작성자</td>
-                <td>작성일</td>
-            </tr>
-
 
         </table>
 

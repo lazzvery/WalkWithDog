@@ -61,17 +61,19 @@
                     <tr>
                         <td>번호</td>
                         <td>쿠폰명</td>
+                        <td>쿠폰수량</td>
                         <td>구매금액</td>
                         <td>쿠폰혜택</td>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>회원 가입 축하 2천원 할인 쿠폰</td>
-                        <td>제한없음</td>
-                        <td>할인 2,000원</td>
+                    <tr th:each="couponList : ${couponList}">
+                        <td th:text="${couponList.coupon_seq}"></td>
+                        <td th:text="${couponList.coupon_name}"></td>
+                        <td th:text="${couponList.coupon_quantity}"></td>
+                        <td th:text="${couponList.coupon_buy}"></td>
+                        <td th:text="${couponList.coupon_benefits}"></td>
                     </tr>
                 </tbody>
 

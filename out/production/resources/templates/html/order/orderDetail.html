@@ -39,7 +39,7 @@
                 <div class="detailname_box">
                     <a href="../item/itemDetail.html" class="orderlistimgbox"
                        th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">
-                        <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="orderlistimg">
+                        <img th:src="'../../../upload/' + ${list.img_name}" alt="아르르 꿀잠 방석" class="orderlistimg">
                     </a>
                     <a href="./product_shopping_details.html" class="ordername1" th:text="${list.item_name}"
                        th:href="|@{/item/itemDetail/{itemId}(itemId=${list.item_id})}|">상품명</a>
@@ -65,7 +65,7 @@
         <div class="shop_orderphone">
             <label>
                 <span class="inline_ortext">휴대폰</span>
-                <span th:text="${user.user_phone}">휴대폰</span>
+                <span th:text="${user.user_phone}" class="phoneHyphen">휴대폰</span>
             </label>
         </div>
 
@@ -97,8 +97,9 @@
                             <li><strong
                                     th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong>
                             </li>
-                            <li class="delivery_infonav" th:text="${addr.addr_reciver} + ', ' + ${addr.addr_phone}">
-                                받는이, 핸드폰 번호
+                            <li class="delivery_infonav">
+                                <span th:text="${addr.addr_reciver} + ', '">이름</span>
+                                <span th:text="${addr.addr_phone}" class="phoneHyphen">핸드폰 번호</span>
                             </li>
                             <li>
                                 <select class="shop_deliveryplz">
@@ -111,8 +112,7 @@
                                 </select>
                             </li>
                             <li>
-                                <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!"
-                                       maxlength="100">
+                                <input type="text" class="selfDeliverybox" id="5" placeholder="배송 요청사항을 입력해 주세요!" maxlength="100">
                             </li>
                         </ul>
                     </div>
@@ -135,68 +135,6 @@
                             <button style='cursor:pointer' class="easyTab">간편 결제</button>
                             <button style='cursor:pointer' class="phoneTab">휴대폰</button>
                         </div>
-                    </div>
-                </div>
-
-                <div class="paycontainer_Box checkBox2">
-                    <ul class="paycontainer_easy">
-                        <li>
-                            <input type="radio" name="pay" id="pay1" checked>
-                            <label for="pay1" id="pay1"></label>
-                            <label for="pay1"><span>카카오페이</span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="pay" id="pay2">
-                            <label for="pay2" id="pay2"></label>
-                            <label for="pay2"><span>네이버페이</span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="pay" id="pay3">
-                            <label for="pay3" id="pay3"></label>
-                            <label for="pay3"><span>토스</span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="pay" id="pay4">
-                            <label for="pay4" id="pay4"></label>
-                            <label for="pay4"><span>페이코</span></label>
-                        </li>
-                        <li>
-                            <input type="radio" name="pay" id="pay5">
-                            <label for="pay5" id="pay5"></label>
-                            <label for="pay5"><span>스마일페이</span></label>
-                        </li>
-                    </ul>
-
-                    <div class="paycontainer_card">
-                        <select class="cardSelect">
-                            <option value="0">카드를 선택해 주세요</option>
-                            <option value="1">삼성카드</option>
-                            <option value="2">우리카드</option>
-                            <option value="3">신한카드</option>
-                            <option value="4">현대카드</option>
-                            <option value="5">KB국민카드</option>
-                            <option value="6">롯데카드</option>
-                            <option value="7">NH농협카드</option>
-                            <option value="8">비씨카드</option>
-                            <option value="9">하나카드</option>
-                            <option value="10">씨티카드</option>
-                            <option value="11">카카오뱅크카드</option>
-                        </select>
-
-                        <select class="monthSelect" disabled>
-                            <option value="0">일시불</option>
-                            <option value="1">2개월 (무이자)</option>
-                            <option value="2">3개월 (무이자)</option>
-                            <option value="3">4개월</option>
-                            <option value="4">5개월</option>
-                            <option value="5">6개월</option>
-                            <option value="6">7개월</option>
-                            <option value="7">8개월</option>
-                            <option value="8">9개월</option>
-                            <option value="9">10개월</option>
-                            <option value="10">11개월</option>
-                            <option value="11">12개월</option>
-                        </select>
                     </div>
                 </div>
             </article>

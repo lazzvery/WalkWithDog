@@ -10,12 +10,29 @@
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
     <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
     <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageOrder.css">
+    <script src="../../../../js/jquery/jquery-3.6.3.min.js"></script>
     <script defer src="../../../../js/index.js"></script>
 
     <title>order</title>
 </head>
 
 <body>
+
+<script th:inline="javascript">
+    $(function() {
+        // 1) SearchType 이 '전체' 면 keyword 클리어
+        $('#searchType').change(function () {
+            if ($(this).val() == 'n') $('#keyword').val('');
+        });
+
+        $('#reviewBtn').click(function () {
+            self.location = '/user/myPage/order?currPage=1&rowsPerPage=9'
+                + '&searchType=' + $('#searchType').val();
+        }); //click
+    });
+
+</script>
+
     <!-- ---------------- 버튼 ------------------ -->
     <a class="toTop hidden_" href="#"> </a>
     <!-- ---------------- 버튼 ------------------ -->
@@ -50,16 +67,31 @@
             <form class="orderHistoryForm">
                 <ul>
                     <li>
-                        <select id="order_status" name="order_status" class="fSelect">
-                            <option value="all">전체 주문처리상태</option>
-                            <option value="shipped_before">입금전</option>
-                            <option value="shipped_standby">배송준비중</option>
-                            <option value="shipped_begin">배송중</option>
-                            <option value="shipped_complate">배송완료</option>
-                            <option value="order_cancel">취소</option>
-                            <option value="order_exchange">교환</option>
-                            <option value="order_return">반품</option>
-                        </select>
+<!--                        <select id="order_status" name="order_status" class="fSelect">-->
+<!--                            <option value="all">전체 주문처리상태</option>-->
+<!--                            <option value="shipped_before">입금전</option>-->
+<!--                            <option value="shipped_standby">배송준비중</option>-->
+<!--                            <option value="shipped_begin">배송중</option>-->
+<!--                            <option value="shipped_complate">배송완료</option>-->
+<!--                            <option value="order_cancel">취소</option>-->
+<!--                            <option value="order_exchange">교환</option>-->
+<!--                            <option value="order_return">반품</option>-->
+<!--                        </select>-->
+                        <div class="c_reviewtools">
+                            <select name="searchType" id="searchType">
+                                <option value="all" th:selected="${pageNation.cri.searchType==null}">전체 주문처리상태</option>
+                                <option value="D" th:selected="${pageNation.cri.searchType=='D'}" id="shipped_before">입금전</option>
+                                <option value="R" th:selected="${pageNation.cri.searchType=='R'}" id="shipped_standby">배송준비중</option>
+                                <option value="J" th:selected="${pageNation.cri.searchType=='J'}" id="shipped_begin">배송중</option>
+                                <option value="W" th:selected="${pageNation.cri.searchType=='W'}" id="shipped_complete">배송완료</option>
+                                <option value="cancel" th:selected="${pageNation.cri.searchType=='cancel'}" id="order_cancel">취소</option>
+                                <option value="exchange" th:selected="${pageNation.cri.searchType=='exchange'}" id="order_exchange">교환</option>
+                                <option value="return" th:selected="${pageNation.cri.searchType=='return'}" id="order_return">반품</option>
+                            </select>
+                            <button id="reviewBtn">Search</button>
+<!--                                    <input class="input_search" type="search" maxlength="20" required>-->
+<!--                                    <i class="fa-sharp fa-solid fa-magnifying-glass c_search" id="searchBtn"></i>-->
+                        </div>
                     </li>
                     <li>
                         <span class="period">
@@ -94,11 +126,25 @@
                 <thead>
                     <tr>
                         <td>주문일자[주문번호]</td>
-                        <td>상품</td>
+                        <td>주문 건</td>
+                        <td>상품가격</td>
+                        <td>결제수단</td>
                         <td>주문처리상태</td>
                         <td>취소/교환/반품</td>
                     </tr>
                 </thead>
+
+                <tbody>
+                    <tr th:each="orderList : ${orderList}">
+                        <td th:text="${orderList.order_date}"></td>
+                        <td th:text="${orderList.order_count}+'건'"></td>
+                        <td th:text="${orderList.order_price}"></td>
+                        <td th:text="${orderList.order_payment}"></td>
+                        <td th:text="${orderList.order_status}"></td>
+                        <td th:text="${orderList.order_claim == null ? '-' : orderList.order_claim  } "></td>
+
+                    </tr>
+                </tbody>
 
             </table>
 
@@ -109,13 +155,40 @@
             </div>
 
             <div class="pageNation">
-                &lt;
-                <ul>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                </ul>
-                &gt;
+<!--                &lt;-->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="#">1</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                &gt;-->
+                <div class="c_page">
+                    <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
+                        <a th:href="@{order(user_id=${session.loginID},currPage=1,rowsPerPage=9)}"><<</a>&nbsp;
+                        <a th:href="@{order(user_id=${session.loginID},currPage={i}&rowsPerPage=9(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;
+                    </div>
+                    <div th:unless="${pageNation.prev and pageNation.spageNo > 1}">
+                        <font color="Gray"><<&nbsp;&lt;&nbsp;&nbsp;</font>
+                    </div>
+                    <!--Display PageNo-->
+                    <div th:each="i : ${#numbers.sequence(pageNation.spageNo, pageNation.epageNo)}">
+                        <div th:if="${i == pageNation.cri.currPage}">
+                            <font size="initial" color="#8E83A9" th:text="${i}"></font>&nbsp;
+                        </div>
+                        <div th:unless="${i == pageNation.cri.currPage}">
+                            <a th:href="@{order?currPage={i}&rowsPerPage=9(i=${i})}" th:text="${i}"></a>&nbsp;
+                        </div>
+                    </div>
+                    <!--Next, LastPage-->
+                    <div th:if="${pageNation.next and pageNation.epageNo > 0}">
+                        <a th:href="@{order(user_id=${session.loginID},currPage={i}&rowsPerPage=9(i=${pageNation.epageNo+1})}">&nbsp;&gt;</a>
+                        <a th:href="@{order(user_id=${session.loginID},currPage={i}&rowsPerPage=9(i=${pageNation.lastPageNo})}">&nbsp;>></a>
+
+                    </div>
+                    <div th:unless="${pageNation.next and pageNation.epageNo > 0}">
+                        <font color="Gray">&nbsp;&gt;&nbsp;>></font>
+                    </div>
+                </div>
             </div>
 
         </div>
