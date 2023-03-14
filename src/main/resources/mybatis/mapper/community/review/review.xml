@@ -25,10 +25,7 @@
 	<delete id="reviewDelete">
 		delete
 		from review
-		<if test="review_seq==review_root">where review_root=#{review_seq}</if>
-		<!-- 원글 삭제 : 동일 root 는 모두 삭제 -->
-		<if test="review_seq!=review_root">where review_seq=#{review_seq}</if>
-		<!-- 답글만 삭제 -->
+		where review_seq=#{review_seq}
 	</delete>
 
 	<sql id="search">

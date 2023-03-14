@@ -11,7 +11,5 @@ public class NoticeFormDTO {
     private String notice_title;
     private String notice_content;
     private String notice_reg_date;
-    private MultipartFile mainImg;
-    private List<MultipartFile> subImg;
-    private List<MultipartFile> infoImg;
+    private MultipartFile Img1;
 }
