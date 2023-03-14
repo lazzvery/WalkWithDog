@@ -17,10 +17,61 @@
 		    notice_seq,
 		    notice_title,
 		    notice_content,
-			attachment_file_seq,
 			notice_reg_date
 		from notice
 		where notice_seq = #{notice_seq};
+	</select>
+
+	<update id="noticeUpdate">
+		update notice set
+					   notice_title = #{notice_title},
+					   notice_content = #{notice_content}
+		where notice_seq = #{notice_seq};
+	</update>
+
+	<delete id="noticeDelete">
+		delete
+		from notice
+		where notice_seq = #{notice_seq}
+	</delete>
+
+	<sql id="search">
+		<if test="keyword!=null">
+			<bind name="keyVal" value="'%'+keyword+'%'"/>
+		</if>
+		<choose>
+			<when test="searchType=='t'.toString()">
+				and notice_title like #{keyVal} )
+			</when>
+			<when test="searchType=='r'.toString()">
+				and notice_reg_date like #{keyVal} )
+			</when>
+			<otherwise> )</otherwise>
+		</choose>
+	</sql>
+
+	<select id="searchList" resultType="com.prj.web.awesome.community.dto.NoticeDTO">
+		select notice_seq, notice_title, notice_reg_date
+		from notice
+		where ( notice_seq>0 <include refid="search"></include>
+		order by notice_seq desc
+		limit #{sno}, #{rowsPerPage}
+	</select>
+
+	<select id="searchTotalCount" resultType="int">
+		select count(*) from notice
+		where ( notice_seq>0 <include refid="search"></include>
+	</select>
+
+	<select id="criList" resultType="com.prj.web.awesome.community.dto.NoticeDTO">
+		select notice_seq, notice_title, notice_reg_date
+		from notice
+		order by notice_seq desc
+			limit #{sno}, #{rowsPerPage}
+	</select>
+
+	<select id="criTotalCount" resultType="int" >
+		select count(*) from notice
 	</select>
 
 </mapper>

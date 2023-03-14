@@ -34,18 +34,22 @@ public class QnaController {
     private FileStore fileStore;
 
     @GetMapping("/QnA")
-    public ModelAndView qna(ModelAndView mv, SearchCriteria cri, PageNation pageNation) {
+    public ModelAndView qna(ModelAndView mv, SearchCriteria cri, PageNation pageNation, QnaDTO dto) {
+
+        String Img1 = attachmentService.findReviewMainImg(dto.getQna_seq());
+        String Img2 = attachmentService.findReviewSubImg(dto.getQna_seq());
+
         cri.setSnoEno();
 
-        mv.addObject("banana", qnaService.searchList(cri));
+        mv.addObject("qnaList", qnaService.searchList(cri));
+
+        mv.addObject("Img1", Img1);
+        mv.addObject("Img2", Img2);
+        System.out.println("Img1 = " + Img1);
 
         pageNation.setCriteria(cri);
         pageNation.setTotalRowsCount(qnaService.searchTotalCount(cri));
         mv.addObject("pageNation", pageNation);
-
-        List<QnaDTO> qnaList = qnaService.criList(cri);
-
-        mv.addObject("qnaList", qnaList);
 
         mv.setViewName("/html/community/QnA/communityQnA");
         return mv;
@@ -54,9 +58,16 @@ public class QnaController {
     @GetMapping("/qnaPassword")
     public String qnaPassword(Model model, QnaDTO dto){
 
+        String Img1 = attachmentService.findReviewMainImg(dto.getQna_seq());
+        String Img2 = attachmentService.findReviewSubImg(dto.getQna_seq());
+
         QnaDTO qnaPassword = qnaService.qnaPassword(dto);
 
+        System.out.println("Img1 = " + Img1);
+
         model.addAttribute("qnaPassword", qnaPassword);
+        model.addAttribute("Img1", Img1);
+        model.addAttribute("Img2", Img2);
 
         return "html/community/QnA/communityQnAPassword";
     }
@@ -101,6 +112,7 @@ public class QnaController {
         saveAttachment2(qnamainName, "m", qna_seq);
         saveAttachment2(qnasubName, "s", qna_seq);
 
+        System.out.println("qnamainName = " + qnamainName);
         return "redirect:QnA";
 
     }

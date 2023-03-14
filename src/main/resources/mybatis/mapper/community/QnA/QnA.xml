@@ -94,6 +94,7 @@
 		select qna_seq, user_id, qna_title, qna_reg_date
 		from QnA
 		where ( qna_seq>0 <include refid="search"></include>
+		order by qna_seq desc
 		limit #{sno}, #{rowsPerPage}
 	</select>
 

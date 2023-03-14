@@ -117,6 +117,10 @@
             </p>
         </li>
     </ul>
+
+    <div class="c_write" th:if="${session.loginID == 'admin'}">
+        <a href="/community/faqInsert">글 쓰기</a>
+    </div>
 </div>
 
 

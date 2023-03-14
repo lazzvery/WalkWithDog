@@ -20,17 +20,17 @@ public class NoticeService {
     @Autowired
     private NoticeMapper mapper;
 
-    public List<NoticeDTO> noticeList(){
-        List<NoticeDTO> noticeList = new ArrayList<NoticeDTO>();
-
-        try {
-            noticeList = mapper.noticeList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return noticeList;
-    }
+//    public List<NoticeDTO> noticeList(){
+//        List<NoticeDTO> noticeList = new ArrayList<NoticeDTO>();
+//
+//        try {
+//            noticeList = mapper.noticeList();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return noticeList;
+//    }
 
     public NoticeDTO noticeDetail(NoticeDTO dto) {
         return mapper.noticeDetail(dto);

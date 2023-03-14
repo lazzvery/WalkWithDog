@@ -7,5 +7,30 @@
 	    order by faq_seq desc;
 	</select>
 
+	<insert id="faqInsert">
+		insert into faq
+		    (faq_seq,
+		     faq_title,
+		     ctgr_cd,
+		     faq_content)
+			values
+			(#{faq_seq},
+			 #{faq_title},
+			 "0021",
+			 #{faq_content})
+	</insert>
+
+	<update id="faqUpdate">
+		update faq set
+		    faa_title = #{faq_title},
+		    faq_content = #{faq_contet}
+		where faq_seq = #{faq_seq};
+	</update>
+
+	<delete id="faqDelete">
+		delete
+		from faq
+		where faq_seq = #{faq_seq};
+	</delete>
 
 </mapper>
