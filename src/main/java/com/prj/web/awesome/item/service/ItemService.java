@@ -1,17 +1,13 @@
 package com.prj.web.awesome.item.service;
 
 import com.prj.web.awesome.community.criTest.SearchCriteria;
-import com.prj.web.awesome.community.dto.NoticeDTO;
-import com.prj.web.awesome.community.dto.ReviewDTO;
 import com.prj.web.awesome.item.dto.ItemDto;
+import com.prj.web.awesome.item.dto.ItemImgDto;
 import com.prj.web.awesome.item.mapper.ItemMapper;
-import com.prj.web.awesome.item.payload.out.dto.ItemOutDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -64,5 +60,16 @@ public class ItemService {
     public int searchTotalCount(SearchCriteria cri){
         return mapper.searchTotalCount(cri);
     };
+
+
+    // 상품 검색
+    public List<ItemDto> itemSearch(String keyword) {
+        return mapper.itemSearch(keyword); //keyword 파라미터 전달
+    }
+
+
+    public List<ItemImgDto> findItemImg(String ctgr_cd) {
+        return mapper.findItemImg(ctgr_cd);
+    }
 
 }

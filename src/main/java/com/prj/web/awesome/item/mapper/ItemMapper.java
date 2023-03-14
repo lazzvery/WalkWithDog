@@ -5,7 +5,9 @@ import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.community.dto.NoticeDTO;
 import com.prj.web.awesome.community.dto.ReviewDTO;
 import com.prj.web.awesome.item.dto.ItemDto;
+import com.prj.web.awesome.item.dto.ItemImgDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.stereotype.Repository;
@@ -20,6 +22,8 @@ public interface ItemMapper {
     List<ItemDto> itemList(String ctgr_cd);
 
     List<ItemDto> itemBest(String item_best);
+
+    List<ItemImgDto> findItemImg(String ctgr_cd);
 
 
     // 신상품순 정렬
@@ -36,6 +40,8 @@ public interface ItemMapper {
 
     List<ItemDto> criList(Criteria cri);
     int criTotalCount();
+
+    List<ItemDto> itemSearch(@Param("keyword") String keyword);
 
 //    List<ItemDto> itemSearchAll(String prt_ctgr_cd);
 }

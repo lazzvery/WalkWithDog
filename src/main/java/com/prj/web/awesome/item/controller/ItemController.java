@@ -5,9 +5,11 @@ import com.prj.web.awesome.category.service.CategoryService;
 import com.prj.web.awesome.community.criTest.PageNation;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.item.dto.ItemDto;
+import com.prj.web.awesome.item.dto.ItemImgDto;
 import com.prj.web.awesome.item.payload.in.dto.ItemInDto;
 import com.prj.web.awesome.item.payload.out.dto.ItemOutDto;
 import com.prj.web.awesome.item.service.ItemService;
+import com.prj.web.awesome.user.dto.HeartItemDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,8 +18,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +92,17 @@ public class ItemController {
     }
 
 
+    @GetMapping
+    public String findItemImg(String ctgr_cd, Model model) {
+
+        List<ItemImgDto> itemImg = itemService.findItemImg("0007");
+
+        model.addAttribute("ItemImg", itemImg);
+
+        return "html/itemList/itemList";
+    }
+
+
     // BEST 카테고리 컨트롤러
     @GetMapping("/itemBest")
     public String itemBest(String item_best, Model model) {
@@ -127,5 +142,26 @@ public class ItemController {
         return "html/itemList/itemContainer";
 //        return "html/itemList/itemList";
     }
+
+
+//    item search 컨트롤러
+@GetMapping("/itemSearch")
+public String itemSearch(Model model, @RequestParam(value = "keyword", defaultValue = "") String keyword) {
+    List<ItemDto> products = itemService.itemSearch(keyword); // 상품 검색
+
+    if(products.size() == 0) { // 검색 결과값이 없는 경우
+        model.addAttribute("itemList", new ArrayList<ItemDto>());
+    } else {
+        model.addAttribute("itemList", products);
+    }
+
+    List<CategoryDTO> category = categoryService.searchCtgr("0001");
+    System.out.println("products = " + products);
+    System.out.println("keyword = " + keyword);
+    model.addAttribute("products", products); // 모델에 검색 결과를 담기
+    model.addAttribute("category", category);
+
+    return "html/itemList/itemSearch"; // 검색 결과를 출력할 뷰 이름 리턴
+}
 
 }

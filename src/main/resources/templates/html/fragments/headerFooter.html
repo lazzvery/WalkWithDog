@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <title>header,footer</title>
 </head>
-<dody>
+<body>
+<script th:inline="javascript">
+    // $('#reviewBtn').click(function () {
+    //     self.location = '/community/review?currPage=1&rowsPerPage=9'
+    //         + '&searchType=' + $('#searchType').val()
+    //         + '&keyword=' + $('#keyTest').val();
+    // }); //click
+    // currPage=1&rowsPerPage=9&searchType=검색타입&keyword=검색어와 같은 형태로 구성
+</script>
+
 <header th:fragment="header" id="headerTop">
   <div class="categoryContainer">
     <div class="subContainer">
@@ -104,14 +113,22 @@
   <!--categoryContainer-->
   <div class="fullDown"></div>
   <!-- fullDown -->
-  <div class="searchBarWrap hidden_">
-    <form class="mainSearch">
-      <!-- <h1>What are you looking for?</h1> -->
-      <input type="text" id="keyword" placeholder="상품명 검색" />
-      <input type="submit" value="" />
-      <a class="searchCloseBtn searchClose" alt="검색창닫기" title="닫기"></a>
-    </form>
-  </div>
+
+        <div class="searchBarWrap hidden_" id="searchBar">
+            <form class="mainSearch">
+
+                <!-- 검색어 -->
+                <input type="text" name="keyword" id="keyword"
+                       placeholder="상품명 검색" value=""/>
+                <!--                   th:value="${pageMaker.cri.keyword}"-->
+
+                <!-- 버튼 -->
+                <input type="submit" value="" id="searchBtn"/>
+                <a class="searchCloseBtn searchClose" alt="검색창닫기" title="닫기"></a>
+            </form>
+        </div>
+    </div>
+
   <div id="fakeHeader"></div>
 </header>
 
@@ -149,5 +166,5 @@
     <!--footerContent-->
 
   </footer>
-</dody>
+</body>
 </html>
