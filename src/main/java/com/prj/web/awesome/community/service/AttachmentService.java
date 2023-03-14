@@ -1,32 +1,27 @@
 package com.prj.web.awesome.community.service;
 
-import com.prj.web.awesome.category.dto.CategoryDTO;
 import com.prj.web.awesome.community.dto.AttachmentDTO;
-import com.prj.web.awesome.community.mapper.AttachmentMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.prj.web.awesome.community.dto.NoticeDTO;
+import com.prj.web.awesome.community.dto.QnaDTO;
+import com.prj.web.awesome.community.dto.ReviewDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class AttachmentService {
+public interface AttachmentService {
 
-    @Autowired
-    private AttachmentMapper mapper;
-
-    public List<AttachmentDTO> attachmentList(){
-        List<AttachmentDTO> attachmentList = new ArrayList<AttachmentDTO>();
-
-        try {
-            attachmentList = mapper.attachmentList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return attachmentList;
-    }
-
+    void saveFile1(AttachmentDTO attachmentDTO);
+    void saveFile2(AttachmentDTO attachmentDTO);
+    void saveFile3(AttachmentDTO attachmentDTO);
+    void saveNotice(NoticeDTO noticeDTO);
+    void saveQnA(QnaDTO qnaDTO);
+    void  saveReview(ReviewDTO reviewDTO);
+    int selectLastInsertSeq();
+    String findNoticeMainImg(int notice_seq);
+    String findQnAMainImg(int qna_seq);
+    String findQnASubImg(int qna_seq);
+    String findReviewMainImg(int review_seq);
+    String findReviewSubImg(int review_seq);
+    String findReviewInfoImg(int review_seq);
 
 }
 

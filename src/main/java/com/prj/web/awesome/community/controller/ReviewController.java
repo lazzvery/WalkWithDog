@@ -1,11 +1,11 @@
 package com.prj.web.awesome.community.controller;
 
+import com.prj.web.admin.upload.file.FileStore;
 import com.prj.web.awesome.community.criTest.PageNation;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
-import com.prj.web.awesome.community.dto.FaqDTO;
-import com.prj.web.awesome.community.dto.NoticeDTO;
-import com.prj.web.awesome.community.dto.QnaDTO;
-import com.prj.web.awesome.community.dto.ReviewDTO;
+import com.prj.web.awesome.community.dto.*;
+import com.prj.web.awesome.community.service.AttachmentService;
+import com.prj.web.awesome.community.service.CommentService;
 import com.prj.web.awesome.community.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.lang.model.SourceVersion;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -28,14 +29,28 @@ public class ReviewController {
 
     @Autowired
     private ReviewService reviewService;
+    @Autowired
+    private CommentService commentService;
+    @Autowired
+    private AttachmentService attachmentService;
+    @Autowired
+    private FileStore fileStore;
 
     @GetMapping("/review")
-    public ModelAndView review(ModelAndView mv, SearchCriteria cri, PageNation pageNation){
+    public ModelAndView review(ModelAndView mv, SearchCriteria cri, PageNation pageNation, ReviewDTO dto){
+
+        String Img1 = attachmentService.findReviewMainImg(dto.getReview_seq());
+        String Img2 = attachmentService.findReviewSubImg(dto.getReview_seq());
+        String Img3 = attachmentService.findReviewInfoImg(dto.getReview_seq());
 
         cri.setSnoEno();
 
         mv.addObject("reviewList", reviewService.searchList(cri));
         System.out.println("reviewService.searchList(cri) = " + reviewService.searchList(cri));
+
+        mv.addObject("Img1", Img1);
+        mv.addObject("Img2", Img2);
+        mv.addObject("Img3", Img3);
 
 
         pageNation.setCriteria(cri);
@@ -49,11 +64,20 @@ public class ReviewController {
     }
 
     @GetMapping("/reviewDetail")
-    public String reviewDetail(Model model, ReviewDTO dto){
+    public String reviewDetail(Model model, ReviewDTO dto, CommentDTO dto2){
+
+        String Img1 = attachmentService.findReviewMainImg(dto.getReview_seq());
+        String Img2 = attachmentService.findReviewSubImg(dto.getReview_seq());
+        String Img3 = attachmentService.findReviewInfoImg(dto.getReview_seq());
 
         ReviewDTO reviewDetail = reviewService.reviewDetail(dto);
+        List<CommentDTO> commentList = commentService.commentList(dto2);
 
         model.addAttribute("reviewDetail", reviewDetail);
+        model.addAttribute("commentList", commentList);
+        model.addAttribute("Img1", Img1);
+        model.addAttribute("Img2", Img2);
+        model.addAttribute("Img3", Img3);
 
         return "html/community/review/communityReviewDetail";
 
@@ -67,59 +91,31 @@ public String reviewInsertForm(Model model){
 }
 
     @PostMapping("/reviewInsert")
-    public String reviewInsert(ReviewDTO dto,HttpServletRequest request){
+    public String reviewInsert(ReviewDTO dto,HttpServletRequest request, ReviewFormDTO reviewFormDTO) throws IOException {
 
-        ReviewDTO reviewDTO = new ReviewDTO();
-        reviewDTO.setReview_seq(dto.getReview_seq());
-        reviewDTO.setItem_id(dto.getItem_id());
-        reviewDTO.setUser_id((String) request.getSession().getAttribute("loginID"));
-        reviewDTO.setReview_title(dto.getReview_title());
-        reviewDTO.setReview_content(dto.getReview_content());
-        reviewDTO.setReview_reg_date(dto.getReview_reg_date());
-        reviewDTO.setReview_rank(dto.getReview_rank());
-        reviewDTO.setAttachment_file_seq(dto.getAttachment_file_seq());
+        dto.setUser_id((String) request.getSession().getAttribute("loginID"));
 
-//        String realPath = request.getRealPath("/");
-//        System.out.println(realPath);
-//
-//        // 2) 위 의 값을 이용해서 실제저장위치 확인
-//        // => 개발중인지, 배포했는지 에 따라 결정
-//        if ( realPath.contains(".intellij.") )  // 개발중 (배포전: eclipse 개발환경)
-//            realPath = "/Volumes/Macintosh HD - 데이터/finalproject/src/main/resource/static/img/community/review/" ;
-//        else realPath += "resources/static/img/community/review/";
-//
-//        // ** 폴더 만들기 (File 클래스활용)
-//        // => 위의 저장경로에 폴더가 없는 경우 (uploadImage가 없는경우)  만들어 준다
-//        File f1 = new File(realPath);
-//        if ( !f1.exists() )  f1.mkdir();
-//        // => realPath 디렉터리가 존재하는지 검사 (uploadImage 폴더 존재 확인)
-//        //    존재하지 않으면 디렉토리 생성
-//
-//        // ** 기본 이미지 지정하기
-//        String  file1, file2="resources/uploadImage/basicman4.png" ;
+        String reviewmainName = fileStore.storeFile(reviewFormDTO.getImg1());
+        String reviewsubName = fileStore.storeFile(reviewFormDTO.getImg2());
+        String reviewinfoName = fileStore.storeFile(reviewFormDTO.getImg3());
 
-        // ** MultipartFile
-        // => 업로드한 파일에 대한 모든 정보를 가지고 있으며 이의 처리를 위한 메서드를 제공한다.
-        //    -> String getOriginalFilename(),
-        //    -> void transferTo(File destFile),
-        //    -> boolean isEmpty()
+        attachmentService.saveReview(dto);
+        int review_seq = attachmentService.selectLastInsertSeq();
 
-//        MultipartFile uploadfilef = dto.getUploadfilef(); // file 의 내용및 화일명 등 전송된 정보들
-//        if ( uploadfilef!=null && !uploadfilef.isEmpty() ) {
-//            // ** Image를 선택함 -> Image저장 ( 경로_realPath + 화일명 )
-//            // 1) 물리적 저장경로(file1) 에 Image 저장
-//            file1= realPath + uploadfilef.getOriginalFilename(); // 저장경로 완성
-//            uploadfilef.transferTo(new File(file1));
-//
-//            // 2) Table 저장 (file2) 준비
-//            file2="resources/uploadImage/" + uploadfilef.getOriginalFilename();
-//        }
+        saveAttachment3(reviewmainName, "m", review_seq);
+        saveAttachment3(reviewsubName, "s", review_seq);
+        saveAttachment3(reviewinfoName, "i", review_seq);
 
-        reviewService.reviewInsert(reviewDTO);
-
-        System.out.println(reviewDTO);
         return "redirect:review";
+    }
 
+    private void saveAttachment3(String name, String flag, int review_seq){
+        System.out.println("flag = " + flag);
+        AttachmentDTO attachmentDTO = new AttachmentDTO();
+        attachmentDTO.setAttachment_name(name);
+        attachmentDTO.setAttachment_flag(flag);
+        attachmentDTO.setReview_seq(review_seq);
+        attachmentService.saveFile3(attachmentDTO);
     }
 
     @GetMapping("/reviewUpdate")

@@ -1,8 +1,12 @@
 package com.prj.web.awesome.community.controller;
 
+import com.prj.web.admin.upload.file.FileStore;
 import com.prj.web.awesome.community.criTest.PageNation;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
+import com.prj.web.awesome.community.dto.AttachmentDTO;
 import com.prj.web.awesome.community.dto.QnaDTO;
+import com.prj.web.awesome.community.dto.QnaFormDTO;
+import com.prj.web.awesome.community.service.AttachmentService;
 import com.prj.web.awesome.community.service.QnaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.List;
 
 @RequestMapping(value = "/community")
@@ -23,6 +28,10 @@ public class QnaController {
 
     @Autowired
     private QnaService qnaService;
+    @Autowired
+    private AttachmentService attachmentService;
+    @Autowired
+    private FileStore fileStore;
 
     @GetMapping("/QnA")
     public ModelAndView qna(ModelAndView mv, SearchCriteria cri, PageNation pageNation) {
@@ -70,22 +79,32 @@ public class QnaController {
     }
 
     @PostMapping("/qnaInsert")
-    public String qnaInsert(QnaDTO dto,HttpServletRequest request){
+    public String qnaInsert(QnaDTO dto, HttpServletRequest request, QnaFormDTO qnaFormDTO) throws IOException  {
 
-        QnaDTO qnaDTO = new QnaDTO();
-        qnaDTO.setQna_seq(dto.getQna_seq());
-        qnaDTO.setAttachment_file_seq(dto.getAttachment_file_seq());
-        qnaDTO.setUser_id((String) request.getSession().getAttribute("loginID"));
-        qnaDTO.setQna_title(dto.getQna_title());
-        qnaDTO.setQna_content(dto.getQna_content());
-        qnaDTO.setQna_reg_date(dto.getQna_reg_date());
-        qnaDTO.setQna_password(dto.getQna_password());
-        qnaDTO.setQna_secreat(dto.getQna_secreat());
+        System.out.println("qnaFormDTO = " + qnaFormDTO);
+        System.out.println("dto = " + dto);
+        dto.setUser_id((String) request.getSession().getAttribute("loginID"));
+        System.out.println((String) request.getSession().getAttribute("loginID"));
 
-        qnaService.qnaInsert(qnaDTO);
+        String qnamainName = fileStore.storeFile(qnaFormDTO.getImg1());
+        String qnasubName = fileStore.storeFile(qnaFormDTO.getImg2());
+
+        attachmentService.saveQnA(dto);
+        int qna_seq = attachmentService.selectLastInsertSeq();
+        System.out.println("qna_seq = " + qna_seq);
+
+        saveAttachment2(qnamainName, "m", qna_seq);
+        saveAttachment2(qnasubName, "s", qna_seq);
 
         return "redirect:QnA";
 
+    }
+    private void saveAttachment2(String name, String flag, int qna_seq){
+        AttachmentDTO attachmentDTO = new AttachmentDTO();
+        attachmentDTO.setAttachment_flag(flag);
+        attachmentDTO.setAttachment_name(name);
+        attachmentDTO.setQna_seq(qna_seq);
+        attachmentService.saveFile2(attachmentDTO);
     }
 
     @GetMapping("/qnaUpdate")

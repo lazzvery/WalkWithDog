@@ -1,11 +1,13 @@
 package com.prj.web.awesome.community.dto;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
-public class QnaDTO {
+public class QnaFormDTO {
     private int qna_seq;
     private String user_id;
     private String ctgr_cd;
@@ -14,7 +16,6 @@ public class QnaDTO {
     private LocalDate qna_reg_date;
     private int qna_password;
     private String qna_secreat;
-    private String qna_reply;
-    private LocalDate qna_reply_reg_date;
-
+    private MultipartFile Img1;
+    private MultipartFile Img2;
 }

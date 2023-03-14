@@ -38,7 +38,7 @@
 </article>
 
 <main>
-    <form action="qnaInsert" method="post" class="c_form">
+    <form action="/community/qnaInsert" method="post" class="c_form" enctype="multipart/form-data">
         <ul class="c_ul">
             <li class="c_li">
                 <ul class="c_underul">
@@ -75,20 +75,14 @@
 
             <li class="c_li">
                 <ul class="c_underul">
-                    <li th:value="${qnaInsert.getAttachment_file_seq()}" class="c_underli"> 첨부파일1</li>
-                    <li class="files"><input type="file"></li>
+                    <li class="c_underli"> 첨부파일1</li>
+                    <li class="files"><input name="Img1" type="file"></li>
                 </ul>
             </li>
             <li class="c_li">
                 <ul class="c_underul">
-                    <li th:value="${qnaInsert.getAttachment_file_seq()}" class="c_underli"> 첨부파일2</li>
-                    <li class="files"><input type="file"></li>
-                </ul>
-            </li>
-            <li class="c_li">
-                <ul class="c_underul">
-                    <li th:value="${qnaInsert.getAttachment_file_seq()}" class="c_underli"> 첨부파일3</li>
-                    <li class="files"><input type="file"></li>
+                    <li name="subImg" class="c_underli"> 첨부파일2</li>
+                    <li class="files"><input name="Img2" type="file"></li>
                 </ul>
             </li>
             <li class="c_li">

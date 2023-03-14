@@ -33,32 +33,30 @@
 		where qna_seq = #{qna_seq} AND qna_password = #{qna_password};
 	</select>
 
-	<insert id="qnaInsert">
-		<selectKey keyProperty="qna_seq" resultType="int" order="BEFORE"  >
-			select IFNULL(max(qna_seq),0)+1 from QnA;
-		</selectKey>
-		insert into QnA
-		    (qna_seq,
-			 attachment_file_seq,
-		     user_id,
-		     ctgr_cd,
-			 qna_title,
-			 qna_content,
-			 qna_reg_date,
-			 qna_password,
-			 qna_secreat)
-		values(
-		    #{qna_seq},
-		    "300",
-		    #{user_id},
-		    "0018",
-		    #{qna_title},
-		    #{qna_content},
-		    now(),
-		    #{qna_password},
-		    #{qna_secreat}
-		    );
-	</insert>
+<!--	<insert id="qnaInsert">-->
+<!--		<selectKey keyProperty="qna_seq" resultType="int" order="BEFORE"  >-->
+<!--			select IFNULL(max(qna_seq),0)+1 from QnA;-->
+<!--		</selectKey>-->
+<!--		insert into QnA-->
+<!--		    (qna_seq,-->
+<!--		     user_id,-->
+<!--		     ctgr_cd,-->
+<!--			 qna_title,-->
+<!--			 qna_content,-->
+<!--			 qna_reg_date,-->
+<!--			 qna_password,-->
+<!--			 qna_secreat)-->
+<!--		values(-->
+<!--		    #{qna_seq},-->
+<!--		    #{user_id},-->
+<!--		    "0018",-->
+<!--		    #{qna_title},-->
+<!--		    #{qna_content},-->
+<!--		    now(),-->
+<!--		    #{qna_password},-->
+<!--		    #{qna_secreat}-->
+<!--		    );-->
+<!--	</insert>-->
 
 	<update id="qnaUpdate">
 		update QnA set

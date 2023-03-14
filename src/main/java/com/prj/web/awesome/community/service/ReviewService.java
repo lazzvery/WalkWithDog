@@ -52,9 +52,9 @@ public class ReviewService {
         return mapper.reviewDetail(dto);
     }
 
-    public void reviewInsert(ReviewDTO dto){
-        mapper.reviewInsert(dto);
-    }
+//    public void reviewInsert(ReviewDTO dto){
+//        mapper.reviewInsert(dto);
+//    }
 
     @Transactional
     public int reviewUpdate(ReviewDTO dto){

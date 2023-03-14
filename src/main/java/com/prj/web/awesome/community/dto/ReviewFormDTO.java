@@ -1,13 +1,13 @@
 package com.prj.web.awesome.community.dto;
 
 import lombok.Data;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Data
-public class ReviewDTO {
+public class ReviewFormDTO {
     private int review_seq;
     private int item_id;
     private String user_id;
@@ -15,8 +15,8 @@ public class ReviewDTO {
     private String review_content;
     private LocalDate review_reg_date;
     private double review_rank;
-    private List<CommentDTO> com_content;
-    private String attachment_name;
-    private String attachment_flag;
+    private MultipartFile Img1;
+    private MultipartFile Img2;
+    private MultipartFile Img3;
 
 }

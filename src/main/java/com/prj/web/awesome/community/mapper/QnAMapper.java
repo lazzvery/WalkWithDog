@@ -18,8 +18,6 @@ public interface QnAMapper {
     QnaDTO qnaPassword(QnaDTO dto);
     QnaDTO qnaDetail(QnaDTO dto);
 
-    void qnaInsert(QnaDTO dto);
-
     int qnaUpdate(QnaDTO dto);
 
     void qnaDelete(QnaDTO dto);

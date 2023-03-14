@@ -24,7 +24,7 @@ public interface ReviewMapper {
     int criTotalCount();
     ReviewDTO reviewDetail(ReviewDTO dto);
 
-    void reviewInsert(ReviewDTO dto);
+//    void reviewInsert(ReviewDTO dto);
 
     int reviewUpdate(ReviewDTO dto);
 

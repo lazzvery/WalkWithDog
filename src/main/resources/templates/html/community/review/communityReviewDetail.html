@@ -43,16 +43,14 @@
     <div class="picture_section">
         <ul class="slides">
             <li>
-                <img th:value="${reviewDetail.getAttachment_file_seq()}"
-                     src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
+                <img th:src="'../../../upload/' + ${Img1}"
+                      class="main_pic">
             </li>
             <li class="review_file1">
-                <img th:value="${reviewDetail.getAttachment_file_seq()}"
-                     src="../../../../img/community/review/reviewpic.jpg" class="main_pic">
+                <img th:src="'../../../upload/' + ${Img2}" class="main_pic">
             </li>
             <li class="review_file2">
-                <img th:value="${reviewDetail.getAttachment_file_seq()}"
-                     src="../../../../img/community/review/reviewpicsmall.jpg" class="main_pic">
+                <img th:src="'../../../upload/' + ${Img3}" class="main_pic">
             </li>
         </ul>
         <p class="controller">
@@ -70,9 +68,9 @@
                 <div class="rank">
                     평점
                 </div>
-                <span th:text="${reviewDetail.getReview_rank()}" id="review_rank" class="rank">8.9</span>
+                <span th:text="${reviewDetail.getReview_rank}" id="review_rank" class="rank">8.9</span>
             </div>
-            <div th:text="${reviewDetail.getUser_id()}" id="user_id" class="customer_section">
+            <div th:text="${reviewDetail.getUser_id}" id="user_id" class="customer_section">
                 사용자 정보
             </div>
         </div>
@@ -80,16 +78,23 @@
     <hr>
 
     <div class="review_body">
-        <div th:text="${reviewDetail.getReview_content()}" id="review_content" class="review_detail">
+        <div th:text="${reviewDetail.getCom_content()}" id="review_content" class="review_detail">
             고객님의 소중한 후기입니다
         </div>
     </div>
     <hr>
 
     <!--  댓글  -->
-    <div class="card my-4">
+    <div class="card my-4" id="resultArea">
+<!--  댓글 표시 -->
+        <ul>
+            <li th:each="comment : ${commentList}">
+                <span th:text="${comment.getCom_content()}"></span>
+            </li>
+        </ul>
+
         <h5 class="card-header">Leave a Comment:</h5>
-        <div class="card-body">
+        <div class="card-body" th:if="${session.loginID != null}">
             <form name="comment-form" id="comment-form" action method="post" autocomplete="off" onsubmit="getCommentList(event);">
                 <div class="form-group">
                     <input type="hidden" name="review_seq" th:value="${reviewDetail.review_seq}" />

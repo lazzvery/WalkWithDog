@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface CommentMapper {
 
-    List<CommentDTO> commentList() throws Exception;
+    List<CommentDTO> commentList(CommentDTO dto) throws Exception;
 
     int commentInsert(CommentDTO dto);
 

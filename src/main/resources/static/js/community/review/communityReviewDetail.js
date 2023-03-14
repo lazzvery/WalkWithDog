@@ -68,10 +68,9 @@ function getCommentList(event) {
         url: '/commentInsert',
         data: formData, // 폼 데이터
         success: function (result) {
-
+            $('#resultArea').html(result);
         },
         error: function (xhr) {
-
         }
     });
 

@@ -25,10 +25,6 @@ public class QnaService {
         return mapper.qnaDetail(dto);
     }
 
-    public void qnaInsert(QnaDTO dto){
-        mapper.qnaInsert(dto);
-    }
-
     @Transactional
     public int qnaUpdate(QnaDTO dto){
         return mapper.qnaUpdate(dto);

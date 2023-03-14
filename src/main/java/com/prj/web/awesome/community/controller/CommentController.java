@@ -19,7 +19,7 @@ public class CommentController {
     @GetMapping("/commentList") //댓글 리스트
     private String commentList(Model model, CommentDTO dto) {
 
-        List<CommentDTO> commentList = commentService.commentList();
+        List<CommentDTO> commentList = commentService.commentList(dto);
 
         model.addAttribute("commentList", commentList);
 
@@ -27,7 +27,7 @@ public class CommentController {
     }
 
     @PostMapping("/commentInsert") //댓글 작성
-    private String commentInsert(CommentDTO dto, HttpServletRequest request) throws Exception{
+    private String commentInsert(CommentDTO dto, HttpServletRequest request, Model model) throws Exception{
 
         String loginID = (String) request.getSession().getAttribute("loginID");
         System.out.println("loginID = " + loginID);
@@ -38,8 +38,10 @@ public class CommentController {
 
         commentService.commentInsert(dto);
 
+        model.addAttribute("commentList", commentService.commentList(dto));
+        model.addAttribute("review_seq", dto.getReview_seq());
 
-        return "redirect:reviewDetail?review_seq=" + dto.getReview_seq();
+        return "html/community/review/communityReviewComment";
     }
 
     @RequestMapping("/commentUpdate") //댓글 수정

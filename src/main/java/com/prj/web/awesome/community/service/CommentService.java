@@ -16,11 +16,11 @@ public class CommentService {
     @Autowired
     private CommentMapper mapper;
 
-    public List<CommentDTO> commentList(){
+    public List<CommentDTO> commentList(CommentDTO dto){
         List<CommentDTO> commentList = new ArrayList<CommentDTO>();
 
         try {
-            commentList = mapper.commentList();
+            commentList = mapper.commentList(dto);
         } catch (Exception e) {
             e.printStackTrace();
         }
