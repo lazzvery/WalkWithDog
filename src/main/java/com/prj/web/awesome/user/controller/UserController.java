@@ -213,6 +213,13 @@ public class UserController {
 
     @GetMapping("/findid")
     public String findId(Model model){
+
+        List<UserDTO> selectList = service.selectList();
+
+        model.addAttribute("selectList", selectList);
+
+        System.out.println("selectList = " + selectList);
+
         return "html/user/userFindId";
     }
 

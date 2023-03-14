@@ -127,7 +127,7 @@ li strong:hover {
 }
 
 /* BEST */
-.categoryContainer .list2 strong {
+.categoryContainer .list2 a {
   color: orange;
   opacity: .9;
 }

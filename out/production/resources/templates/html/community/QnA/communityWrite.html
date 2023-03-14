@@ -54,12 +54,11 @@
                 <ul class="c_underul">
                     <li class="c_underli">
                         <select name="QnA_type">
-                            <option value="goods">[상품] 상품관련 문의 드립니다.</option>
-                            <option value="transfor">[배송] 배송관련 문의 드립니다.</option>
-                            <option value="moneycheck">[입금확인] 입금관련 문의 드립니다.</option>
-                            <option value="ordercancle">[주문취소] 주문취소 문의 드립니다.</option>
-                            <option value="refund">[환불] 환불 문의 드립니다.</option>
-                            <option value="etc">[기타] 기타 문의 드립니다.</option>
+                            <option value="0018" th:value="${qnaInsert.getCtgr_cd()}">[주문] 주문관련 문의 드립니다.</option>
+                            <option value="0019" th:value="${qnaInsert.getCtgr_cd()}">[입금] 입금관련 문의 드립니다.</option>
+                            <option value="0020" th:value="${qnaInsert.getCtgr_cd()}">[배송] 배송관련 문의 드립니다.</option>
+                            <option value="0021" th:value="${qnaInsert.getCtgr_cd()}">[교환/반품] 교환 및 반품 문의 드립니다.</option>
+                            <option value="0022" th:value="${qnaInsert.getCtgr_cd()}">[회원] 회원관련 문의 드립니다.</option>
                         </select>
                     </li>
                 </ul>
@@ -113,19 +112,6 @@
                         <input name="qna_password" c1ass="c_password" autocomplete="off" maxlength="6"
                                oninvalid="this.setCustomValidity(' ')" type="password" required
                                style="outline: none; background-color: rgba(186,170,216,0.2); padding: 6px;border: none;">
-                    </li>
-                </ul>
-            </li>
-            <li class="c_li">
-                <ul class="c_underul">
-                    <li class="c_underli">
-                        비밀글 설정
-                    </li>
-                    <li>
-                        <input type="radio" name="secreat_type" id="open">
-                        <label for="open">공개글</label>
-                        <input type="radio" name="secreat_type" id="secreat" checked>
-                        <label for="secreat">비밀글</label>
                     </li>
                 </ul>
             </li>

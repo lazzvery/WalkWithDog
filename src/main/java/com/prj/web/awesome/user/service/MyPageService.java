@@ -1,5 +1,8 @@
 package com.prj.web.awesome.user.service;
 
+import com.prj.web.awesome.community.criTest.Criteria;
+import com.prj.web.awesome.community.criTest.SearchCriteria;
+import com.prj.web.awesome.order.dto.OrderListDTO;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.CouponInfoDTO;
@@ -61,4 +64,23 @@ public class MyPageService {
     public void updateCouponQuantity(String coupon_code) {
         mapper.updateCouponQuantity(coupon_code);
     }
+
+    // orderList ( 사용자 id별 상품 리스트 )
+    public List<OrderListDTO> orderList(String user_id){
+        return mapper.orderList(user_id);
+    }
+
+    // ** SearchCriteria PageList
+    public List<OrderListDTO> searchList(SearchCriteria cri){
+        return mapper.searchList(cri);
+    };
+
+    public int searchTotalCount(SearchCriteria cri){
+        return mapper.searchTotalCount(cri);
+    };
+
+    // ** Criteria PageList
+    public List<OrderListDTO> criList(Criteria cri){
+        return mapper.criList(cri);
+    };
 }

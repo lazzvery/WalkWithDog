@@ -16,5 +16,15 @@
 		where ctgr_cd = #{ctgr_cd}
 	</select>
 
+	<select id="itemBest" parameterType="String" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		select
+		    *
+		from item
+		where item_best = #{item_best}
+		order by item_id
+		asc;
+	</select>
+
+
 
 </mapper>

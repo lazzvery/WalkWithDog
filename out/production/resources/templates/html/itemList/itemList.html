@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/itemList/itemList.css">
     <link rel="stylesheet" href="/common/css/indexCommon.css">
     <script src="/js/jquery/jquery-3.6.3.min.js"></script>
-    <script src="/js/header.js"></script>
+<!--    <script src="/js/header.js"></script>-->
     <script defer src="/js/itemList/itemList.js"></script>
     <script defer src="/js/index.js"></script>
     <script defer src="/js/sub.js"></script>
@@ -56,20 +56,11 @@
                             <ul class="pageList">
                                 <!-- 작은 카테고리-->
                                 <li class="active" th:each="category : ${categoryDto}">
-<!--                                    <a href="#" th:href="@{/item/list2?ctgr_cd={ctgr_cd}(ctgr_cd='0005')}">NEW</a>-->
-<!--                                        <a class="itemSub" th:href="@{/item/list2(ctgr_cd=${category.ctgr_cd})}"-->
-<!--                                           th:text="${category.ctgr_nm}">-->
                                     <a class="itemSub" th:href="@{/item/list2(ctgr_cd=${category.ctgr_cd})}"
-                                       th:text="${category.ctgr_nm}"
-                                       onclick="handleClick(event)">
+                                       th:text="${category.ctgr_nm}">
                                     </a>
-<!--                                           th:text="${num.index}">-->
-                                            <!--                                        <a class="itemSub1" th:href="@{/item/list2(ctgr_cd=${category.ctgr_cd})}"-->
-
-
 
                                 </li>
-
                             </ul>
                         </div>
 

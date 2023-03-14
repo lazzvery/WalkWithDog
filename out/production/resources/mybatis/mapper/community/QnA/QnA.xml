@@ -51,7 +51,7 @@
 		    #{qna_seq},
 		    "300",
 		    #{user_id},
-		    "0016",
+		    "0018",
 		    #{qna_title},
 		    #{qna_content},
 		    now(),

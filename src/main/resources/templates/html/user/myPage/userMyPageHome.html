@@ -31,7 +31,7 @@
             </div>
             <ul class="pageNav">
                 <li><a href="#">홈</a></li>
-                <li><a href="/user/myPage/order">주문내역</a></li>
+                <li><a th:href="@{/user/myPage/order(user_id=${session.loginID},currPage=1,rowsPerPage=9)}">주문내역</a></li>
                 <li><a href="/user/myPage/coupon">쿠폰</a></li>
                 <li><a href="/user/heart">좋아요</a></li>
                 <li><a href="/user/myPage/modify">회원정보</a></li>

@@ -38,13 +38,14 @@ public class UserService {
     public int userInsert(UserDTO dto){
         return mapper.userInsert(dto);
     };
-//
+
 //    // 4. update
     public int userUpdate(UserDTO dto) { return mapper.userUpdate(dto);};
-//
+
 //    // 5. delete
     public int userDelete(UserDTO dto){
         return mapper.userDelete(dto);
     };
+
 
 }

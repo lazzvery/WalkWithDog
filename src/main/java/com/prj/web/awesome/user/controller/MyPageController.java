@@ -1,23 +1,31 @@
 package com.prj.web.awesome.user.controller;
 
+import com.prj.web.awesome.community.criTest.PageNation;
+import com.prj.web.awesome.community.criTest.SearchCriteria;
+import com.prj.web.awesome.item.service.ItemService;
+import com.prj.web.awesome.order.dto.CouponJoinInfoDTO;
+import com.prj.web.awesome.order.service.OrderDetailService;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.service.MyPageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RequestMapping(value = "/user/myPage")
 @Controller
 public class MyPageController {
 
-    @Autowired
-    MyPageService service;
+    private final MyPageService service;
+    private final OrderDetailService dservice;
+    private final ItemService iservice;
 
 //    @GetMapping("/myHome")
 //    public String myHome(Model model){
@@ -142,11 +150,52 @@ public class MyPageController {
         return mv;
     } //update
 
+
     @GetMapping("/coupon")
-    public String coupon(Model model){ return "html/user/myPage/userMyPageCoupon"; }
+    public String findCoupon(Model model, HttpSession session){
+
+        String userId = (String) session.getAttribute("loginID");
+
+        List<CouponJoinInfoDTO> couponList = dservice.findCouponList(userId);
+
+        model.addAttribute("couponList",couponList);
+
+
+
+        return "html/user/myPage/userMyPageCoupon";
+    }
+
+//    @GetMapping("/order")
+//    public String orderList(Model model, HttpSession session){
+//
+//        String userId = (String) session.getAttribute("loginID");
+//
+//        List<OrderListDTO> oderDTO = service.orderList(userId);
+//
+//        model.addAttribute("orderList",oderDTO);
+//
+//        System.out.println("byDTO = " + oderDTO);
+//
+//        return "html/user/myPage/userMyPageOrder";
+//    }
 
     @GetMapping("/order")
-    public String order(Model model){ return "html/user/myPage/userMyPageOrder"; }
+    public ModelAndView orderList(ModelAndView mv, SearchCriteria cri, PageNation pageNation){
+        cri.setSnoEno();
+        mv.addObject("orderList", service.searchList(cri));
+        System.out.println("reviewService.searchList(cri) = " + service.searchList(cri));
+        System.out.println("cri = " + cri);
+
+
+        pageNation.setCriteria(cri);
+        pageNation.setTotalRowsCount(service.searchTotalCount(cri));
+        mv.addObject("pageNation", pageNation);
+        System.out.println("pageNation = " + pageNation);
+
+        mv.setViewName("html/user/myPage/userMyPageOrder");
+
+        return mv;
+    }
 
 
 
