@@ -32,7 +32,7 @@ public interface MyPageMapper {
     // update
     int addrUpdate(AddrDTO dto);
 
-    @Select("select * from addr where user_id=#{user_id} and addr_default='N'")
+    @Select("select * from addr where user_id=#{user_id} and addr_default='Y'")
     AddrDTO findAddr(String user_id);
 
     // addrDelete

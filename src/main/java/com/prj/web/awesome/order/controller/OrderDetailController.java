@@ -44,6 +44,7 @@ public class OrderDetailController {
         userDTO.setUser_id(userId);
         UserDTO user = uservice.userSelectOne(userDTO); // 유저 조회
         AddrDTO addr = mservice.findAddr(userId);  // 배송지 조회
+        log.info("addr={}", addr);
         List<CouponJoinInfoDTO> couponList = dservice.findCouponList(userId);  // 쿠폰 조회
 
         int price = 0;
@@ -74,6 +75,7 @@ public class OrderDetailController {
     public Map<String, Object> sendItems(@RequestBody List<OrderDetailItemDTO> items, HttpSession session) {
         Map<String, Object> result = new HashMap<>();
         List<OrderDetailItemDTO> itemList = new ArrayList<>();
+        log.info("items={}", items);
 
         if (items != null && items.size() > 0) {
             for (OrderDetailItemDTO item : items) {
