@@ -83,4 +83,5 @@ public class MyPageService {
     public List<OrderListDTO> criList(Criteria cri){
         return mapper.criList(cri);
     };
+
 }

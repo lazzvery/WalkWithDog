@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../static/css/admin/community/faq.css" />
+    <link rel="stylesheet" href="../../../../css/admin/community/faq.css" />
     <script defer src="../../javascript/index.js"></script>
 
     <title>상품정보</title>
@@ -54,16 +54,16 @@
     <div id="contents">
         <ul class="topMenu">
             <li>
-                <a href="./notice.html">공지사항</a>
+                <a href="/admin/community/notice">공지사항</a>
             </li>
             <li>
-                <a href="./faq.html">FAQ</a>
+                <a href="/admin/community/faq">FAQ</a>
             </li>
             <li>
-                <a href="./qna.html">Q&A</a>
+                <a href="/admin/community/qna">Q&A</a>
             </li>
             <li>
-                <a href="./review.html">리뷰</a>
+                <a href="/admin/community/review">리뷰</a>
             </li>
         </ul>
 
@@ -71,22 +71,20 @@
             <caption>FAQ 관리</caption>
 
             <tr>
+                <th>번호</th>
                 <th>카테고리</th>
+                <th>제목</th>
                 <th>질문</th>
-                <th>답변</th>
             </tr>
 
-            <tr>
-                <td>카테고리</td>
-                <td>질문</td>
-                <td>답변</td>
+            <tr th:each="faqList : ${faqList}">
+                <td th:text="${faqList.faq_seq}"></td>
+                <td th:text="${faqList.ctgr_cd}"></td>
+                <td th:text="${faqList.faq_title}"></td>
+                <td th:text="${faqList.faq_content}"></td>
             </tr>
 
-            <tr>
-                <td>카테고리</td>
-                <td>질문</td>
-                <td>답변</td>
-            </tr>
+
 
 
         </table>

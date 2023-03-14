@@ -10,36 +10,7 @@
 		select * from user where user_id=#{user_id};
 	</select>
 
-	<insert id="userInsert">
-		insert into user values(
-								   #{user_id},
-								   #{user_password},
-								   #{user_name},
-								   #{user_email},
-								   #{user_email_check},
-								   #{user_phone},
-								   #{user_sns_check},
-								   #{user_gen},
-								   #{user_birthday},
-								   #{user_rid},
-								   "n" )
-	</insert>
 
-	<update id="userUpdate">
-		update user set
-
-						user_password = CASE when '' THEN user_password ELSE #{user_password} END,
-						user_phone=#{user_phone},
-						user_sns_check=#{user_sns_check},
-						user_email=#{user_email},
-						user_email_check=#{user_email_check},
-						user_gen=#{user_gen},
-						user_birthday=#{user_birthday},
-						user_rid=#{user_rid}
-
-		where user_id=#{user_id};
-
-	</update>
 
 	<delete id="userDelete">
 		delete from user where user_id=#{user_id};

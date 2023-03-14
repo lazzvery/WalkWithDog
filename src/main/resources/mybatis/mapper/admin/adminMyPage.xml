@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.prj.web.admin.user.mapperInterface.AdminMyPageMapper">
+	<select id="addrList" resultType="com.prj.web.awesome.user.dto.AddrDTO">
+		select * from addr;
+	</select>
+
+	<select id="couponList" resultType="com.prj.web.awesome.user.dto.CouponDTO">
+		select * from coupon;
+	</select>
+
+<!--	<select id="userSelectOne" resultType="com.prj.web.awesome.user.dto.UserDTO">-->
+<!--		select * from user where user_id=#{user_id};-->
+<!--	</select>-->
+
+
+
+<!--	<delete id="userDelete">-->
+<!--		delete from user where user_id=#{user_id};-->
+<!--	</delete>-->
+
+
+
+</mapper>

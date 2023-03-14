@@ -44,7 +44,7 @@
                             <label th:for="'agreeCheck' + ${i.index}" th:id="'agreeCheck' + ${i.index}"></label>
                         </div>
                         <a href="#" class="likelistimgbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
-                            <img src="../../../img/item/item1.jpg" alt="아르르 꿀잠 방석" class="likelistimg">
+                            <img th:src="'../../../upload/' + ${heart.img_name}" alt="아르르 꿀잠 방석" class="likelistimg">
                         </a>
                         <a href="#" class="likelisttextbox" th:href="|@{/item/itemDetail/{itemId}(itemId=${heart.item_id})}|">
                             <strong th:text="${heart.item_name}">상품명</strong>

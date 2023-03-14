@@ -20,11 +20,83 @@
 		select
 		    *
 		from item
-		where item_best = #{item_best}
+		where item_best = 'Y'
 		order by item_id
 		asc;
 	</select>
 
+<!--신상품순-->
+	<select id="itemOrderNew" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		select *
+		from item
+		where ctgr_cd=#{ctgr_cd}
+		order by item_reg_date
+		desc;
+	</select>
 
+<!--인기상품순-->
+	<select id="itemOrderRank" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		select *
+		from item
+		where ctgr_cd=#{ctgr_cd}
+		order by item_best
+		desc;
+	</select>
+
+<!--낮은가격순-->
+	<select id="itemOrderLow" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		select *
+		from item
+		where ctgr_cd=#{ctgr_cd}
+		order by item_price
+		asc;
+	</select>
+
+<!--높은가격순-->
+	<select id="itemOrderHigh" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		select *
+		from item
+		where ctgr_cd=#{ctgr_cd}
+		order by item_price
+		desc;
+	</select>
+
+<!-- search -->
+	<sql id="search">
+		<if test="keyword!=null">
+			<bind name="keyVal" value="'%'+keyword+'%'"/>
+		</if>
+		<choose>
+			<when test="searchType=='new'.toString()">
+				and item_reg_date like #{keyVal} )
+			</when>
+			<when test="searchType=='rank'.toString()">
+				and item_best like #{keyVal} )
+			</when>
+<!--			<when test="searchType=='r'.toString()">-->
+<!--				and item_reg_date like #{keyVal} )-->
+<!--			</when>-->
+			<otherwise> )</otherwise>
+		</choose>
+	</sql>
+
+	<select id="searchList" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		select item_id
+		,ctgr_cd
+		,item_name
+		,item_price
+		,item_amount
+		,item_reg_date
+		,item_data_del_yn
+		,item_best
+		from item
+		where ( ctgr_cd>0 <include refid="search"></include>
+		limit #{sno}, #{rowsPerPage}
+	</select>
+
+	<select id="searchTotalCount" resultType="int">
+		select count(*) from item
+		where ( ctgr_cd>0 <include refid="search"></include>
+	</select>
 
 </mapper>

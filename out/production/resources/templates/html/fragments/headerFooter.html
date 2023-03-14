@@ -11,9 +11,10 @@
       <div class="headerLogo">
         <a></a>
         <a href="/home">
-          <img id="logoImg" src="/img/logo_1.png">
+          <img id="logoImg" src="/img/1.png">
         </a>
       </div>
+
       <!--subContainer-->
       <ul class="category list1">
         <div class="subList">
@@ -47,7 +48,7 @@
 
       <ul class="category list2">
         <div class="subList">
-          <li class="subTitle"><a th:href="@{/item/list2/itemBest}">BEST</a></li>
+          <li class="subTitle"><a th:href="@{/itemBest}">BEST</a></li>
           <div class="categoryHover"></div>
         </div>
       </ul>
@@ -95,6 +96,7 @@
 
         </th:block>
           <li th:if="${session.loginID != null}"><a href="/user/logout" title="로그아웃">logout</a></li>
+          <li th:if="${session.loginID == 'admin'}"><a href="/admin/main" title="관리자">Admin</a></li>
           <li th:if="${session.loginID != null}"><a href="/user/myPage/myHome" title="마이페이지">My Page</a></li>
       </ul>
     </div>
@@ -107,7 +109,7 @@
     <form class="mainSearch">
       <!-- <h1>What are you looking for?</h1> -->
       <input type="text" id="keyword" placeholder="상품명 검색" />
-      <input type="submit" value="" />
+      <input type="submit" value="keyword" />
       <a class="searchCloseBtn searchClose" alt="검색창닫기" title="닫기"></a>
     </form>
   </div>
