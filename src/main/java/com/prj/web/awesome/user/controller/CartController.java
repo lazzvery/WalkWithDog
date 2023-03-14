@@ -80,6 +80,14 @@ public class CartController {
         cartDTO.setItem_id(itemId);
         cartDTO.setCart_amount(selected);   // 값 저장
 
+        List<CartItemDTO> cartItem = cservice.findCartItem(userId);
+
+        if(cartItem.size() >= 10) {
+            result.put("success", true);
+            result.put("message", "장바구니는 10개까지 등록 가능합니다.");
+            return result;
+        }
+
         if (userId != null) {
             if (cservice.findCart(itemId, userId) == null) {
                 cservice.saveCart(cartDTO);
@@ -101,7 +109,14 @@ public class CartController {
     @PostMapping
     public Map<String, Object> saveCarts(@RequestBody List<String> items, HttpSession session) {
         String userId = (String) session.getAttribute("loginID");
+        List<CartItemDTO> cartItem = cservice.findCartItem(userId);
         Map<String, Object> result = new HashMap<>();
+
+        if((items.size() + cartItem.size()) >= 10) {
+            result.put("success", true);
+            result.put("message", "장바구니는 10개까지 등록 가능합니다.");
+            return result;
+        }
 
         if (items != null && items.size() > 0) {    // 좋아요 -> 장바구니 저장
             for (String itemId : items) {

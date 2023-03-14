@@ -63,9 +63,14 @@ public class QnaController {
     @PostMapping("/qnaDetail")
     public String qnaDetail(Model model, QnaDTO dto){
 
+        String Img1 = attachmentService.findReviewMainImg(dto.getQna_seq());
+        String Img2 = attachmentService.findReviewSubImg(dto.getQna_seq());
+
         QnaDTO qnaDetail = qnaService.qnaDetail(dto);
 
         model.addAttribute("qnaDetail", qnaDetail);
+        model.addAttribute("Img1", Img1);
+        model.addAttribute("Img2", Img2);
 
         return "html/community/QnA/communityQnADetail";
     }
