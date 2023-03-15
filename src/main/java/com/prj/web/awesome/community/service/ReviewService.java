@@ -18,17 +18,17 @@ public class ReviewService {
     @Autowired
     private ReviewMapper mapper;
 
-    public List<ReviewDTO> reviewList(){
-        List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
-
-        try {
-            reviewList = mapper.reviewList();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return reviewList;
-    }
+//    public List<ReviewDTO> reviewList(){
+//        List<ReviewDTO> reviewList = new ArrayList<ReviewDTO>();
+//
+//        try {
+//            reviewList = mapper.reviewList();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return reviewList;
+//    }
 
     // ** SearchCriteria PageList
     public List<ReviewDTO> searchList(SearchCriteria cri){

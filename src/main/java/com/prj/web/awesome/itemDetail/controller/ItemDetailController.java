@@ -1,6 +1,9 @@
 package com.prj.web.awesome.itemDetail.controller;
 
 import com.prj.web.admin.upload.service.ImageService;
+import com.prj.web.awesome.community.criTest.SearchCriteria;
+import com.prj.web.awesome.community.dto.ReviewDTO;
+import com.prj.web.awesome.community.service.ReviewService;
 import com.prj.web.awesome.item.cri.CriteriaQna;
 import com.prj.web.awesome.item.cri.PageNationQna;
 import com.prj.web.awesome.item.dto.ItemQnaDTO;
@@ -29,10 +32,17 @@ public class ItemDetailController {
     private final ItemQnaService qservice;
     private final HeartService hservice;
     private final ImageService iservice;
+    private final ReviewService reviewService;
 
     @GetMapping("/{itemId}")
     public String searchItem(@PathVariable("itemId") int itemId, @RequestParam(defaultValue = "1") int currPage,
-                             Model model, HttpSession session){
+                             Model model, HttpSession session, SearchCriteria cri){
+
+        cri.setSnoEno();
+
+        model.addAttribute("reviewList", reviewService.searchList(cri));
+
+        System.out.println("reviewService.searchList(cri) = " + reviewService.searchList(cri));
 
         String mainImg = iservice.findMainImg(itemId);
         List<String> subImg = iservice.findSubImg(itemId);
@@ -62,6 +72,7 @@ public class ItemDetailController {
         model.addAttribute("mainImg", mainImg);
         model.addAttribute("subImg", subImg);
         model.addAttribute("infoImg", infoImg);
+
 
         return "html/item/itemDetail";
 

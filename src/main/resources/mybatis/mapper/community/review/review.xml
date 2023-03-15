@@ -47,7 +47,7 @@
 	</sql>
 
 	<select id="searchList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
-		select r.review_seq, r.user_id, r.review_title, r.review_reg_date, r.review_rank, a.attachment_name
+		select r.review_seq, r.item_id, r.user_id, r.review_title, r.review_reg_date, r.review_rank, a.attachment_name
 		from review r
 		left outer join attachment a on r.review_seq = a.review_seq
 		where ( r.review_seq>0 and a.attachment_flag = 'm' <include refid="search"></include>
