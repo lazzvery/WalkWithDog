@@ -32,11 +32,11 @@
                 <h2>MY PAGE</h2>
             </div>
             <ul class="pageNav">
-                <li><a href="../../home/home.html">홈</a></li>
-                <li><a href="../../order/order.html">주문내역</a></li>
-                <li><a href="../../coupon/coupon.html">쿠폰</a></li>
-                <li><a href="../../mileage/mileage.html">적립금</a></li>
-                <li><a href="../../modify/modify.html">회원정보</a></li>
+                <li><a href="/user/myPage/myHome">홈</a></li>
+                <li><a th:href="@{/user/myPage/order(user_id=${session.loginID},currPage=1,rowsPerPage=9,searchType='all')}">주문내역</a></li>
+                <li><a href="/user/myPage/coupon">쿠폰</a></li>
+                <li><a href="/user/myPage/modify">회원정보</a></li>
+                <li><a href="/user/heart">좋아요</a></li>
             </ul>
         </div>
 

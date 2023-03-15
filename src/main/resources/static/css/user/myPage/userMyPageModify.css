@@ -3,10 +3,6 @@
     padding: 0;
 }
 
-body{
-    background: linear-gradient( to bottom,rgba(186,170,215,0.5) 0%, rgba(186,170,215,0.5) 14.4%,white 14.4%, white 100% );
-}
-
 ul,
 li {
     list-style: none;
@@ -20,7 +16,8 @@ a {
 
 
 .myPageModifyContainer {
-    max-width: 1000px;
+    max-width: 1024px;
+    background-color: white;
     margin: 0 auto;
     padding: 0 10px;
     padding-bottom: 50px;
@@ -257,6 +254,7 @@ opacity: 0.4;
     gap: 5px;
     color: crimson;
     display: none;
+    line-height: 15px;
 }
 
 
@@ -395,12 +393,15 @@ opacity: 0.4;
 
 
 
-
-
+.modifyForm .modifySubmit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .modifyForm .modifySubmit button,
 .modifyForm .modifySubmit a{
-    width: 100%;
+    width: 70%;
     padding: 16px 0;
     font-size: 17px;
 }

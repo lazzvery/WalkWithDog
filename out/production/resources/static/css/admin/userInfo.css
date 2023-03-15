@@ -86,7 +86,7 @@ header {
 /* topMenu */
 .topMenu {
     padding: 25px 0 25px 20px;
-    background-color: #dfe9e8;
+    background-color: #baaad780;
     display: flex;
 }
 
@@ -96,7 +96,7 @@ header {
 
 .topMenu li a {
     display: block;
-    color: #477A7B;
+    color: #8E83A9;
 }
 
 

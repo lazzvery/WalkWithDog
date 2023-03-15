@@ -1,9 +1,11 @@
 package com.prj.web.awesome.user.controller;
 
+import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.order.dto.CouponJoinInfoDTO;
+import com.prj.web.awesome.order.dto.OrderListDTO;
 import com.prj.web.awesome.order.service.OrderDetailService;
-import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
+import com.prj.web.awesome.user.service.MyPageService;
 import com.prj.web.awesome.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +29,8 @@ public class UserController {
     @Autowired
     OrderDetailService dservice;
     @Autowired
+    MyPageService mservice;
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     // 유저 리스트
@@ -42,7 +46,7 @@ public class UserController {
 
 
     @GetMapping("/myPage/myHome")
-    public ModelAndView detail(HttpServletRequest request, ModelAndView mv, UserDTO dto, CouponDTO cdto) {
+    public ModelAndView detail(HttpServletRequest request, HttpSession session, ModelAndView mv, UserDTO dto, OrderListDTO odto, SearchCriteria cri) {
 
         // => 처리순서 : parameter확인: 없으면 -> session 확인 -> Update요청여부 확인
         if ( dto.getUser_id()==null || dto.getUser_id().length()<1 ) {
@@ -57,14 +61,21 @@ public class UserController {
         mv.addObject("userInfo", dto);
 
 
-        String userId = (String) request.getAttribute("loginID");
-
+        String userId = (String) session.getAttribute("loginID");
+        //쿠폰 리스트
         List<CouponJoinInfoDTO> couponList = dservice.findCouponList(userId);
-
         mv.addObject("couponList",couponList);
 
+
+        cri.setUser_id(userId);
+        List<OrderListDTO> orderList= mservice.searchList(cri);
+        mv.addObject("orderList",orderList);
+
+
+
+        System.out.println("odto = " + odto);
         System.out.println(dto);
-        System.out.println(dto.getUser_id());
+        System.out.println(orderList);
 
         mv.setViewName("html/user/myPage/userMyPageHome");
 

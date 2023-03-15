@@ -1,8 +1,6 @@
-let form = document.querySelector(".joinForm"),
-    idValue = document.getElementById('user_id'),
+let form = document.querySelector(".modifyForm"),
     passwordValue = document.getElementById('user_password'),
     password2Value = document.getElementById('user_password2'),
-    nameValue = document.getElementById('user_name'),
     phoneValue = document.getElementById('user_phone'),
     emailValue = document.getElementById('user_email'),
     joinInput = document.querySelector('.join');
@@ -18,19 +16,6 @@ form.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault(); // 폼 제출 이벤트 기본 동작 막기
     }
-});
-
-
-idValue.addEventListener("input",() => {
-
-    if (!idRegex.test(idValue.value)) {
-        idValue.nextElementSibling.style.display = "block";
-        joinInput.type = "button";
-    }else{
-        idValue.nextElementSibling.style.display = "none";
-        joinInput.type = "submit";
-    }
-    // document.getElementById('idDup').focus();
 });
 
 passwordValue.addEventListener("input",() => {
@@ -51,17 +36,6 @@ password2Value.addEventListener("input",() => {
         joinInput.type = "button";
     }else{
         password2Value.nextElementSibling.style.display = "none";
-        joinInput.type = "submit";
-    }
-});
-
-nameValue.addEventListener("input",() => {
-
-    if (!nameRegex.test(nameValue.value)) {
-        nameValue.nextElementSibling.style.display = "block";
-        joinInput.type = "button";
-    }else{
-        nameValue.nextElementSibling.style.display = "none";
         joinInput.type = "submit";
     }
 });

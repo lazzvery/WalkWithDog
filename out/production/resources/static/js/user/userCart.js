@@ -115,6 +115,11 @@ function deleteCarts(event) {
         items.push(checkbox.value);
     });
 
+    if(items == null || items.length == 0) {
+        alert("상품을 선택해 주세요!");
+        return false;
+    }
+
     $.ajax({
         type: "DELETE",
         url: '/user/cart/',
@@ -133,15 +138,20 @@ function deleteCarts(event) {
 function deleteAllCart(event) {
     event.preventDefault();
 
-    if(!confirm("장바구니 목록을 전부 삭제하시겠습니까?")) {
-        return;
-    }
-
     let items = [];
     const checkboxes = document.querySelectorAll('input[name="agreeCheck"]');
     checkboxes.forEach((checkbox) => {
         items.push(checkbox.value);
     });
+
+    if(items == null || items.length == 0) {
+        alert("상품을 선택해 주세요!");
+        return false;
+    }
+
+    if(!confirm("장바구니 목록을 전부 삭제하시겠습니까?")) {
+        return;
+    }
 
     $.ajax({
         type: "DELETE",
@@ -177,6 +187,11 @@ function cartToOrder(event) {
     });
 
     console.log(items);
+
+    if(items == null || items.length == 0) {
+        alert("상품을 선택해 주세요!");
+        return false;
+    }
 
     $.ajax({
         type: "POST",
@@ -215,6 +230,11 @@ function cartToOrderAll(event) {
     });
 
     console.log(items);
+
+    if(items == null || items.length == 0) {
+        alert("상품을 선택해 주세요!");
+        return false;
+    }
 
     $.ajax({
         type: "POST",

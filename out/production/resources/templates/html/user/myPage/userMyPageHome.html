@@ -46,14 +46,14 @@
                     <a href="/user/myPage/addrList">배송 주소록 관리</a>
                 </div>
                 <ul class="myPageHomeTopInfo">
-                    <li class="img">
-                        <a href="/user/myPage/modify">
-                            <img src="../../../../img/icon/myPageHomeImg.png" alt="myPageProfile" />
-                        </a>
-                    </li>
-                    <li class="infoText">
-                        <span>우리 아이</span>등록하기
-                    </li>
+<!--                    <li class="img">-->
+<!--                        <a href="/user/myPage/modify">-->
+<!--                            <img src="../../../../img/icon/myPageHomeImg.png" alt="myPageProfile" />-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="infoText">-->
+<!--                        <span>우리 아이</span>등록하기-->
+<!--                    </li>-->
                     <li>
                         <p>
                             <th:block th:text="${userInfo.user_name}"></th:block>님, ㅎㅇㅎㅇ
@@ -66,8 +66,8 @@
                 <div class="leftTop">
                     <div class="coupon">
                         <a href="/user/myPage/coupon">
-                            <span>사용가능한쿠폰</span>
-                            <h3>1장</h3>
+                            <span>사용가능한쿠폰 종류</span>
+                            <h3 th:text="${couponList.size()}+ '장'"></h3>
                         </a>
                     </div>
                     <!--
@@ -90,7 +90,7 @@
                         </h3>
                         <ul>
                             <li>
-                                <span>0</span>
+                                <span th:text="${#lists.size(orderList)}"></span>
                                 <strong>입금전</strong>
                             </li>
                             <li>

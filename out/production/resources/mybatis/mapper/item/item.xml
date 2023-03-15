@@ -2,6 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prj.web.awesome.item.mapper.ItemMapper">
+
+<!-- 카테고리 리스트 -->
 	<select id="itemList" resultType="com.prj.web.awesome.item.dto.ItemDto">
 		select
 			item_id
@@ -16,49 +18,103 @@
 		where ctgr_cd = #{ctgr_cd}
 	</select>
 
+<!--	SELECT-->
+<!--	t.item_id-->
+<!--	,t.ctgr_cd-->
+<!--	,t.item_name-->
+<!--	,t.item_price-->
+<!--	,t.item_amount-->
+<!--	,t.item_reg_date-->
+<!--	,t.item_data_del_yn-->
+<!--	,t.item_best-->
+<!--	FROM item t, image g-->
+<!--	WHERE t.item_id = g.item_id-->
+<!--	AND	  t.ctgr_cd = #{ctgr_cd}-->
+<!--	AND	  g.img_div_flag = 'm'-->
+
+<!--	select-->
+<!--	item_id-->
+<!--	,ctgr_cd-->
+<!--	,item_name-->
+<!--	,item_price-->
+<!--	,item_amount-->
+<!--	,item_reg_date-->
+<!--	,item_data_del_yn-->
+<!--	,item_best-->
+<!--	from item-->
+<!--	where ctgr_cd = #{ctgr_cd}-->
+
+
+
+<!-- 베스트 아이템 -->
+<!--	<select id="itemBest" parameterType="String" resultType="com.prj.web.awesome.item.dto.ItemDto">-->
+<!--		select-->
+<!--		    *-->
+<!--		from item-->
+<!--		where item_best = 'Y'-->
+<!--		order by item_id-->
+<!--		asc;-->
+<!--	</select>-->
 	<select id="itemBest" parameterType="String" resultType="com.prj.web.awesome.item.dto.ItemDto">
-		select
-		    *
-		from item
-		where item_best = 'Y'
-		order by item_id
-		asc;
+		select i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
+		where item_best = 'Y' and img.img_div_flag = 'm'
+		order by i.item_id asc;
 	</select>
 
 <!--신상품순-->
+<!--	<select id="itemOrderNew" resultType="com.prj.web.awesome.item.dto.ItemDto">-->
+<!--		select *-->
+<!--		from item-->
+<!--		where ctgr_cd=#{ctgr_cd}-->
+<!--		order by item_reg_date-->
+<!--		desc;-->
+<!--	</select>-->
 	<select id="itemOrderNew" resultType="com.prj.web.awesome.item.dto.ItemDto">
-		select *
-		from item
-		where ctgr_cd=#{ctgr_cd}
-		order by item_reg_date
-		desc;
+		select i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
+		where ctgr_cd=#{ctgr_cd} and img.img_div_flag = 'm'
+		order by item_reg_date desc;
 	</select>
 
 <!--인기상품순-->
+<!--	<select id="itemOrderRank" resultType="com.prj.web.awesome.item.dto.ItemDto">-->
+<!--		select *-->
+<!--		from item-->
+<!--		where ctgr_cd=#{ctgr_cd}-->
+<!--		order by item_best-->
+<!--		desc;-->
+<!--	</select>-->
 	<select id="itemOrderRank" resultType="com.prj.web.awesome.item.dto.ItemDto">
-		select *
-		from item
-		where ctgr_cd=#{ctgr_cd}
-		order by item_best
-		desc;
+		select i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
+		where ctgr_cd=#{ctgr_cd} and img.img_div_flag = 'm'
+		order by (i.item_best = 'Y') DESC;
 	</select>
 
 <!--낮은가격순-->
+<!--	<select id="itemOrderLow" resultType="com.prj.web.awesome.item.dto.ItemDto">-->
+<!--		select *-->
+<!--		from item-->
+<!--		where ctgr_cd=#{ctgr_cd}-->
+<!--		order by item_price-->
+<!--		asc;-->
+<!--	</select>-->
 	<select id="itemOrderLow" resultType="com.prj.web.awesome.item.dto.ItemDto">
-		select *
-		from item
-		where ctgr_cd=#{ctgr_cd}
-		order by item_price
-		asc;
+		select i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
+		where ctgr_cd=#{ctgr_cd} and img.img_div_flag = 'm'
+		order by item_price asc;
 	</select>
 
 <!--높은가격순-->
+<!--	<select id="itemOrderHigh" resultType="com.prj.web.awesome.item.dto.ItemDto">-->
+<!--		select *-->
+<!--		from item-->
+<!--		where ctgr_cd=#{ctgr_cd}-->
+<!--		order by item_price-->
+<!--		desc;-->
+<!--	</select>-->
 	<select id="itemOrderHigh" resultType="com.prj.web.awesome.item.dto.ItemDto">
-		select *
-		from item
-		where ctgr_cd=#{ctgr_cd}
-		order by item_price
-		desc;
+		select i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
+		where ctgr_cd=#{ctgr_cd} and img.img_div_flag = 'm'
+		order by item_price desc;
 	</select>
 
 <!-- search -->
@@ -97,6 +153,12 @@
 	<select id="searchTotalCount" resultType="int">
 		select count(*) from item
 		where ( ctgr_cd>0 <include refid="search"></include>
+	</select>
+
+
+	<select id="itemSearch" resultType="com.prj.web.awesome.item.dto.ItemDto">
+		SELECT i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
+		WHERE img.img_div_flag = 'm' and item_name LIKE CONCAT('%', #{keyword}, '%')
 	</select>
 
 </mapper>

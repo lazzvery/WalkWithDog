@@ -19,7 +19,7 @@ console.log(slideCount);
 // ----------------------------------- 이미지 슬라이드
 
  function moveSlide(num) {
-   slides.style.left = -num * 100 + "%";
+   slides.style.left = -num * 100 + "vw";
    currentIdx = num;
  }
 

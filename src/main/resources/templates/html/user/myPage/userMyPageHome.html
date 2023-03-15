@@ -33,8 +33,8 @@
                 <li><a href="#">홈</a></li>
                 <li><a th:href="@{/user/myPage/order(user_id=${session.loginID},currPage=1,rowsPerPage=9,searchType='all')}">주문내역</a></li>
                 <li><a href="/user/myPage/coupon">쿠폰</a></li>
-                <li><a href="/user/heart">좋아요</a></li>
                 <li><a href="/user/myPage/modify">회원정보</a></li>
+                <li><a href="/user/heart">좋아요</a></li>
             </ul>
         </div>
 
@@ -66,8 +66,8 @@
                 <div class="leftTop">
                     <div class="coupon">
                         <a href="/user/myPage/coupon">
-                            <span>사용가능한쿠폰</span>
-                            <h3 ></h3>
+                            <span>사용가능한쿠폰 종류</span>
+                            <h3 th:text="${couponList.size()}+ '장'"></h3>
                         </a>
                     </div>
                     <!--
@@ -90,7 +90,7 @@
                         </h3>
                         <ul>
                             <li>
-                                <span>0</span>
+                                <span th:text="${#lists.size(orderList)}"></span>
                                 <strong>입금전</strong>
                             </li>
                             <li>

@@ -405,7 +405,7 @@ main hr {
 }
 
 .review_starbox {
-    height: 250px;
+    height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -423,6 +423,65 @@ main hr {
     font-size: 1.1em;
     margin-top: 25px;
     cursor: pointer;
+}
+
+.c_reviewlist {
+    display: flex;
+}
+
+.c_reviewlist ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 50px;
+    justify-content: center;
+}
+
+.c_reviewlist li {
+    border: 1px solid rgb(223, 228, 234);
+    border-radius: 4px;
+}
+
+
+.c_reviewlist li .c_img_container {
+    display: flex;
+    justify-content: center;
+}
+
+.c_img_container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.c_reviewlist li a {
+    font-size: initial;
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.c_reviewlist li .c_username {
+    padding: 0 10px 0;
+    color: gray;
+}
+
+.c_review_target {
+    display: flex;
+}
+
+.c_review_target .c_user_rank {
+    font-size: 12px;
+    padding: 0px 10px 10px;
+}
+
+.c_review_targetimg {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
 }
 
 /* ================================================================= */

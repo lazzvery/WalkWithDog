@@ -39,9 +39,6 @@
 
   <a class="toTop hidden_"> </a>
 
-
-
-
   <!-- ---------------- <header> 모듈 ------------------ -->
   <header th:replace="html/fragments/headerFooter :: header"></header>
   <!-- ---------------- <header> 모듈 ------------------ -->
@@ -88,7 +85,7 @@
         <li th:each="list:${reviewList}">
           <div th:text="${list.getReview_seq()}" style="display: none"></div>
           <div class="c_img_container">
-            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
+            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" alt="1번">
           </div>
           <div>
             <a th:text="${list.getReview_content()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">고객님의 소중한 후기입니다.</a>

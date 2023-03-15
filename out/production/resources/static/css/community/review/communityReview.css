@@ -25,7 +25,7 @@ body {
 }
 
 .c_community_head {
-  color: #BAAAD7;
+  color: white;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -278,6 +278,8 @@ body {
   width: 300px;
   height: 300px;
   border-radius: 4px;
+  object-fit: cover;
+
 }
 
 .c_reviewlist li a {
@@ -305,6 +307,8 @@ body {
 .c_review_targetimg {
   width: 50px;
   height: 50px;
+  object-fit: cover;
+
 }
 
 .c_page {
@@ -379,3 +383,4 @@ body {
 /*    width: 250px;*/
 /*  }*/
 /*}*/
+

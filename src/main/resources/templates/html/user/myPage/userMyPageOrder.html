@@ -50,18 +50,18 @@
                 <li><a href="/user/myPage/myHome">홈</a></li>
                 <li><a href="#">주문내역</a></li>
                 <li><a href="/user/myPage/coupon">쿠폰</a></li>
-                <li><a href="/user/heart">좋아요</a></li>
                 <li><a href="/user/myPage/modify">회원정보</a></li>
+                <li><a href="/user/heart">좋아요</a></li>
             </ul>
         </div>
 
         <div class="myPageOrderContainer">
             <h2>주문내역</h2>
 
-            <div class="menu">
-                <a href="#">주문내역조희 [0]</a>
-                <a href="#">취소/반품/교환 내역 [0]</a>
-            </div>
+<!--            <div class="menu">-->
+<!--                <a href="#">주문내역조희 [0]</a>-->
+<!--                <a href="#">취소/반품/교환 내역 [0]</a>-->
+<!--            </div>-->
 
             <form class="orderHistoryForm">
                 <ul>
@@ -79,10 +79,9 @@
                         <div class="c_reviewtools">
                             <select name="searchType" id="searchType">
                                 <option value="all" th:selected="${pageNation.cri.searchType==null}">전체 주문처리상태</option>
-                                <option value="D" th:selected="${pageNation.cri.searchType=='D'}" id="shipped_before">입금전</option>
-                                <option value="R" th:selected="${pageNation.cri.searchType=='R'}" id="shipped_standby">배송준비중</option>
-                                <option value="J" th:selected="${pageNation.cri.searchType=='J'}" id="shipped_begin">배송중</option>
-                                <option value="W" th:selected="${pageNation.cri.searchType=='W'}" id="shipped_complete">배송완료</option>
+                                <option value="D" th:selected="${pageNation.cri.searchType=='D'}" id="shipped_standby">배송준비중</option>
+                                <option value="begin" th:selected="${pageNation.cri.searchType=='begin'}" id="shipped_begin">배송중</option>
+                                <option value="complete" th:selected="${pageNation.cri.searchType=='complete'}" id="shipped_complete">배송완료</option>
                                 <option value="cancel" th:selected="${pageNation.cri.searchType=='cancel'}" id="order_cancel">취소</option>
                                 <option value="exchange" th:selected="${pageNation.cri.searchType=='exchange'}" id="order_exchange">교환</option>
                                 <option value="return" th:selected="${pageNation.cri.searchType=='return'}" id="order_return">반품</option>
@@ -91,23 +90,23 @@
                             <button type="button" id="orderSearch">Search</button>
                         </div>
                     </li>
-                    <li>
-                        <span class="period">
-                            <a href="#none" class="btnLine" days="00">오늘</a>
-                            <a href="#none" class="btnLine" days="07">1주일</a>
-                            <a href="#none" class="btnLine" days="30">1개월</a>
-                            <a href="#none" class="btnLine" days="90">3개월</a>
-                            <a href="#none" class="btnLine" days="180">6개월</a>
-                        </span>
-                    </li>
-                    <li class="calendar">
-                        <input type="date">
-                        ~
-                        <input type="date">
-                    </li>
-                    <li>
-                        <button>조회</button>
-                    </li>
+<!--                    <li>-->
+<!--                        <span class="period">-->
+<!--                            <a href="#none" class="btnLine" days="00">오늘</a>-->
+<!--                            <a href="#none" class="btnLine" days="07">1주일</a>-->
+<!--                            <a href="#none" class="btnLine" days="30">1개월</a>-->
+<!--                            <a href="#none" class="btnLine" days="90">3개월</a>-->
+<!--                            <a href="#none" class="btnLine" days="180">6개월</a>-->
+<!--                        </span>-->
+<!--                    </li>-->
+<!--                    <li class="calendar">-->
+<!--                        <input type="date">-->
+<!--                        ~-->
+<!--                        <input type="date">-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <button>조회</button>-->
+<!--                    </li>-->
                 </ul>
             </form>
 
@@ -116,7 +115,7 @@
                     기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.
                 </li>
                 <li>
-                    주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.
+                    상품명을 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.
                 </li>
             </ul>
 
@@ -124,7 +123,7 @@
                 <thead>
                     <tr>
                         <td>주문일자[주문번호]</td>
-                        <td>주문 건</td>
+                        <td>상품명</td>
                         <td>상품가격</td>
                         <td>결제수단</td>
                         <td>주문처리상태</td>
@@ -134,11 +133,11 @@
 
                 <tbody>
                     <tr th:each="orderList : ${orderList}">
-                        <td th:text="${orderList.order_date}"></td>
+                        <td th:text="${orderList.order_date}+' ['+${orderList.order_code}+']'"></td>
                         <td th:text="${orderList.item_name} + ' 외 ' + ${orderList.order_count} + '건'"></td>
-                        <td th:text="${orderList.order_price}"></td>
-                        <td th:text="${orderList.order_payment}"></td>
-                        <td th:text="${orderList.order_status}"></td>
+                        <td th:text="${orderList.order_price}+'원'"></td>
+                        <td th:if="${orderList.order_payment == 'card'}" th:text="'카드'"></td>
+                        <td th:if="${orderList.order_status == 'D'}" th:text="'배송준비중'"></td>
                         <td th:text="${orderList.order_claim == null ? '-' : orderList.order_claim  } "></td>
 
                     </tr>
