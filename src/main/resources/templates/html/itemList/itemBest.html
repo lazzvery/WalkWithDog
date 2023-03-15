@@ -27,7 +27,7 @@
         $('#listSort').change(function () {
             // alert('성공 => ' + $('#listSort').val());
             $.ajax({
-                url: '/item/list2/'+$('#listSort').val(),
+                url: '/itemBest/'+$('#listSort').val(),
                 // url: '/item/list2/new',
                 type: 'GET',
                 data: {
@@ -98,7 +98,7 @@
                                 <!-- list wrap -->
                                 <form action=#>
                                     <label>상품정렬 : </label>
-                                    <select name="listSort">
+                                    <select id="listSort" name="listSort">
                                         <option value="new">신상품</option>
                                         <option value="best">인기상품</option>
                                         <option value="high">낮은가격</option>
@@ -115,8 +115,8 @@
                         <div class="product" th:each="item:${itemDto}">
                             <input type="hidden" th:value="${ctgr_cd}" id="hidden_ctgr_cd">
                             <div class="productImgList">
-                                    <a href="/item/itemDetail?item_id=10000000" class="img1"><img
-                                            src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id})}" class="img1"><img
+                                            th:src="'../../../upload/' + ${item.img_name}" alt="상품1" class="prdImg1"></a>
 <!--                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img-->
 <!--                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>-->
                                     <h1 class="name">
