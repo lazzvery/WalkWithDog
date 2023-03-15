@@ -1,15 +1,15 @@
 package com.prj.web.awesome.item.controller;
 
+import com.prj.web.admin.upload.file.FileStore;
+import com.prj.web.admin.upload.service.ImageService;
 import com.prj.web.awesome.category.dto.CategoryDTO;
 import com.prj.web.awesome.category.service.CategoryService;
 import com.prj.web.awesome.community.criTest.PageNation;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.item.dto.ItemDto;
-import com.prj.web.awesome.item.dto.ItemImgDto;
 import com.prj.web.awesome.item.payload.in.dto.ItemInDto;
 import com.prj.web.awesome.item.payload.out.dto.ItemOutDto;
 import com.prj.web.awesome.item.service.ItemService;
-import com.prj.web.awesome.user.dto.HeartItemDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +34,14 @@ public class ItemController {
     private ItemService itemService;
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private FileStore fileStore;
+
+//    @Autowired
+    private final ImageService iservice;
+
+
 
     @GetMapping("/list")
     public List<ItemOutDto> itemList(ItemInDto inDto) {
@@ -63,6 +69,7 @@ public class ItemController {
 
     // 카테고리별 리스트 컨트롤러
     @RequestMapping("/item/list2")
+//    public String searchCategory(@PathVariable("itemId") int itemId, String ctgr_cd, Model model, SearchCriteria cri, PageNation pageNation) {
     public String searchCategory(String ctgr_cd, Model model, SearchCriteria cri, PageNation pageNation) {
 
 //        cri.setSnoEno();
@@ -76,6 +83,10 @@ public class ItemController {
 //        pageNation.setTotalRowsCount(itemService.searchTotalCount(cri));
 //        mv.addObject("pageNation", pageNation);
 
+//        String mainImg = iservice.findMainImg(itemId);
+//        List<String> subImg = iservice.findSubImg(itemId);
+//        List<String> infoImg = iservice.findInfoImg(itemId);    // 이미지 src
+
 
         List<ItemDto> itemDto = itemService.itemList(ctgr_cd);
         List<CategoryDTO> categoryDTO = categoryService.searchCtgr("0001");
@@ -85,6 +96,10 @@ public class ItemController {
         model.addAttribute("categoryDto", categoryDTO);
         System.out.println(categoryDTO);
 
+        model.addAttribute("mainImg", mainImg);
+        model.addAttribute("subImg", subImg);
+        model.addAttribute("infoImg", infoImg);
+
 //        mv.setViewName("html/itemList/itemList");
 //        return mv;
 //
@@ -92,15 +107,15 @@ public class ItemController {
     }
 
 
-    @GetMapping
-    public String findItemImg(String ctgr_cd, Model model) {
-
-        List<ItemImgDto> itemImg = itemService.findItemImg("0007");
-
-        model.addAttribute("ItemImg", itemImg);
-
-        return "html/itemList/itemList";
-    }
+//    @GetMapping
+//    public String findItemImg(String prt_ctgr_cd, Model model) {
+//
+//        List<ItemImgDto> itemImg = itemService.findItemImg("0001");
+//
+//        model.addAttribute("ItemImg", itemImg);
+//
+//        return "html/itemList/itemList";
+//    }
 
 
     // BEST 카테고리 컨트롤러

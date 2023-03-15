@@ -68,8 +68,8 @@ public class ItemService {
     }
 
 
-    public List<ItemImgDto> findItemImg(String ctgr_cd) {
-        return mapper.findItemImg(ctgr_cd);
-    }
+//    public List<ItemImgDto> findItemImg(String prt_ctgr_cd) {
+//        return mapper.findItemImg(prt_ctgr_cd);
+//    }
 
 }

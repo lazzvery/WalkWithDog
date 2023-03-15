@@ -17,6 +17,8 @@ public class ItemImgDto {
 
     private String ctgr_cd;
 
+//    private String prt_ctgr_cd;
+
     private String item_name;
 
 }

@@ -23,7 +23,7 @@ public interface ItemMapper {
 
     List<ItemDto> itemBest(String item_best);
 
-    List<ItemImgDto> findItemImg(String ctgr_cd);
+//    List<ItemImgDto> findItemImg(String prt_ctgr_cd);
 
 
     // 신상품순 정렬
