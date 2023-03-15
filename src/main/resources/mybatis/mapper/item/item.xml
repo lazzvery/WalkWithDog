@@ -85,8 +85,8 @@
 <!--	</select>-->
 	<select id="itemOrderRank" resultType="com.prj.web.awesome.item.dto.ItemDto">
 		select i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
-		where ctgr_cd=#{ctgr_cd} and item_best = 'Y' and img.img_div_flag = 'm'
-		order by i.item_id asc;
+		where ctgr_cd=#{ctgr_cd} and img.img_div_flag = 'm'
+		order by (i.item_best = 'Y') DESC;
 	</select>
 
 <!--낮은가격순-->
