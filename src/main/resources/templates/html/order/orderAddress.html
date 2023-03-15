@@ -46,7 +46,7 @@
                         <!-- <td>아카데미</td> -->
                         <td th:text="'(' + ${addrList.addr_postcode} + ') ' + ${addrList.addr_addr} + ' ' + ${addrList.addr_addr2}"></td>
                         <td>
-                            <a th:href="@{/user/myPage/addrUpdate(addr_seq=${addrList.addr_seq})}">
+                            <a th:href="@{/user/myPage/addrUpdate(addr_seq=${addrList.addr_seq})}" target="_blank">
                                 <img src="../../../img/icon/addressUpdate.png" alt="update">
                             </a>
                         </td>
