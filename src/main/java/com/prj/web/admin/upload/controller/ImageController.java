@@ -34,7 +34,7 @@ public class ImageController {
         log.info("category={}", category);
         model.addAttribute("category", category);
 
-        return "html/test/itemInsert";
+        return "html/admin/item/imageInsert";
     }
 
     @PostMapping("/image/upload")

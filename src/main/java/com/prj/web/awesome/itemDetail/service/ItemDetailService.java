@@ -23,4 +23,7 @@ public class ItemDetailService {
     public List<ItemDetailDto> findList() {
         return mapper.findList();
     }
+    public List<ItemDto> findCateList(String ctgr_cd) {
+        return mapper.findCateList(ctgr_cd);
+    }
 }

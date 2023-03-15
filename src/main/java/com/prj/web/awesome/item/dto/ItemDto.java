@@ -28,4 +28,6 @@ public class ItemDto {
     private String item_data_del_yn;
 
     private String item_best;
+
+    private String img_name;
 }
