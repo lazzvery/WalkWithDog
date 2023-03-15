@@ -1,5 +1,6 @@
 package com.prj.web.awesome.itemDetail.controller;
 
+import com.prj.web.admin.upload.file.FileStore;
 import com.prj.web.admin.upload.service.ImageService;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.community.dto.ReviewDTO;
@@ -13,11 +14,14 @@ import com.prj.web.awesome.itemDetail.service.ItemDetailService;
 import com.prj.web.awesome.user.service.HeartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +37,7 @@ public class ItemDetailController {
     private final HeartService hservice;
     private final ImageService iservice;
     private final ReviewService reviewService;
+    private final FileStore fileStore;
 
     @GetMapping("/{itemId}")
     public String searchItem(@PathVariable("itemId") int itemId, @RequestParam(defaultValue = "1") int currPage,
@@ -74,6 +79,12 @@ public class ItemDetailController {
 
         return "html/item/itemDetail";
 
+    }
+
+    @ResponseBody
+    @GetMapping("/images/{filename}")
+    public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
+        return new UrlResource("file:" + fileStore.getFullPath(filename));
     }
 
     @ResponseBody
