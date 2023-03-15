@@ -9,11 +9,13 @@
 <body>
 
 <!--  댓글  -->
-<div class="card my-4" >
+<div class="card my-4" >댓글
   <!--  댓글 표시 -->
   <ul >
-    <li th:each="comment : ${commentList}">
+    <li style="margin-bottom: 10px" th:each="comment : ${commentList}">
       <span th:text="${comment.getCom_content()}"></span>
+      <hr style="opacity: .6">
+
     </li>
   </ul>
 
@@ -24,7 +26,7 @@
         <input type="hidden" name="review_seq" th:value="${review_seq}" />
         <textarea name="com_content" class="form-control" rows="3"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">댓글달기</button>
     </form>
   </div>
 </div>
