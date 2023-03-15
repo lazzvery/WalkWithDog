@@ -34,14 +34,14 @@
         <div class="img_container">
             <div class="mainImage_container">
                 <div class="mainImgbox">
-                    <img th:src="'../../../upload/' + ${mainImg}" alt="상품1 메인이미지" class="main_image main1">
-                    <img th:src="'../../../upload/' + ${mainImg}" alt="상품1 메인이미지" class="main_image main2 img_hidden">
+                    <img th:src="|/item/itemDetail/images/${mainImg}|" alt="상품1 메인이미지" class="main_image main1">
+                    <img th:src="|/item/itemDetail/images/${mainImg}|" alt="상품1 메인이미지" class="main_image main2 img_hidden">
                 </div>
             </div>
 
             <div class="subImage_container">
-                <img th:src="'../../../upload/' + ${mainImg}" alt="상품1 서브이미지_1" class="sub_image">
-                <img th:each="sub : ${subImg}" th:src="'../../../upload/' + ${sub}" alt="상품1 서브이미지_2" class="sub_image">
+                <img th:src="|/item/itemDetail/images/${mainImg}|" alt="상품1 서브이미지_1" class="sub_image">
+                <img th:each="sub : ${subImg}" th:src="|/item/itemDetail/images/${sub}|" alt="상품1 서브이미지_2" class="sub_image">
             </div>
         </div>
 
@@ -122,7 +122,7 @@
         </div>
 
         <div class="product_detailInfo" id="detailInfo">
-            <img th:each="info : ${infoImg}" th:src="'../../../upload/' + ${info}" alt="상세정보1">
+            <img th:each="info : ${infoImg}" th:src="|/item/itemDetail/images/${info}|" alt="상세정보1">
         </div>
     </div>
 
@@ -193,11 +193,11 @@
         <!--        </ul>-->
         <div class="review_starbox">
             <div class="c_reviewlist">
-                <ul>
-                    <li th:each="list:${reviewList}" th:if="${list.getItem_id() == item.getItem_id()}">
+                <ul th:each="list:${reviewList}">
+                    <li>
                         <div th:text="${list.getReview_seq()}" style="display: none"></div>
                         <div class="c_img_container">
-                            <img style="height: ;" th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
+                            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
                         </div>
                         <div>
                             <a th:text="${list.getReview_content()}"
@@ -207,8 +207,6 @@
                                th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
                         </div>
                         <div class="c_review_target">
-                            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="2번"
-                                 class="c_review_targetimg">
                             <div>
                                 <a th:text="${list.getReview_title()}"
                                    th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">[BEST] 워킹
@@ -219,13 +217,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div th:if="${list.getItem_id() != item.getItem_id()}">
-                            <span>리뷰가 없습니다.</span>
-                            <strong><a href="/community/reviewInsert">리뷰를 작성해 보세요!</a></strong>
-                            <button>상품 리뷰 작성하기</button>
-                        </div>
                     </li>
                 </ul>
+                <div th:if="${#lists.isEmpty(reviewList)}" >
+                    <div class="emptyReview">
+                        <span>리뷰가 없습니다.</span>
+                        <strong>리뷰를 작성해 보세요!</strong>
+                    </div>
+                    <a th:href="@{/community/reviewInsert}" class="moveReviewWrite">상품 리뷰 작성하기</a>
+                </div>
             </div>
         </div>
     </div>

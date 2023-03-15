@@ -58,7 +58,7 @@
   </article>
   <main>
     <div>
-      <div class="c_goodshead">상품후기</div>
+<!--      <div class="c_goodshead">상품후기</div>-->
     </div>
 
     <hr class="c_reviewhr">
@@ -71,7 +71,7 @@
           <option value="r" th:selected="${pageNation.cri.searchType=='r'}">RegDate</option>
         </select>
         <input type="text" name="keyword" id="keyTest" th:value="${pageNation.cri.keyword}">
-        <button id="reviewBtn">Search</button>
+        <button id="reviewBtn"></button>
 <!--        <input class="input_search" type="search" maxlength="20" required>-->
 <!--        <i class="fa-sharp fa-solid fa-magnifying-glass c_search" id="searchBtn></i>-->
       <div class="c_reviewtoolsleft">
@@ -85,16 +85,18 @@
         <li th:each="list:${reviewList}">
           <div th:text="${list.getReview_seq()}" style="display: none"></div>
           <div class="c_img_container">
-            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" alt="1번">
+            <a th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" class="clickImg">
+              <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
+            </a>
           </div>
           <div>
             <a th:text="${list.getReview_content()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">고객님의 소중한 후기입니다.</a>
-            <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
+            <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
           </div>
           <div class="c_review_target">
-            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="2번" class="c_review_targetimg">
+            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" style="border-radius: 50%" alt="2번" class="c_review_targetimg">
             <div>
-              <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
+              <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
               <div class="c_user_rank">
                 <span>평점</span>
                 <strong th:text="${list.review_rank}">9.4</strong>

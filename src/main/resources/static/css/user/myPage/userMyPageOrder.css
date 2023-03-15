@@ -148,6 +148,9 @@ a {
 .myPageOrderContainer table tbody td{
     padding:10px 0;
 }
+.myPageOrderContainer table tbody td.aLink{
+    text-decoration: underline;
+}
 
 .myPageOrderContainer table td:nth-child(3){
     text-align: right;

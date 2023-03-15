@@ -46,7 +46,7 @@ public class UserController {
 
 
     @GetMapping("/myPage/myHome")
-    public ModelAndView detail(HttpServletRequest request, HttpSession session, ModelAndView mv, UserDTO dto, OrderListDTO odto, SearchCriteria cri) {
+    public ModelAndView detail(HttpServletRequest request, HttpSession session, ModelAndView mv, UserDTO dto, SearchCriteria cri) {
 
         // => 처리순서 : parameter확인: 없으면 -> session 확인 -> Update요청여부 확인
         if ( dto.getUser_id()==null || dto.getUser_id().length()<1 ) {
@@ -72,8 +72,6 @@ public class UserController {
         mv.addObject("orderList",orderList);
 
 
-
-        System.out.println("odto = " + odto);
         System.out.println(dto);
         System.out.println(orderList);
 

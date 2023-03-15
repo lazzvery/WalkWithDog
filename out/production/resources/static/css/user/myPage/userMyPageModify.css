@@ -254,6 +254,7 @@ opacity: 0.4;
     gap: 5px;
     color: crimson;
     display: none;
+    line-height: 15px;
 }
 
 
@@ -392,12 +393,15 @@ opacity: 0.4;
 
 
 
-
-
+.modifyForm .modifySubmit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .modifyForm .modifySubmit button,
 .modifyForm .modifySubmit a{
-    width: 100%;
+    width: 70%;
     padding: 16px 0;
     font-size: 17px;
 }

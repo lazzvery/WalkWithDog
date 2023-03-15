@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../../common/css/header.css">
+    <link rel="stylesheet" href="../../../../common/css/footer.css">
+    <link rel="stylesheet" href="../../../../common/css/indexCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
+    <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageOrder.css">
+    <script src="../../../../js/jquery/jquery-3.6.3.min.js"></script>
+    <script defer src="../../../../js/index.js"></script>
+
+    <title>order</title>
+</head>
+
+<body>
+
+    <!-- ---------------- 버튼 ------------------ -->
+    <a class="toTop hidden_" href="#"> </a>
+    <!-- ---------------- 버튼 ------------------ -->
+
+    <!-- ---------------- <header> 모듈 ------------------ -->
+    <header th:replace="html/fragments/headerFooter :: header"></header>
+    <!-- ---------------- <header> 모듈 ------------------ -->
+
+    <div class="myPageContainer">
+        <div class="pageTopContainer">
+            <div class="pageTitle">
+                <h2>MY PAGE</h2>
+            </div>
+            <ul class="pageNav">
+                <li><a href="/user/myPage/myHome">홈</a></li>
+                <li><a th:href="@{/user/myPage/order(user_id=${session.loginID},currPage=1,rowsPerPage=9,searchType='all')}">주문내역</a></li>
+                <li><a href="/user/myPage/coupon">쿠폰</a></li>
+                <li><a href="/user/myPage/modify">회원정보</a></li>
+                <li><a href="/user/heart">좋아요</a></li>
+            </ul>
+        </div>
+
+        <div class="myPageOrderContainer" style="padding-bottom: 100px">
+            <h2>주문내역</h2>
+
+            <!--            <div class="menu">-->
+            <!--                <a href="#">주문내역조희 [0]</a>-->
+            <!--                <a href="#">취소/반품/교환 내역 [0]</a>-->
+            <!--            </div>-->
+
+
+
+            <table>
+                <thead>
+                <tr>
+                    <td>상품명</td>
+                    <td>상품수량</td>
+                    <td>상품가격</td>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="orderList : ${orderDetail}">
+                    <td th:text="${orderList.item_id}"></td>
+                    <td th:text="${orderList.item_count}"></td>
+                    <td th:text="${orderList.item_price}+'원'"></td>
+
+                </tr>
+                </tbody>
+
+            </table>
+
+            <div class="noOrder" th:if="${orderDetail.size() == 0}">
+                <p style="font-size: 14px">
+                    주문 내역이 없습니다.
+                </p>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!--------------------- <footer> 모듈 --------------------->
+    <footer th:replace="html/fragments/headerFooter :: footer"></footer>
+    <!--------------------- <footer> 모듈 --------------------->
+
+</body>
+
+
+</html>

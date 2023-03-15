@@ -2,6 +2,7 @@ package com.prj.web.awesome.user.service;
 
 import com.prj.web.awesome.community.criTest.Criteria;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
+import com.prj.web.awesome.order.dto.OrderDetailDTO;
 import com.prj.web.awesome.order.dto.OrderListDTO;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
@@ -73,15 +74,19 @@ public class MyPageService {
     // ** SearchCriteria PageList
     public List<OrderListDTO> searchList(SearchCriteria cri){
         return mapper.searchList(cri);
-    };
+    }
 
     public int searchTotalCount(SearchCriteria cri){
         return mapper.searchTotalCount(cri);
-    };
+    }
 
     // ** Criteria PageList
     public List<OrderListDTO> criList(Criteria cri){
         return mapper.criList(cri);
-    };
+    }
+
+
+
+    public List<OrderDetailDTO> orderDetail(int order_code){ return mapper.orderDetail(order_code);}
 
 }
