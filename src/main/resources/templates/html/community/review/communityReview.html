@@ -92,7 +92,7 @@
             <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
           </div>
           <div class="c_review_target">
-            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="2번" class="c_review_targetimg">
+            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" style="border-radius: 50%" alt="2번" class="c_review_targetimg">
             <div>
               <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
               <div class="c_user_rank">
