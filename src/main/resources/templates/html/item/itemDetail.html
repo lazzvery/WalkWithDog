@@ -193,11 +193,11 @@
         <!--        </ul>-->
         <div class="review_starbox">
             <div class="c_reviewlist">
-                <ul>
-                    <li th:each="list:${reviewList}" th:if="${list.getItem_id() == item.getItem_id()}">
+                <ul th:each="list:${reviewList}">
+                    <li>
                         <div th:text="${list.getReview_seq()}" style="display: none"></div>
                         <div class="c_img_container">
-                            <img style="height: ;" th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
+                            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
                         </div>
                         <div>
                             <a th:text="${list.getReview_content()}"
@@ -207,8 +207,6 @@
                                th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
                         </div>
                         <div class="c_review_target">
-                            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="2번"
-                                 class="c_review_targetimg">
                             <div>
                                 <a th:text="${list.getReview_title()}"
                                    th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">[BEST] 워킹
@@ -219,13 +217,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div th:if="${list.getItem_id() != item.getItem_id()}">
-                            <span>리뷰가 없습니다.</span>
-                            <strong><a href="/community/reviewInsert">리뷰를 작성해 보세요!</a></strong>
-                            <button>상품 리뷰 작성하기</button>
-                        </div>
                     </li>
+<!--                    <li th:unless="${list.getItem_id() == item.getItem_id()}">-->
+<!--                        <span>리뷰가 없습니다.</span>-->
+<!--                        <strong>리뷰를 작성해 보세요!</strong>-->
+<!--                        <a th:href="@{/community/reviewInsert}">상품 리뷰 작성하기</a>-->
+<!--                    </li>-->
                 </ul>
+<!--                <div>-->
+<!--                    <span>리뷰가 없습니다.</span>-->
+<!--                    <strong>리뷰를 작성해 보세요!</strong>-->
+<!--                    <a th:href="@{/community/reviewInsert}">상품 리뷰 작성하기</a>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

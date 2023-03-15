@@ -36,13 +36,11 @@ public class ItemDetailController {
 
     @GetMapping("/{itemId}")
     public String searchItem(@PathVariable("itemId") int itemId, @RequestParam(defaultValue = "1") int currPage,
-                             Model model, HttpSession session, SearchCriteria cri){
+                             Model model, HttpSession session){
 
-        cri.setSnoEno();
-
-        model.addAttribute("reviewList", reviewService.searchList(cri));
-
-        System.out.println("reviewService.searchList(cri) = " + reviewService.searchList(cri));
+        List<ReviewDTO> reviewList = reviewService.writeReview();
+        model.addAttribute("reviewList", reviewList);
+        System.out.println("reviewList = " + reviewList);
 
         String mainImg = iservice.findMainImg(itemId);
         List<String> subImg = iservice.findSubImg(itemId);
