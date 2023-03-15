@@ -19,17 +19,16 @@
 <body>
 
 <script th:inline="javascript">
+    /*<![CDATA[*/
+    let userId = /*[[ ${session.loginID} ]]*/;
+    /*]]>*/
     $(function() {
-        // 1) SearchType 이 '전체' 면 keyword 클리어
-        $('#searchType').change(function () {
-            if ($(this).val() == 'n') $('#keyword').val('');
-        });
-
-        $('#reviewBtn').click(function () {
-            self.location = '/user/myPage/order?currPage=1&rowsPerPage=9'
+        $('#orderSearch').click(function () {
+            self.location = '/user/myPage/order?user_id='+userId+'&currPage=1&rowsPerPage=9'
                 + '&searchType=' + $('#searchType').val();
         }); //click
     });
+
 
 </script>
 
@@ -88,9 +87,8 @@
                                 <option value="exchange" th:selected="${pageNation.cri.searchType=='exchange'}" id="order_exchange">교환</option>
                                 <option value="return" th:selected="${pageNation.cri.searchType=='return'}" id="order_return">반품</option>
                             </select>
-                            <button id="reviewBtn">Search</button>
-<!--                                    <input class="input_search" type="search" maxlength="20" required>-->
-<!--                                    <i class="fa-sharp fa-solid fa-magnifying-glass c_search" id="searchBtn"></i>-->
+<!--                            <input type="text" name="keyword" id="keyword" th:value="${pageMaker.cri.getKeyword()}">-->
+                            <button type="button" id="orderSearch">Search</button>
                         </div>
                     </li>
                     <li>
@@ -137,7 +135,7 @@
                 <tbody>
                     <tr th:each="orderList : ${orderList}">
                         <td th:text="${orderList.order_date}"></td>
-                        <td th:text="${orderList.order_count}+'건'"></td>
+                        <td th:text="${orderList.item_name} + ' 외 ' + ${orderList.order_count} + '건'"></td>
                         <td th:text="${orderList.order_price}"></td>
                         <td th:text="${orderList.order_payment}"></td>
                         <td th:text="${orderList.order_status}"></td>
@@ -148,8 +146,8 @@
 
             </table>
 
-            <div class="noOrder">
-                <p>
+            <div class="noOrder" th:if="${pageNation.totalRowsCount == 0}">
+                <p style="font-size: 14px">
                     주문 내역이 없습니다.
                 </p>
             </div>
@@ -162,7 +160,7 @@
 <!--                    </li>-->
 <!--                </ul>-->
 <!--                &gt;-->
-                <div class="c_page">
+                <div class="c_page" th:if="${pageNation.totalRowsCount > 0}">
                     <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
                         <a th:href="@{order(user_id=${session.loginID},currPage=1,rowsPerPage=9)}"><<</a>&nbsp;
                         <a th:href="@{order(user_id=${session.loginID},currPage={i}&rowsPerPage=9(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;

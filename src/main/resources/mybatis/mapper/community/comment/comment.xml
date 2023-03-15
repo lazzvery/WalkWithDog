@@ -4,6 +4,7 @@
 <mapper namespace="com.prj.web.awesome.community.mapper.CommentMapper">
 	<select id="commentList" resultType="com.prj.web.awesome.community.dto.CommentDTO">
 		select * from comment
+		where review_seq = #{review_seq}
 	    order by com_seq desc;
 	</select>
 
@@ -12,6 +13,17 @@
 			comment ( user_id, com_content, review_seq, com_regdate, com_re_com)
 		VALUES(#{user_id},#{com_content},#{review_seq},now(), #{com_re_com})
 	</insert>
+
+	<select id="commentDetail" resultType="com.prj.web.awesome.community.dto.CommentDTO">
+		select
+		    com_seq,
+			review_seq,
+			user_id,
+			com_content,
+			com_reg_date
+		from comment
+		where com_seq = #{com_seq};
+	</select>
 
 	<update id="commentUpdate" parameterType="com.prj.web.awesome.community.dto.CommentDTO">
 		UPDATE comment

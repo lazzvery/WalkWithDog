@@ -44,13 +44,12 @@
 
 li strong {
   color: #BAAAD7;
-  cursor: pointer;
+  /*cursor: pointer;*/
   font-size: 1.3rem;
 }
 
 li strong:hover {
   color: #8E83A9;
-  cursor: auto;
 }
 
 /* ====================================================== */
@@ -118,6 +117,10 @@ li strong:hover {
   line-height: 100px;
 }
 
+.categoryContainer .subTitle strong:hover {
+  cursor: default;
+}
+
 /* header에서 SHOP, BEST, EVENT, COMMUNITY 와 우측 검색항목 개별로 묶은 박스  */
 .categoryContainer .category {
   text-align: center;
@@ -136,13 +139,6 @@ li strong:hover {
 
 /* -------------------------마우스 호버했을 때 나오는 리스트들 ---------------------*/
 .categoryHover {
-  /* height: 0; */
-  /* visibility: hidden; */
-  /* opacity: 0; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* height: 100%; */
-  /* transition: all 5s; */
   font-weight: bold;
   width: 200px;
   position: absolute;
@@ -150,10 +146,6 @@ li strong:hover {
   left: 0;
   z-index: -9999;
   transition: top 0.5s;
-}
-
-.categoryHover:nth-of-type(1):hover {
-  /* background: none; */
 }
 
 .categoryHover ul {

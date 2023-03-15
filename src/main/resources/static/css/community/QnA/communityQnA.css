@@ -169,22 +169,22 @@ main .c_board_table p {
   color: black;
 }
 
-@media screen and (max-width: 768px) {
-  .c_page_catagory li a {
-    font-size: 12px;
-  }
+/*@media screen and (max-width: 768px) {*/
+/*  .c_page_catagory li a {*/
+/*    font-size: 12px;*/
+/*  }*/
 
-  .c_disappear2 {
-    display: none;
-  }
-}
+/*  .c_disappear2 {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
 
-@media screen and (max-width: 1024px) {
-  .c_page_catagory ul {
-    gap: 10px;
-  }
+/*@media screen and (max-width: 1024px) {*/
+/*  .c_page_catagory ul {*/
+/*    gap: 10px;*/
+/*  }*/
 
-  .c_disappear {
-    display: none;
-  }
-}
+/*  .c_disappear {*/
+/*    display: none;*/
+/*  }*/
+/*}*/

@@ -208,22 +208,29 @@ public class UserController {
         return mv;
     } //delete
 
+    @GetMapping("/findId")
+    public String findIdf() {
 
-//    @GetMapping("/findid")
-//    @ResponseBody
-//    public String findId(Model model, UserDTO dto, @RequestParam("userName") String user_name, @RequestParam("userEmail") String user_email , @RequestParam("userPhone") String user_phone){
-//
-//
-//        if(dto.getUser_name() == "username" && dto.getUser_email() == "userEmail" || dto.getUser_phone() == "userPhone"){
-//            dto=service.userSelectOne(dto);
-//            model.addAttribute("userInfo", dto);
-//        }
-//
-//        System.out.println("dto = " + dto);
-//
-//
-//        return "html/user/userFindId";
-//    }
+        return "html/user/userFindId";
+    } //delete
+
+    //아이디 찾기
+    @RequestMapping(value = "/findId", method = RequestMethod.POST)
+    @ResponseBody
+    public String findId(@RequestParam("name") String name,@RequestParam("phone") String phone, @RequestParam("email") String email) {
+
+        System.out.println("name = " + name);
+        System.out.println("phone = " + phone);
+        System.out.println("email = " + email);
+
+
+        String result = service.find_id(name, phone, email);
+
+
+        System.out.println("result = " + result);
+
+        return result;
+    }
 
     @GetMapping("/findpw")
     public String findpw(Model model){

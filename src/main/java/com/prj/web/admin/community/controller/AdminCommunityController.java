@@ -3,7 +3,6 @@ package com.prj.web.admin.community.controller;
 import com.prj.web.awesome.community.criTest.PageNation;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.community.dto.FaqDTO;
-import com.prj.web.awesome.community.dto.NoticeDTO;
 import com.prj.web.awesome.community.dto.QnaDTO;
 import com.prj.web.awesome.community.service.FaqService;
 import com.prj.web.awesome.community.service.NoticeService;
@@ -34,9 +33,9 @@ public class AdminCommunityController {
     @GetMapping("/notice")
     public String notice(Model model){
 
-        List<NoticeDTO> noticeList = noticeService.noticeList();
-
-        model.addAttribute("noticeList", noticeList);
+//        List<NoticeDTO> noticeList = noticeService.noticeList();
+//
+//        model.addAttribute("noticeList", noticeList);
 
         return "html/admin/community/notice";
     }

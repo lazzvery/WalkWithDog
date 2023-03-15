@@ -49,35 +49,35 @@
 	</delete>
 
 
-	<sql id="search">
+<!--	<sql id="search">-->
 
-			<bind name="keyVal" value="keyword"/>
+<!--			<bind name="keyVal" value="keyword"/>-->
 
-		<choose>
-			<when test="searchType=='D'.toString()">
-				and order_status='D' )
-			</when>
-			<when test="searchType=='R'.toString()">
-				and order_status='R' )
-			</when>
-			<when test="searchType=='J'.toString()">
-				and order_status='J' )
-			</when>
-			<when test="searchType=='W'.toString()">
-				and order_status='w' )
-			</when>
-			<when test="searchType=='cancel'.toString()">
-				and order_claim='cancel' )
-			</when>
-			<when test="searchType=='exchange'.toString()">
-				and order_claim='exchange' )
-			</when>
-			<when test="searchType=='return'.toString()">
-				and order_claim='return' )
-			</when>
-			<otherwise> )</otherwise>
-		</choose>
-	</sql>
+<!--		<choose>-->
+<!--			<when test="searchType=='D'.toString()">-->
+<!--				and order_status='D' )-->
+<!--			</when>-->
+<!--			<when test="searchType=='R'.toString()">-->
+<!--				and order_status='R' )-->
+<!--			</when>-->
+<!--			<when test="searchType=='J'.toString()">-->
+<!--				and order_status='J' )-->
+<!--			</when>-->
+<!--			<when test="searchType=='W'.toString()">-->
+<!--				and order_status='w' )-->
+<!--			</when>-->
+<!--			<when test="searchType=='cancel'.toString()">-->
+<!--				and order_claim='cancel' )-->
+<!--			</when>-->
+<!--			<when test="searchType=='exchange'.toString()">-->
+<!--				and order_claim='exchange' )-->
+<!--			</when>-->
+<!--			<when test="searchType=='return'.toString()">-->
+<!--				and order_claim='return' )-->
+<!--			</when>-->
+<!--			<otherwise> )</otherwise>-->
+<!--		</choose>-->
+<!--	</sql>-->
 
 <!--	<select id="searchList" resultType="com.prj.web.awesome.order.dto.OrderListDTO">-->
 <!--		SELECT o.user_id, o.order_code, o.order_date,-->
@@ -107,40 +107,29 @@
 
 
 
-
 	<select id="searchList" resultType="com.prj.web.awesome.order.dto.OrderListDTO">
 		SELECT o.user_id, o.order_code, o.order_date,
 		(select count(*) from order_detail d where o.order_code=d.order_code) order_count
 		,o.order_price, o.order_payment, o.order_status, o.order_claim
 		FROM order_list o
+		where  o.order_status != 'R' AND o.user_id=#{user_id}
+		<if test="searchType != 'all'.toString()">
+			<if test="searchType!=null">
 
-		<if test="searchType != 'n'.toString()">
-			where o.order_status != 'R' AND o.user_id=#{user_id}
-			<if test="keyword!=null">
-				<bind name="keyVal" value="'%'+keyword+'%'"/>
 				and (
-				o.order_status like #{keyVal}
+				o.order_status like #{searchType}
 				)
 			</if>
 		</if>
-		<choose>
-			<when test="searchType == 'n'.toString()">
-				<if test="keyword!=null">
-					<bind name="keyVal" value="'%'+keyword+'%'"/>
-					where (
-					o.order_status like #{keyVal}
-					 )
-				</if>
-			</when>
-		</choose>
+
 		order by o.order_code desc
 		limit #{sno}, #{rowsPerPage}
 	</select>
 
 	<select id="searchTotalCount" resultType="int">
 		select count(*) from order_list
-		<if test="searchType != 'n'.toString()">
-			where order_status = #{searchType} AND order_status != 'R' AND user_id=#{user_id}
+		<if test="searchType != 'all'.toString()">
+			where order_status = #{searchType} AND user_id=#{user_id}
 			<if test="keyword!=null">
 				<bind name="keyVal" value="'%'+keyword+'%'"/>
 				and (
@@ -149,7 +138,7 @@
 			</if>
 		</if>
 		<choose>
-			<when test="searchType == 'n'.toString()">
+			<when test="searchType == 'all'.toString()">
 				<if test="keyword!=null">
 					<bind name="keyVal" value="'%'+keyword+'%'"/>
 					where (

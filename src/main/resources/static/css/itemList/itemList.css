@@ -49,19 +49,21 @@ body {
   margin : 0 auto;
   display : flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .productContainer .product {
   display: flex;
+  padding: 10px;
 }
 
 .productContainer h1 {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .productContainer h1 p {
-  color: #4c4c4c;
-  font-size: 1.1rem;
+  color: #BAAAD7;
+  font-size: 1rem;
 }
 
 .prdImg1 {

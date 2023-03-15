@@ -130,6 +130,7 @@ li strong:hover {
 .categoryContainer .list2 a {
   color: orange;
   opacity: .9;
+  font-weight: 600;
 }
 
 .categoryContainer .list2 strong:hover {

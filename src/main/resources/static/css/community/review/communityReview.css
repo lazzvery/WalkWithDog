@@ -7,7 +7,7 @@
 
 nav,
 main {
-  width: 80%;
+  width: 60%;
   margin: auto;
 }
 
@@ -20,6 +20,8 @@ main {
 
 body {
   font-family: 'IBMPlexSansKR-Regular';
+  background: linear-gradient( to bottom,rgba(186,170,215,0.5) -1px, rgba(186,170,215,0.5) 350px,white 350px, white 100% );
+
 }
 
 .c_community_head {
@@ -321,59 +323,60 @@ body {
 }
 
 
-@media screen and (max-width: 1640px) {
-  .c_goodsinfo li:nth-child(5) {
-    display: none;
-  }
-}
+/*@media screen and (max-width: 1640px) {*/
+/*  .c_goodsinfo li:nth-child(5) {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
 
-@media screen and (max-width: 1225px) {
-  .c_goodsinfo li:nth-child(4) {
-    display: none;
-  }
-}
+/*@media screen and (max-width: 1225px) {*/
+/*  .c_goodsinfo li:nth-child(4) {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
 
-@media screen and (max-width: 1024px) {
-  .c_page_catagory ul {
-    gap: 10px;
-  }
+/*@media screen and (max-width: 1024px) {*/
+/*  .c_page_catagory ul {*/
+/*    gap: 10px;*/
+/*  }*/
 
-  .disappear {
-    display: none;
-  }
-}
+/*  .disappear {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
 
-@media screen and (max-width: 920px) {
-  .c_goodsinfo li:nth-child(3) {
-    display: none;
-  }
-}
+/*@media screen and (max-width: 920px) {*/
+/*  .c_goodsinfo li:nth-child(3) {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
 
-@media screen and (max-width: 768px) {
-  .c_page_catagory li a {
-    font-size: 12px;
-  }
+/*@media screen and (max-width: 768px) {*/
+/*  .c_page_catagory li a {*/
+/*    font-size: 12px;*/
+/*  }*/
 
-  .disappear2 {
-    display: none;
-  }
+/*  .disappear2 {*/
+/*    display: none;*/
+/*  }*/
 
-  .c_goodshead,
-  .c_goodsinfo li {
-    display: none;
-  }
+/*  .c_goodshead,*/
+/*  .c_goodsinfo li {*/
+/*    display: none;*/
+/*  }*/
 
-  .c_reviewlist li {
-    width: 250px;
-  }
+/*  .c_reviewlist li {*/
+/*    width: 250px;*/
+/*  }*/
 
-  .c_img_container img {
-    width: 250px;
-    height: 250px;
-  }
+/*  .c_img_container img {*/
+/*    width: 250px;*/
+/*    height: 250px;*/
+/*  }*/
 
-  .c_search_bar:hover,
-  .c_search_bar:valid {
-    width: 250px;
-  }
-}
+/*  .c_search_bar:hover,*/
+/*  .c_search_bar:valid {*/
+/*    width: 250px;*/
+/*  }*/
+/*}*/
+

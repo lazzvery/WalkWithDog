@@ -108,39 +108,43 @@
 
 
 	<select id="searchList" resultType="com.prj.web.awesome.order.dto.OrderListDTO">
-		SELECT o.user_id, o.order_code, o.order_date,
-		(select count(*) from order_detail d where o.order_code=d.order_code) order_count
-		,o.order_price, o.order_payment, o.order_status, o.order_claim
-		FROM order_list o
-		where user_id=#{user_id}
+		SELECT ol.order_code, ol.order_date, ol.order_price, ol.order_payment, ol.order_status, ol.order_claim, ol.user_id, ol.coupon_code, ol.addr_seq,
+		(
+		SELECT COUNT(*)
+		FROM order_detail
+		WHERE order_detail.order_code = ol.order_code
+		) AS order_count,
+		(
+		SELECT item.item_name
+		FROM order_detail
+		JOIN item ON order_detail.item_id = item.item_id
+		WHERE order_detail.order_code = ol.order_code
+		LIMIT 1
+		) AS item_name
+		FROM
+		order_list ol
+		JOIN
+		order_detail od ON ol.order_code = od.order_code
+		JOIN
+		item i ON od.item_id = i.item_id
+		WHERE
+		ol.order_status != 'R' AND ol.user_id=#{user_id}
 		<if test="searchType != 'all'.toString()">
-			AND o.order_status != 'R'
-			<if test="keyword!=null">
-				<bind name="keyVal" value="keyword"/>
-				and (
-				o.order_status like #{keyVal}
+			<if test="searchType!=null">
+				AND (
+				ol.order_status LIKE #{searchType}
 				)
 			</if>
 		</if>
-		<choose>
-			<when test="searchType == 'all'.toString()">
-				AND o.order_status != 'R'
-				<if test="keyword!=null">
-					<bind name="keyVal" value="keyword"/>
-					AND (
-					o.order_status like #{keyVal}
-					 )
-				</if>
-			</when>
-		</choose>
-		order by o.order_code desc
-		limit #{sno}, #{rowsPerPage}
+		ORDER BY
+		ol.order_code DESC
+		LIMIT #{sno}, #{rowsPerPage}
 	</select>
 
 	<select id="searchTotalCount" resultType="int">
 		select count(*) from order_list
 		<if test="searchType != 'all'.toString()">
-			where order_status = #{searchType} AND user_id=#{user_id}
+			where order_status != 'R' AND order_status = #{searchType} AND user_id=#{user_id}
 			<if test="keyword!=null">
 				<bind name="keyVal" value="'%'+keyword+'%'"/>
 				and (
@@ -150,9 +154,10 @@
 		</if>
 		<choose>
 			<when test="searchType == 'all'.toString()">
+				where order_status != 'R' AND user_id=#{user_id}
 				<if test="keyword!=null">
 					<bind name="keyVal" value="'%'+keyword+'%'"/>
-					where (
+					and (
 					order_status like #{keyVal}
 					 )
 				</if>
