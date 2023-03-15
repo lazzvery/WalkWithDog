@@ -29,7 +29,7 @@ public interface UserMapper {
     int userDelete(UserDTO dto);
 
 
-    @Select("select user_id from user where (user_email=#{user_email} or user_phone=#{user_phone}) and user_name=#{user_name}")
-    public String findId(@Param("user_name") String name, @Param("user_email") String email, @Param("user_phone") String phone);
+    @Select("select user_id from user WHERE user_phone=#{user_phone} AND user_name=#{user_name}")
+    String findId(@Param("user_name") String name, @Param("user_phone") String phone);
 
 }

@@ -188,7 +188,7 @@ opacity: 0.4;
 
 /* 핸드폰 번호로 찾기 input */
 .findIdForm .findIdContainer li.phone {
-    display: none;
+    display: block;
 }
 
 .findIdForm .findIdContainer li.phone .phoneBox {

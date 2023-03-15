@@ -37,6 +37,9 @@
     </div>
   </article>
   <main>
+    <div style="font-size: 2.5rem;
+  text-align: center;
+  margin: 10px 0 10px;">NOTICE</div>
     <!------------------------------------- 게시판 ---------------------------------------->
     <aside>
       <div class="c_board_list">
@@ -172,14 +175,39 @@
           </tbody>
 
         </table>
+        <!-- ** Cri_Paging **
+      FirstPage, Prev -->
         <div class="c_page">
-          <p>&lt;</p>
-          <a href=""><strong>1</strong></a>
-          <a href="">2</a>
-          <a href="">3</a>
-          <a href="">4</a>
-          <a href="">5</a>
-          <p>&gt;</p>
+          <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
+            <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(1)})}">FP</a>&nbsp;-->
+            <a href="notice?currPage=1&rowsPerPage=9"><<</a>&nbsp;
+            <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.spageNo - 1)})}">&lt;</a>&nbsp;&nbsp;-->
+            <a th:href="@{notice?currPage={i}&rowsPerPage=9(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;
+          </div>
+          <div th:unless="${pageNation.prev and pageNation.spageNo > 1}">
+            <font color="Gray"><<&nbsp;&lt;&nbsp;&nbsp;</font>
+          </div>
+          <!--Display PageNo-->
+          <div th:each="i : ${#numbers.sequence(pageNation.spageNo, pageNation.epageNo)}">
+            <div th:if="${i == pageNation.cri.currPage}">
+              <font size="initial" color="#8E83A9" th:text="${i}"></font>&nbsp;
+            </div>
+            <div th:unless="${i == pageNation.cri.currPage}">
+              <!--      <a th:href="@{/community/QnA(${pageNation.searchQuery(i)})}" th:text="${i}"></a>&nbsp;-->
+              <a th:href="@{notice?currPage={i}&rowsPerPage=9(i=${i})}" th:text="${i}"></a>&nbsp;
+            </div>
+          </div>
+          <!--Next, LastPage-->
+          <div th:if="${pageNation.next and pageNation.epageNo > 0}">
+            <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.epageNo + 1)})}">&nbsp;&gt;</a>-->
+            <a th:href="@{notice?currPage={i}&rowsPerPage=9(i=${pageNation.epageNo+1})}">&nbsp;&gt;</a>
+            <!--    <a th:href="@{/community/QnA(${pageNation.searchQuery(pageNation.lastPageNo)})}">&nbsp;LP</a>-->
+            <a th:href="@{notice?currPage={i}&rowsPerPage=9(i=${pageNation.lastPageNo})}">&nbsp;>></a>
+
+          </div>
+          <div th:unless="${pageNation.next and pageNation.epageNo > 0}">
+            <font color="Gray">&nbsp;&gt;&nbsp;>></font>
+          </div>
         </div>
       </div>
       </div>

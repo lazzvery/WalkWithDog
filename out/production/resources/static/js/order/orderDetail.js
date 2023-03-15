@@ -5,16 +5,14 @@ const selfDelivery = document.querySelector('.shop_deliveryplz'),
     optionDelivery = selfDelivery.getElementsByTagName('option'),
     payContainer = document.querySelector('.couponpaydiv'),
     cardTab = payContainer.querySelector('.cardTab'),
-    paycontainer_easy = payContainer.querySelector('.paycontainer_easy'),
-    paycontainer_card = payContainer.querySelector('.paycontainer_card'),
-    cardSelect = payContainer.getElementsByTagName('select'),
     checkBox = document.querySelector('.orderprivacybox'),
     checkList = checkBox.getElementsByTagName('input'),
     totalBtn = document.querySelector('.totalorderbutton'),
     phoneHyphen = document.querySelectorAll('.phoneHyphen');
 
-phoneHyphen[0].textContent = phoneHyphen[0].textContent.replace(/^(\d{3})(\d{4})(\d{4})$/, '$1-$2-$3');
-phoneHyphen[1].textContent = phoneHyphen[1].textContent.replace(/^(\d{3})(\d{4})(\d{4})$/, '$1-$2-$3');
+for (let i = 0; i < phoneHyphen.length; i++) {
+    phoneHyphen[i].textContent = phoneHyphen[i].textContent.replace(/^(\d{3})(\d{4})(\d{4})$/, '$1-$2-$3');
+}
 // 전화번호 하이픈 추가
 
 selfDelivery.addEventListener('click', (e) => {
@@ -54,7 +52,8 @@ checkBox.addEventListener('click', (e) => {
 
 totalBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    if (selfDelivery.value === '0' || (selfDelivery.value === '5' && !selfDeliverybox.value)) {
+    if (selfDelivery.value === '0' || (selfDelivery.value === '5' || document.querySelector('.ifDeliveryNull') != null
+        && !selfDeliverybox.value)) {
         alert('배송 정보를 다시 확인해 주세요!');
     } else if (!checkList[0].checked && (!checkList[1].checked || !checkList[2].checked || !checkList[3].checked)) {
         alert('개인 정보 수집 제공에 동의해 주세요!');
@@ -122,7 +121,7 @@ function requestPay(result) {
         pg: 'html5_inicis',
         pay_method: 'card',
         merchant_uid: result.orderCode,
-        name: '결제테스트',
+        name: '산책가자',
         amount: result.price,
         buyer_email: result.userDTO.user_email,
         buyer_name: result.userDTO.user_name,

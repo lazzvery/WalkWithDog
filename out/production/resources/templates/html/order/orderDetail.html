@@ -84,22 +84,25 @@
                 <div class="shop_deliTitle">
                     <h2>배송 정보</h2>
                     <a href="#"
-                       onclick="window.open('/user/myPage/addrselect', 'popup', 'width=600,height=611.200'); return false;">
+                       onclick="window.open('/user/myPage/addrselect', 'popup', 'width=657,height=600'); return false;">
                         <span>등록 / 변경</span>
                     </a>
                 </div>
                 <hr>
 
-                <div class="delivery_info" th:if="${addr != null}">
+                <div class="delivery_info">
                     <div style="display: flex">
                         <span class="inline_ortext">배송지</span>
                         <ul style="width: 490px">
-                            <li><strong
-                                    th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong>
+                            <li th:if="${addr != null}">
+                                <strong th:text="'(' + ${addr.addr_postcode} + ') ' + ${addr.addr_addr} + ' ' + ${addr.addr_addr2}">주소</strong>
                             </li>
-                            <li class="delivery_infonav">
+                            <li class="delivery_infonav" th:if="${addr != null}">
                                 <span th:text="${addr.addr_reciver} + ', '">이름</span>
                                 <span th:text="${addr.addr_phone}" class="phoneHyphen">핸드폰 번호</span>
+                            </li>
+                            <li th:if="${addr == null}">
+                                <strong class="ifDeliveryNull">기본 배송지를 등록해 주세요.</strong>
                             </li>
                             <li>
                                 <select class="shop_deliveryplz">
@@ -116,11 +119,6 @@
                             </li>
                         </ul>
                     </div>
-                </div>
-
-                <div th:if="${addr == null}" class="delivery_none_info">
-                    <span class="inline_ortext">배송지</span>
-                    <p>기본 배송지를 등록해 주세요.</p>
                 </div>
             </article>
 

@@ -217,17 +217,18 @@ public class UserController {
     //아이디 찾기
     @RequestMapping(value = "/findId", method = RequestMethod.POST)
     @ResponseBody
-    public String findId(@RequestParam("name") String name,@RequestParam("phone") String phone, @RequestParam("email") String email) {
+    public String findId(@RequestParam("user_name") String name,@RequestParam("user_phone") String phone) {
 
+        String result;
         System.out.println("name = " + name);
         System.out.println("phone = " + phone);
-        System.out.println("email = " + email);
 
 
-        String result = service.find_id(name, phone, email);
+        result = service.findId(name, phone);
 
 
         System.out.println("result = " + result);
+        System.out.println("service = " + service.findId(name, phone));
 
         return result;
     }

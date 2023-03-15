@@ -24,48 +24,59 @@ window.onload = function () {
 };
 
 
-
 checkBox.addEventListener('click', (e) => {
     for (let i = 1; i <= checkList.length - 1; i++) {
         if (e.target.tagName === 'INPUT') {
-            if (e.target === checkList[0] && checkList[0].checked) {
-                checkList[i].checked = true;
-            } else if (e.target === checkList[0]) {
-                checkList[i].checked = false;
-            } else {
-                checkList[0].checked = false;
-            }
+
+            checkList[i].checked = false;
+            e.target.checked = true;
         }
     }
 
-    if(document.querySelectorAll('.checkedCheck:checked').length == checkList.length - 1) {
-        checkList[0].checked = true;
-    }
-});      // 개인정보 약관 동의
+})      // 개인정보 약관 동의
 
 
-choiceButton.addEventListener('click', function () {
-    const removeTr = tbody.querySelectorAll('tr input:checked');
+// choiceButton.addEventListener('click', function () {
+//     const removeTr = tbody.querySelectorAll('tr input:checked');
+//
+//     for (let i = 0; i < removeTr.length; i++) {
+//         removeTr[i].closest('tr').remove();
+//     }
+//
+//     trNumber -= removeTr.length;
+//
+//     if (trNumber === 0) {
+//         for (let i = 0; i < tbodyTr.length; i++) {
+//             tbodyTr[i].style.display = "none";
+//         }
+//         inputBox[0].style.display = "none";
+//         choiceButton.style.display = "none";
+//         noAddress.style.display = "block";
+//     }
+//
+//
+// })
 
-    for (let i = 0; i < removeTr.length; i++) {
-        removeTr[i].closest('tr').remove();
-    }
 
-    trNumber -= removeTr.length;
+function addrUpdate() {
 
-    if (trNumber === 0) {
-        for (let i = 0; i < tbodyTr.length; i++) {
-            tbodyTr[i].style.display = "none";
+    let item = document.querySelector('input[name="agreeCheck"]:checked').value;
+
+    console.log(item);
+
+    $.ajax({
+        type: 'POST',
+        url: '/order/addrList',
+        data: JSON.stringify(item), // 폼 데이터
+        contentType: 'application/json',
+        success: function(result) {
+            // 성공 시 처리할 내용
+            opener.location.reload();
+            window.close();
+        },
+        error: function(xhr) {
+            // 실패 시 처리할 내용
+            alert('등록에 실패하였습니다. 다시 시도해주세요.');
         }
-        inputBox[0].style.display = "none";
-        choiceButton.style.display = "none";
-        noAddress.style.display = "block";
-    }
-
-
-})
-
-// choiceButton.addEventListener("click", function(){
-
-
-// });
+    });
+}

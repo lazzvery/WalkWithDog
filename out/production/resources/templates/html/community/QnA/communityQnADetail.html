@@ -50,10 +50,13 @@
       <br><br>현재, 상담사 연결이 원활하지 않아 반품/교환 접수가 필요하신 경우 [마이페이지] - [주문조회] 에서 직접 접수해 주시면 더 빠르게 처리해드리겠습니다.
       <br><br>감사합니다.
     </p>
+    <img th:src="'../../../upload/' + ${Img1}">
+    <img th:src="'../../../upload/' + ${Img2}">
+
   </div>
 
   <div class="c_button">
-    <a th:if="${session.loginID == 'admin'}" th:text="@{/}" class="reply">답글</a>
+    <a th:if="${session.loginID == 'admin'}" th:href="@{/admin/community}" class="reply">답글</a>
     <a href="/community/QnA">목록으로</a>
     <a th:href="@{/community/qnaUpdate(qna_seq=${qnaDetail.getQna_seq()}, qna_password=${qnaDetail.getQna_password()})}">수정하기</a>
     <a th:href="@{/community/qnaDelete(qna_seq=${qnaDetail.getQna_seq()})}">삭제하기</a>

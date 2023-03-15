@@ -20,6 +20,7 @@ main {
 
 body {
   font-family: 'IBMPlexSansKR-Regular';
+  background: linear-gradient( to bottom,rgba(186,170,215,0.5) -1px, rgba(186,170,215,0.5) 350px,white 350px, white 100% );
 }
 
 .c_article {
@@ -163,30 +164,30 @@ body {
   text-align: inherit;
 }
 
-@media screen and (max-width: 1024px) {
-  .c_page_catagory ul {
-    gap: 10px;
-  }
+/*@media screen and (max-width: 1024px) {*/
+/*  .c_page_catagory ul {*/
+/*    gap: 10px;*/
+/*  }*/
 
-  .c_noticed {
-    margin: auto;
-  }
-}
+/*  .c_noticed {*/
+/*    margin: auto;*/
+/*  }*/
+/*}*/
 
-@media screen and (max-width: 768px) {
-  .c_page_catagory li a {
-    font-size: 12px;
-  }
+/*@media screen and (max-width: 768px) {*/
+/*  .c_page_catagory li a {*/
+/*    font-size: 12px;*/
+/*  }*/
 
-  .c_menucategory ul li {
-    font-size: 14px;
-    width: 80%;
-  }
+/*  .c_menucategory ul li {*/
+/*    font-size: 14px;*/
+/*    width: 80%;*/
+/*  }*/
 
-  .c_noticed {
-    width: 95%;
-    font-size: 12px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-}
+/*  .c_noticed {*/
+/*    width: 95%;*/
+/*    font-size: 12px;*/
+/*    margin-top: 30px;*/
+/*    margin-bottom: 30px;*/
+/*  }*/
+/*}*/

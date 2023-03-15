@@ -23,29 +23,16 @@
 
         <ul class="list">
             <li class="dBoard">
-                <a href="../admin.html">대시보드</a>
+                <a href="/admin/main">대시보드</a>
             </li>
             <li class="userInfo">
-                <a href="../user/userInfo.html">회원정보</a>
-                <ul>
-                    <li>
-                        <a href="#">회원 정보 관리</a>
-                    </li>
-                    <li>
-                        <a href="#">메일,sns 수신 관리</a>
-                    </li>
-                </ul>
+                <a href="/admin/user/userInfo">회원정보</a>
             </li>
             <li class="productInfo">
-                <a href="../item/itemInfo.html">상품관리</a>
-                <ul>
-                    <li>
-                        <a href="#">상품관리</a>
-                    </li>
-                </ul>
+                <a href="/admin/item/itemInfo">상품관리</a>
             </li>
             <li class="noticeInfo">
-                <a href="../community/notice.html">게시판관리</a>
+                <a href="/admin/community/notice">게시판관리</a>
             </li>
         </ul>
     </header>
@@ -98,61 +85,58 @@
 <!--                <th>조회수</th>-->
 <!--            </tr>-->
 
-            <div class="c_reviewlist">
-                <ul>
-                    <li th:each="list:${reviewList}">
-                        <div th:text="${list.getReview_seq()}" style="display: none"></div>
-                        <div class="c_img_container">
-                            <img th:value="${list.getAttachment_file_seq()}" class="img" src="../../../../img/community/review/reviewpic.jpg" alt="">
-                        </div>
+        <div class="c_reviewlist">
+            <ul>
+                <li th:each="list:${reviewList}">
+                    <div th:text="${list.getReview_seq()}" style="display: none"></div>
+                    <div class="c_img_container">
+                        <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
+                    </div>
+                    <div>
+                        <a th:text="${list.getReview_content()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">고객님의 소중한 후기입니다.</a>
+                        <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
+                    </div>
+                    <div class="c_review_target">
+                        <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="2번" class="c_review_targetimg">
                         <div>
-                            <a th:text="${list.getReview_content()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">고객님의 소중한 후기입니다.</a>
-                            <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
-                        </div>
-                        <div class="c_review_target">
-                            <img th:value="${list.getAttachment_file_seq()}" src="../../../../img/community/review/reviewpicsmall.jpg" alt="" class="c_review_targetimg">
-                            <div>
-                                <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
-                                <div class="c_user_rank">
-                <span>리뷰
-                  <strong >46</strong>
-                </span>
-                                    <span>평점</span>
-                                    <strong th:text="${list.review_rank}">9.4</strong>
-                                </div>
+                            <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
+                            <div class="c_user_rank">
+                                <span>평점</span>
+                                <strong th:text="${list.review_rank}">9.4</strong>
                             </div>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </li>
+            </ul>
 
+        </div>
+        <div class="c_page">
+            <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
+                <a href="review?currPage=1&rowsPerPage=9"><<</a>&nbsp;
+                <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;
             </div>
-            <div class="c_page">
-                <div th:if="${pageNation.prev and pageNation.spageNo > 1}">
-                    <a href="review?currPage=1&rowsPerPage=9"><<</a>&nbsp;
-                    <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.spageNo-1})}">&lt;</a>&nbsp;&nbsp;
+            <div th:unless="${pageNation.prev and pageNation.spageNo > 1}">
+                <font color="Gray"><<&nbsp;&lt;&nbsp;&nbsp;</font>
+            </div>
+            <!--Display PageNo-->
+            <div th:each="i : ${#numbers.sequence(pageNation.spageNo, pageNation.epageNo)}">
+                <div th:if="${i == pageNation.cri.currPage}">
+                    <font size="initial" color="#8E83A9" th:text="${i}"></font>&nbsp;
                 </div>
-                <div th:unless="${pageNation.prev and pageNation.spageNo > 1}">
-                    <font color="Gray"><<&nbsp;&lt;&nbsp;&nbsp;</font>
-                </div>
-                <!--Display PageNo-->
-                <div th:each="i : ${#numbers.sequence(pageNation.spageNo, pageNation.epageNo)}">
-                    <div th:if="${i == pageNation.cri.currPage}">
-                        <font size="initial" color="#8E83A9" th:text="${i}"></font>&nbsp;
-                    </div>
-                    <div th:unless="${i == pageNation.cri.currPage}">
-                        <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${i})}" th:text="${i}"></a>&nbsp;
-                    </div>
-                </div>
-                <!--Next, LastPage-->
-                <div th:if="${pageNation.next and pageNation.epageNo > 0}">
-                    <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.epageNo+1})}">&nbsp;&gt;</a>
-                    <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.lastPageNo})}">&nbsp;>></a>
-
-                </div>
-                <div th:unless="${pageNation.next and pageNation.epageNo > 0}">
-                    <font color="Gray">&nbsp;&gt;&nbsp;>></font>
+                <div th:unless="${i == pageNation.cri.currPage}">
+                    <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${i})}" th:text="${i}"></a>&nbsp;
                 </div>
             </div>
+            <!--Next, LastPage-->
+            <div th:if="${pageNation.next and pageNation.epageNo > 0}">
+                <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.epageNo+1})}">&nbsp;&gt;</a>
+                <a th:href="@{review?currPage={i}&rowsPerPage=9(i=${pageNation.lastPageNo})}">&nbsp;>></a>
+
+            </div>
+            <div th:unless="${pageNation.next and pageNation.epageNo > 0}">
+                <font color="Gray">&nbsp;&gt;&nbsp;>></font>
+            </div>
+        </div>
 
     </div>
 

@@ -49,19 +49,8 @@ public class UserService {
 
 
 
-    public String find_id(String name, String phone, String email) {
-
-        String result = "";
-
-        try {
-            result= mapper.findId(name, phone, email);
-
-        } catch(Exception e) {
-
-            e.printStackTrace();
-        }
-
-        return result ;
+    public String findId(String name, String phone) {
+        return mapper.findId(name, phone);
     }
 
 }

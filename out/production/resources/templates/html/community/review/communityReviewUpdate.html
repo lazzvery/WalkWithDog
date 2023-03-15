@@ -63,24 +63,24 @@
           </ul>
         </li>
 
-        <li class="c_li">
-          <ul class="c_underul">
-            <li th:value="${reviewDetail.getAttachment_file_seq()}" class="c_underli"> 첨부파일1</li>
-            <li class="files"><input type="file"></li>
-          </ul>
-        </li>
-        <li class="c_li">
-          <ul class="c_underul">
-            <li th:value="${reviewDetail.getAttachment_file_seq()}" class="c_underli"> 첨부파일2 </li>
-            <li><input type="file"></li>
-          </ul>
-        </li>
-        <li class="c_li">
-          <ul class="c_underul">
-            <li th:value="${reviewDetail.getAttachment_file_seq()}" class="c_underli"> 첨부파일3 </li>
-            <li><input type="file"></li>
-          </ul>
-        </li>
+<!--        <li class="c_li">-->
+<!--          <ul class="c_underul">-->
+<!--            <li class="c_underli"> 첨부파일1</li>-->
+<!--            <li class="files"><input type="file"></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="c_li">-->
+<!--          <ul class="c_underul">-->
+<!--            <li class="c_underli"> 첨부파일2 </li>-->
+<!--            <li><input type="file"></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--        <li class="c_li">-->
+<!--          <ul class="c_underul">-->
+<!--            <li class="c_underli"> 첨부파일3 </li>-->
+<!--            <li><input type="file"></li>-->
+<!--          </ul>-->
+<!--        </li>-->
         <li class="c_li">
           <ul class="c_underul">
             <li class="c_underli">
@@ -103,11 +103,6 @@
                 <option value="3.0">3점</option>
                 <option value="4.0">4점</option>
                 <option value="5.0">5점</option>
-                <option value="6.0">6점</option>
-                <option value="7.0">7점</option>
-                <option value="8.0">8점</option>
-                <option value="9.0">9점</option>
-                <option value="10.0">10점</option>
               </select>
             </li>
           </ul>
@@ -123,13 +118,6 @@
   </main>
 
 </body>
-<div class="footerTop">
-  <a href="../../fragments/clause.html"> 이용약관 </a>
-  |
-  <a href="#"> 개인정보처리방침 </a>
-  |
-  <a href="#"> 이용안내 </a>
-</div>
 
 <!--------------------- <footer> 모듈 --------------------->
 <footer th:replace="html/fragments/headerFooter :: footer"></footer>

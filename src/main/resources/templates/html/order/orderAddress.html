@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="../../../../common/css/indexCommon.css" />
     <link rel="stylesheet" href="../../../../css/user/myPage/userMyPageCommon.css">
     <link rel="stylesheet" href="../../../../css/order/orderAddress.css">
-    <script defer src="../../../../js/user/myPage/userMyPageAddress.js"></script>
+    <script defer src="../../../../js/order/orderAddress.js"></script>
     <script defer src="../../../../js/index.js"></script>
+    <script src="/js/jquery/jquery-3.6.3.min.js"></script>
 
     <title>paymentAddress</title>
 </head>
@@ -34,37 +35,26 @@
                 </thead>
 
                 <tbody>
-                    <tr>
+                    <tr th:each="addrList : ${addrList}">
                         <td class="inputBox">
                             <div class="checkBox">
-                                <input type="radio" name="radio" id="checkbox" />
-                                <label for="checkbox" id="checkbox"></label>
+                                <input type="radio" name="agreeCheck" th:value="${addrList.addr_seq}" th:id="checkbox+${addrListStat.count}" class="checkedCheck" />
+                                <label th:for="checkbox+${addrListStat.count}" class="checkedCheck"></label>
                             </div>
+                            <input type="hidden" th:name="${addrList.addr_default}" class="addrCheck" value="Y" />
                         </td>
                         <!-- <td>아카데미</td> -->
-                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
+                        <td th:text="'(' + ${addrList.addr_postcode} + ') ' + ${addrList.addr_addr} + ' ' + ${addrList.addr_addr2}"></td>
                         <td>
-                            <a href="../register/register.html">
-                                <img src="../../../../../image/addressUpdate.png" alt="update">
+                            <a th:href="@{/user/myPage/addrUpdate(addr_seq=${addrList.addr_seq})}">
+                                <img src="../../../img/icon/addressUpdate.png" alt="update">
                             </a>
                         </td>
                     </tr>
 
-                    <tr>
-                        <td class="inputBox">
-                            <div class="checkBox">
-                                <input type="radio" name="radio" id="checkbox2" />
-                                <label for="checkbox2" id="checkbox"></label>
-                            </div>
-                        </td>
-                        <!-- <td>아카데미</td> -->
-                        <td>(63309)제주특별자치도 제주시 첨단로 242 (영평동) 제주도</td>
-                        <td>
-                            <a href="../register/register.html">
-                                <img src="../../../../../image/addressUpdate.png" alt="update">
-                            </a>
-                        </td>
-                    </tr>
+
+
+
                 </tbody>
 
             </table>
@@ -76,8 +66,8 @@
             </div>
 
             <div class="choiceButton">
-                <button>배송지 선택</button>
-                <a href="../register/register.html">배송지 추가</a>
+                <button th:onclick="'addrUpdate()'">배송지 선택</button>
+                <a href="user/myPage/addrInsert">배송지 추가</a>
             </div>
 
 

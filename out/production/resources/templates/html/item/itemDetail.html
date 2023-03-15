@@ -216,7 +216,7 @@
                     <div th:text="${qna_list.item_qna_content}" class="content"
                          th:if="|${qna_list.user_id == loginID || qna_list.item_qna_password == 0}|"></div>
                     <div class="qna_content_icon"
-                         th:if="${qna_list.item_qna_reply == 'N' and qna_list.user_id == loginID}">
+                         th:if="${qna_list.item_qna_reply == 'N' and qna_list.user_id == loginID or loginID == 'admin'}">
                         <span class="updatebtn"
                               style="cursor: pointer"
                               th:itemQnaTitle="${qna_list.item_qna_title}"
@@ -279,7 +279,7 @@
                 <ul>
                     <li class="title">
                         <div class="imgbox">
-                            <img src="../../../img/item/item1.jpg"/>
+                            <img th:src="'../../../upload/' + ${mainImg}"/>
                         </div>
                         <strong th:text="${item.item_name}">상품 이름</strong>
                     </li>
@@ -330,7 +330,7 @@
                 <ul>
                     <li class="title">
                         <div class="imgbox">
-                            <img src="../../../img/item/item1.jpg"/>
+                            <img th:src="'../../../upload/' + ${mainImg}"/>
                         </div>
                         <strong th:text="${item.item_name}">상품 이름</strong>
                     </li>
