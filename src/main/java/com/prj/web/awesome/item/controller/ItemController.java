@@ -98,7 +98,7 @@ public class ItemController {
         model.addAttribute("ctgr_cd", ctgr_cd);
         model.addAttribute("itemDto", itemDto);
         model.addAttribute("categoryDto", categoryDTO);
-        System.out.println(categoryDTO);
+        System.out.println("출력" + categoryDTO);
 
 //        model.addAttribute("mainImg", mainImg);
 //        model.addAttribute("subImg", subImg);
@@ -123,37 +123,40 @@ public class ItemController {
 
 
     // BEST 카테고리 컨트롤러
-    @GetMapping("/itemBest/{category_name}")
-    public String itemBest(String item_best, Model model, @PathVariable String category_name, String ctgr_cd) {
+//    @GetMapping("/itemBest/{category_name}")
+    @GetMapping("/itemBest")
+    public String itemBest(String item_best, Model model, String category_name) {
 
         List<ItemDto> itemDto = itemService.itemBest(item_best);
 
         System.out.println("category_name = " + category_name);
         model.addAttribute("itemDto", itemDto);
-        model.addAttribute("ctgr_cd", ctgr_cd);
+        model.addAttribute("item_best", item_best);
+//        model.addAttribute("ctgr_cd", ctgr_cd);
+
+//        {category_name}
 
         // BEST 카테고리에서 상품 정렬
-        if (category_name.equals("new")) {
-            // category_name이 "new"인 경우에 대한 처리
-            List<ItemDto> itemList1 = itemService.itemOrderNew(ctgr_cd);
-            System.out.println("itemList1 = " + itemList1);
-            model.addAttribute("itemDto", itemList1);
-        } else if (category_name.equals("rank")) {
-            List<ItemDto> itemList2 = itemService.itemOrderRank(ctgr_cd);
-            System.out.println("itemList2 = " + itemList2);
-            model.addAttribute("itemDto", itemList2);
-        } else if (category_name.equals("low")) {
-            List<ItemDto> itemList3 = itemService.itemOrderLow(ctgr_cd);
-            System.out.println("itemList3 = " + itemList3);
-            model.addAttribute("itemDto", itemList3);
-        } else if (category_name.equals("high")) {
-            List<ItemDto> itemList4 = itemService.itemOrderHigh(ctgr_cd);
-            System.out.println("itemList4 = " + itemList4);
-            model.addAttribute("itemDto", itemList4);
-        }
+//        if (category_name.equals("new")) {
+//            // category_name이 "new"인 경우에 대한 처리
+//            List<ItemDto> itemList1 = itemService.itemOrderNew(item_best);
+//            System.out.println("itemList1 = " + itemList1);
+//            model.addAttribute("itemDto", itemList1);
+//        } else if (category_name.equals("rank")) {
+//            List<ItemDto> itemList2 = itemService.itemOrderRank(item_best);
+//            System.out.println("itemList2 = " + itemList2);
+//            model.addAttribute("itemDto", itemList2);
+//        } else if (category_name.equals("low")) {
+//            List<ItemDto> itemList3 = itemService.itemOrderLow(item_best);
+//            System.out.println("itemList3 = " + itemList3);
+//            model.addAttribute("itemDto", itemList3);
+//        } else if (category_name.equals("high")) {
+//            List<ItemDto> itemList4 = itemService.itemOrderHigh(item_best);
+//            System.out.println("itemList4 = " + itemList4);
+//            model.addAttribute("itemDto", itemList4);
+//        }
 
         return "html/itemList/itemBest";
-//        return "html/itemList/itemBestContainer";
     }
 
     // 상품 정렬 컨트롤러
