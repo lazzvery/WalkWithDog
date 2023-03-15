@@ -96,9 +96,9 @@ public class ItemController {
         model.addAttribute("categoryDto", categoryDTO);
         System.out.println(categoryDTO);
 
-        model.addAttribute("mainImg", mainImg);
-        model.addAttribute("subImg", subImg);
-        model.addAttribute("infoImg", infoImg);
+//        model.addAttribute("mainImg", mainImg);
+//        model.addAttribute("subImg", subImg);
+//        model.addAttribute("infoImg", infoImg);
 
 //        mv.setViewName("html/itemList/itemList");
 //        return mv;
