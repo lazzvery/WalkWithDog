@@ -57,7 +57,7 @@
 <!--	</select>-->
 	<select id="itemBest" parameterType="String" resultType="com.prj.web.awesome.item.dto.ItemDto">
 		select i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
-		where ctgr_cd=#{ctgr_cd} and item_best = 'Y' and img.img_div_flag = 'm'
+		where item_best = 'Y' and img.img_div_flag = 'm'
 		order by i.item_id asc;
 	</select>
 
@@ -157,9 +157,8 @@
 
 
 	<select id="itemSearch" resultType="com.prj.web.awesome.item.dto.ItemDto">
-		SELECT *
-		FROM item
-		WHERE item_name LIKE CONCAT('%', #{keyword}, '%')
+		SELECT i.item_id, i.ctgr_cd, i.item_name, i.item_price, img.img_name from item i Join image img on i.item_id = img.item_id
+		WHERE img.img_div_flag = 'm' and item_name LIKE CONCAT('%', #{keyword}, '%')
 	</select>
 
 </mapper>

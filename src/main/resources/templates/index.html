@@ -109,7 +109,7 @@
                         <img th:src="'../../../upload/' + ${item.img_name}" alt="상품1" class="prdImg2"/></a>
                     <h1 class="name">
                         <span th:text="${item.item_name}"> 헤어 방수 밴드 </span>
-                        <p th:text="${item.item_price}">15,900원</p>
+                        <p th:text="${#numbers.formatInteger(item.item_price, 3, 'COMMA')}+' 원'">15,900원</p>
                     </h1>
                 </div>
             </div>

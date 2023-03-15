@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/common/css/footer.css">
     <!--    <link rel="stylesheet" href="/css/index.css">-->
     <link rel="stylesheet" href="/css/itemList/itemList.css">
+    <link rel="stylesheet" href="/css/itemList/itemSearch.css">
     <link rel="stylesheet" href="/common/css/indexCommon.css">
     <script src="/js/jquery/jquery-3.6.3.min.js"></script>
     <!--    <script src="/js/header.js"></script>-->
@@ -41,17 +42,17 @@
                 <div class="pageTitleWrap white">
                     <!--큰 제목 감싸는 박스-->
 
-                    <div class="pageTitle">SHOP</div>
+                    <div class="pageTitle">SEARCH</div>
 
                     <!--큰 제목-->
                     <div class="pageNav">
                         <!--제목 아래 세부 카테고리-->
                         <ul class="pageList">
                             <!-- 작은 카테고리-->
-                            <li class="active" th:each="category : ${category}">
-                                <a class="itemSub" th:href="@{/item/list2(ctgr_cd=${category.ctgr_cd})}"
-                                   th:text="${category.ctgr_nm}">
-                                </a>
+<!--                            <li class="active" th:each="category : ${category}">-->
+<!--                                <a class="itemSub" th:href="@{/item/list2(ctgr_cd=${category.ctgr_cd})}"-->
+<!--                                   th:text="${category.ctgr_nm}">-->
+<!--                                </a>-->
 
                             </li>
                         </ul>
@@ -61,21 +62,23 @@
                     <!-- 상품정렬 후 다시 리로딩했을 때 컨테이너 view-->
                     <!-- --------------------- 상품 소개---------------------- -->
                     <section class="productContainer">
-                        <div class="product" th:each="product:${products}">
-                            <input type="hidden" th:value="${product.ctgr_cd}" id="hidden_ctgr_cd">
+                        <div class="searchResult" th:text="'입력하신 상품에 대한 결과는 총 ' + ${#lists.size(products)} + '건 입니다.'"></div>
+
+                        <div class="product" th:each="item:${products}">
+                            <input type="hidden" th:value="${item.ctgr_cd}" id="hidden_ctgr_cd">
                             <div class="productImgList">
                                 <div class="productImg productImg1">
                                     <a href="/item/itemDetail?item_id=10000000"
-                                       th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}"
+                                       th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id})}"
                                        class="img1"><img
-                                            src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
+                                            th:src="'../../../upload/' + ${item.img_name}" alt="상품1" class="prdImg1"></a>
                                     <!--                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img-->
                                     <!--                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>-->
                                     <h1 class="name">
-                            <span th:text="${product.item_name}">
+                            <span th:text="${item.item_name}">
                                 헤어 방수 밴드
                             </span>
-                                        <p th:text="${#numbers.formatInteger(product.item_price, 3, 'COMMA')}+' 원'">
+                                        <p th:text="${#numbers.formatInteger(item.item_price, 3, 'COMMA')}+' 원'">
                                             15,900원
                                         </p>
                                     </h1>
