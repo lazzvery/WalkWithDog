@@ -18,8 +18,8 @@
                             <input type="hidden" th:value="${ctgr_cd}" id="hidden_ctgr_cd">
                             <div class="productImgList">
                                 <div class="productImg productImg1">
-                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img1"><img
-                                            src="/img/item/0000.jpeg" alt="상품1" class="prdImg1"></a>
+                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=${item.item_id})}" class="img1"><img
+                                            th:src="'../../../upload/' + ${item.img_name}" alt="상품1" class="prdImg1"></a>
 <!--                                    <a href="/item/itemDetail?item_id=10000000" th:href="@{/item/itemDetail/{itemId}(itemId=10000000)}" class="img2"><img-->
 <!--                                            src="/img/item/0000-1.jpeg" alt="상품1" class="prdImg2"></a>-->
                                     <h1 class="name">

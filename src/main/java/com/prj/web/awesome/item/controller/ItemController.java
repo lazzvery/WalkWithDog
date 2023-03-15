@@ -35,6 +35,7 @@ public class ItemController {
     private ItemService itemService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
     private ItemDetailService detailService;
 
     @Autowired
@@ -89,8 +90,9 @@ public class ItemController {
 //        List<String> subImg = iservice.findSubImg(itemId);
 //        List<String> infoImg = iservice.findInfoImg(itemId);    // 이미지 src
 
+
+//        List<ItemDto> itemDto = itemService.itemList(ctgr_cd);
         List<ItemDto> itemDto = detailService.findCateList(ctgr_cd);
-        System.out.println("itemDto당~~~~ = " + itemDto);
         List<CategoryDTO> categoryDTO = categoryService.searchCtgr("0001");
 
         model.addAttribute("ctgr_cd", ctgr_cd);
