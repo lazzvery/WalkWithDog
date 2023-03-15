@@ -89,12 +89,12 @@
           </div>
           <div>
             <a th:text="${list.getReview_content()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">고객님의 소중한 후기입니다.</a>
-            <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
+            <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
           </div>
           <div class="c_review_target">
             <img th:src="'../../../upload/' + ${list.getAttachment_name()}" style="border-radius: 50%" alt="2번" class="c_review_targetimg">
             <div>
-              <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
+              <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
               <div class="c_user_rank">
                 <span>평점</span>
                 <strong th:text="${list.review_rank}">9.4</strong>
