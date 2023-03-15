@@ -49,12 +49,11 @@ body {
   margin : 0 auto;
   display : flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .productContainer .product {
   display: flex;
-  padding: 10px;
 }
 
 .productContainer h1 {

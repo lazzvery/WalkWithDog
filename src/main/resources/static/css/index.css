@@ -85,6 +85,7 @@ body {
 }
 
 .slideWrapper img {
+  display:block;
   width: 100vw;
   height: 90vh;
 }
@@ -142,10 +143,12 @@ body {
 
 .productContainer .prdMore {
   margin-bottom: 2%;
+  display:flex;
+  flex-direction: row-reverse;
 }
 
 .productContainer .prdMore a {
-  margin-left: 84%;
+
   font-size: 14px;
 }
 
@@ -154,7 +157,7 @@ body {
 .productImgList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 auto;
   grid-template-columns: repeat(11, 1fr);
   column-gap: 5px;
@@ -189,7 +192,6 @@ body {
 .productImg9 {
   grid-column: 1 / span 2;
   position: relative;
-  margin: 0 5px;
 }
 
 /* 이미지 2번째줄 */
@@ -223,6 +225,7 @@ body {
 .productImgList .img1 img {
   position: relative;
   z-index: 1;
+  display:block;
 }
 
 .productImgList .img2 img {
