@@ -25,7 +25,7 @@ body {
 }
 
 .c_community_head {
-  color: #BAAAD7;
+  color: white;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -187,6 +187,8 @@ label {
   border: 1px solid black;
   border-radius: 10px;
   text-decoration: none;
+  vertical-align: middle;
+  box-sizing: border-box;
   padding: 7px;
 }
 
@@ -197,6 +199,7 @@ label {
   padding: 7px;
   background-color: #BAAAD7;
   color: white;
+  box-sizing: border-box;
 }
 
 .c_button .list {
@@ -206,7 +209,7 @@ label {
 
 .c_button .confirm {
   width: 77.45px;
-  height: 39px;
+  height: 40px;
   font-size: 16px;
   cursor: pointer;
   padding: 7px;
@@ -214,6 +217,7 @@ label {
   border: 1px solid #BAAAD7;
   background-color: #BAAAD7;
   color: white;
+  box-sizing: border-box;
 }
 
 /*@media screen and (max-width: 1024px) {*/
