@@ -33,8 +33,20 @@ public interface ReviewMapper {
     void reviewDelete(ReviewDTO dto);
 
 
-    @Select("select r.review_seq, r.review_title, r.user_id, r.review_rank, a.attachment_name from review r join attachment a on r.review_seq = a.review_seq where a.attachment_flag = 'm' limit 5")
+    @Select("select r.review_seq, r.review_title, r.user_id, r.review_rank, a.attachment_name " +
+            "from review r " +
+            "join attachment a on r.review_seq = a.review_seq " +
+            "where a.attachment_flag = 'm' " +
+            "limit 5")
     List<ReviewDTO> findReview();
 
 
+    @Select("select r.review_seq, r.item_id, r.review_title, r.user_id, r.review_rank, a.attachment_name " +
+            "from review r " +
+            "join attachment a on r.review_seq = a.review_seq " +
+            "join item i on r.item_id = i.item_id " +
+            "where r.item_id = i.item_id " +
+            "limit 4")
+
+    List<ReviewDTO> writeReview();
 }

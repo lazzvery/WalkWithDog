@@ -69,4 +69,8 @@ public class ReviewService {
     public List<ReviewDTO> findReview(){
        return mapper.findReview();
     }
+
+    public List<ReviewDTO> writeReview(){
+        return mapper.writeReview();
+    }
 }
