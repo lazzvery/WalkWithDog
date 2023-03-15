@@ -70,7 +70,7 @@ public class ReviewService {
        return mapper.findReview();
     }
 
-    public List<ReviewDTO> writeReview(){
-        return mapper.writeReview();
+    public List<ReviewDTO> writeReview(int item_id){
+        return mapper.writeReview(item_id);
     }
 }

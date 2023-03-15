@@ -47,5 +47,5 @@ public interface ReviewMapper {
             "join item i on r.item_id = i.item_id " +
             "where r.item_id = #{item_id} " +
             "limit 4")
-    List<ReviewDTO> writeReview();
+    List<ReviewDTO> writeReview(int item_id);
 }

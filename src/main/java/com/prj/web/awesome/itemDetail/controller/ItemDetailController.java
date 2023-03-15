@@ -38,7 +38,7 @@ public class ItemDetailController {
     public String searchItem(@PathVariable("itemId") int itemId, @RequestParam(defaultValue = "1") int currPage,
                              Model model, HttpSession session){
 
-        List<ReviewDTO> reviewList = reviewService.writeReview();
+        List<ReviewDTO> reviewList = reviewService.writeReview(itemId);
         model.addAttribute("reviewList", reviewList);
         System.out.println("reviewList = " + reviewList);
 
