@@ -20,5 +20,6 @@ public class OrderListDTO {
     private int addr_seq;
 
     private int order_count;
+    private String item_name;
 
 }

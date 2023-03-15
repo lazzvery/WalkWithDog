@@ -184,12 +184,13 @@ public class MyPageController {
         cri.setSnoEno();
 
         mv.addObject("orderList", service.searchList(cri));
-        System.out.println("reviewService.searchList(cri) = " + service.searchList(cri));
+        System.out.println("orderList = " + service.searchList(cri));
         System.out.println("cri = " + cri);
 
 
         pageNation.setCriteria(cri);
         pageNation.setTotalRowsCount(service.searchTotalCount(cri));
+        System.out.println("total = " + service.searchTotalCount(cri));
         mv.addObject("pageNation", pageNation);
         System.out.println("pageNation = " + pageNation);
 
