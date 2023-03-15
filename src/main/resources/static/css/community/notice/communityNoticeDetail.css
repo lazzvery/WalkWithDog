@@ -127,14 +127,14 @@ main .c_detail {
 
 
 
-@media screen and (max-width: 1024px) {
-  .c_page_catagory ul {
-    gap: 10px;
-  }
-}
+/*@media screen and (max-width: 1024px) {*/
+/*  .c_page_catagory ul {*/
+/*    gap: 10px;*/
+/*  }*/
+/*}*/
 
-@media screen and (max-width: 768px) {
-  .c_page_catagory li a {
-    font-size: 12px;
-  }
-}
+/*@media screen and (max-width: 768px) {*/
+/*  .c_page_catagory li a {*/
+/*    font-size: 12px;*/
+/*  }*/
+/*}*/
