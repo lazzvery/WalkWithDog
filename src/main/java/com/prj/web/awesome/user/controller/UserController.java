@@ -1,5 +1,8 @@
 package com.prj.web.awesome.user.controller;
 
+import com.prj.web.awesome.order.dto.CouponJoinInfoDTO;
+import com.prj.web.awesome.order.service.OrderDetailService;
+import com.prj.web.awesome.user.dto.CouponDTO;
 import com.prj.web.awesome.user.dto.UserDTO;
 import com.prj.web.awesome.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,8 @@ public class UserController {
     @Autowired
     UserService service;
     @Autowired
+    OrderDetailService dservice;
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     // 유저 리스트
@@ -37,7 +42,7 @@ public class UserController {
 
 
     @GetMapping("/myPage/myHome")
-    public ModelAndView detail(HttpServletRequest request, ModelAndView mv, UserDTO dto) {
+    public ModelAndView detail(HttpServletRequest request, ModelAndView mv, UserDTO dto, CouponDTO cdto) {
 
         // => 처리순서 : parameter확인: 없으면 -> session 확인 -> Update요청여부 확인
         if ( dto.getUser_id()==null || dto.getUser_id().length()<1 ) {
@@ -50,6 +55,13 @@ public class UserController {
         // 2) Service
         dto=service.userSelectOne(dto);
         mv.addObject("userInfo", dto);
+
+
+        String userId = (String) request.getAttribute("loginID");
+
+        List<CouponJoinInfoDTO> couponList = dservice.findCouponList(userId);
+
+        mv.addObject("couponList",couponList);
 
         System.out.println(dto);
         System.out.println(dto.getUser_id());

@@ -22,7 +22,7 @@ body {
 #wrap {
   position: relative;
   overflow: hidden;
-  width: 60%;
+  width: 1024px;
   padding: 180px 0 0;
   margin: 0 auto;
 }
@@ -49,24 +49,30 @@ body {
   margin : 0 auto;
   display : flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 5%;
 }
 
 .productContainer .product {
   display: flex;
+  width:30%;
+  margin-bottom: 5%;
 }
 
 .productContainer h1 {
   font-size: 1.1rem;
+  margin-top:5%;
 }
 
 .productContainer h1 p {
   color: #BAAAD7;
   font-size: 1rem;
+  margin-top:1%;
 }
 
 .prdImg1 {
-  width: 350px;
+  display:block;
+  width: 100%;
 }
 
 /* 큰 제목 감싸는 박스 */
@@ -76,6 +82,7 @@ body {
   padding: 0 0 0;
   margin: 0 0;
   background: #BAAAD7;
+  margin-bottom:30px;
   /*opacity: 0.4;*/
 }
 
