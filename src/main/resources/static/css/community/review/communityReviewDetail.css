@@ -114,6 +114,7 @@ aside {
 .slides img {
     display: block;
     height: 500px;
+    object-fit: cover;
 }
 
 .slides li:not(:last-child) {
@@ -130,8 +131,7 @@ aside {
     color: black;
     text-align: center;
     top: 50%;
-    cursor: pointer;
-}
+    cursor: pointer;}
 
 .controller img:hover {
     font-weight: bolder;
