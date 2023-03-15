@@ -11,7 +11,7 @@ const form = document.querySelector(".joinForm"),
 const idRegex = /^[a-zA-Z0-9]{5,20}$/;
 const pwRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[~!@#$%^&*])[a-zA-Z\d~!@#$%^&*]{8,20}$/;
 const nameRegex = /^[A-Za-z가-힣]*$/;
-const phoneRegex = /^\d{3}-\d{3,4}-\d{4}$/;
+const phoneRegex = /^\d{3}\d{3,4}\d{4}$/;
 const emailRegex = /\S+@\S+\.\S+/;
 
 form.addEventListener('keydown', function(event) {
