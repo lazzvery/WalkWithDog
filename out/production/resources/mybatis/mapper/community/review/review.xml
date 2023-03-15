@@ -2,61 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.prj.web.awesome.community.mapper.ReviewMapper">
-<!--	<select id="reviewList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">-->
-<!--		select-->
-<!--			review_seq,-->
-<!--			user_id,-->
-<!--			review_title,-->
-<!--			review_content,-->
-<!--			review_reg_date,-->
-<!--			review_rank,-->
-<!--			review_cnt-->
-<!--	    from review-->
-<!--	    order by review_seq desc;-->
-<!--	</select>-->
-
 	<select id="reviewDetail" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
 		select
-		    r.user_id,
-			r.review_title,
-			r.review_content,
-			r.review_rank,
-			r.review_reg_date,
-			r.review_seq,
-			c.com_content,
-			r.attachment_file_seq,
-			c.com_seq
-		from review r
-		left outer join comment c on r.review_seq = c.review_seq
-		where r.review_seq = #{review_seq}
-		order by c.com_seq asc;
+		    user_id,
+			review_title,
+			review_content,
+			review_rank,
+			review_reg_date,
+			review_seq
+		from review
+		where review_seq = #{review_seq}
 	</select>
-
-	<insert id="reviewInsert">
-		<selectKey keyProperty="review_seq" resultType="int" order="BEFORE"  >
-			select IFNULL(max(review_seq),0)+1 from review;
-		</selectKey>
-		insert into review
-		(review_seq,
-		user_id,
-		item_id,
-		review_title,
-		review_content,
-		review_reg_date,
-		review_rank,
-		attachment_file_seq
-		)
-		values(
-		#{review_seq},
-		#{user_id},
-		"10000016",
-		#{review_title},
-		#{review_content},
-		now(),
-		#{review_rank},
-		"300"
-		);
-	</insert>
 
 	<update id="reviewUpdate">
 		update review set
@@ -94,10 +50,11 @@
 	</sql>
 
 	<select id="searchList" resultType="com.prj.web.awesome.community.dto.ReviewDTO">
-		select review_seq, user_id, review_title, review_reg_date, review_rank
-		from review
-		where ( review_seq>0 <include refid="search"></include>
-		order by review_seq desc
+		select r.review_seq, r.user_id, r.review_title, r.review_reg_date, r.review_rank, a.attachment_name
+		from review r
+		left outer join attachment a on r.review_seq = a.review_seq
+		where ( r.review_seq>0 and a.attachment_flag = 'm' <include refid="search"></include>
+		order by r.review_seq desc
 		limit #{sno}, #{rowsPerPage}
 	</select>
 

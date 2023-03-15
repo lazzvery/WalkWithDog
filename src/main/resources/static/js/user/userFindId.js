@@ -15,28 +15,25 @@ checkBox.addEventListener("click", (e) => {
     }
 });
 
-function idButton(event) {
-    let html = '';
+function idButton() {
+    let name = $('#user_name').val();
+    let email = $('#user_email').val();
+    let phone = $('#user_phone').val();
 
-
-    let user_name = $('#user_name').val(),
-        user_email = $('#user_email').val(),
-        user_phone = $('#user_phone').val();
-
-
-
-    let sendData = "userEmail="+user_email+"userPhone="+user_phone+"userName"+user_name;
+    console.log(name, phone);
 
     $.ajax({
+        url: "/user/findId",
         type: "POST",
-        url: '/user/userFindId',
-        datatype: "text",
-        data: sendData,
-        success: function (text) {
-            html += <div>성공</div>;
+        data: {"name": name, "phone": phone , "email": email},
+        success: function (data) {
+            $('.pageSelect').css("display","none");
+            $('.findIdForm').css("display","none");
+            $('.title').css("display","block");
+            $('#id_value').text('"'+data+'"');
         },
-        error: function (xhr) {
-            alert('저장에 실패하였습니다. 다시 시도해주세요.');
+        error: function () {
+            alert("에러입니다");
         }
     });
 

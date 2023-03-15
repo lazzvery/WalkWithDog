@@ -112,27 +112,16 @@
 		(select count(*) from order_detail d where o.order_code=d.order_code) order_count
 		,o.order_price, o.order_payment, o.order_status, o.order_claim
 		FROM order_list o
-		where user_id=#{user_id}
+		where  o.order_status != 'R' AND o.user_id=#{user_id}
 		<if test="searchType != 'all'.toString()">
-			AND o.order_status != 'R'
-			<if test="keyword!=null">
-				<bind name="keyVal" value="keyword"/>
+			<if test="searchType!=null">
+
 				and (
-				o.order_status like #{keyVal}
+				o.order_status like #{searchType}
 				)
 			</if>
 		</if>
-		<choose>
-			<when test="searchType == 'all'.toString()">
-				AND o.order_status != 'R'
-				<if test="keyword!=null">
-					<bind name="keyVal" value="keyword"/>
-					AND (
-					o.order_status like #{keyVal}
-					 )
-				</if>
-			</when>
-		</choose>
+
 		order by o.order_code desc
 		limit #{sno}, #{rowsPerPage}
 	</select>

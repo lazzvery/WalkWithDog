@@ -37,15 +37,31 @@ public class UserService {
     // 3. insert
     public int userInsert(UserDTO dto){
         return mapper.userInsert(dto);
-    };
+    }
 
 //    // 4. update
-    public int userUpdate(UserDTO dto) { return mapper.userUpdate(dto);};
+    public int userUpdate(UserDTO dto) { return mapper.userUpdate(dto);}
 
 //    // 5. delete
     public int userDelete(UserDTO dto){
         return mapper.userDelete(dto);
-    };
+    }
 
+
+
+    public String find_id(String name, String phone, String email) {
+
+        String result = "";
+
+        try {
+            result= mapper.findId(name, phone, email);
+
+        } catch(Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return result ;
+    }
 
 }

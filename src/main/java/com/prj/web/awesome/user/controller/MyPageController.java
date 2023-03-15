@@ -182,6 +182,7 @@ public class MyPageController {
     @GetMapping("/order")
     public ModelAndView orderList(ModelAndView mv, SearchCriteria cri, PageNation pageNation){
         cri.setSnoEno();
+
         mv.addObject("orderList", service.searchList(cri));
         System.out.println("reviewService.searchList(cri) = " + service.searchList(cri));
         System.out.println("cri = " + cri);
