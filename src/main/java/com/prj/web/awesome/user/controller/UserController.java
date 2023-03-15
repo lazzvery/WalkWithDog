@@ -174,6 +174,8 @@ public class UserController {
         mv.addObject("userInfo", dto);
 
 
+        dto.setUser_password(passwordEncoder.encode(dto.getUser_password()));
+
         if ( service.userUpdate(dto)>0 ) {
             mv.addObject("message", "~~ 회원정보 수정 성공 ~~");
         }else {
@@ -234,9 +236,56 @@ public class UserController {
     }
 
     @GetMapping("/findpw")
-    public String findpw(Model model){
+    public String findpwf() {
+
+        return "html/user/userFindPassword";
+    } //delete
+
+    @PostMapping("/findpw")
+    @ResponseBody
+    public String findpw(@RequestParam("user_name") String name,@RequestParam("user_phone") String phone, @RequestParam("user_id") String id){
+
+        String result;
+        System.out.println("name = " + name);
+        System.out.println("phone = " + phone);
+        System.out.println("id = " + id);
+
+
+        result = service.findPw(name, phone, id);
+
+
+        System.out.println("result = " + result);
+        System.out.println("service = " + service.findPw(name, phone, id));
+
+        return result;
+    }
+
+
+
+    @GetMapping("/findPwUpdate")
+    public String findPwUpdatef(Model mv , UserDTO dto, HttpServletRequest request) throws IOException{
+        dto.setUser_id((String)request.getSession().getAttribute("loginID"));
+
+        dto = service.userSelectOne(dto);
+        mv.addAttribute("userinfo", dto);
+
+        System.out.println(dto);
+
         return "html/user/userFindPassword";
     }
+    @PostMapping("/findPwUpdate")
+    public String findPwUpdate(HttpServletRequest request, ModelAndView mv, UserDTO dto) throws IOException{
+
+
+        dto.setUser_password(passwordEncoder.encode(dto.getUser_password()));
+        service.findPwUpdate(dto);
+
+        System.out.println(dto);
+
+        return "html/user/userLogin";
+    } //update
+
+
 
 
 }

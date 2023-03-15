@@ -4,6 +4,7 @@ import com.prj.web.awesome.user.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -31,5 +32,11 @@ public interface UserMapper {
 
     @Select("select user_id from user WHERE user_phone=#{user_phone} AND user_name=#{user_name}")
     String findId(@Param("user_name") String name, @Param("user_phone") String phone);
+
+    @Select("select * from user WHERE user_phone=#{user_phone} AND user_name=#{user_name} AND user_id=#{user_id}")
+    String findPw(@Param("user_name") String name, @Param("user_phone") String phone, @Param("user_id") String id);
+
+    @Update("update user set user_password=#{user_password} where user_id=#{user_id}")
+    int findPwUpdate(UserDTO dto);
 
 }

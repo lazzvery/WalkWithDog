@@ -53,4 +53,11 @@ public class UserService {
         return mapper.findId(name, phone);
     }
 
+    public String findPw(String name, String phone, String id) {
+        return mapper.findPw(name, phone, id);
+    }
+
+    public int findPwUpdate(UserDTO dto) { return mapper.findPwUpdate(dto);}
+
+
 }
