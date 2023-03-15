@@ -4,7 +4,9 @@ import com.prj.web.awesome.community.criTest.Criteria;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
 import com.prj.web.awesome.community.dto.QnaDTO;
 import com.prj.web.awesome.community.dto.ReviewDTO;
+import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,6 +32,9 @@ public interface ReviewMapper {
 
     void reviewDelete(ReviewDTO dto);
 
+
+    @Select("select r.review_seq, r.review_title, r.user_id, r.review_rank, a.attachment_name from review r join attachment a on r.review_seq = a.review_seq where a.attachment_flag = 'm' limit 5")
+    List<ReviewDTO> findReview();
 
 
 }

@@ -115,6 +115,33 @@
             </div>
         </div>
 
+        <div class="review">
+            <div class="reviewMent">
+                <h1>REVIEW</h1>
+            </div>
+            <ul id="reviewList">
+                <li th:each="list:${reviewList}" >
+                    <div th:text="${list.getReview_seq()}" style="display: none"></div>
+                    <div class="c_img_container">
+                        <img th:src="'../../../upload/' + ${list.getAttachment_name()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" alt="1번">
+                    </div>
+                    <div>
+                        <a th:text="${list.getReview_content()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">고객님의 소중한 후기입니다.</a>
+                        <a th:text="${list.getUser_id() }" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}">c**</a>
+                    </div>
+                    <div class="c_review_target">
+                        <div>
+                            <a th:text="${list.getReview_title()}" th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" >[BEST] 워킹 세이프 스프레이</a>
+                            <div class="c_user_rank">
+                                <span>평점</span>
+                                <strong th:text="${list.review_rank}">9.4</strong>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
 <!--        <div class="product">-->
 <!--            <div class="productMent">-->
 <!--                <h1># <span>BEST</span> PRODUCT</h1>-->

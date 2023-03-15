@@ -66,4 +66,7 @@ public class ReviewService {
         mapper.reviewDelete(dto);
     }
 
+    public List<ReviewDTO> findReview(){
+       return mapper.findReview();
+    }
 }
