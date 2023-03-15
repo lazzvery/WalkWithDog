@@ -278,21 +278,22 @@ body {
   justify-content: center;
 }
 
+
 .c_img_container img {
   width: 260px;
   height: 260px;
   border-radius: 4px;
   object-fit: cover;
-
 }
 
-.c_reviewlist li a {
+.c_reviewlist li a:not(.clickImg) {
   font-size: initial;
   display: flex;
   padding: 10px;
   text-decoration: none;
   color: black;
 }
+
 
 .c_reviewlist li .c_username {
   padding: 0 10px 0;
@@ -301,6 +302,7 @@ body {
 
 .c_review_target {
   display: flex;
+  margin-left: 5px;
 }
 
 .c_review_target .c_user_rank {

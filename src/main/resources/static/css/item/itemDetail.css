@@ -484,6 +484,16 @@ main hr {
     object-fit: cover;
 }
 
+.emptyReview{
+    display: flex;
+    font-size: 12px;
+}
+.moveReviewWrite{
+    color: black;
+    font-size: 1.3em;
+    margin-left: 23px;
+    margin-top: 5px;
+}
 /* ================================================================= */
 /* ========================= 큐엔에이 =========================== */
 

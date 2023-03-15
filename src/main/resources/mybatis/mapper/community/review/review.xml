@@ -69,4 +69,6 @@
 			limit #{sno}, #{rowsPerPage}
 	</select>
 
+
+
 </mapper>
