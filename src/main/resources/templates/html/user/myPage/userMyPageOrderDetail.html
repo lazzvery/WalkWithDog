@@ -60,10 +60,10 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="orderList : ${orderDetail}">
-                    <td th:text="${orderList.item_id}"></td>
-                    <td th:text="${orderList.item_count}"></td>
-                    <td th:text="${orderList.item_price}+'원'"></td>
+                <tr th:each="orderDetail : ${orderDetail}">
+                    <td th:text="${orderDetail.item_name}"></td>
+                    <td th:text="${orderDetail.item_count}"></td>
+                    <td th:text="${orderDetail.item_price}+'원'"></td>
 
                 </tr>
                 </tbody>

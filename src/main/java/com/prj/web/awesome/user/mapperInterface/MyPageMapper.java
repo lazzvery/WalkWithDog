@@ -71,6 +71,7 @@ public interface MyPageMapper {
     @Select("SELECT * from order_detail d " +
             "JOIN order_list o ON o.order_code = d.order_code " +
             "JOIN item i ON d.item_id = i.item_id " +
+//            "JOIN image m ON i.item_id = m.item_id " +
             "WHERE d.order_code=#{order_code}"
     )
     List<OrderDetailDTO> orderDetail(int order_code);

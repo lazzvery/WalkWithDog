@@ -2,7 +2,6 @@ package com.prj.web.awesome.user.controller;
 
 import com.prj.web.awesome.community.criTest.PageNation;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
-import com.prj.web.awesome.item.dto.ItemDto;
 import com.prj.web.awesome.item.service.ItemService;
 import com.prj.web.awesome.order.dto.CouponJoinInfoDTO;
 import com.prj.web.awesome.order.dto.OrderDetailDTO;
@@ -204,13 +203,16 @@ public class MyPageController {
     }
 
     @GetMapping("/orderDetail")
-    public String orderDetail(Model model, ItemDto dto, @RequestParam("order_code") int orderCode, String item_id){
+    public String orderDetail(Model model, HttpSession session, @RequestParam("order_code") int orderCode, SearchCriteria cri){
+        String userId = (String) session.getAttribute("loginID");
 
         List<OrderDetailDTO> orderDetail = service.orderDetail(orderCode);
-
-
         model.addAttribute("orderDetail", orderDetail);
 
+        cri.setUser_id(userId);
+        model.addAttribute("orderList", service.searchList(cri));
+
+        System.out.println("cri = " + cri);
         System.out.println("orderDetail = " + orderDetail);
 
 
