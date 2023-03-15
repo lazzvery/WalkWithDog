@@ -114,16 +114,18 @@ body {
 
 /* 메인 상품 이미지 */
 .productContainer img {
-  width: 100%;
+  width: 300px;
   height: 80%;
   filter: brightness(97%);
+  object-fit: cover;
 }
 
 /* 상품리스트 소제목 */
 .productContainer .productMent {
-  display: grid;
+  display: flex;
+  justify-content: center;
   grid-template: repeat(4, 1fr) / repeat(11, 1fr);
-  height: 15em;
+  height: 70px;
 }
 
 .productContainer .productMent h1 {
@@ -143,13 +145,16 @@ body {
 }
 
 .productContainer .prdMore a {
-  margin-left: 93%;
+  margin-left: 84%;
+  font-size: 14px;
 }
 
 
 /*------- 상품 리스트 -------*/
 .productImgList {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 0 auto;
   grid-template-columns: repeat(11, 1fr);
   column-gap: 5px;
@@ -184,6 +189,7 @@ body {
 .productImg9 {
   grid-column: 1 / span 2;
   position: relative;
+  margin: 0 5px;
 }
 
 /* 이미지 2번째줄 */

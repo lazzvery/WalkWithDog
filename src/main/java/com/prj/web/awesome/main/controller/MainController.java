@@ -1,22 +1,32 @@
 package com.prj.web.awesome.main.controller;
 
+import com.prj.web.awesome.itemDetail.dto.ItemDetailDto;
+import com.prj.web.awesome.itemDetail.service.ItemDetailService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
+@Slf4j
+@RequestMapping
 @RequiredArgsConstructor
-@RestController
+@Controller
 public class MainController {
 
-    @GetMapping("/home")
-    public ModelAndView getMainView() {
+    private final ItemDetailService iservice;
 
-        ModelAndView mv = new ModelAndView();
+    @GetMapping(value = {"/", "/home"})
+    public String mainHome(Model model) {
+        List<ItemDetailDto> list = iservice.findList();
 
-        mv.setViewName("index");
-
-        return mv;
+        model.addAttribute("list", list);
+        return "index";
     }
 
     @GetMapping("/clause")

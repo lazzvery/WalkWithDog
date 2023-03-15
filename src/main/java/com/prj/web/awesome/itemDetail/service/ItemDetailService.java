@@ -20,4 +20,7 @@ public class ItemDetailService {
         return mapper.findItem(item_id);
     }
 
+    public List<ItemDetailDto> findList() {
+        return mapper.findList();
+    }
 }

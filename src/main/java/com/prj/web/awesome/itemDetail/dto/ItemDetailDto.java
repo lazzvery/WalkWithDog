@@ -16,4 +16,5 @@ public class ItemDetailDto {
     private int item_amount;
     private Date item_reg_date;
     private String item_data_del_yn;
+    private String img_name;
 }

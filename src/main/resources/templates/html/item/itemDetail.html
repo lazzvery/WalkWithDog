@@ -246,7 +246,7 @@
                 <ul>
                     <li class="qna_list"
                         th:if="${qna_list.item_qna_reply == 'N'}"
-                        th:onclick="|checkId(${qna_list.user_id == loginID}, ${qna_list.item_qna_password == 1}, ${i.index})|">
+                        th:onclick="|checkId(${qna_list.user_id == loginID || loginID == 'admin'}, ${qna_list.item_qna_password == 1}, ${i.index})|">
                         <div>
                             <span class="qna_seq" th:text="${qna_list.item_qna_seq}">seq</span>
                             <img src="../../../img/icon/ilock.png" th:if="${qna_list.item_qna_password == 1}">
@@ -259,7 +259,7 @@
                     </li>
                     <li class="qna_list qna_reply"
                         th:if="${qna_list.item_qna_reply == 'Y'}"
-                        th:onclick="|checkId(${qna_list.user_id == loginID}, ${qna_list.item_qna_password == 1}, ${i.index})|">
+                        th:onclick="|checkId(${qna_list.user_id == loginID || loginID == 'admin'}, ${qna_list.item_qna_password == 1}, ${i.index})|">
                         <div>
                             <span class="qna_seq" th:text="${qna_list.item_qna_seq}">seq</span>
                             <img src="../../../img/icon/ireply.png" class="qna_reply_img">
@@ -274,7 +274,7 @@
                 </ul>
                 <div class="qna_list qna_content" th:id="'content' + ${i.index}">
                     <div th:text="${qna_list.item_qna_content}" class="content"
-                         th:if="|${qna_list.user_id == loginID || qna_list.item_qna_password == 0}|"></div>
+                         th:if="|${qna_list.user_id == loginID || loginID == 'admin' || qna_list.item_qna_password == 0}|"></div>
                     <div class="qna_content_icon"
                          th:if="${qna_list.item_qna_reply == 'N' and qna_list.user_id == loginID or loginID == 'admin'}">
                         <span class="updatebtn"
