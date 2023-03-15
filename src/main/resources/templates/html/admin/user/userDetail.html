@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,9 @@
     <!-- ---------------- 버튼 ------------------ -->
     <header id="headerTop">
         <div class="title">
-            <h1>관리자페이지</h1>
+            <a href="/home">
+                <img id="logoImg" src="/img/1 logo.png">
+            </a>
         </div>
 
         <ul class="list">
@@ -57,19 +59,19 @@
 
                 <tr>
                     <th>아이디</th>
-                    <td>awesome</td>
+                    <td th:text="${userInfo.user_id}"></td>
                 </tr>
                 <tr>
                     <th>이름</th>
-                    <td>정선주</td>
+                    <td th:text="${userInfo.user_name}"></td>
                 </tr>
                 <tr>
                     <th>e-mail</th>
-                    <td>awesome@naver.com</td>
+                    <td th:text="${userInfo.user_email}"></td>
                 </tr>
                 <tr>
                     <th>e-amil 수신여부</th>
-                    <td>N</td>
+                    <td th:text="${userInfo.user_email_check}"></td>
                 </tr>
                 <tr>
                     <th>주소(기본 배송지)</th>
@@ -77,23 +79,24 @@
                 </tr>
                 <tr>
                     <th>휴대전화</th>
-                    <td>010-8900-2824</td>
+                    <td th:text="${userInfo.user_phone}"></td>
                 </tr>
                 <tr>
                     <th>SNS 수신여부</th>
-                    <td>N</td>
+                    <td th:text="${userInfo.user_sns_check}"></td>
                 </tr>
                 <tr>
                     <th>성별</th>
-                    <td>여자</td>
+                    <td th:text="${userInfo.user_gen}"></td>
                 </tr>
                 <tr>
                     <th>생일</th>
-                    <td>4월26일</td>
+                    <td th:text="${userInfo.user_birthday}"></td>
                 </tr>
                 <tr>
                     <th>추천인 아이디</th>
-                    <td>ms</td>
+                    <td th:if="${userInfo.user_rid == null}" th:text="'없음'"></td>
+                    <td th:if="${userInfo.user_rid != null}" th:text="${userInfo.user_rid}"></td>
                 </tr>
             </table>
         </div>
@@ -105,43 +108,23 @@
 
                 <tr>
                     <th>배송지번호</th>
-                    <th>아이디</th>
                     <th>배송지명</th>
                     <th>수령인</th>
-                    <th>주소</th>
                     <th>휴대전화</th>
+                    <th>주소</th>
                     <th>기본 배송지</th>
                 </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">awesome</a></td>
-                    <td>괜히 </td>
-                    <td>파이</td>
-                    <td>경기 광주시 능평동 오포읍 423 (금강빌라?)</td>
-                    <td>010-8900-2824</td>
-                    <td>Y</td>
+                <tr th:each="addrList : ${addrList}">
+                    <td th:text="${addrList.addr_seq}"></td>
+                    <td th:text="${addrList.addr_name}"></td>
+                    <td th:text="${addrList.addr_reciver}"></td>
+                    <td th:text="${addrList.addr_phone}"></td></td>
+                    <td th:text="'(' + ${addrList.addr_postcode} + ') ' + ${addrList.addr_addr} + ' ' + ${addrList.addr_addr2}"></td>
+                    <td th:text="${addrList.addr_default}"></td>
                 </tr>
 
-                <tr>
-                    <td>2</td>
-                    <td><a href="#">CBH</a></td>
-                    <td>한다</td>
-                    <td>모코코</td>
-                    <td>경기 용인시 수지구?</td>
-                    <td>010-5339-2807</td>
-                    <td>N</td>
-                </tr>
 
-                <tr>
-                    <td>3</td>
-                    <td><a href="#">jjang</a></td>
-                    <td>했나? </td>
-                    <td>보리</td>
-                    <td>경기 광주시 태전동 성원아파트? 402동 1401호?</td>
-                    <td>010-4731-4579</td>
-                    <td>N</td>
-                </tr>
             </table>
         </div>
 
@@ -158,31 +141,13 @@
                     <th>쿠폰수량</th>
                 </tr>
 
-                <tr>
-                    <td>1</td>
-                    <td>a01-1</td>
-                    <td>신규가입 쿠폰</td>
-                    <td>10,000원 이상</td>
-                    <td>5,000원 할인</td>
-                    <td>1개</td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>a02-1</td>
-                    <td>파이 쿠폰</td>
-                    <td>10,000원 이상</td>
-                    <td>5,000원 할인</td>
-                    <td>2개</td>
-                </tr>
-
-                <tr>
-                    <td>3</td>
-                    <td>a03-1</td>
-                    <td>보리 쿠폰</td>
-                    <td>10,000원 이상</td>
-                    <td>5,000원 할인</td>
-                    <td>3개</td>
+                <tr th:each="couponList : ${couponList}">
+                    <td th:text="${couponList.coupon_seq}"></td>
+                    <td th:text="${couponList.coupon_code}"></td>
+                    <td th:text="${couponList.coupon_name}"></td>
+                    <td th:text="${couponList.coupon_buy}+'원'"></td>
+                    <td th:text="${couponList.coupon_benefits}+'원'"></td>
+                    <td th:text="${couponList.coupon_quantity}+'장'"></td>
                 </tr>
 
             </table>
@@ -193,51 +158,27 @@
                 <caption>주문 관리</caption>
 
                 <tr>
-                    <th>상품명</th>
-                    <th>주문코드</th>
-                    <th>쿠폰 코드</th>
-                    <th>배송지번호</th>
                     <th>주문일자</th>
+                    <th>주문코드</th>
+                    <th>상품명</th>
                     <th>최종 결제 금액</th>
+                    <th>쿠폰 코드</th>
                     <th>결제수단</th>
                     <th>주문 처리상태</th>
                     <th>취소/교환/반품</th>
                 </tr>
 
-                <tr>
-                    <td>보리가방</td>
-                    <td>11-11</td>
-                    <td>a01-1</td>
-                    <td>1</td>
-                    <td>2022-02-08</td>
-                    <td>56,200원</td>
-                    <td>신용카드 (2개월 할부)</td>
-                    <td>상품 준비중</td>
-                    <td>-</td>
-                </tr>
-
-                <tr>
-                    <td>언제 다 만들지..</td>
-                    <td>11-11</td>
-                    <td>a01-1</td>
-                    <td>1</td>
-                    <td>2022-02-08</td>
-                    <td>56,200원</td>
-                    <td>신용카드 (2개월 할부)</td>
-                    <td>상품 준비중</td>
-                    <td>-</td>
-                </tr>
-
-                <tr>
-                    <td>이렇게 만드는거 아니면 나 안해</td>
-                    <td>11-11</td>
-                    <td>a01-1</td>
-                    <td>1</td>
-                    <td>2022-02-08</td>
-                    <td>56,200원</td>
-                    <td>신용카드 (2개월 할부)</td>
-                    <td>상품 준비중</td>
-                    <td>-</td>
+                <tr th:each="orderList : ${orderList}">
+                    <td th:text="${orderList.order_date}"></td>
+                    <td th:text="${orderList.order_code}"></td>
+                    <td class="aLink">
+                        <a th:href="@{/user/myPage/orderDetail(order_code=${orderList.order_code})}" th:text="${orderList.item_name} + ' 외 ' + ${orderList.order_count} + '건'"></a>
+                    </td>
+                    <td th:text="${orderList.order_price}+'원'"></td>
+                    <td th:text="${orderList.coupon_code}"></td>
+                    <td th:if="${orderList.order_payment == 'card'}" th:text="'카드'"></td>
+                    <td th:if="${orderList.order_status == 'D'}" th:text="'배송준비중'"></td>
+                    <td th:text="${orderList.order_claim == null ? '-' : orderList.order_claim  } "></td>
                 </tr>
 
             </table>

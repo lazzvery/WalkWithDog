@@ -45,25 +45,33 @@ body {
 
 /* header */
 
+/* header */
+
 header {
-    background-color: #477A7B;
+    background-color: #baaad780;
     display: flex;
     flex-direction: column;
     width: 250px;
+    min-height: 100vh;
     gap: 50px;
     padding-left: 20px;
-    min-height: 100vh;
 }
 
 .list>li {
     margin-bottom: 20px;
 }
 
+#logoImg {
+    width: 200px;
+}
+
 
 
 .list li a {
-    color: white;
-    font-size: 20px;
+    color: #8E83A9;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 1px solid;
 }
 
 .list>li ul {
