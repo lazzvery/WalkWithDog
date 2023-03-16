@@ -2,6 +2,7 @@ package com.prj.web.awesome.user.mapperInterface;
 
 import com.prj.web.awesome.community.criTest.Criteria;
 import com.prj.web.awesome.community.criTest.SearchCriteria;
+import com.prj.web.awesome.order.dto.OrderDetailDTO;
 import com.prj.web.awesome.order.dto.OrderListDTO;
 import com.prj.web.awesome.user.dto.AddrDTO;
 import com.prj.web.awesome.user.dto.CouponDTO;
@@ -66,5 +67,13 @@ public interface MyPageMapper {
     int criTotalCount();
 
 
+
+    @Select("SELECT * from order_detail d " +
+            "JOIN order_list o ON o.order_code = d.order_code " +
+            "JOIN item i ON d.item_id = i.item_id " +
+            "JOIN image m ON i.item_id = m.item_id " +
+            "WHERE d.order_code=#{order_code} AND m.img_div_flag = 'm'"
+    )
+    List<OrderDetailDTO> orderDetail(int order_code);
 
 }

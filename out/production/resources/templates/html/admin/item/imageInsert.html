@@ -18,7 +18,9 @@
     <!-- ---------------- 버튼 ------------------ -->
     <header id="headerTop">
         <div class="title">
-            <h1>관리자페이지</h1>
+            <a href="/home">
+                <img id="logoImg" src="/img/1 logo.png">
+            </a>
         </div>
 
         <ul class="list">
@@ -44,7 +46,7 @@
                 <a href="/admin/item/itemInfo">상품관리</a>
             </li>
             <li>
-                <a href="/admin/item/itemInsert">상품등록</a>
+                <a href="/image/upload">상품등록</a>
             </li>
             <li>
                 <a href="/admin/item/itemQna">상품 QnA관리</a>
@@ -61,52 +63,49 @@
         </ul>
 
 
-        <form id="insert" class="itemInsertForm" action="join" method="post">
+        <form id="insert" class="itemInsertForm" th:action method="post" enctype="multipart/form-data">
             <div class="itemTitle">
-                <h3>이미지 등록</h3>
+                <h3>상품 등록</h3>
             </div>
             <fieldset>
                 <ul class="ulContainer itemContainer">
-                    <li class="itemId">
-                        <label>이미지 번호</label>
-                        <div class="inputBox">
-                            <input type="text" name="user_id" id="user_id" required>
-                        </div>
-                    </li>
                     <li class="categoryCode">
-                        <label>상품 id</label>
+                        <label>카테고리</label>
                         <div class="inputBox">
-                            <input type="text" name="user_password" id="user_password" required>
+                            <select name="ctgr_cd">
+                                <option th:each="cate : ${category}" th:value="${cate.ctgr_cd}" th:text="${cate.ctgr_nm}">카테고리</option>
+                            </select>
                         </div>
                     </li>
                     <li class="itemName">
-                        <label>메인 이미지 용도 구분</label>
+                        <label>상품명</label>
                         <div class="inputBox">
-                            <input type="text" name="user_name" id="user_name" required>
-                        </div>
-                    </li>
-                    <li class="itemOption">
-                        <label>이미지 이름, 확장자</label>
-                        <div class="inputBox">
-                            <input type="text" name="user_phone" id="user_phone" placeholder="010" required>
+                            <input type="text" name="item_name" id="user_name" required>
                         </div>
                     </li>
                     <li class="itemPrice">
-                        <label>이미지 등록날짜</label>
+                        <label>상품 가격</label>
                         <div class="inputBox">
-                            <input type="text" name="user_email" required>
+                            <input type="text" name="item_price" required>
                         </div>
                     </li>
                     <li class="itemCount">
-                        <label>이미지 삭제 여부</label>
-                        <input type="number" name="user_rid">
+                        <label>상품 재고</label>
+                        <input type="number" name="item_amount">
                     </li>
-                    <li class="itemDate">
-                        <label>이미지 순서</label>
-                        <input type="date" name="user_rid">
+                    <li>
+                        <label>메인 이미지</label>
+                        <input type="file" name="mainImage">
+                    </li>
+                    <li>
+                        <label>서브 이미지</label>
+                        <input type="file" multiple="multiple" name="subImages">
+                    </li>
+                    <li>
+                        <label>상품 정보 이미지</label>
+                        <input type="file" multiple="multiple" name="infoImages">
                     </li>
                 </ul>
-
 
 
                 <div class="itemSubmit">

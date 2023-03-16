@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+a{
+  text-decoration: none;
+}
+
 /* 헤더 전체 */
 #headerTop {
   display: flex;

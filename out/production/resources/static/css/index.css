@@ -85,6 +85,7 @@ body {
 }
 
 .slideWrapper img {
+  display:block;
   width: 100vw;
   height: 90vh;
 }
@@ -102,8 +103,8 @@ body {
 
 /* --------------- 상품 리스트 박스--------------- */
 .productContainer {
-  margin: 5% 10%;
-  max-width: 1200px;
+  margin: 0 auto 5% auto;
+  width: 1024px;
 }
 
 .productContainer a {
@@ -114,16 +115,18 @@ body {
 
 /* 메인 상품 이미지 */
 .productContainer img {
-  width: 100%;
+  width: 300px;
   height: 80%;
   filter: brightness(97%);
+  object-fit: cover;
 }
 
 /* 상품리스트 소제목 */
 .productContainer .productMent {
-  display: grid;
+  display: flex;
+  justify-content: center;
   grid-template: repeat(4, 1fr) / repeat(11, 1fr);
-  height: 15em;
+  height: 70px;
 }
 
 .productContainer .productMent h1 {
@@ -140,16 +143,21 @@ body {
 
 .productContainer .prdMore {
   margin-bottom: 2%;
+  display:flex;
+  flex-direction: row-reverse;
 }
 
 .productContainer .prdMore a {
-  margin-left: 93%;
+
+  font-size: 14px;
 }
 
 
 /*------- 상품 리스트 -------*/
 .productImgList {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   margin: 0 auto;
   grid-template-columns: repeat(11, 1fr);
   column-gap: 5px;
@@ -168,6 +176,7 @@ body {
 /* 상품명 가격 */
 .productImgList p {
   margin-top: 9px;
+  color: #BAAAD7;
 }
 
 .productImgList p,
@@ -217,10 +226,85 @@ body {
 .productImgList .img1 img {
   position: relative;
   z-index: 1;
+  display:block;
 }
 
 .productImgList .img2 img {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+/* ------------------------------------리뷰 이미지 line----------------- */
+
+#reviewList{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.reviewMent{
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.reviewMent h1{
+  font-weight: bold;
+  font-size: 2rem;
+  color: #BAAAD7;
+}
+
+.c_reviewlist {
+  display: flex;
+  margin-top: 100px;
+}
+
+.c_reviewlist ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 30px;
+  row-gap: 50px;
+  justify-content: center;
+}
+
+.c_reviewlist li {
+  border: 1px solid rgb(223, 228, 234);
+  border-radius: 4px;
+}
+
+
+.c_reviewlist li .c_img_container {
+  display: flex;
+  justify-content: center;
+}
+
+.c_img_container img {
+  width: 150px;
+  height: 200px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.c_reviewlist li a {
+  font-size: initial;
+  display: flex;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.c_reviewlist li .c_username {
+  padding: 0 10px 0;
+  color: gray;
+}
+
+.c_review_target {
+  display: flex;
+}
+
+.c_review_target .c_user_rank {
+  font-size: 12px;
+  padding: 0px 0px 10px;
 }

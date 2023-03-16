@@ -24,10 +24,12 @@ main {
 
 body {
   font-family: 'IBMPlexSansKR-Regular';
+  background: linear-gradient( to bottom,rgba(186,170,215,0.5) -1px, rgba(186,170,215,0.5) 350px,white 350px, white 100% );
+
 }
 
 .c_community_head {
-  color: #BAAAD7;
+  color: white;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -183,6 +185,9 @@ label {
   border-radius: 10px;
   text-decoration: none;
   padding: 7px;
+  color: black;
+  box-sizing: border-box;
+  vertical-align: middle;
 }
 
 .c_button .c_list {
@@ -190,9 +195,9 @@ label {
   color: #BAAAD7;
 }
 
-.c_button .c_confirm {
+.c_button button {
   width: 77.45px;
-  height: 39px;
+  height: 40px;
   font-size: 16px;
   cursor: pointer;
   padding: 7px;
@@ -200,6 +205,7 @@ label {
   border: 1px solid #BAAAD7;
   background-color: #BAAAD7;
   color: white;
+  box-sizing: border-box;
 }
 
 /*@media screen and (max-width: 1024px) {*/

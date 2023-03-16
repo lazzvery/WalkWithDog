@@ -41,11 +41,14 @@ public interface ReviewMapper {
     List<ReviewDTO> findReview();
 
 
-    @Select("select r.review_seq, r.item_id, r.review_title, r.user_id, r.review_rank, a.attachment_name " +
-            "from review r " +
-            "join attachment a on r.review_seq = a.review_seq " +
-            "join item i on r.item_id = i.item_id " +
-            "where r.item_id = #{item_id} " +
-            "limit 4")
+    @Select("SELECT \n" +
+            "    r.review_seq, r.item_id, r.review_title, r.user_id, r.review_rank, \n" +
+            "    (SELECT a.attachment_name FROM attachment a WHERE a.review_seq = r.review_seq LIMIT 1) AS attachment_name \n" +
+            "FROM \n" +
+            "    review r \n" +
+            "    JOIN item i ON r.item_id = i.item_id \n" +
+            "WHERE \n" +
+            "    r.item_id = #{item_id}\n" +
+            "LIMIT 4;")
     List<ReviewDTO> writeReview(int item_id);
 }

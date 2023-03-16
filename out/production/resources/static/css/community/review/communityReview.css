@@ -25,7 +25,7 @@ body {
 }
 
 .c_community_head {
-  color: #BAAAD7;
+  color: white;
   font-weight: bolder;
   font-size: 2rem;
 }
@@ -237,12 +237,16 @@ body {
 .c_write a {
   font-size: initial;
   text-decoration: none;
-  color: gray;
+  color: white;
+  padding: 10px;
+  background-color: #BAAAD7;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 .c_write a:hover {
-  color: black;
-
+  color: white;
+  font-weight: bold;
 }
 
 .c_reviewtoolsleft a:hover {
@@ -274,19 +278,22 @@ body {
   justify-content: center;
 }
 
+
 .c_img_container img {
-  width: 300px;
-  height: 300px;
+  width: 260px;
+  height: 260px;
   border-radius: 4px;
+  object-fit: cover;
 }
 
-.c_reviewlist li a {
+.c_reviewlist li a:not(.clickImg) {
   font-size: initial;
   display: flex;
   padding: 10px;
   text-decoration: none;
   color: black;
 }
+
 
 .c_reviewlist li .c_username {
   padding: 0 10px 0;
@@ -295,6 +302,7 @@ body {
 
 .c_review_target {
   display: flex;
+  margin-left: 5px;
 }
 
 .c_review_target .c_user_rank {
@@ -305,6 +313,8 @@ body {
 .c_review_targetimg {
   width: 50px;
   height: 50px;
+  object-fit: cover;
+
 }
 
 .c_page {
@@ -379,3 +389,36 @@ body {
 /*    width: 250px;*/
 /*  }*/
 /*}*/
+
+
+#searchType{
+  padding: 0 10px;
+  color: #BAAAD7;
+  border: none;
+  background-color: rgba(186,170,216,0.2);
+  width: 8em;
+  height: 3em;
+  border-radius: 30px;
+  outline: none;
+  text-align: center;
+}
+
+#keyTest{
+  margin-left: 10px;
+  outline: none;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom: 1px solid #BAAAD7;
+}
+#reviewBtn{
+  margin-left: 10px;
+  background: url(../../../img/icon/search.svg) no-repeat center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 13px;
+}
+

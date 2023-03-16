@@ -197,7 +197,9 @@
                     <li>
                         <div th:text="${list.getReview_seq()}" style="display: none"></div>
                         <div class="c_img_container">
-                            <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
+                            <a th:href="@{/community/reviewDetail(review_seq=${list.getReview_seq()})}" class="clickImg">
+                                <img th:src="'../../../upload/' + ${list.getAttachment_name()}" alt="1번">
+                            </a>
                         </div>
                         <div>
                             <a th:text="${list.getReview_content()}"

@@ -3,10 +3,6 @@
     padding: 0;
 }
 
-body{
-    background: linear-gradient( to bottom,rgba(186,170,215,0.5) 0%, rgba(186,170,215,0.5) 320px,white 320px, white 100% );
-}
-
 ul,
 li {
     list-style: none;
@@ -21,12 +17,13 @@ a {
 
 
 .myPageOrderContainer {
-    max-width: 1000px;
+    max-width: 1024px;
     margin: 0 auto;
     padding: 0 10px;
     border: 1px solid #dfe9e8;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    background-color: white;
 }
 
 
@@ -109,6 +106,7 @@ a {
     line-height: 40px;
     padding: 0 15px;
     font-size: 17px;
+    vertical-align: bottom;
 }
 
 
@@ -144,7 +142,22 @@ a {
 
 .myPageOrderContainer table thead td {
     padding: 20px 0;
-    font-size: 14px;
+    font-size: 16px;
+}
+
+.myPageOrderContainer table tbody td{
+    padding:10px 0;
+}
+.myPageOrderContainer table tbody td.aLink{
+    text-decoration: underline;
+}
+
+.myPageOrderContainer table td:nth-child(3){
+    text-align: right;
+    padding-right:20px;
+}
+.myPageOrderContainer table td:nth-child(n+4):nth-child(-n+6){
+    text-align: center;
 }
 
 

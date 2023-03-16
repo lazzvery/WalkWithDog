@@ -31,10 +31,10 @@
             </div>
             <ul class="pageNav">
                 <li><a href="/user/myPage/myHome">홈</a></li>
-                <li><a href="/user/myPage/order">주문내역</a></li>
+                <li><a th:href="@{/user/myPage/order(user_id=${session.loginID},currPage=1,rowsPerPage=9,searchType='all')}">주문내역</a></li>
                 <li><a href="#">쿠폰</a></li>
-                <li><a href="/user/heart">좋아요</a></li>
                 <li><a href="/user/myPage/modify">회원정보</a></li>
+                <li><a href="/user/heart">좋아요</a></li>
             </ul>
         </div>
 
@@ -42,21 +42,21 @@
             <h2>쿠폰</h2>
 
 
-            <form class="couponHistoryForm">
-                <ul>
-                    <li class="coupon">
-                        <input type="text" name="coupon">
-                        <button>쿠폰번호 인증</button>
-                    </li>
-                    <li>
-                        <p>반드시 쇼핑몰에서 발행한 쿠폰번호만 입력해주세요.(10~35자 일련번호 "-" 제외)</p>
-                    </li>
-                </ul>
-            </form>
+<!--            <form class="couponHistoryForm">-->
+<!--                <ul>-->
+<!--                    <li class="coupon">-->
+<!--                        <input type="text" name="coupon">-->
+<!--                        <button>쿠폰번호 인증</button>-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <p>반드시 쇼핑몰에서 발행한 쿠폰번호만 입력해주세요.(10~35자 일련번호 "-" 제외)</p>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </form>-->
 
 
             <table>
-                <caption>사용가능한 쿠폰: 1장</caption>
+                <caption>사용가능한 쿠폰 종류: <th:block th:text="${couponList.size()}"></th:block>장</caption>
                 <thead>
                     <tr>
                         <td>번호</td>
@@ -71,9 +71,9 @@
                     <tr th:each="couponList : ${couponList}">
                         <td th:text="${couponList.coupon_seq}"></td>
                         <td th:text="${couponList.coupon_name}"></td>
-                        <td th:text="${couponList.coupon_quantity}"></td>
-                        <td th:text="${couponList.coupon_buy}"></td>
-                        <td th:text="${couponList.coupon_benefits}"></td>
+                        <td th:text="${couponList.coupon_quantity}+'장'"></td>
+                        <td th:text="${couponList.coupon_buy}+'원'"></td>
+                        <td th:text="${couponList.coupon_benefits}+'원'"></td>
                     </tr>
                 </tbody>
 

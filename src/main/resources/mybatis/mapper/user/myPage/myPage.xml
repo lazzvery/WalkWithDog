@@ -136,6 +136,8 @@
 				)
 			</if>
 		</if>
+		GROUP BY
+		ol.order_code
 		ORDER BY
 		ol.order_code DESC
 		LIMIT #{sno}, #{rowsPerPage}

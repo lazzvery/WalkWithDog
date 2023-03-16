@@ -1,4 +1,4 @@
-const form = document.querySelector(".joinForm"),
+let form = document.querySelector(".joinForm"),
     idValue = document.getElementById('user_id'),
     passwordValue = document.getElementById('user_password'),
     password2Value = document.getElementById('user_password2'),
