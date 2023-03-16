@@ -225,7 +225,7 @@ body {
 .c_reviewtoolsleft {
   display: flex;
   margin-left: 250px;
-  margin-top: 5px;
+  margin-top: 15px;
   gap: 20px;
   cursor: pointer;
   color: gray;
