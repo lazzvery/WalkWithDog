@@ -61,7 +61,10 @@
 
                 <tbody>
                 <tr th:each="orderDetail : ${orderDetail}">
-                    <td th:text="${orderDetail.item_name}"></td>
+                    <td>
+                        <img th:src="'../../../../upload/'+${orderDetail.img_name}" alt ="이미지" />
+                        <span th:text="${orderDetail.item_name}"></span>
+                    </td>
                     <td th:text="${orderDetail.item_count}"></td>
                     <td th:text="${orderDetail.item_price}+'원'"></td>
 

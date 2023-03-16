@@ -45,11 +45,14 @@ body {
 
 /* header */
 
+/* header */
+
 header {
     background-color: #baaad780;
     display: flex;
     flex-direction: column;
     width: 250px;
+    min-height: 100vh;
     gap: 50px;
     padding-left: 20px;
 }

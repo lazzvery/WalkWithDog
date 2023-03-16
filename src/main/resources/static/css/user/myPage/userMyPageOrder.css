@@ -151,7 +151,16 @@ a {
 .myPageOrderContainer table tbody td.aLink{
     text-decoration: underline;
 }
-
+.myPageOrderContainer table td:nth-child(1){
+    display:flex;
+    align-items: center;
+}
+.myPageOrderContainer table tbody td:nth-child(1) img{
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin-right:10px;
+}
 .myPageOrderContainer table td:nth-child(3){
     text-align: right;
     padding-right:20px;
@@ -159,6 +168,7 @@ a {
 .myPageOrderContainer table td:nth-child(n+4):nth-child(-n+6){
     text-align: center;
 }
+
 
 
 .myPageOrderContainer .c_page {
