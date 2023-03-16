@@ -155,6 +155,8 @@ body {
 .c_reviewtools {
   display: flex;
   margin-bottom: 20px;
+  margin-left: 400px;
+  align-content: center;
 }
 
 .c_reviewtools i {
@@ -222,7 +224,8 @@ body {
 
 .c_reviewtoolsleft {
   display: flex;
-  margin-left: auto;
+  margin-left: 250px;
+  margin-top: 15px;
   gap: 20px;
   cursor: pointer;
   color: gray;
@@ -420,5 +423,6 @@ body {
   box-sizing: border-box;
   cursor: pointer;
   margin-top: 13px;
+  filter: invert(78%) sepia(28%) saturate(581%) hue-rotate(209deg) brightness(87%) contrast(93%);
 }
 

@@ -59,6 +59,14 @@ a {
     margin-bottom: 20px;
 }
 
+.myPageHomeTop .myPageHomeTopInfo li.img img{
+    display:block;
+    width:200px;
+    height:200px;
+    margin:0 auto;
+    border-radius: 50%;
+}
+
 .myPageHomeTop .myPageHomeTopInfo li.infoText {
     font-size: 25px;
     color: #BAAAD7;
