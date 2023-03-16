@@ -83,7 +83,7 @@
                             주문배송조회
                             <div>
                             <span>최근 3개월기준</span>
-                            <a href="/user/myPage/order">
+                            <a th:href="@{/user/myPage/order(user_id=${session.loginID},currPage=1,rowsPerPage=9,searchType='all')}">
                                 <img class="rightImg" src="../../../../img/icon/iright_arrow.png" alt="">
                             </a>
                             </div>
