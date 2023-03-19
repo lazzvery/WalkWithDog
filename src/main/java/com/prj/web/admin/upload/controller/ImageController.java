@@ -55,7 +55,7 @@ public class ImageController {
             saveImages(info, "i", item_id);
         }
 
-        return "html/admin/adminItem";
+        return "/index";
     }
 
     private void saveImages(String name, String flag, int item_id) {
