@@ -34,6 +34,17 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
   <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=c%2B%2B&logoColor=white">
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=python&logoColor=white"> 
   <br>
+ 
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=java&logoColor=white"> 
+  <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=c%2B%2B&logoColor=white">
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=python&logoColor=white"> 
+  <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=python&logoColor=white"> 
+  <br>
+ 
+ <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=java&logoColor=white"> 
+  <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=c%2B%2B&logoColor=white">
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=python&logoColor=white"> 
+  <br>
 </div>
 <br>
 
