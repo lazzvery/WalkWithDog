@@ -19,16 +19,13 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
  - 김민성 - 로그인/회원가입, 마이페이지, 관리자 페이지, 발표
 <br>
 
-## ⚙️ 개발 환경
+## 📚 개발 환경 / STACKS
 - `Java 8`
 - `JDK 1.8.0`
-- **IDE** : STS 3.9
-- **Framework** : Springboot(2.x)
-- **Database** : Oracle DB(11xe)
+- **Framework** : Springboot(2.7.10)
+- **Database** : MySQL
 - **ORM** : Mybatis
 <br>
-
-## 📚 STACKS
 <div> 
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
   <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=c%2B%2B&logoColor=white">
