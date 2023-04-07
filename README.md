@@ -62,4 +62,3 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 - **Framework** : Springboot(2.7.10)
 - **Database** : MySQL
 - **ORM** : Mybatis
-<br>
