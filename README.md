@@ -1,9 +1,7 @@
-# 산책 가자!
-스프링 부트 반려동물 용품 판매 사이트
-
-
 ## 🐶 프로젝트 소개
-MEGA BOX를 참고하여 만든 영화 예매 사이트입니다.
+<img src="https://postimg.cc/2LLgg6VG" width="50%" height="50%">
+Spring Boot로 만든 반려동물 용품 사이트입니다.
+
 <br>
 
 ## ⏲ 개발 기간
