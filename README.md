@@ -3,15 +3,18 @@
 Spring Boot로 만든 반려동물 용품 사이트입니다.
 
 <br>
+<br>
 
 ## ⏲ 개발 기간
 * 22.11.01일 - 23.03.17일
+<br>
 
 ### 🧑‍🤝‍🧑 맴버구성
  - 팀장  : 정선주 - 메인 페이지, 상품 카테고리 페이지, 발표
  - 팀원1 : 유미현 - 상품 상세 페이지, 장바구니, 위시리스트, 주문/결제, 상품 Q&A 게시판, 상품(이미지) 등록, PPT제작, 자료 정리, 발표
  - 팀원2 : 최병현 - 리뷰 게시판, FAQ 게시판, 공지사항 게시판, Q&A 게시판, 발표
  - 팀원3 : 김민성 - 로그인/회원가입, 마이페이지, 관리자 페이지, 발표
+<br>
 
 ### ⚙️ 개발 환경
 - `Java 8`
@@ -20,6 +23,7 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 - **Framework** : Springboot(2.x)
 - **Database** : Oracle DB(11xe)
 - **ORM** : Mybatis
+<br>
 
 ## 📌 주요 기능
 #### 로그인 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(Login)" >상세보기 - WIKI 이동</a>
