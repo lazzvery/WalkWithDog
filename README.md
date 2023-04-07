@@ -1,5 +1,5 @@
 ## 🐶 프로젝트 소개
-<img src="https://postimg.cc/2LLgg6VG" width="50%" height="50%">
+<img src="https://i.postimg.cc/QCfs9KD2/1-logo.png" width="50%" height="50%">
 Spring Boot로 만든 반려동물 용품 사이트입니다.
 
 <br>
