@@ -1,10 +1,8 @@
 # 🐶 프로젝트 소개
 <img src="https://i.postimg.cc/QCfs9KD2/1-logo.png" width="25%">
 Spring Boot로 만든 반려동물 용품 사이트입니다.
+<br/>
 - '산책가자'는 반려동물이 가장 좋아하는 소리로 많은 반려동물 가족들을 위한 좋은 제품들을 제공합니다.
-- [`CVI`](https://vaccine-review.com) 는 코로나19 백신 정보를 제공해줘요.
-- [`CVI`](https://vaccine-review.com) 에서는 백신 후기를 남길 수 있어요.
-- 부작용이 걱정되신다구요? [`다른 사람들의 후기를 보러 가볼까요? :)`](https://vaccine-review.com)
 <br/>
 <br/>
 
