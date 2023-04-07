@@ -1,4 +1,4 @@
-# 🐶 프로젝트 소개
+## 🐶 프로젝트 소개
 <img src="https://i.postimg.cc/QCfs9KD2/1-logo.png" width="25%">
 Spring Boot로 만든 반려동물 용품 사이트입니다.
 <br/>
@@ -11,7 +11,7 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 * 22.11.01일 - 23.03.17일
 <br>
 
-### 🧑‍🤝‍🧑 멤버 구성
+## 🧑‍🤝‍🧑 멤버 구성
  - 팀장  : 정선주 - 메인 페이지, 상품 카테고리 페이지, 발표
  - 팀원1 : 유미현 - 상품 상세 페이지, 장바구니, 위시리스트, 주문/결제,
            상품 Q&A 게시판, 상품(이미지) 등록, PPT 제작, 자료 정리, 발표
@@ -19,7 +19,7 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
  - 팀원3 : 김민성 - 로그인/회원가입, 마이페이지, 관리자 페이지, 발표
 <br>
 
-### ⚙️ 개발 환경
+## ⚙️ 개발 환경
 - `Java 8`
 - `JDK 1.8.0`
 - **IDE** : STS 3.9
@@ -28,7 +28,7 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 - **ORM** : Mybatis
 <br>
 
-### 📚 STACKS
+## 📚 STACKS
 <div> 
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
   <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=c%2B%2B&logoColor=white">
