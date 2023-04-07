@@ -5,6 +5,29 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 <br>
 <br>
 
+# 프로젝트 소개
+
+<br/>
+
+<p align="center">
+  <a target="_blank" href="https://www.youtube.com/watch?v=W1LziOGs_6g">
+    <img src="https://user-images.githubusercontent.com/53412998/137051501-805cd497-b7d7-421e-b6ac-4f03549e0d93.png" width="50%" height="50%">
+    <p align="center">(클릭하면 영상을 실행할 수 있습니다)</p>
+  </a>
+</p>
+
+<br/>
+
+코로나19 백신 접종 후기를 남기다! 우리는 [`Team CVI`](https://vaccine-review.com) 입니다.
+
+- [`CVI`](https://vaccine-review.com) 는 코로나19 백신 정보를 제공해줘요.
+- [`CVI`](https://vaccine-review.com) 에서는 백신 후기를 남길 수 있어요.
+- 부작용이 걱정되신다구요? [`다른 사람들의 후기를 보러 가볼까요? :)`](https://vaccine-review.com)
+
+서비스 URL: https://vaccine-review.com
+
+<br/>
+
 ## ⏲ 개발 기간
 * 22.11.01일 - 23.03.17일
 <br>
