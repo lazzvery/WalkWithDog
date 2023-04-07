@@ -1,6 +1,7 @@
 ## 🐶 프로젝트 소개
 <img src="https://i.postimg.cc/QCfs9KD2/1-logo.png" width="25%">
 Spring Boot로 만든 반려동물 용품 사이트입니다.
+- '산책가자'는 반려동물이 가장 좋아하는 소리로 많은 반려동물 가족들을 위한 좋은 제품들을 제공합니다.
 
 <br>
 <br>
