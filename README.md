@@ -20,12 +20,6 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 <br>
 
 ## 📚 개발 환경 / STACKS
-- `Java 8`
-- `JDK 1.8.0`
-- **Framework** : Springboot(2.7.10)
-- **Database** : MySQL
-- **ORM** : Mybatis
-<br>
 <div> 
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
   <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=c%2B%2B&logoColor=white">
@@ -43,6 +37,13 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
   <img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=for-the-badge&logo=python&logoColor=white"> 
   <br>
 </div>
+<br/>
+
+- `Java 8`
+- `JDK 1.8.0`
+- **Framework** : Springboot(2.7.10)
+- **Database** : MySQL
+- **ORM** : Mybatis
 <br>
 
 ## 📌 주요 기능
