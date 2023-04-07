@@ -27,9 +27,9 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 - **Database** : Oracle DB(11xe)
 - **ORM** : Mybatis
 <br>
-<div align=center><h1>📚 STACKS</h1></div>
 
-<div align=center> 
+### 📚 STACKS
+<div> 
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
   <img src="https://img.shields.io/badge/c++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white">
   <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> 
