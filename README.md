@@ -1,17 +1,17 @@
-## 🐶 프로젝트 소개
+## 🐕 프로젝트 소개
+```
+Spring Boot로 만든 반려동물 용품 사이트입니다. 🍀
+'산책 가자'는 반려동물이 가장 좋아하는 소리로, 많은 반려동물 가족들을 위한 좋은 제품들을 제공합니다.
+```
 <img src='https://i.postimg.cc/sXDfWYbv/image.gif' border='0' alt='image'/>
-Spring Boot로 만든 반려동물 용품 사이트입니다.
-<br/>
-'산책가자'는 반려동물이 가장 좋아하는 소리로 많은 반려동물 가족들을 위한 좋은 제품들을 제공합니다.
-<br/>
 <br/>
 
 
 ## ⏲ 개발 기간
-* 2022.11.01 - 2023.03.17
+* 2022.11.01 - 2023.03.17 (최종 발표)
 <br>
 
-## 🙇‍♀️ 멤버 구성
+## 🚎 멤버 구성
 * 정선주
     * 메인 페이지, 상품 카테고리 페이지
   * DB 설계 및 UI 구현
@@ -33,8 +33,8 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
   * DB 설계 및 UI 구현
 <br>
 
-## 📚 개발 환경 / STACKS
-<div> 
+## 💻 개발 환경 / STACKS
+<div>
   <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=java&logoColor=white"> 
   <img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=c%2B%2B&logoColor=white">
   <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=python&logoColor=white"> 
@@ -42,6 +42,8 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
  
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=java&logoColor=white"> 
   <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=c%2B%2B&logoColor=white">
+   
+  <br>
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=python&logoColor=white"> 
   <img src="https://img.shields.io/badge/jquery-0769AD?style=for-the-badge&logo=python&logoColor=white"> 
   <br>
@@ -53,8 +55,14 @@ Spring Boot로 만든 반려동물 용품 사이트입니다.
 </div>
 <br/>
 
-- `Java 8`
-- `JDK 1.8.0`
-- **Framework** : Springboot(2.7.10)
+- **JDK** : 1.8.0
+- **Framework** : Springboot (2.7.10)
 - **Database** : MySQL
 - **ORM** : Mybatis
+- **Server** : cafe24
+<br>
+
+
+## 📰 데이터베이스 ERD
+<img src="https://i.imgur.com/hxmYucS.png" title="erd.png"/>
+
